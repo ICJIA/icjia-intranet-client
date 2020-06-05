@@ -6,38 +6,60 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
+// const $http = axios.create({
+//   baseURL: `${config.api.base}`,
+//   timeout: `${config.api.timeout}`
+// });
+
 export default new Vuex.Store({
   state: {
-    status: "",
-    jwt: localStorage.getItem("jwt") || "",
-    userMeta: JSON.parse(localStorage.getItem("userMeta")) || "",
-    user: {}
+    status: null,
+    authError: null,
+    errorMsg: null,
+    jwt: localStorage.getItem("jwt") || null,
+    userMeta: JSON.parse(localStorage.getItem("userMeta")) || null,
+    user: null
   },
   mutations: {
-    logout(state) {
-      state.status = "";
-      state.jwt = "";
-      state.user = {};
+    AUTH_LOGOUT(state) {
+      state.status = null;
+      state.jwt = null;
+      state.user = null;
       console.log("logged out");
+    },
+    AUTH_REGISTER(state, message) {
+      state.status = message;
+      console.log(message);
+    },
+    CLEAR_STATUS(state) {
+      state.status = "";
+      console.log("CLEAR_STATUS");
+    },
+    SET_STATUS(state, message) {
+      state.status = message;
+      console.log("SET_STATUS:", message);
     }
   },
   actions: {
     logout({ commit, state }) {
+      commit("CLEAR_STATUS");
       return new Promise((resolve, reject) => {
         localStorage.removeItem("jwt");
         localStorage.removeItem("userMeta");
         delete axios.defaults.headers.common["Authorization"];
-        commit("logout");
+        commit("AUTH_LOGOUT");
         resolve();
       });
     },
     login({ commit }, payload) {
+      commit("CLEAR_STATUS");
       return new Promise((resolve, reject) => {
         //commit("auth_request");
         axios({
           url: `${config.api.base}${config.api.login}`,
           data: payload,
-          method: "POST"
+          method: "POST",
+          timeout: `${config.api.timeout}`
         })
           .then(resp => {
             const jwt = resp.data.jwt;
@@ -45,16 +67,66 @@ export default new Vuex.Store({
             localStorage.setItem("jwt", jwt);
             localStorage.setItem("userMeta", JSON.stringify(userMeta));
             axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
-            console.log(jwt, userMeta);
+            //console.log(jwt, userMeta);
             // commit("auth_success", { jwt, userMeta });
             resolve(resp);
           })
           .catch(err => {
-            console.log("error");
-            // let message = JSON.parse(JSON.stringify(err.response.data.message));
-            // commit("auth_error", message);
-            // localStorage.removeItem("jwt");
-            // localStorage.removeItem("userMeta");
+            let message;
+            //console.log(err);
+            try {
+              message = JSON.parse(
+                JSON.stringify(
+                  err.response.data.message[0]["messages"][0]["message"]
+                )
+              );
+            } catch {
+              message = "NETWORK ERROR: Cannot access the API";
+            }
+            console.log(message);
+            commit("SET_STATUS", `${message}`);
+            reject(err);
+          });
+      });
+    },
+    register({ commit }, payload) {
+      commit("CLEAR_STATUS");
+      // commit("CLOSE_EVENT_DRAWER");
+      // commit("CLOSE_CATEGORY_DRAWER");
+
+      return new Promise((resolve, reject) => {
+        axios({
+          url: `${config.api.base}${config.api.register}`,
+          data: payload,
+          method: "POST",
+          timeout: `${config.api.timeout}`
+        })
+          .then(() => {
+            commit(
+              "AUTH_REGISTER",
+              `Success! Please check your email for your verification link. If you don't see the verification email, please also check inside your junk/spam folder.`
+            );
+
+            resolve();
+          })
+          .catch(err => {
+            // console.log("Register error: ", JSON.stringify(err));
+            let message;
+            //console.log(err);
+            try {
+              message = JSON.parse(
+                JSON.stringify(
+                  err.response.data.message[0]["messages"][0]["message"]
+                )
+              );
+            } catch {
+              message = "NETWORK ERROR: Cannot access the API";
+            }
+            console.log(message);
+            // commit("SET_ERROR", true);
+            // commit("AUTH_ERROR", `ERROR: ${message}`);
+            commit("SET_STATUS", `${message}`);
+
             reject(err);
           });
       });

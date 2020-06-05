@@ -6,7 +6,9 @@ const config = {
     resetPassword: "/auth/reset-password",
     resetPasswordCallback: "/reset",
     posts: "/posts",
-    login: "/auth/local"
+    login: "/auth/local",
+    timeout: 10000,
+    register: "/auth/local/register"
   }
 };
 

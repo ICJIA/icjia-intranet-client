@@ -29,6 +29,18 @@ const routes = [
     name: "Login",
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/Login.vue")
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: () =>
+      import(/* webpackChunkName: "register" */ "../views/Register.vue")
+  },
+
+  {
+    path: "*",
+    name: "FourOhFour",
+    component: () => import(/* webpackChunkName: '404' */ "../views/404.vue")
   }
 ];
 
@@ -41,8 +53,8 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   let jwt = localStorage.getItem("jwt");
-  console.log(requiresAuth, jwt);
-  if (requiresAuth && !jwt) {
+
+  if (requiresAuth && !jwt && !store.getters.isLoggedIn) {
     return next({
       path: "/login",
       query: { redirect: to.fullPath }

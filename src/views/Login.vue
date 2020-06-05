@@ -2,18 +2,15 @@
   <v-container fill-height>
     <v-layout row class="text-xs-center" align-center justify-center>
       <v-flex xs4 class="grey lighten-4 animated zoomIn fast">
-        <v-card
-          class="pt-1 pb-5 pl-3 pr-3"
-          v-if="!this.$store.getters.isLoggedIn"
-        >
+        <v-card class="pt-1 pb-5 pl-3 pr-3" min-width="350px">
           <div class="text-center mt-5">
             <h2>LOGIN</h2>
           </div>
           <v-form>
             <v-text-field
-              prepend-icon="person"
+              prepend-icon="email"
               name="identifier"
-              label="username"
+              label="email"
               v-model="identifier"
               autocomplete="identifier"
               ref="identifier"
@@ -22,7 +19,9 @@
               prepend-icon="lock"
               name="password"
               label="password"
-              type="password"
+              :append-icon="e3 ? 'visibility' : 'visibility_off'"
+              @click:append="() => (e3 = !e3)"
+              :type="e3 ? 'password' : 'text'"
               v-model="password"
               autocomplete="password"
             ></v-text-field>
@@ -32,10 +31,9 @@
             <div class="mt-4 mb-3 text-center">
               <router-link to="/forgot">I forgot my password</router-link>
             </div>
-            <div
-              style="height: 50px; font-weight: bold"
-              v-html="this.$store.state.status"
-            ></div>
+            <div class="text-center" style="color: red; font-size: 10px;">
+              {{ $store.getters.authStatus }}
+            </div>
           </v-form>
         </v-card>
       </v-flex>
@@ -55,12 +53,14 @@ export default {
   data() {
     return {
       identifier: "",
-      password: ""
+      password: "",
+      e3: true,
+      e4: true
     };
   },
   methods: {
     login() {
-      let identifier = this.identifier;
+      let identifier = this.identifier.toLowerCase();
       let password = this.password;
       let payload = {};
       payload.identifier = identifier;
