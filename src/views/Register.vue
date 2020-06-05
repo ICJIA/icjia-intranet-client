@@ -1,74 +1,75 @@
 <template>
-  <v-container fill-height>
-    <v-layout row class="text-xs-center" align-center justify-center>
-      <v-flex xs12 sm6 class="animated bounceInDown mt-3 mb-3">
-        <v-card class="pt-1 pb-5">
-          <div class="text-center mt-5">
-            <h2>REGISTER</h2>
+  <div class="fill-height" style="background-color:#eee">
+    <v-row class="fill-height" align="center" justify="center">
+      <v-card class="pt-1 pb-5" style="width: 350px">
+        <div class="text-center mt-5">
+          <h2>REGISTER</h2>
+        </div>
+
+        <form class="pt-5 pl-3 pr-3">
+          <v-text-field
+            v-model="email"
+            prepend-icon="email"
+            :error-messages="emailErrors"
+            label="Valid @illinois.gov email"
+            @input="$v.email.$touch()"
+            @blur="$v.email.$touch()"
+            aria-label="Email"
+            @click.native="clearStatus"
+            @keyup.enter="submit"
+            ref="email"
+          ></v-text-field>
+
+          <v-text-field
+            v-model="password"
+            prepend-icon="lock"
+            :error-messages="passwordErrors"
+            label="Password"
+            :append-icon="e3 ? 'visibility' : 'visibility_off'"
+            @click:append="() => (e3 = !e3)"
+            :type="e3 ? 'password' : 'text'"
+            @input="$v.password.$touch()"
+            @blur="$v.password.$touch()"
+            aria-label="Password"
+            @click.native="clearStatus"
+            @keyup.enter="submit"
+            class="mt-2"
+          ></v-text-field>
+          <v-text-field
+            v-model="repeatPassword"
+            prepend-icon="lock"
+            :error-messages="repeatPasswordErrors"
+            label="Verify Password"
+            :append-icon="e4 ? 'visibility' : 'visibility_off'"
+            @click:append="() => (e4 = !e4)"
+            :type="e4 ? 'password' : 'text'"
+            aria-label="Verify Password"
+            @input="$v.repeatPassword.$touch()"
+            @blur="$v.repeatPassword.$touch()"
+            class="mt-2"
+            @click.native="clearStatus"
+            @keyup.enter="submit"
+          ></v-text-field>
+          <div
+            class="text-center mt-5"
+            style="color: red; font-size: 12px; font-weight: bold;"
+          >
+            {{ $store.getters.authStatus }}
           </div>
+          <div class="text-center mt-5">
+            <v-btn @click="submit">Register</v-btn>&nbsp;
+            <v-progress-circular
+              v-if="isLoading"
+              indeterminate
+              color="primary"
+            ></v-progress-circular>
+          </div>
+        </form>
 
-          <form class="pt-5 pl-3 pr-3">
-            <v-text-field
-              v-model="email"
-              prepend-icon="email"
-              :error-messages="emailErrors"
-              label="Valid @illinois.gov email"
-              @input="$v.email.$touch()"
-              @blur="$v.email.$touch()"
-              aria-label="Email"
-              @click.native="clearStatus"
-              @keyup.enter="submit"
-              ref="email"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="password"
-              prepend-icon="lock"
-              :error-messages="passwordErrors"
-              label="Password"
-              :append-icon="e3 ? 'visibility' : 'visibility_off'"
-              @click:append="() => (e3 = !e3)"
-              :type="e3 ? 'password' : 'text'"
-              @input="$v.password.$touch()"
-              @blur="$v.password.$touch()"
-              aria-label="Password"
-              @click.native="clearStatus"
-              @keyup.enter="submit"
-              class="mt-2"
-            ></v-text-field>
-            <v-text-field
-              v-model="repeatPassword"
-              prepend-icon="lock"
-              :error-messages="repeatPasswordErrors"
-              label="Verify Password"
-              :append-icon="e4 ? 'visibility' : 'visibility_off'"
-              @click:append="() => (e4 = !e4)"
-              :type="e4 ? 'password' : 'text'"
-              aria-label="Verify Password"
-              @input="$v.repeatPassword.$touch()"
-              @blur="$v.repeatPassword.$touch()"
-              class="mt-2"
-              @click.native="clearStatus"
-              @keyup.enter="submit"
-            ></v-text-field>
-            <div class="text-center" style="color: red; font-size: 10px;">
-              {{ $store.getters.authStatus }}
-            </div>
-            <div class="text-center mt-5">
-              <v-btn @click="submit">Register</v-btn>&nbsp;
-              <v-progress-circular
-                v-if="isLoading"
-                indeterminate
-                color="primary"
-              ></v-progress-circular>
-            </div>
-          </form>
-
-          <!-- <tree-view :data="this.$v" :options="{maxDepth: 3}"></tree-view> -->
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+        <!-- <tree-view :data="this.$v" :options="{maxDepth: 3}"></tree-view> -->
+      </v-card>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -109,7 +110,7 @@ export default {
       showSubmit: true,
       showLoader: false,
       successMessage: "",
-      disabled: true
+      disabled: false
     };
   },
   computed: {

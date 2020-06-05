@@ -1,50 +1,49 @@
 <template>
-  <v-container fill-height>
-    <v-layout row class="text-xs-center" align-center justify-center>
-      <v-flex xs12 sm6 class="animated bounceInDown mt-3 mb-3">
-        <v-card class="pt-1 pb-5">
-          <div class="text-center mt-5">
-            <h2>FORGOT PASSWORD</h2>
+  <div class="fill-height" style="background-color:#eee">
+    <v-row class="fill-height" align="center" justify="center">
+      <v-card class="pt-1 pb-5" style="width: 350px">
+        <div class="text-center mt-5">
+          <h2>FORGOT PASSWORD</h2>
+        </div>
+        <form class="pt-5 pl-3 pr-3" @submit="submit" onSubmit="return false;">
+          <v-text-field
+            v-model="email"
+            :error-messages="emailErrors"
+            prepend-icon="email"
+            label="Your @illinois.gov email"
+            @input="$v.email.$touch()"
+            @blur="$v.email.$touch()"
+            aria-label="Email"
+            @click.native="clearStatus"
+            :disabled="disabled"
+            ref="email"
+          ></v-text-field>
+
+          <div class="text-center">
+            <v-btn @click="submit" :disabled="disabled">Send Reset Link</v-btn
+            >&nbsp;
+            <v-progress-circular
+              v-if="isLoading"
+              indeterminate
+              color="primary"
+            ></v-progress-circular>
           </div>
-          <form
-            class="pt-5 pl-3 pr-3"
-            @submit="submit"
-            onSubmit="return false;"
-          >
-            <v-text-field
-              v-model="email"
-              :error-messages="emailErrors"
-              label="Your @illinois.gov email"
-              @input="$v.email.$touch()"
-              @blur="$v.email.$touch()"
-              aria-label="Email"
-              @click.native="clearStatus"
-              :disabled="disabled"
-              ref="email"
-            ></v-text-field>
 
-            <div class="text-center">
-              <v-btn @click="submit">Send Reset Link</v-btn>&nbsp;
-              <v-progress-circular
-                v-if="isLoading"
-                indeterminate
-                color="primary"
-              ></v-progress-circular>
-            </div>
-
-            <!-- <div v-else class="text-xs-center">
+          <!-- <div v-else class="text-xs-center">
                 <v-btn to="/login">Back to Log in</v-btn>
             </div>-->
-            <div class="text-center" style="color: red; font-size: 10px;">
-              {{ $store.getters.authStatus }}
-            </div>
-          </form>
+          <div
+            class="text-center mt-5"
+            style="color: red; font-size: 12px; font-weight: bold;"
+          >
+            {{ $store.getters.authStatus }}
+          </div>
+        </form>
 
-          <!-- <tree-view :data="this.$v" :options="{maxDepth: 3}"></tree-view> -->
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+        <!-- <tree-view :data="this.$v" :options="{maxDepth: 3}"></tree-view> -->
+      </v-card>
+    </v-row>
+  </div>
 </template>
 
 <script>

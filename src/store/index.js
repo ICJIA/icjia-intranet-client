@@ -67,7 +67,7 @@ export default new Vuex.Store({
           .then(resp => {
             commit(
               "SET_STATUS",
-              `Success! Please check your email for your reset link. If you don't see the verification email, please also check inside your junk/spam folder.`
+              `Success! Please check your email for your reset link. If you don't see the verification email, please also check inside your junk/spam folder. Please give it a few minutes.`
             );
 
             resolve(resp);
