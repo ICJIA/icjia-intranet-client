@@ -7,7 +7,7 @@ const computedPublicPath =
 let myApp = {
   config,
   //   searchIndex,
-  computedPublicPath,
+  computedPublicPath
 };
 
 export { myApp };

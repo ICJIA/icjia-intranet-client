@@ -13,7 +13,7 @@ export default new Vuex.Store({
     errorMsg: null,
     jwt: localStorage.getItem("jwt") || null,
     userMeta: JSON.parse(localStorage.getItem("userMeta")) || null,
-    user: null,
+    user: null
   },
   mutations: {
     AUTH_LOGOUT(state) {
@@ -30,7 +30,7 @@ export default new Vuex.Store({
     SET_STATUS(state, message) {
       state.status = message;
       console.log("SET_STATUS:", message);
-    },
+    }
   },
   actions: {
     logout({ commit, state }) {
@@ -53,9 +53,9 @@ export default new Vuex.Store({
         axios({
           url: `${config.api.base}${config.api.forgetPassword}`,
           data: data,
-          method: "POST",
+          method: "POST"
         })
-          .then((resp) => {
+          .then(resp => {
             commit(
               "SET_STATUS",
               `Success! Please check your email for your reset link. If you don't see the verification email, please also check inside your junk/spam folder. Please give it a few minutes.`
@@ -63,7 +63,7 @@ export default new Vuex.Store({
 
             resolve(resp);
           })
-          .catch((err) => {
+          .catch(err => {
             let message;
             try {
               message = JSON.parse(
@@ -90,9 +90,9 @@ export default new Vuex.Store({
           url: `${config.api.base}${config.api.login}`,
           data: payload,
           method: "POST",
-          timeout: `${config.api.timeout}`,
+          timeout: `${config.api.timeout}`
         })
-          .then((resp) => {
+          .then(resp => {
             const jwt = resp.data.jwt;
             const userMeta = resp.data.user;
             localStorage.setItem("jwt", jwt);
@@ -101,7 +101,7 @@ export default new Vuex.Store({
 
             resolve(resp);
           })
-          .catch((err) => {
+          .catch(err => {
             let message;
 
             try {
@@ -127,7 +127,7 @@ export default new Vuex.Store({
           url: `${config.api.base}${config.api.register}`,
           data: payload,
           method: "POST",
-          timeout: `${config.api.timeout}`,
+          timeout: `${config.api.timeout}`
         })
           .then(() => {
             commit(
@@ -137,7 +137,7 @@ export default new Vuex.Store({
 
             resolve();
           })
-          .catch((err) => {
+          .catch(err => {
             let message;
 
             try {
@@ -156,12 +156,12 @@ export default new Vuex.Store({
             reject(err);
           });
       });
-    },
+    }
   },
   modules: {},
   getters: {
-    isLoggedIn: (state) => !!state.jwt,
-    authStatus: (state) => state.status,
-    userMeta: (state) => state.userMeta,
-  },
+    isLoggedIn: state => !!state.jwt,
+    authStatus: state => state.status,
+    userMeta: state => state.userMeta
+  }
 });

@@ -18,8 +18,8 @@ export default {
       <ul x-show="open" @click.away="open = false">
         Dropdown Body
       </ul>
-    </div>`,
+    </div>`
     };
-  },
+  }
 };
 </script>

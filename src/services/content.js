@@ -10,15 +10,15 @@ const xss = require("xss");
 const axios = require("axios");
 const api = axios.create({
   baseURL: config.baseURL,
-  timeout: 10000,
+  timeout: 10000
 });
 
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(config => {
   NProgress.start();
   return config;
 });
 
-api.interceptors.response.use((response) => {
+api.interceptors.response.use(response => {
   NProgress.done();
   return response;
 });
@@ -28,8 +28,8 @@ async function queryEndpoint(query) {
     url: "/graphql",
     method: "post",
     data: {
-      query,
-    },
+      query
+    }
   });
   return content;
 }

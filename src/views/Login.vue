@@ -59,7 +59,7 @@ export default {
       identifier: "",
       password: "",
       e3: true,
-      e4: true,
+      e4: true
     };
   },
   methods: {
@@ -75,9 +75,9 @@ export default {
           console.log("logged in");
           this.$router.push("/");
         })
-        .catch((err) => console.log(err));
-    },
-  },
+        .catch(err => console.log(err));
+    }
+  }
 };
 </script>
 

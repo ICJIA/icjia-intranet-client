@@ -65,7 +65,7 @@ export default {
   },
 
   validations: {
-    email: { required, email, illinoisDotGov },
+    email: { required, email, illinoisDotGov }
   },
   data() {
     return {
@@ -74,7 +74,7 @@ export default {
       showSubmit: true,
       showLoader: false,
       successMessage: "",
-      disabled: false,
+      disabled: false
     };
   },
   computed: {
@@ -94,7 +94,7 @@ export default {
 
     isSuccess() {
       return !this.$v.$invalid && this.$v.$dirty;
-    },
+    }
   },
   methods: {
     clearStatus() {
@@ -105,14 +105,14 @@ export default {
 
       if (this.isSuccess) {
         let email = this.email.toString().toLowerCase();
-        this.$store.dispatch("forgot", email).then((r) => {
+        this.$store.dispatch("forgot", email).then(r => {
           if (r.data.ok) {
             this.disabled = true;
           }
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
