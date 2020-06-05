@@ -51,6 +51,47 @@ export default new Vuex.Store({
         resolve();
       });
     },
+    forgot({ commit }, email) {
+      commit("CLEAR_STATUS");
+
+      return new Promise((resolve, reject) => {
+        let data = {};
+        data.email = email;
+        data.url = `${config.api.baseClient}${config.api.resetPasswordCallback}`;
+
+        axios({
+          url: `${config.api.base}${config.api.forgetPassword}`,
+          data: data,
+          method: "POST"
+        })
+          .then(resp => {
+            commit(
+              "SET_STATUS",
+              `Success! Please check your email for your reset link. If you don't see the verification email, please also check inside your junk/spam folder.`
+            );
+
+            resolve(resp);
+          })
+          .catch(err => {
+            let message;
+            try {
+              message = JSON.parse(
+                JSON.stringify(
+                  err.response.data.message[0]["messages"][0]["message"]
+                )
+              );
+            } catch {
+              message = "NETWORK ERROR: Cannot access the API";
+            }
+            console.log(message);
+            commit("SET_STATUS", `${message}`);
+            localStorage.removeItem("jwt");
+            localStorage.removeItem("userMeta");
+
+            reject(err);
+          });
+      });
+    },
     login({ commit }, payload) {
       commit("CLEAR_STATUS");
       return new Promise((resolve, reject) => {
