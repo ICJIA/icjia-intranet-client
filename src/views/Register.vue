@@ -1,7 +1,7 @@
 <template>
-  <div class="fill-height" style="background-color:#eee">
+  <div class="fill-height" style="background-color: #eee;">
     <v-row class="fill-height" align="center" justify="center">
-      <v-card class="pt-1 pb-5" style="width: 350px">
+      <v-card class="pt-1 pb-5" style="width: 350px;">
         <div class="text-center mt-5">
           <h2>REGISTER</h2>
         </div>
@@ -96,11 +96,11 @@ export default {
     password: {
       required,
       minLength: minLength(8),
-      passwordComplexity
+      passwordComplexity,
     },
     repeatPassword: {
-      sameAsPassword: sameAs("password")
-    }
+      sameAsPassword: sameAs("password"),
+    },
   },
   data() {
     return {
@@ -114,7 +114,7 @@ export default {
       showSubmit: true,
       showLoader: false,
       successMessage: "",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
@@ -154,7 +154,7 @@ export default {
 
     isSuccess() {
       return !this.$v.$invalid && this.$v.$dirty;
-    }
+    },
   },
   methods: {
     clearStatus() {
@@ -168,7 +168,7 @@ export default {
         let payload = {
           username: this.email.toLowerCase(),
           email: this.email.toLowerCase(),
-          password: this.password
+          password: this.password,
         };
         this.$store
           .dispatch("register", payload)
@@ -177,12 +177,12 @@ export default {
             this.disabled = true;
           })
           // eslint-disable-next-line no-unused-vars
-          .catch(err => {
+          .catch((err) => {
             // console.log(JSON.stringify(err));
           });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

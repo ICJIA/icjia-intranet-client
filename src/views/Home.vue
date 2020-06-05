@@ -1,12 +1,15 @@
 <template>
   <div class="home">
-    Main page
+    {{ $myApp }}
   </div>
 </template>
 
 <script>
 export default {
   name: "Home",
-  components: {}
+  components: {},
+  data() {
+    return {};
+  },
 };
 </script>

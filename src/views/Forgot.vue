@@ -1,7 +1,7 @@
 <template>
-  <div class="fill-height" style="background-color:#eee">
+  <div class="fill-height" style="background-color: #eee;">
     <v-row class="fill-height" align="center" justify="center">
-      <v-card class="pt-1 pb-5" style="width: 350px">
+      <v-card class="pt-1 pb-5" style="width: 350px;">
         <div class="text-center mt-5">
           <h2>FORGOT PASSWORD</h2>
         </div>
@@ -65,7 +65,7 @@ export default {
   },
 
   validations: {
-    email: { required, email, illinoisDotGov }
+    email: { required, email, illinoisDotGov },
   },
   data() {
     return {
@@ -74,7 +74,7 @@ export default {
       showSubmit: true,
       showLoader: false,
       successMessage: "",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
@@ -94,7 +94,7 @@ export default {
 
     isSuccess() {
       return !this.$v.$invalid && this.$v.$dirty;
-    }
+    },
   },
   methods: {
     clearStatus() {
@@ -105,14 +105,14 @@ export default {
 
       if (this.isSuccess) {
         let email = this.email.toString().toLowerCase();
-        this.$store.dispatch("forgot", email).then(r => {
+        this.$store.dispatch("forgot", email).then((r) => {
           if (r.data.ok) {
             this.disabled = true;
           }
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,0 +1,15 @@
+{
+  "publicPath": "",
+  "namespace": "icjia-",
+  "api": {
+    "base": "https://intranet.icjia-api.cloud",
+    "baseClient": "https://intranet.icjia.cloud",
+    "forgetPassword": "/auth/forgot-password",
+    "resetPassword": "/auth/reset-password",
+    "resetPasswordCallback": "/reset",
+    "posts": "/posts",
+    "login": "/auth/local",
+    "timeout": 10000,
+    "register": "/auth/local/register"
+  }
+}

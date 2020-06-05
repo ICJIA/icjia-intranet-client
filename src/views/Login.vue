@@ -1,5 +1,5 @@
 <template>
-  <div class="fill-height" style="background-color:#eee">
+  <div class="fill-height" style="background-color: #eee;">
     <v-row class="fill-height" align="center" justify="center">
       <v-card class="pt-1 pb-5 pl-3 pr-3" width="350px">
         <div class="text-center mt-5">
@@ -59,7 +59,7 @@ export default {
       identifier: "",
       password: "",
       e3: true,
-      e4: true
+      e4: true,
     };
   },
   methods: {
@@ -75,9 +75,9 @@ export default {
           console.log("logged in");
           this.$router.push("/");
         })
-        .catch(err => console.log(err));
-    }
-  }
+        .catch((err) => console.log(err));
+    },
+  },
 };
 </script>
 
