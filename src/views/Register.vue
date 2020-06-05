@@ -51,18 +51,22 @@
             @keyup.enter="submit"
           ></v-text-field>
           <div
-            class="text-center mt-5"
+            class="text-center mt-2 mb-2"
             style="color: red; font-size: 12px; font-weight: bold;"
           >
             {{ $store.getters.authStatus }}
           </div>
-          <div class="text-center mt-5">
+
+          <div class="text-center mt-3">
             <v-btn @click="submit">Register</v-btn>&nbsp;
             <v-progress-circular
               v-if="isLoading"
               indeterminate
               color="primary"
             ></v-progress-circular>
+          </div>
+          <div class="mt-4 text-center">
+            <router-link to="/forgot">I forgot my password</router-link>
           </div>
         </form>
 

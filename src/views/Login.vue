@@ -27,8 +27,11 @@
           <v-card-actions>
             <v-btn primary large block @click="login">Login</v-btn>
           </v-card-actions>
-          <div class="mt-4 mb-3 text-center">
+          <div class="mt-4 text-center">
             <router-link to="/forgot">I forgot my password</router-link>
+          </div>
+          <div class="mt-6 mb-3 text-center">
+            <router-link to="/register" class="mt-3">Register</router-link>
           </div>
           <div
             class="text-center mt-5"
