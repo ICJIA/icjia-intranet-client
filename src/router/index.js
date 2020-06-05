@@ -42,6 +42,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "forgot" */ "../views/Forgot.vue")
   },
+  {
+    path: "/reset",
+    name: "Reset",
+    component: () =>
+      import(/* webpackChunkName: "reset" */ "../views/Reset.vue")
+  },
 
   {
     path: "*",
