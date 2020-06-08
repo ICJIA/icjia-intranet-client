@@ -54,7 +54,7 @@
             class="text-center mt-2 mb-2"
             style="color: red; font-size: 12px; font-weight: bold;"
           >
-            {{ $store.getters.authStatus }}
+            {{ $store.getters["auth/authStatus"] }}
           </div>
 
           <div class="text-center mt-3">
@@ -96,11 +96,11 @@ export default {
     password: {
       required,
       minLength: minLength(8),
-      passwordComplexity
+      passwordComplexity,
     },
     repeatPassword: {
-      sameAsPassword: sameAs("password")
-    }
+      sameAsPassword: sameAs("password"),
+    },
   },
   data() {
     return {
@@ -114,7 +114,7 @@ export default {
       showSubmit: true,
       showLoader: false,
       successMessage: "",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
@@ -149,16 +149,16 @@ export default {
       return errors;
     },
     isLoading() {
-      return this.$store.getters.isLoading;
+      return this.$store.getters["auth/isLoading"];
     },
 
     isSuccess() {
       return !this.$v.$invalid && this.$v.$dirty;
-    }
+    },
   },
   methods: {
     clearStatus() {
-      this.$store.dispatch("logout");
+      this.$store.dispatch("auth/logout");
     },
     submit() {
       this.$v.$touch();
@@ -168,21 +168,21 @@ export default {
         let payload = {
           username: this.email.toLowerCase(),
           email: this.email.toLowerCase(),
-          password: this.password
+          password: this.password,
         };
         this.$store
-          .dispatch("register", payload)
+          .dispatch("auth/register", payload)
           .then(() => {
             console.log("Success!");
             this.disabled = true;
           })
           // eslint-disable-next-line no-unused-vars
-          .catch(err => {
+          .catch((err) => {
             // console.log(JSON.stringify(err));
           });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

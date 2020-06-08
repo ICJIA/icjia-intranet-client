@@ -36,7 +36,7 @@
             class="text-center mt-5"
             style="color: red; font-size: 12px; font-weight: bold;"
           >
-            {{ $store.getters.authStatus }}
+            {{ $store.getters["auth/authStatus"] }}
           </div>
         </form>
 
@@ -56,8 +56,8 @@ export default {
 
   components: {},
   created() {
-    this.$store.commit("CLEAR_STATUS");
-    this.$store.dispatch("logout");
+    this.$store.commit("auth/CLEAR_STATUS");
+    this.$store.dispatch("auth/logout");
   },
 
   mounted() {
@@ -65,7 +65,7 @@ export default {
   },
 
   validations: {
-    email: { required, email, illinoisDotGov }
+    email: { required, email, illinoisDotGov },
   },
   data() {
     return {
@@ -74,7 +74,7 @@ export default {
       showSubmit: true,
       showLoader: false,
       successMessage: "",
-      disabled: false
+      disabled: false,
     };
   },
   computed: {
@@ -89,30 +89,30 @@ export default {
     },
 
     isLoading() {
-      return this.$store.getters.isLoading;
+      return this.$store.getters["auth/isLoading"];
     },
 
     isSuccess() {
       return !this.$v.$invalid && this.$v.$dirty;
-    }
+    },
   },
   methods: {
     clearStatus() {
-      this.$store.commit("CLEAR_STATUS");
+      this.$store.commit("auth/CLEAR_STATUS");
     },
     submit() {
       this.$v.$touch();
 
       if (this.isSuccess) {
         let email = this.email.toString().toLowerCase();
-        this.$store.dispatch("forgot", email).then(r => {
+        this.$store.dispatch("auth/forgot", email).then((r) => {
           if (r.data.ok) {
             this.disabled = true;
           }
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

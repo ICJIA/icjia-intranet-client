@@ -5,13 +5,13 @@ module.exports = {
   publicPath:
     process.env.NODE_ENV === `production` ? appConfig.publicPath : "/",
   //publicPath: "/",
-  configureWebpack: config => {
+  configureWebpack: (config) => {
     config.entry.app = "./src/entry.js";
   },
   pluginOptions: {
     moment: {
-      locales: ["en"]
-    }
+      locales: ["en"],
+    },
   },
-  transpileDependencies: ["vuetify"]
+  transpileDependencies: ["vuetify"],
 };

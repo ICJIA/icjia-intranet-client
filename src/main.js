@@ -14,11 +14,11 @@ Vue.config.productionTip = false;
 
 // Set up app wide read-only configs and install as plugin
 import { myApp } from "./services/AppInit";
-myApp.install = function() {
+myApp.install = function () {
   Object.defineProperty(Vue.prototype, "$myApp", {
     get() {
       return myApp;
-    }
+    },
   });
 };
 Vue.use(myApp);
@@ -27,9 +27,10 @@ import browserDetect from "vue-browser-detect-plugin";
 Vue.use(browserDetect);
 
 import VueMeta from "vue-meta";
+import { createProvider } from "./vue-apollo";
 Vue.use(VueMeta, {
   // optional pluginOptions
-  refreshOnceOnNavigation: true
+  refreshOnceOnNavigation: true,
 });
 
 // import VueAnalytics from "vue-analytics";
@@ -47,5 +48,6 @@ new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  apolloProvider: createProvider(),
+  render: (h) => h(App),
 }).$mount("#app");

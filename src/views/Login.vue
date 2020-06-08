@@ -37,7 +37,7 @@
             class="text-center mt-5"
             style="color: red; font-size: 12px; font-weight: bold;"
           >
-            {{ $store.getters.authStatus }}
+            {{ $store.getters["auth/authStatus"] }}
           </div>
         </v-form>
       </v-card>
@@ -48,7 +48,7 @@
 <script>
 export default {
   created() {
-    this.$store.dispatch("logout");
+    this.$store.dispatch("auth/logout");
   },
 
   mounted() {
@@ -59,7 +59,7 @@ export default {
       identifier: "",
       password: "",
       e3: true,
-      e4: true
+      e4: true,
     };
   },
   methods: {
@@ -70,14 +70,14 @@ export default {
       payload.identifier = identifier;
       payload.password = password;
       this.$store
-        .dispatch("login", payload)
+        .dispatch("auth/login", payload)
         .then(() => {
           console.log("logged in");
           this.$router.push("/");
         })
-        .catch(err => console.log(err));
-    }
-  }
+        .catch((err) => console.log(err));
+    },
+  },
 };
 </script>
 
