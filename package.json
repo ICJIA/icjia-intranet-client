@@ -6,13 +6,15 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "schema": "get-graphql-schema https://intranet.icjia-api.cloud/graphql -j > schema.json"
   },
   "dependencies": {
     "alpinejs": "^2.3.5",
     "aos": "^3.0.0-beta.6",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "eslint-plugin-graphql": "^4.0.0",
     "graphql-request": "^2.0.0",
     "lodash": "^4.17.15",
     "markdown-it": "^11.0.0",

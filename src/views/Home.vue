@@ -12,7 +12,7 @@
 
 <script>
 // @ is an alias to /src
-import { GET_ALL_POSTS_QUERY } from "@/queries/getPosts";
+import { GET_ALL_POSTS_QUERY } from "@/graphql/queries/getPosts.js";
 export default {
   name: "Home",
   components: {},
