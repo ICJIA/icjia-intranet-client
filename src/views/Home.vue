@@ -1,11 +1,13 @@
 <template>
   <div>
-    <v-container>
+    <v-container fluid>
       <v-row>
         <v-col>
           <HomeAbout></HomeAbout>
         </v-col>
       </v-row>
+    </v-container>
+    <v-container fluid>
       <v-row>
         <v-col>
           <HomePosts></HomePosts>

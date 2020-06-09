@@ -1,22 +1,26 @@
 <template>
   <div>
-    <v-container>
-      <v-row>
-        <v-col>
-          <h1 v-if="posts && posts.length">{{ posts[0]["title"] }}</h1>
+    <base-content :loading="$apollo.loading" :error="error">
+      <template v-slot:title>
+        <v-container fluid>
+          <v-row>
+            <v-col cols="12">
+              <h1 v-if="posts && posts.length">{{ posts[0]["title"] }}</h1>
+            </v-col>
+          </v-row>
+        </v-container>
+      </template>
+      <template v-slot:content>
+        <v-container fluid>
           <div
             v-if="posts && posts.length"
             v-html="render(posts[0]['body'])"
             @click="handleClicks"
             class="dynamic-content"
           ></div>
-          <div v-if="$apollo.loading" class="text-center">
-            <Loader></Loader>
-          </div>
-          <div v-if="error">Error: {{ error }}</div>
-        </v-col>
-      </v-row>
-    </v-container>
+        </v-container>
+      </template>
+    </base-content>
   </div>
 </template>
 
@@ -53,9 +57,7 @@ export default {
         this.error = JSON.stringify(error.message);
       },
       result(ApolloQueryResult) {
-        // console.log(ApolloQueryResult.data);
-        // console.log(ApolloQueryResult.data.posts.length);
-        if (!ApolloQueryResult.data.posts.length) {
+        if (!ApolloQueryResult.data && !ApolloQueryResult.data.posts.length) {
           // eslint-disable-next-line no-unused-vars
           this.$router.push("/404").catch((err) => {
             console.log(err);

@@ -35,6 +35,7 @@ export default {
       loading: null,
     };
   },
+  mounted() {},
   methods: {
     render(content) {
       return renderToHtml(content);
