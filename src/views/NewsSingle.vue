@@ -1,14 +1,22 @@
 <template>
   <div>
-    <h1 v-if="posts">{{ posts[0]["title"] }}</h1>
-    <div
-      v-if="posts"
-      v-html="render(posts[0]['body'])"
-      @click="handleClicks"
-      class="dynamic-content"
-    ></div>
-    <div v-if="$apollo.loading"><h1>LOADING</h1></div>
-    <div v-if="error">Error: {{ error }}</div>
+    <v-container>
+      <v-row>
+        <v-col>
+          <h1 v-if="posts && posts.length">{{ posts[0]["title"] }}</h1>
+          <div
+            v-if="posts && posts.length"
+            v-html="render(posts[0]['body'])"
+            @click="handleClicks"
+            class="dynamic-content"
+          ></div>
+          <div v-if="$apollo.loading" class="text-center">
+            <Loader></Loader>
+          </div>
+          <div v-if="error">Error: {{ error }}</div>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -43,6 +51,16 @@ export default {
       },
       error(error) {
         this.error = JSON.stringify(error.message);
+      },
+      result(ApolloQueryResult) {
+        // console.log(ApolloQueryResult.data);
+        // console.log(ApolloQueryResult.data.posts.length);
+        if (!ApolloQueryResult.data.posts.length) {
+          // eslint-disable-next-line no-unused-vars
+          this.$router.push("/404").catch((err) => {
+            console.log(err);
+          });
+        }
       },
     },
   },
