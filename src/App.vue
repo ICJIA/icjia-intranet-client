@@ -3,6 +3,8 @@
     <AppNav></AppNav>
 
     <v-content>
+      <router-link to="/news/test-post-one">one</router-link> |
+      <router-link to="/news/test-post-two">two</router-link>
       <router-view></router-view>
     </v-content>
   </v-app>

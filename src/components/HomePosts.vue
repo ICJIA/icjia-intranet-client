@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     routeTo(slug) {
-      console.log(slug);
       this.$router.push(`/news/${slug}`);
     },
     isLoading(loading) {
