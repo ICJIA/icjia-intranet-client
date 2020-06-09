@@ -11,9 +11,10 @@ const GET_HOME_ABOUT = gql`
 
 const GET_HOME_POSTS = gql`
   query getHomePosts {
-    posts(where: { isPublished: true }) {
+    posts(where: { isPublished: true }, sort: "createdAt:desc") {
       id
       title
+      slug
       summary
       createdAt
     }
