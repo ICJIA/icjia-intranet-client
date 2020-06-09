@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ posts[0]["title"] }}</h1>
+    <h1 v-if="posts">{{ posts[0]["title"] }}</h1>
     <div
       v-if="posts"
       v-html="render(posts[0]['body'])"
