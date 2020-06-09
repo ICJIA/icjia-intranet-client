@@ -1,26 +1,51 @@
 <template>
   <div>
-    <h1>Get all posts</h1>
+    <v-container>
+      <v-row>
+        <v-col>
+          <div v-if="posts">
+            {{ posts }}
+          </div>
+          <div v-else>
+            <Loader></Loader>
+          </div>
+          <div v-if="homeAbout">
+            {{ homeAbout }}
+          </div>
+          <div v-else>
+            <Loader></Loader>
+          </div>
+          <!-- <div v-if="$apollo.loading" class="text-center mt-12">
+            <Loader></Loader>
+          </div> -->
+          <div v-if="error && error.length" class="text-center mt-12">
+            <div style="font-size: 24px; color: red; font-weight: bold;">
+              {{ error[0] }}
+            </div>
 
-    <div v-if="posts">
-      {{ posts }}
-    </div>
-    <div v-if="$apollo.loading"><h1>LOADING</h1></div>
-    <div v-if="error">Error: {{ error }}</div>
+            <div class="mt-10">
+              Please try
+              <router-link to="/login">logging in</router-link> again.
+            </div>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import { GET_ALL_POSTS_QUERY } from "@/graphql/queries/getPosts.js";
+import { GET_HOME_POSTS, GET_HOME_ABOUT } from "@/graphql/queries/getHome.js";
 export default {
   name: "Home",
   components: {},
   data() {
     return {
       posts: null,
-      error: null,
+      error: [],
       isLoading: false,
+      content: null,
+      homeAbout: null,
     };
   },
   mounted() {
@@ -28,25 +53,33 @@ export default {
   },
   apollo: {
     posts: {
-      query: GET_ALL_POSTS_QUERY,
+      query: GET_HOME_POSTS,
       variables: {},
       error(error) {
-        this.error = JSON.stringify(error.message);
+        console.log("ERROR:", error);
+        this.error.push(JSON.stringify(error.message));
       },
-      watchLoading(isLoading, countModifier) {
-        this.isLoading = isLoading;
-        console.log(isLoading, countModifier);
+    },
+    homeAbout: {
+      query: GET_HOME_ABOUT,
+      variables: {},
+      error(error) {
+        console.log("ERROR:", error);
+        this.error.push(JSON.stringify(error.message));
       },
-      result(ApolloQueryResult) {
-        // console.log(ApolloQueryResult.data);
-        // console.log(ApolloQueryResult.data.posts.length);
-        if (!ApolloQueryResult.data && !ApolloQueryResult.data.posts.length) {
-          // eslint-disable-next-line no-unused-vars
-          this.$router.push("/404").catch((err) => {
-            console.log(err);
-          });
-        }
-      },
+      // watchLoading(isLoading, countModifier) {
+      //   this.isLoading = isLoading;
+      //   console.log(isLoading, countModifier);
+      // },
+      // result(ApolloQueryResult) {
+      //   // this.homeAbout = ApolloQueryResult.data.homeAbout;
+      //   // this.posts = ApolloQueryResult.data.posts;
+      //   // if (!ApolloQueryResult.data && !ApolloQueryResult.data.posts.length) {
+      //   //   this.$router.push("/404").catch((err) => {
+      //   //     console.log(err);
+      //   //   });
+      //   // }
+      // },
     },
   },
 };

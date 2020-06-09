@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
+    "gql:fetch-schema": "graphql get-schema --project prod",
     "schema": "get-graphql-schema https://intranet.icjia-api.cloud/graphql -j > schema.json"
   },
   "dependencies": {
@@ -15,6 +16,8 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "eslint-plugin-graphql": "^4.0.0",
+    "get-graphql-schema": "^2.1.2",
+    "graphql": "^15.1.0",
     "graphql-request": "^2.0.0",
     "lodash": "^4.17.15",
     "markdown-it": "^11.0.0",

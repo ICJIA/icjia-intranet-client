@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
 import config from "@/config.json";
 import axios from "axios";
+// import { ApolloClient } from "apollo-client";
+// import { onLogout } from "@/vue-apollo";
 
 const namespaced = true;
 
@@ -19,6 +22,9 @@ const mutations = {
     state.user = null;
     console.log("AUTH_LOGOUT");
   },
+  AUTH_LOGIN(state) {
+    console.log("AUTH_LOGIN");
+  },
 
   CLEAR_STATUS(state) {
     state.status = "";
@@ -36,11 +42,12 @@ const actions = {
     commit("CLEAR_STATUS");
     // eslint-disable-next-line no-unused-vars
     return new Promise((resolve, reject) => {
+      //onLogout(ApolloClient);
       localStorage.removeItem("jwt");
       localStorage.removeItem("userMeta");
       delete axios.defaults.headers.common["Authorization"];
       commit("AUTH_LOGOUT");
-      resolve();
+      resolve("logged out successfully");
     });
   },
   forgot({ commit }, email) {
@@ -98,7 +105,7 @@ const actions = {
           localStorage.setItem("jwt", jwt);
           localStorage.setItem("userMeta", JSON.stringify(userMeta));
           axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
-
+          commit("AUTH_LOGIN");
           resolve(resp);
         })
         .catch((err) => {
@@ -113,7 +120,7 @@ const actions = {
           } catch {
             message = "NETWORK ERROR: Cannot access the API";
           }
-          console.log(message);
+
           commit("SET_STATUS", `${message}`);
           reject(err);
         });

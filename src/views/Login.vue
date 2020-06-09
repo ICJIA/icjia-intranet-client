@@ -30,9 +30,9 @@
           <div class="mt-4 text-center">
             <router-link to="/forgot">I forgot my password</router-link>
           </div>
-          <div class="mt-6 mb-3 text-center">
+          <!-- <div class="mt-6 mb-3 text-center">
             <router-link to="/register" class="mt-3">Register</router-link>
-          </div>
+          </div> -->
           <div
             class="text-center mt-5"
             style="color: red; font-size: 12px; font-weight: bold;"

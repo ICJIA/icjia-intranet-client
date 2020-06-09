@@ -31,6 +31,12 @@ const routes = [
       import(/* webpackChunkName: "login" */ "../views/Login.vue"),
   },
   {
+    path: "/logout",
+    name: "Logout",
+    component: () =>
+      import(/* webpackChunkName: "logout" */ "../views/Logout.vue"),
+  },
+  {
     path: "/register",
     name: "Register",
     component: () =>
@@ -47,6 +53,12 @@ const routes = [
     name: "Reset",
     component: () =>
       import(/* webpackChunkName: "reset" */ "../views/Reset.vue"),
+  },
+  {
+    path: "/sandbox",
+    name: "Sandbox",
+    component: () =>
+      import(/* webpackChunkName: "sandbox" */ "../views/Sandbox.vue"),
   },
 
   {

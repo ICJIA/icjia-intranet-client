@@ -7,6 +7,8 @@ const GET_ALL_POSTS_QUERY = gql`
       slug
       title
       summary
+      createdAt
+
       body
     }
   }
