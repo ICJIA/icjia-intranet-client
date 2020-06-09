@@ -11,10 +11,11 @@ const GET_HOME_ABOUT = gql`
 
 const GET_HOME_POSTS = gql`
   query getHomePosts {
-    posts {
+    posts(where: { isPublished: true }) {
       id
       title
       summary
+      createdAt
     }
   }
 `;

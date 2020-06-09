@@ -10,6 +10,11 @@ import "alpinejs";
 // import "@/filters";
 // import "material-design-icons-iconfont/dist/material-design-icons.css";
 
+// NProgress
+// eslint-disable-next-line no-unused-vars
+import Nprogress from "nprogress";
+import "nprogress/nprogress.css";
+
 Vue.config.productionTip = false;
 
 // Set up app wide read-only configs and install as plugin

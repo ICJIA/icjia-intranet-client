@@ -3,6 +3,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import store from "@/store";
+import NProgress from "nprogress";
 
 Vue.use(VueRouter);
 
@@ -75,6 +76,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  NProgress.start();
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   let jwt = localStorage.getItem("jwt");
 
@@ -85,6 +87,10 @@ router.beforeEach((to, from, next) => {
     });
   }
   next();
+});
+
+router.afterEach((routeTo, routeFrom) => {
+  NProgress.done();
 });
 
 export default router;

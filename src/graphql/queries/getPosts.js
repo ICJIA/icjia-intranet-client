@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 const GET_ALL_POSTS_QUERY = gql`
   query getAllPosts {
-    posts {
+    posts(where: { isPublished: true }) {
       id
       slug
       title
@@ -16,7 +16,7 @@ const GET_ALL_POSTS_QUERY = gql`
 
 const GET_SINGLE_POST_QUERY = gql`
   query getSinglePost($slug: String!) {
-    posts(where: { slug: $slug }) {
+    posts(where: { slug: $slug, isPublished: true }) {
       id
       slug
       title
