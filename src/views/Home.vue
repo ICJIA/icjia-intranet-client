@@ -6,7 +6,7 @@
           <Featured></Featured>
         </v-col>
       </v-row>
-      <v-row class="mt-3">
+      <v-row class="mt-3" no-gutters>
         <v-col
           v-for="n in 4"
           :key="n"
@@ -37,32 +37,43 @@
       <v-row class="mt-3">
         <v-col sm="12" md="6" cols="12" class="child">
           <v-sheet class="py-5 px-5" elevation="2">
-            <h2
-              style="
-                border-bottom: 2px solid #0d4474;
-                padding-bottom: 8px;
-                margin-bottom: 25px;
-                color: #0d4474;
-              "
-            >
-              News & Updates
-            </h2>
+            <v-container fluid class="mb-8">
+              <v-row>
+                <v-col>
+                  <h2 style="color: #0d4474;">
+                    News & Updates
+                  </h2>
+                </v-col>
+                <v-col class="text-right mt-2">
+                  <v-btn dark x-small color="indigo darken-3" to="/news"
+                    >news archive</v-btn
+                  >
+                </v-col>
+              </v-row>
+              <div class="mt-3" style="border-bottom: 2px solid #0d4474;"></div>
+            </v-container>
+
             <HomePosts></HomePosts>
           </v-sheet>
         </v-col>
 
         <v-col sm="12" md="6" cols="12">
           <v-sheet class="py-5 px-5" elevation="0">
-            <h2
-              style="
-                border-bottom: 2px solid #0d4474;
-                padding-bottom: 8px;
-                margin-bottom: 25px;
-                color: #0d4474;
-              "
-            >
-              Events
-            </h2>
+            <v-container fluid class="mb-8">
+              <v-row>
+                <v-col>
+                  <h2 style="color: #0d4474;">
+                    Events
+                  </h2>
+                </v-col>
+                <v-col class="text-right mt-2">
+                  <v-btn dark x-small color="indigo darken-3" to="/events"
+                    >calendar</v-btn
+                  >
+                </v-col>
+              </v-row>
+              <div class="mt-3" style="border-bottom: 2px solid #0d4474;"></div>
+            </v-container>
             <HomeEvents></HomeEvents>
           </v-sheet>
         </v-col>
@@ -75,6 +86,6 @@
 
 <style>
 .v-card:not(.v-sheet--tile):not(.v-card--shaped) {
-  border-radius: 0px;
+  border-radius: 0px !important;
 }
 </style>
