@@ -2,7 +2,7 @@
   "publicPath": "",
   "namespace": "icjia-",
   "api": {
-    "base": "https://intranet.icjia-api.cloud",
+    "base": "https://dev.icjia-api.cloud",
     "baseClient": "https://intranet.icjia.cloud",
     "forgetPassword": "/auth/forgot-password",
     "resetPassword": "/auth/reset-password",

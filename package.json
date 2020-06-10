@@ -8,7 +8,8 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "gql:fetch-schema": "graphql get-schema --project prod",
-    "schema": "get-graphql-schema https://intranet.icjia-api.cloud/graphql -j > schema.json"
+    "schema": "get-graphql-schema https://dev.icjia-api.cloud/graphql -j > schema.json",
+    "build:serve": "vue-cli-service build && serve ./dist --single"
   },
   "dependencies": {
     "alpinejs": "^2.3.5",

@@ -5,18 +5,19 @@ const GET_HOME_ABOUT = gql`
     homeAbout {
       title
       body
+      created_at
     }
   }
 `;
 
 const GET_HOME_POSTS = gql`
   query getHomePosts {
-    posts(where: { isPublished: true }, sort: "createdAt:desc") {
+    posts(where: { isPublished: true }, sort: "created_at:desc") {
       id
       title
       slug
       summary
-      createdAt
+      created_at
     }
   }
 `;
