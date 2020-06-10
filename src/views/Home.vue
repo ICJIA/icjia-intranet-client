@@ -15,7 +15,7 @@
           xs="12"
           sm="12"
         >
-          <v-card class="mx-auto">
+          <v-card class="mx-auto" color="white">
             <v-card-text>
               <div>Word of the Day</div>
               <p class="display-1 text--primary">
@@ -40,9 +40,10 @@
           <v-sheet class="py-5 px-5" elevation="2">
             <h2
               style="
-                border-bottom: 2px solid #666;
+                border-bottom: 2px solid #0d4474;
                 padding-bottom: 8px;
                 margin-bottom: 10px;
+                color: #0d4474;
               "
             >
               News & Updates
@@ -54,9 +55,10 @@
           <v-sheet class="py-5 px-5" elevation="2">
             <h2
               style="
-                border-bottom: 2px solid #666;
+                border-bottom: 2px solid #0d4474;
                 padding-bottom: 8px;
                 margin-bottom: 10px;
+                color: #0d4474;
               "
             >
               Events

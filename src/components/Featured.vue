@@ -10,7 +10,7 @@
       <v-carousel-item v-for="(slide, i) in slides" :key="i">
         <v-card color="grey lighten-4" height="100%">
           <v-row class="fill-height" align="center" justify="center" no-gutters>
-            <v-col md="4" style="height: 100%; background: #fafafa;">
+            <v-col md="4" style="height: 100%; background: #0d4474;">
               <v-row
                 class="fill-height"
                 align="center"
@@ -19,7 +19,7 @@
               >
                 <div
                   style="
-                    color: #333;
+                    color: #fff;
                     font-weight: bold;
                     padding-right: 50px;
                     padding-left: 50px;
@@ -27,7 +27,7 @@
                 >
                   <div class="text-center">
                     <div
-                      style="font-size: 12px; color: #aaa;"
+                      style="font-size: 12px; color: #ccc;"
                       class="text-center mb-3"
                     >
                       August 01, 2020
