@@ -17,18 +17,17 @@
         >
           <v-card class="mx-auto" color="white">
             <v-card-text>
-              <div>Word of the Day</div>
+              <div>Lorem markdownum</div>
               <p class="display-1 text--primary">
-                be•nev•o•lent
+                rogat reminiscitur
               </p>
               <p>adjective</p>
               <div class="text--primary">
-                well meaning and kindly.<br />
-                "a benevolent smile"
+                Placuit manet deceptus, ira duris iuncta, rogat reminiscitur
               </div>
             </v-card-text>
             <v-card-actions>
-              <v-btn text color="blue accent-4">
+              <v-btn text style="color: #0d4474;">
                 Learn More
               </v-btn>
             </v-card-actions>
@@ -42,7 +41,7 @@
               style="
                 border-bottom: 2px solid #0d4474;
                 padding-bottom: 8px;
-                margin-bottom: 10px;
+                margin-bottom: 25px;
                 color: #0d4474;
               "
             >
@@ -57,7 +56,7 @@
               style="
                 border-bottom: 2px solid #0d4474;
                 padding-bottom: 8px;
-                margin-bottom: 10px;
+                margin-bottom: 25px;
                 color: #0d4474;
               "
             >
