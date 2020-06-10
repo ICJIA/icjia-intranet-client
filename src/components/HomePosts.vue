@@ -8,7 +8,11 @@
 
         <div v-if="!isLoading(result.loading, result.error) && !result.error">
           <div v-for="post in result.data.posts" :key="post.id">
-            <v-card class="mb-5 hover card" @click="routeTo(post.slug)">
+            <v-card
+              class="mb-5 hover card"
+              @click="routeTo(post.slug)"
+              elevation="1"
+            >
               <v-card-title>{{ post.title }}</v-card-title>
               <v-card-text>{{ post.summary }}</v-card-text>
             </v-card>

@@ -1,12 +1,7 @@
 <template>
   <div>
-    <v-container fluid>
-      <v-row>
-        <v-col>
-          <HomeAbout></HomeAbout>
-        </v-col>
-      </v-row>
-    </v-container>
+    <Featured></Featured>
+
     <v-container fluid>
       <v-row>
         <v-col>

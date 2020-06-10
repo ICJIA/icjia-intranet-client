@@ -49,6 +49,9 @@ Vue.use(VueMeta, {
 // import AOS from "aos";
 // AOS.init();
 
+import VueDummy from "vue-dummy";
+Vue.use(VueDummy);
+
 new Vue({
   router,
   store,

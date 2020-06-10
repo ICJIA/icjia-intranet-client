@@ -32,6 +32,7 @@
     "vue-analytics": "^5.22.1",
     "vue-apollo": "^3.0.3",
     "vue-browser-detect-plugin": "^0.1.13",
+    "vue-dummy": "^1.1.3",
     "vue-meta": "^2.3.4",
     "vue-router": "^3.3.2",
     "vuelidate": "^0.7.5",

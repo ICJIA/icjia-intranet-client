@@ -1,15 +1,5 @@
 import gql from "graphql-tag";
 
-const GET_HOME_ABOUT = gql`
-  query getHomeAbout {
-    homeAbout {
-      title
-      body
-      created_at
-    }
-  }
-`;
-
 const GET_HOME_POSTS = gql`
   query getHomePosts {
     posts(where: { isPublished: true }, sort: "created_at:desc") {
@@ -22,4 +12,4 @@ const GET_HOME_POSTS = gql`
   }
 `;
 
-export { GET_HOME_ABOUT, GET_HOME_POSTS };
+export { GET_HOME_POSTS };
