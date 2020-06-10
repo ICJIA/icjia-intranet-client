@@ -34,8 +34,8 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-row class="masonry mt-3">
-        <v-col md="6" class="child">
+      <v-row class="mt-3">
+        <v-col sm="12" md="6" cols="12" class="child">
           <v-sheet class="py-5 px-5" elevation="2">
             <h2
               style="
@@ -50,7 +50,7 @@
             <HomePosts></HomePosts>
           </v-sheet>
         </v-col>
-        <v-col md="6" class="child" style="height: 200px;">
+        <v-col sm="12" md="6" cols="12" class="child" style="height: 200px;">
           <v-sheet class="py-5 px-5" elevation="2">
             <h2
               style="

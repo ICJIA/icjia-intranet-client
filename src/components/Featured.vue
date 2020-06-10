@@ -10,7 +10,7 @@
       <v-carousel-item v-for="(slide, i) in slides" :key="i">
         <v-card color="grey lighten-4" height="100%">
           <v-row class="fill-height" align="center" justify="center" no-gutters>
-            <v-col md="4" style="height: 100%; background: #0d4474;">
+            <v-col md="4" style="height: 100%; background: #0d4474;" cols="12">
               <v-row
                 class="fill-height"
                 align="center"
@@ -42,7 +42,7 @@
                 </div>
               </v-row>
             </v-col>
-            <v-col md="8">
+            <v-col md="8" cols="12" class="hidden-sm-and-down">
               <v-img
                 :src="`https://picsum.photos/900/405?image=${imageSeed}`"
                 :lazy-src="`https://picsum.photos/50/30?image=${imageSeed}`"
