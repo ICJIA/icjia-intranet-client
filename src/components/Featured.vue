@@ -5,11 +5,7 @@
       cycle
       hide-delimiter-background
       show-arrows-on-hover
-      style="
-        border-bottom: 1px solid #ddd;
-        border-top: 1px solid #ddd;
-        margin-top: 20px;
-      "
+      style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"
     >
       <v-carousel-item v-for="(slide, i) in slides" :key="i">
         <v-card color="grey lighten-4" height="100%">
@@ -30,6 +26,12 @@
                   "
                 >
                   <div class="text-center">
+                    <div
+                      style="font-size: 12px; color: #aaa;"
+                      class="text-center mb-3"
+                    >
+                      August 01, 2020
+                    </div>
                     <h2>Featured content here</h2>
                     <h3 style="color: #aaa; font-size: 14px;" class="mt-5">
                       Lorem markdownum placuit manet deceptus, ira duris iuncta,

@@ -9,7 +9,7 @@ import "alpinejs";
 // import "@/assets/css/app.css";
 import "@/filters";
 // import "material-design-icons-iconfont/dist/material-design-icons.css";
-
+// import Masonry from "masonry-layout";
 // NProgress
 // eslint-disable-next-line no-unused-vars
 import Nprogress from "nprogress";
@@ -58,4 +58,15 @@ new Vue({
   vuetify,
   apolloProvider: createProvider(),
   render: (h) => h(App),
+  // mounted: function () {
+  //   this.$nextTick(function () {
+  //     // Code that will run only after the
+  //     // entire view has been rendered
+  //     // eslint-disable-next-line no-unused-vars
+  //     var msnry = new Masonry(".masonry", {
+  //       // options
+  //       itemSelector: "[class*='col-']",
+  //     });
+  //   });
+  // },
 }).$mount("#app");

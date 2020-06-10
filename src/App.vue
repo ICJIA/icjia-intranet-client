@@ -1,5 +1,5 @@
 <template>
-  <v-app id="page-top" style="background: #eee;">
+  <v-app id="page-top" style="background: #eee; min-height: 100vh !important;">
     <AppNav v-if="$store.state.auth.isAuthenticated"></AppNav>
 
     <v-content>
@@ -10,7 +10,9 @@
 
 <script>
 export default {
+  /* eslint-disable no-unused-vars */
   name: "App",
+  mounted() {},
 
   components: {},
 
