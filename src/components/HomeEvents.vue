@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="n in 4" :key="n">
-      <v-card color="grey lighten-4" class="mb-5 hover card">
+      <v-card color="grey lighten-4" class="mb-5" elevation="0">
         <div class="d-flex flex-no-wrap justify-space-between">
           <v-avatar class="mt-7 mx-5" tile>
             <div>

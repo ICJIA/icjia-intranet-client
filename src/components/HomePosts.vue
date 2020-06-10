@@ -10,7 +10,7 @@
           <v-card
             class="mb-1 mt-1 px-3 py-4 hover card"
             @click="routeTo(post.slug)"
-            elevation="0"
+            elevation="1"
           >
             <div
               class="text-right"
