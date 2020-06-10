@@ -1,35 +1,57 @@
 <template>
   <div>
-    <v-app-bar app dense color="grey darken-3" dark>
+    <v-app-bar app style="background: #fff;" elevate-on-scroll>
+      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Logo"
+          alt="ICJIA Logo"
           class="shrink mr-2 hover"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="/icjia-logo.png"
           transition="scale-transition"
-          width="30"
+          width="70"
+          style=""
           @click="
             $router.push('/').catch((err) => {
               $vuetify.goTo(0);
             })
           "
         />
-
-        <div
-          style="font-size: 28px; font-weight: bold;"
-          class="hover"
-          @click="
-            $router.push('/').catch((err) => {
-              $vuetify.goTo(0);
-            })
-          "
-        >
-          ICJIA
-        </div>
       </div>
-
+      <div style="font-size: 24px; font-weight: bold; margin-left: 10px;">
+        INTRANET
+      </div>
+      <!-- {{ $store.state.auth.isAuthenticated }} -->
       <v-spacer></v-spacer>
+      <v-btn text to="/news">
+        News & Updates
+      </v-btn>
+      <v-btn text to="/forms">
+        Forms
+      </v-btn>
+      <v-btn text to="/documents">
+        Documents
+      </v-btn>
+      <v-btn text to="/events">
+        Events
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <v-menu left bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon v-bind="attrs" v-on="on">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item to="/login">
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
   </div>
 </template>

@@ -13,6 +13,7 @@ const state = {
   jwt: localStorage.getItem("jwt") || null,
   userMeta: JSON.parse(localStorage.getItem("userMeta")) || null,
   user: null,
+  isAuthenticated: null,
 };
 
 const mutations = {
@@ -20,9 +21,13 @@ const mutations = {
     state.status = null;
     state.jwt = null;
     state.user = null;
+    state.isAuthenticated = null;
     console.log("AUTH_LOGOUT");
   },
-  AUTH_LOGIN(state) {
+  AUTH_LOGIN(state, payload) {
+    state.isAuthenticated = true;
+    state.jwt = payload.jwt;
+    state.userMeta = payload.userMeta;
     console.log("AUTH_LOGIN");
   },
 
@@ -105,7 +110,12 @@ const actions = {
           localStorage.setItem("jwt", jwt);
           localStorage.setItem("userMeta", JSON.stringify(userMeta));
           axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
-          commit("AUTH_LOGIN");
+          let payload = {
+            jwt,
+            userMeta,
+          };
+          commit("AUTH_LOGIN", payload);
+
           resolve(resp);
         })
         .catch((err) => {

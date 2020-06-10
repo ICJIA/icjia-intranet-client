@@ -65,12 +65,18 @@ const routes = [
     path: "/news",
     name: "News",
     component: () => import(/* webpackChunkName: "news" */ "../views/News.vue"),
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/news/:slug",
     name: "NewsSingle",
     component: () =>
       import(/* webpackChunkName: "news" */ "../views/NewsSingle.vue"),
+    meta: {
+      requiresAuth: true,
+    },
   },
 
   {
@@ -98,7 +104,7 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   let jwt = localStorage.getItem("jwt");
 
-  if (requiresAuth && !jwt && !store.getters["auth/isLoggedIn"]) {
+  if (requiresAuth && !store.state.auth.isAuthenticated) {
     return next({
       path: "/login",
       query: { redirect: to.fullPath },

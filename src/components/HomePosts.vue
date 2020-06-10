@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-top: -15px;">
     <ApolloQuery :query="getHomePosts" notifyOnNetworkStatusChange class="mt-3">
       <template slot-scope="{ result }">
         <div v-if="isLoading(result.loading, result.error)">
