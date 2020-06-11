@@ -17,7 +17,7 @@
           <v-card
             class="mx-auto px-2 py-5"
             style="background: #ccc;"
-            elevation="8"
+            elevation="3"
           >
             <v-card-text>
               <div>Lorem markdownum</div>
@@ -30,15 +30,47 @@
               </div>
             </v-card-text>
 
-            <v-btn absolute dark fab bottom right color="#0D4474">
+            <!-- <v-btn absolute dark fab bottom right color="#0D4474">
               <v-icon>more_vert</v-icon>
-            </v-btn>
+            </v-btn> -->
+            <v-menu
+              right
+              top
+              offset-y
+              nudge-left="70"
+              nudge-bottom="30"
+              transition="slide-y-transition"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <!-- <v-btn dark icon v-bind="attrs" v-on="on">
+                  <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn> -->
+                <v-btn
+                  absolute
+                  dark
+                  fab
+                  bottom
+                  right
+                  color="#0D4474"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+              </template>
+
+              <v-list>
+                <v-list-item v-for="n in 4" :key="n">
+                  <v-list-item-title>Form {{ n }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </v-card>
         </v-col>
       </v-row>
       <v-row class="mt-6">
         <v-col sm="12" md="6" cols="12" class="child">
-          <v-sheet class="px-2 py-2" elevation="8" style="">
+          <v-sheet class="px-2 py-2" elevation="3" style="">
             <v-container fluid class="mb-8" style="margin: 0; padding: 0;">
               <div style="background: #225b89;" class="px-3 py-3">
                 <v-row no-gutters>
@@ -63,7 +95,7 @@
         </v-col>
 
         <v-col sm="12" md="6" cols="12">
-          <v-sheet class="py-2 px-2" elevation="8">
+          <v-sheet class="py-2 px-2" elevation="3">
             <v-container fluid class="mb-8" style="margin: 0; padding: 0;">
               <div style="background: #225b89;" class="px-3 py-3">
                 <v-row no-gutters>
@@ -84,6 +116,11 @@
             </v-container>
             <HomeEvents></HomeEvents>
           </v-sheet>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <Research></Research>
         </v-col>
       </v-row>
     </v-container>
