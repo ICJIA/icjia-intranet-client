@@ -30,7 +30,7 @@
               </div>
             </v-card-text>
 
-            <v-btn absolute dark fab bottom right color="blue darken-3">
+            <v-btn absolute dark fab bottom right color="#0D4474">
               <v-icon>more_vert</v-icon>
             </v-btn>
           </v-card>
@@ -50,7 +50,7 @@
                   <v-col class="text-right mt-2">
                     <v-btn outlined x-small color="white" to="/news"
                       >news archive&nbsp;<v-icon right x-small
-                        >calendar_today</v-icon
+                        >view_headline</v-icon
                       ></v-btn
                     >
                   </v-col>
@@ -75,7 +75,7 @@
                   <v-col class="text-right mt-2">
                     <v-btn outlined x-small color="white" to="/news"
                       >all events&nbsp;<v-icon right x-small
-                        >calendar_today</v-icon
+                        >today</v-icon
                       ></v-btn
                     >
                   </v-col>

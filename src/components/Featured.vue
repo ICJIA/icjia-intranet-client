@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <v-sheet elevation="8" border="1px solid #aaa" style="background: #aaa;">
     <v-carousel
       height="400"
       cycle
       hide-delimiter-background
       show-arrows-on-hover
-      style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"
     >
       <v-carousel-item v-for="(slide, i) in slides" :key="i">
         <v-card color="grey lighten-4" height="100%">
@@ -68,7 +67,7 @@
         </v-card>
       </v-carousel-item>
     </v-carousel>
-  </div>
+  </v-sheet>
 </template>
 
 <script>
