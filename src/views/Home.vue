@@ -15,17 +15,18 @@
           cols="12"
         >
           <v-card
+            dark
             class="mx-auto px-2 py-5"
-            style="background: #ccc;"
+            style="background: #0d4474;"
             elevation="3"
           >
             <v-card-text>
               <div>Lorem markdownum</div>
-              <h2 style="font-size: 24px; color: #333;" class="mt-3 mb-4">
+              <h2 style="font-size: 24px; color: #fff;" class="mt-3 mb-4">
                 Request ICJIA Resources
               </h2>
 
-              <div style="color: #333;">
+              <div style="color: #fff;">
                 Request a conference room, laptop, or a rental car.
               </div>
             </v-card-text>
@@ -51,7 +52,7 @@
                   fab
                   bottom
                   right
-                  color="#0D4474"
+                  color="blue darken-3"
                   v-bind="attrs"
                   v-on="on"
                 >
