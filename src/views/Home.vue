@@ -6,12 +6,12 @@
           <Featured></Featured>
         </v-col>
       </v-row>
-      <v-row class="mt-3" no-gutters>
+      <v-row class="mt-3">
         <v-col
-          v-for="n in 4"
+          v-for="n in 2"
           :key="n"
           class="d-flex child-flex"
-          md="3"
+          md="6"
           xs="12"
           sm="12"
         >
