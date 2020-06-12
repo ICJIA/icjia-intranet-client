@@ -22,9 +22,9 @@
                       News & Updates
                     </h2>
                   </v-col>
-                  <v-col class="text-right mt-2">
-                    <v-btn outlined x-small color="white" to="/news"
-                      >news archive&nbsp;<v-icon right x-small
+                  <v-col class="text-right mt-1">
+                    <v-btn outlined small color="white" to="/news"
+                      >news archive&nbsp;<v-icon right small
                         >view_headline</v-icon
                       ></v-btn
                     >
@@ -47,9 +47,9 @@
                       Upcoming Events
                     </h2>
                   </v-col>
-                  <v-col class="text-right mt-2">
-                    <v-btn outlined x-small color="white" to="/calendar"
-                      >calendar&nbsp;<v-icon right x-small>today</v-icon></v-btn
+                  <v-col class="text-right mt-1">
+                    <v-btn outlined small color="white" to="/calendar"
+                      >calendar&nbsp;<v-icon right small>today</v-icon></v-btn
                     >
                   </v-col>
                 </v-row>
@@ -70,14 +70,14 @@
                       Latest ICJIA Research
                     </h2>
                   </v-col>
-                  <v-col class="text-right mt-2">
+                  <v-col class="text-right mt-1">
                     <v-btn
                       outlined
-                      x-small
+                      small
                       color="white"
                       href="https://icjia.illinois.gov/researchhub"
                       target="_blank"
-                      >ResearchHub&nbsp;<v-icon right x-small
+                      >ResearchHub&nbsp;<v-icon right small
                         >open_in_new</v-icon
                       ></v-btn
                     >
