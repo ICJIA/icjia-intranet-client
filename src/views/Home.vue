@@ -15,18 +15,17 @@
           cols="12"
         >
           <v-card
-            dark
             class="mx-auto px-2 py-5"
-            style="background: #0d4474;"
+            style="background: #ccc;"
             elevation="3"
           >
             <v-card-text>
               <div>Lorem markdownum</div>
-              <h2 style="font-size: 24px; color: #fff;" class="mt-3 mb-4">
+              <h2 style="font-size: 24px; color: #333;" class="mt-3 mb-4">
                 ICJIA Online Forms
               </h2>
 
-              <div style="color: #fff;">
+              <div style="color: #333;">
                 Request a conference room, laptop, or rental car.
               </div>
             </v-card-text>
@@ -52,7 +51,7 @@
                   fab
                   bottom
                   right
-                  color="blue darken-3"
+                  color="blue darken-4"
                   v-bind="attrs"
                   v-on="on"
                 >
@@ -119,7 +118,32 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <Research></Research>
+          <v-sheet class="py-2 px-2" elevation="3">
+            <v-container fluid class="mb-8" style="margin: 0; padding: 0;">
+              <div style="background: #225b89;" class="px-3 py-3">
+                <v-row no-gutters>
+                  <v-col>
+                    <h2 style="color: #fff;">
+                      Latest ICJIA Research
+                    </h2>
+                  </v-col>
+                  <v-col class="text-right mt-2">
+                    <v-btn
+                      outlined
+                      x-small
+                      color="white"
+                      href="https://icjia.illinois.gov/researchhub"
+                      target="_blank"
+                      >ResearchHub&nbsp;<v-icon right x-small
+                        >open_in_new</v-icon
+                      ></v-btn
+                    >
+                  </v-col>
+                </v-row>
+              </div>
+            </v-container>
+            <Research></Research>
+          </v-sheet>
         </v-col>
       </v-row>
     </v-container>
