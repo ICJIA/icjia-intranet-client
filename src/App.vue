@@ -11,7 +11,7 @@
         bottom
         dark
         right
-        color="blue darken-1"
+        color="#088078"
         transition="scale-transition"
         @click="toTop"
         aria-label="Click to scroll to top"

@@ -18,22 +18,30 @@
           "
         />
       </div>
-      <div style="font-size: 24px; font-weight: bold; margin-left: 10px;">
+      <div
+        @click="
+          $router.push('/').catch((err) => {
+            $vuetify.goTo(0);
+          })
+        "
+        style="font-size: 24px; font-weight: bold; margin-left: 10px;"
+        class="hover"
+      >
         INTRANET
       </div>
       <!-- {{ $store.state.auth.isAuthenticated }} -->
       <v-spacer></v-spacer>
-      <v-btn text to="/news">
+      <v-btn text to="/news" class="hidden-sm-and-down">
         News & Updates
       </v-btn>
-      <v-btn text to="/forms">
+      <v-btn text to="/forms" class="hidden-sm-and-down">
         Forms
       </v-btn>
-      <v-btn text to="/documents">
+      <v-btn text to="/documents" class="hidden-sm-and-down">
         Documents
       </v-btn>
-      <v-btn text to="/events">
-        Events
+      <v-btn text to="/calendar" class="hidden-sm-and-down">
+        Calendar
       </v-btn>
 
       <v-btn icon>

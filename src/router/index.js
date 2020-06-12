@@ -70,6 +70,15 @@ const routes = [
     },
   },
   {
+    path: "/calendar",
+    name: "Calendar",
+    component: () =>
+      import(/* webpackChunkName: "calendar" */ "../views/Calendar.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     path: "/news/:slug",
     name: "NewsSingle",
     component: () =>

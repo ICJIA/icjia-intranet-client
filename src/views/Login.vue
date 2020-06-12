@@ -56,8 +56,8 @@ export default {
   },
   data() {
     return {
-      identifier: "",
-      password: "",
+      identifier: "test12345",
+      password: "test12345",
       e3: true,
       e4: true,
     };

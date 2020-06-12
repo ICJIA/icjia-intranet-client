@@ -59,10 +59,18 @@
                 </v-btn>
               </template>
 
-              <v-list>
+              <v-list class="px-3">
                 <v-list-item v-for="n in 4" :key="n">
-                  <v-list-item-title>Form {{ n }}</v-list-item-title>
+                  <v-list-item-title style="font-size: 12px;"
+                    >Form {{ n }}</v-list-item-title
+                  >
                 </v-list-item>
+                <v-divider> </v-divider>
+                <v-list-item-title
+                  style="font-size: 12px; font-weight: bold; color: #aaa;"
+                  class="py-2 text-center"
+                  >All forms</v-list-item-title
+                >
               </v-list>
             </v-menu>
           </v-card>
@@ -105,7 +113,7 @@
                     </h2>
                   </v-col>
                   <v-col class="text-right mt-2">
-                    <v-btn outlined x-small color="white" to="/news"
+                    <v-btn outlined x-small color="white" to="/calendar"
                       >calendar&nbsp;<v-icon right x-small>today</v-icon></v-btn
                     >
                   </v-col>
