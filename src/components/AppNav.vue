@@ -31,16 +31,19 @@
       </div>
       <!-- {{ $store.state.auth.isAuthenticated }} -->
       <v-spacer></v-spacer>
-      <v-btn text to="/news" class="hidden-sm-and-down">
+      <v-btn small text to="/news" class="hidden-sm-and-down">
         News & Updates
       </v-btn>
-      <v-btn text to="/forms" class="hidden-sm-and-down">
+      <v-btn small text to="/forms" class="hidden-sm-and-down">
         Forms
       </v-btn>
-      <v-btn text to="/documents" class="hidden-sm-and-down">
+      <v-btn small text to="/documents" class="hidden-sm-and-down">
         Documents
       </v-btn>
-      <v-btn text to="/calendar" class="hidden-sm-and-down">
+      <v-btn small text to="/support" class="hidden-sm-and-down">
+        Technical Support
+      </v-btn>
+      <v-btn small text to="/calendar" class="hidden-sm-and-down">
         Calendar
       </v-btn>
 
