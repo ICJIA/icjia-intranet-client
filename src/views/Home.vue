@@ -23,11 +23,11 @@
             <v-card-text>
               <div>Lorem markdownum</div>
               <h2 style="font-size: 24px; color: #fff;" class="mt-3 mb-4">
-                Request ICJIA Resources
+                ICJIA Online Forms
               </h2>
 
               <div style="color: #fff;">
-                Request a conference room, laptop, or a rental car.
+                Request a conference room, laptop, or rental car.
               </div>
             </v-card-text>
 
@@ -107,9 +107,7 @@
                   </v-col>
                   <v-col class="text-right mt-2">
                     <v-btn outlined x-small color="white" to="/news"
-                      >all events&nbsp;<v-icon right x-small
-                        >today</v-icon
-                      ></v-btn
+                      >calendar&nbsp;<v-icon right x-small>today</v-icon></v-btn
                     >
                   </v-col>
                 </v-row>

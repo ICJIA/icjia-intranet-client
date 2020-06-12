@@ -51,15 +51,6 @@ const defaultOptions = {
   // clientState: { resolvers: { ... }, defaults: { ... } }
 };
 
-// const clientDefaultOptions = {
-//   // You can use `https` for secure connection (recommended in production)
-//   httpEndpoint: "https://intranet.icjia-api.cloud/graphql",
-// };
-
-// const clientResearchHubOptions = {
-//   httpEndpoint: "https://researchhub.icjia-api.cloud/graphql",
-// };
-
 // Call this in the Vue app file
 export function createProvider(options = {}) {
   // Create apollo client
