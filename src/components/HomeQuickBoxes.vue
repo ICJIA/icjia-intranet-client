@@ -5,8 +5,8 @@
         <v-col cols="12" md="4">
           <v-card
             class="mx-auto px-2 py-5"
-            style="background: #ccc;"
-            elevation="3"
+            style="background: #fff;"
+            elevation="0"
             height="200"
           >
             <v-card-text>
@@ -70,8 +70,8 @@
         <v-col cols="12" md="4">
           <v-card
             class="mx-auto px-2 py-5"
-            style="background: #ccc;"
-            elevation="3"
+            style="background: #fff;"
+            elevation="0"
             height="200"
           >
             <v-card-text>
@@ -129,7 +129,7 @@
                   <v-list-item-title
                     style="font-size: 12px; font-weight: bold; color: #aaa;"
                     class="py-2 text-center"
-                    >Technical support</v-list-item-title
+                    >All tech support links</v-list-item-title
                   >
                 </v-list-item>
               </v-list>
@@ -139,14 +139,14 @@
         <v-col cols="12" md="4">
           <v-card
             class="mx-auto px-2 py-5"
-            style="background: #ccc;"
-            elevation="3"
+            style="background: #fff;"
+            elevation="0"
             height="200"
           >
             <v-card-text>
               <div>Lorem markdownum</div>
               <h2 style="font-size: 24px; color: #333;" class="mt-3 mb-4">
-                Recent Documents
+                Featured Documents
               </h2>
 
               <div style="color: #333;">

@@ -13,7 +13,7 @@
       </v-row>
       <v-row class="mt-6">
         <v-col sm="12" md="6" cols="12" class="child">
-          <v-sheet class="px-2 py-2" elevation="3" style="">
+          <v-sheet class="px-2 py-2" elevation="1" style="">
             <v-container fluid class="mb-8" style="margin: 0; padding: 0;">
               <div style="background: #225b89;" class="px-3 py-3">
                 <v-row no-gutters>
@@ -38,7 +38,7 @@
         </v-col>
 
         <v-col sm="12" md="6" cols="12">
-          <v-sheet class="py-2 px-2" elevation="3">
+          <v-sheet class="py-2 px-2" elevation="1">
             <v-container fluid class="mb-8" style="margin: 0; padding: 0;">
               <div style="background: #225b89;" class="px-3 py-3">
                 <v-row no-gutters>
@@ -61,7 +61,7 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <v-sheet class="py-2 px-2" elevation="3">
+          <v-sheet class="py-2 px-2" elevation="1">
             <v-container fluid class="mb-8" style="margin: 0; padding: 0;">
               <div style="background: #225b89;" class="px-3 py-3">
                 <v-row no-gutters>

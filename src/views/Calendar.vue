@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row class="fill-height">
       <v-col>
-        <v-sheet height="64">
+        <v-sheet height="64" elevation="3">
           <v-toolbar flat color="white">
             <v-btn
               outlined

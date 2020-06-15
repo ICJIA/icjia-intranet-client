@@ -1,5 +1,5 @@
 <template>
-  <v-sheet elevation="8" border="1px solid #aaa" style="background: #aaa;">
+  <v-sheet elevation="0" border="1px solid #aaa" style="background: #aaa;">
     <v-carousel
       height="400"
       cycle
