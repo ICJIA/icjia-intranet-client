@@ -3,7 +3,7 @@ module.exports = {
     service: {
       name: "icjia-intranet",
       // URL to the GraphQL API
-      url: "https://dev.icjia-api.cloud/graphql",
+      url: process.env.VUE_APP_BASE_HTTP,
     },
     // Files processed by the extension
     includes: ["src/**/*.vue", "src/**/*.js"],

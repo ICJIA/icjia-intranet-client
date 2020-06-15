@@ -63,7 +63,7 @@ const actions = {
       data.url = `${config.api.baseClient}${config.api.resetPasswordCallback}`;
 
       axios({
-        url: `${config.api.base}${config.api.forgetPassword}`,
+        url: `${process.env.VUE_APP_BASE_HTTP}${config.api.forgetPassword}`,
         data: data,
         method: "POST",
       })
@@ -99,7 +99,7 @@ const actions = {
     commit("CLEAR_STATUS");
     return new Promise((resolve, reject) => {
       axios({
-        url: `${config.api.base}${config.api.login}`,
+        url: `${process.env.VUE_APP_BASE_HTTP}${config.api.login}`,
         data: payload,
         method: "POST",
         timeout: `${config.api.timeout}`,
@@ -141,7 +141,7 @@ const actions = {
 
     return new Promise((resolve, reject) => {
       axios({
-        url: `${config.api.base}${config.api.register}`,
+        url: `${process.env.VUE_APP_BASE_HTTP}${config.api.register}`,
         data: payload,
         method: "POST",
         timeout: `${config.api.timeout}`,

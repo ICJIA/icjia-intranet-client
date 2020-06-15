@@ -17,4 +17,16 @@ npm run serve
 npm run build
 ```
 
+## ENVIRONMENT VARIABLES
+
+Rename ```.env.sample``` to ```.env```, then:
+
+- Set ```VUE_APP_GRAPHQL_HTTP=``` to graphQL endpoint. 
+
+    - Ex: ```https://www.example.com/graphql```
+
+- Set ```VUE_APP_BASE_HTTP=``` to API endpoint.
+
+    - Ex: ```https://www.example.com```
+
 
