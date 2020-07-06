@@ -10,7 +10,7 @@
           src="/icjia-logo.png"
           transition="scale-transition"
           width="70"
-          style=""
+          style
           @click="
             $router.push('/').catch((err) => {
               $vuetify.goTo(0);
@@ -31,21 +31,19 @@
       </div>
       <!-- {{ $store.state.auth.isAuthenticated }} -->
       <v-spacer></v-spacer>
-      <v-btn small text to="/news" class="hidden-sm-and-down">
-        News & Updates
-      </v-btn>
-      <v-btn small text to="/forms" class="hidden-sm-and-down">
-        Forms
-      </v-btn>
-      <v-btn small text to="/documents" class="hidden-sm-and-down">
-        Documents
-      </v-btn>
-      <v-btn small text to="/support" class="hidden-sm-and-down">
-        Technical Support
-      </v-btn>
-      <v-btn small text to="/calendar" class="hidden-sm-and-down">
-        Calendar
-      </v-btn>
+      <v-btn small text to="/news" class="hidden-sm-and-down"
+        >News & Updates</v-btn
+      >
+      <v-btn small text to="/forms" class="hidden-sm-and-down">Forms</v-btn>
+      <v-btn small text to="/documents" class="hidden-sm-and-down"
+        >Documents</v-btn
+      >
+      <v-btn small text to="/support" class="hidden-sm-and-down"
+        >Technical Support</v-btn
+      >
+      <v-btn small text to="/calendar" class="hidden-sm-and-down"
+        >Calendar</v-btn
+      >
 
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
