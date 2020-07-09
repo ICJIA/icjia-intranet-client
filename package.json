@@ -23,7 +23,7 @@
     "get-graphql-schema": "^2.1.2",
     "graphql": "^15.1.0",
     "graphql-request": "^2.0.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "markdown-it": "^11.0.0",
     "markdown-it-attrs": "^3.0.3",
     "markdown-it-named-headers": "0.0.4",

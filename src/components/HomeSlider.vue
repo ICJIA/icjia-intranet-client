@@ -6,7 +6,7 @@
       hide-delimiter-background
       show-arrows-on-hover
     >
-      <v-carousel-item v-for="(slide, i) in slides" :key="i">
+      <v-carousel-item v-for="(slide, index) in slides.slide" :key="index">
         <v-card color="grey lighten-4" height="100%">
           <v-row class="fill-height" align="center" justify="center" no-gutters>
             <v-col md="4" style="height: 100%; background: #0d4474;" cols="12">
@@ -28,26 +28,27 @@
                     <div
                       style="font-size: 12px; color: #ccc;"
                       class="text-center mb-3"
+                      v-if="slide.postingDate"
                     >
-                      August 01, 2020
+                      {{ slide.postingDate | format }}
                     </div>
-                    <h2>Featured content here</h2>
+                    <h2>{{ slide.title }}</h2>
                     <h3 style="color: #aaa; font-size: 14px;" class="mt-5">
-                      Lorem markdownum placuit manet deceptus, ira duris iuncta,
-                      rogat reminiscitur vivum traxit Venus pro omnia.
+                      {{ slide.summary }}
                     </h3>
-                    <v-btn class="mt-12" color="grey">Read more</v-btn>
+                    <v-btn class="mt-12" color="grey" @click="route(slide.url)"
+                      >Read more</v-btn
+                    >
                   </div>
                 </div>
               </v-row>
             </v-col>
             <v-col md="8" cols="12" class="hidden-sm-and-down">
               <v-img
-                :src="`https://picsum.photos/900/405?image=${imageSeed}`"
-                :lazy-src="`https://picsum.photos/50/30?image=${imageSeed}`"
+                :src="`${base}${slide.image.formats.large.url}`"
+                :lazy-src="`${base}${slide.image.formats.thumbnail.url}`"
                 aspect-ratio="1.7"
                 max-height="400"
-                v-if="imageSeed"
               >
                 <template v-slot:placeholder>
                   <v-row
@@ -67,25 +68,34 @@
         </v-card>
       </v-carousel-item>
     </v-carousel>
+    {{ slides }}
   </v-sheet>
 </template>
 
 <script>
 export default {
-  mounted() {
-    this.imageSeed = Math.floor(Math.random() * 200 + 1);
+  mounted() {},
+  methods: {
+    route(url) {
+      var r = new RegExp("^(?:[a-z]+:)?//", "i");
+      if (r.test(url)) {
+        window.open(url);
+      } else {
+        this.$router.push(url).catch((err) => {
+          this.$vuetify.goTo(0);
+        });
+      }
+    },
+  },
+  props: {
+    slides: {
+      type: Object,
+      default: () => {},
+    },
   },
   data() {
     return {
-      imageSeed: null,
-      colors: [
-        "indigo",
-        "warning",
-        "pink darken-2",
-        "red lighten-1",
-        "deep-purple accent-4",
-      ],
-      slides: ["First", "Second", "Third", "Fourth", "Fifth"],
+      base: process.env.VUE_APP_BASE_HTTP,
     };
   },
 };

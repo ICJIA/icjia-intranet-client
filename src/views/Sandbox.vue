@@ -1,17 +1,21 @@
 <template>
   <ApolloQuery :query="GET_HOME" notifyOnNetworkStatusChange>
     <template slot-scope="{ result }">
-      <div v-if="isLoading(result.loading, result.error)">
+      <div v-if="isLoading(result.loading)">
         <Loader></Loader>
       </div>
 
-      <div v-if="!isLoading(result.loading, result.error) && !result.error">
-        <!-- {{ result.data.home.alert.alertType }} -->
+      <div v-if="!isLoading(result.loading) && !result.error">
+        <!-- START: home components -->
         <HomeAlert
           :type="result.data.home.alert.alertType"
           :text="result.data.home.alert.text"
           :dismissable="result.data.home.alert.dismissable"
         ></HomeAlert>
+
+        <HomeSlider :slides="result.data.home.slider"></HomeSlider>
+
+        <!-- END: home components -->
       </div>
       <div v-if="result.error" class="text-center error apollo">
         {{ result.error }}
