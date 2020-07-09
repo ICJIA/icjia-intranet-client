@@ -8,8 +8,9 @@ const GET_HOME = gql`
       updated_at
 
       alert {
-        id
         text
+        alertType
+        dismissable
       }
 
       quick_menu {

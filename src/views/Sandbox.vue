@@ -6,7 +6,12 @@
       </div>
 
       <div v-if="!isLoading(result.loading, result.error) && !result.error">
-        {{ result.data }}
+        <!-- {{ result.data.home.alert.alertType }} -->
+        <HomeAlert
+          :type="result.data.home.alert.alertType"
+          :text="result.data.home.alert.text"
+          :dismissable="result.data.home.alert.dismissable"
+        ></HomeAlert>
       </div>
       <div v-if="result.error" class="text-center error apollo">
         {{ result.error }}

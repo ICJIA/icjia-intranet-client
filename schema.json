@@ -1582,12 +1582,24 @@
             "deprecationReason": null
           },
           {
-            "name": "icon",
+            "name": "alertType",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "ENUM_COMPONENTALERTALERT_ALERTTYPE",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "dismissable",
             "description": "",
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1596,6 +1608,51 @@
         ],
         "inputFields": null,
         "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ENUM_COMPONENTALERTALERT_ALERTTYPE",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "success",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "info",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "warning",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "error",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Boolean",
+        "description": "The `Boolean` scalar type represents `true` or `false`.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
@@ -2703,16 +2760,6 @@
         ],
         "inputFields": null,
         "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "Boolean",
-        "description": "The `Boolean` scalar type represents `true` or `false`.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
@@ -8426,11 +8473,21 @@
             "defaultValue": null
           },
           {
-            "name": "icon",
+            "name": "alertType",
+            "description": "",
+            "type": {
+              "kind": "ENUM",
+              "name": "ENUM_COMPONENTALERTALERT_ALERTTYPE",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "dismissable",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -10570,11 +10627,21 @@
             "defaultValue": null
           },
           {
-            "name": "icon",
+            "name": "alertType",
+            "description": "",
+            "type": {
+              "kind": "ENUM",
+              "name": "ENUM_COMPONENTALERTALERT_ALERTTYPE",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "dismissable",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
