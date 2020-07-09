@@ -1,6 +1,6 @@
   
 [build]
-  Command = "npm run deploy"
+  Command = "npm run build"
   Functions = "netlify"
   Publish = "dist"
   

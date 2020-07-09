@@ -8,7 +8,6 @@
     "build:modern": "npm run build:lambda && vue-cli-service build --modern",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "gql:fetch-schema": "graphql get-schema --project prod",
     "schema": "get-graphql-schema https://dev.icjia-api.cloud/graphql -j > schema.json",
     "build:serve": "npm run build && serve ./dist --single",
     "build:lambda": "netlify-lambda build ./src/lambda",
