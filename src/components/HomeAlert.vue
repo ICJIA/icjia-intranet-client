@@ -3,7 +3,7 @@
     v-model="alert"
     close-text="Close Alert"
     dark
-    class="mt-4 mx-1"
+    class="mt-5 mx-1"
     :type="type"
     :dismissible="dismissable"
   >

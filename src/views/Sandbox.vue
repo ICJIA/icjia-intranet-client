@@ -11,9 +11,13 @@
           :type="result.data.home.alert.alertType"
           :text="result.data.home.alert.text"
           :dismissable="result.data.home.alert.dismissable"
+          v-if="result.data.home.alert"
         ></HomeAlert>
 
-        <HomeSlider :slides="result.data.home.slider"></HomeSlider>
+        <HomeSlider
+          :slides="result.data.home.slider"
+          v-if="result.data.home.slider"
+        ></HomeSlider>
 
         <!-- END: home components -->
       </div>
