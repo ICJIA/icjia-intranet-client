@@ -36,6 +36,21 @@ const GET_HOME = gql`
         }
       }
     }
+
+    events {
+      id
+      name
+      start
+      end
+    }
+
+    posts(where: { isPublished: true }, sort: "created_at:desc", limit: 5) {
+      id
+      title
+      slug
+      summary
+      created_at
+    }
   }
 `;
 

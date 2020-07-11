@@ -7,23 +7,38 @@
 
       <div v-if="!isLoading(result.loading) && !result.error">
         <!-- START: home components -->
-        <HomeAlert
+        <!-- <HomeAlert
           :type="result.data.home.alert.alertType"
           :text="result.data.home.alert.text"
           :dismissable="result.data.home.alert.dismissable"
           v-if="result.data.home.alert"
-        ></HomeAlert>
+        ></HomeAlert> -->
 
         <HomeSlider
           :slides="result.data.home.slider"
           v-if="result.data.home.slider"
         ></HomeSlider>
 
+        <!-- <h2>Quick_menus</h2>
+        {{ result.data.home.quick_menu }}
+        <br /> -->
+
+        <HomeQuickMenus :menus="result.data.home.quick_menu"></HomeQuickMenus>
+
+        <h2>Posts</h2>
+        {{ result.data.posts }}
+        <br />
+
+        <h2>Events</h2>
+        {{ result.data.events }}
+        <br />
+
         <!-- END: home components -->
       </div>
       <div v-if="result.error" class="text-center error apollo">
         {{ result.error }}
       </div>
+      <Research></Research>
     </template>
   </ApolloQuery>
 </template>

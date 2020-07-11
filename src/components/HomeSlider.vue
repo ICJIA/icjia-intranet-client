@@ -87,7 +87,6 @@
           </v-card>
         </v-carousel-item>
       </v-carousel>
-      {{ slides }}
     </v-sheet>
   </v-container>
 </template>

@@ -4,7 +4,7 @@
       <v-row>
         <v-col>
           <div class="text-center">
-            <h1>Support links here</h1>
+            <h1>Technical Support links here</h1>
           </div>
         </v-col>
       </v-row>

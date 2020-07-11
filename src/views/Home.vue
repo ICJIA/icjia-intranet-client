@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container fluid>
-      <v-row class="mt-2">
+      <v-row class="" style="margin-top: -5px;">
         <v-col>
           <Featured></Featured>
         </v-col>

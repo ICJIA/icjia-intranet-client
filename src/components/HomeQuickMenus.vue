@@ -1,15 +1,10 @@
 <template>
-  <div>
-    <v-container
-      class="grey lighten-5"
-      fluid
-      v-if="!$apollo.loading"
-      style="background: #ccc !important;"
-    >
+  <v-container fluid>
+    <v-sheet style="background: #eee;" v-if="!$apollo.loading">
       <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
       <v-row fill-height>
         <v-col
-          v-for="(menu, index) in quickMenu"
+          v-for="(menu, index) in menus"
           :key="index"
           cols="12"
           :sm="getWidth('sm')"
@@ -85,44 +80,28 @@
           </v-card>
         </v-col>
       </v-row>
-      {{ events }}
-    </v-container>
+    </v-sheet>
     <div v-else>
       <Loader></Loader>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
-import { GET_HOME } from "@/graphql/queries/home";
 export default {
   computed: {
     items() {
-      if (this.quickMenu) {
-        return this.quickMenu.length;
+      if (this.menus) {
+        return this.menus.length;
       } else {
         return 0;
       }
     },
   },
-  data() {
-    return {
-      quickMenu: () => [],
-      events: [],
-    };
-  },
-  apollo: {
-    home: {
-      query: GET_HOME,
-      variables() {},
-      error(error) {
-        this.error = JSON.stringify(error.message);
-      },
-
-      result(ApolloQueryResult) {
-        this.quickMenu = ApolloQueryResult.data.home.quick_menu;
-        this.events = ApolloQueryResult.data.events;
-      },
+  props: {
+    menus: {
+      type: Array,
+      default: () => [],
     },
   },
   methods: {
