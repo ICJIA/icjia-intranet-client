@@ -1,0 +1,13 @@
+.hover {
+    cursor: pointer
+}
+
+a {
+    font-weight: 900;
+    text-decoration: none;
+}
+
+a:hover {
+
+    color: #777 !important;
+}

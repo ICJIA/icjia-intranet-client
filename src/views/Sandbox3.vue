@@ -20,11 +20,17 @@
             class="mx-auto px-2 py-5 mb-8"
             style="background: #fff;"
             elevation="0"
-            height="200"
+            height="250"
           >
             <v-card-text>
-              <div>Lorem markdownum</div>
-              <h2 style="font-size: 24px; color: #333;" class="mt-3 mb-4">
+              <router-link
+                :to="menu.baseURL"
+                style="font-size: 12px;"
+                v-if="menu.baseURL"
+              >
+                {{ menu.baseName | upperCase }}
+              </router-link>
+              <h2 style="color: #333;" class="mt-1 mb-4">
                 {{ menu.title }}
               </h2>
 
@@ -56,7 +62,7 @@
                 </v-btn>
               </template>
 
-              <v-list class="px-3">
+              <v-list class="px-3" v-if="menu.menuItem">
                 <v-list-item
                   v-for="(item, index) in menu.menuItem"
                   :key="index + item"
@@ -67,11 +73,11 @@
                   }}</v-list-item-title>
                 </v-list-item>
                 <v-divider> </v-divider>
-                <v-list-item to="/forms">
+                <v-list-item :to="menu.baseURL">
                   <v-list-item-title
                     style="font-size: 12px; font-weight: bold; color: #aaa;"
                     class="py-2 text-center"
-                    >All forms</v-list-item-title
+                    >All {{ menu.baseName }}</v-list-item-title
                   >
                 </v-list-item>
               </v-list>
@@ -92,7 +98,11 @@ import { GET_HOME } from "@/graphql/queries/home";
 export default {
   computed: {
     items() {
-      return this.quickMenu.length;
+      if (this.quickMenu) {
+        return this.quickMenu.length;
+      } else {
+        return 0;
+      }
     },
   },
   data() {

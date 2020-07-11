@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
+import "@/assets/app.css";
 import "@/components/_globals";
 import "alpinejs";
 // import "@/assets/css/github-markdown.css";

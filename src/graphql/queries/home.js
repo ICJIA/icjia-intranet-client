@@ -16,6 +16,8 @@ const GET_HOME = gql`
       quick_menu {
         title
         summary
+        baseName
+        baseURL
         menuItem {
           text
           url
