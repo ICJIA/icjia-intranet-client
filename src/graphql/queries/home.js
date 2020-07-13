@@ -40,6 +40,7 @@ const GET_HOME = gql`
       end
       allDay
       summary
+      body
     }
 
     posts(where: { isPublished: true }, sort: "created_at:desc", limit: 5) {

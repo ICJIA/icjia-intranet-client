@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(event, index) in events" :key="index + event.id">
+    <div v-for="(event, index) in newEvents" :key="index + event.id">
       <v-card color="grey lighten-4" class="mb-5" elevation="0">
         <div class="d-flex flex-no-wrap">
           <div class="px-5">
@@ -41,18 +41,41 @@
               <h2>{{ event.name }}</h2>
 
               <v-card-subtitle>{{ event.summary }}</v-card-subtitle>
+
+              <br />
+              <v-btn small @click.native="event.show = !event.show"
+                >Full description</v-btn
+              >
+              <v-slide-y-transition>
+                <div v-show="event.show" class="mt-2">
+                  {{ event.body }}
+                </div>
+              </v-slide-y-transition>
             </div>
           </div>
         </div>
       </v-card>
     </div>
-    {{ events }}
+    {{ newEvents }}
   </div>
 </template>
 
 <script>
 // import moment from "moment";
 export default {
+  methods: {},
+  created() {
+    this.newEvents = this.events.map((events) => ({
+      ...events,
+      show: false,
+    }));
+  },
+  data() {
+    return {
+      newEvents: [],
+    };
+  },
+
   props: {
     events: {
       type: Array,
