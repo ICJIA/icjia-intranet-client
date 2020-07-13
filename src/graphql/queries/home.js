@@ -33,7 +33,7 @@ const GET_HOME = gql`
       }
     }
 
-    events {
+    events(where: { isPublished: true }, sort: "start:asc", limit: 5) {
       id
       name
       start
@@ -41,6 +41,7 @@ const GET_HOME = gql`
       allDay
       summary
       body
+      isPublished
     }
 
     posts(where: { isPublished: true }, sort: "created_at:desc", limit: 5) {
