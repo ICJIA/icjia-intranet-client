@@ -79,6 +79,14 @@ Vue.filter("ChicagoTime", function (timestamp) {
   return tstamp.tz("America/Chicago").format("h:mm a");
 });
 
+Vue.filter("month", function (timestamp) {
+  return moment(timestamp).format("MMMM");
+});
+
+Vue.filter("day", function (timestamp) {
+  return moment(timestamp).format("D");
+});
+
 Vue.filter("timeDateFormat", function (timestamp) {
   return moment(timestamp).format("h:mm:ss a, MMMM Do YYYY ");
 });
