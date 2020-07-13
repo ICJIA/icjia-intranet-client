@@ -7,13 +7,8 @@ const GET_HOME = gql`
       created_at
       updated_at
 
-      alert {
-        text
-        alertType
-        dismissable
-      }
-
       quick_menu {
+        id
         title
         summary
         baseName
@@ -25,6 +20,7 @@ const GET_HOME = gql`
       }
 
       slider {
+        id
         slide {
           title
           url
@@ -42,6 +38,8 @@ const GET_HOME = gql`
       name
       start
       end
+      allDay
+      summary
     }
 
     posts(where: { isPublished: true }, sort: "created_at:desc", limit: 5) {
@@ -50,6 +48,7 @@ const GET_HOME = gql`
       slug
       summary
       created_at
+      updated_at
     }
   }
 `;

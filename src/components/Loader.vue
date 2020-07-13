@@ -3,7 +3,7 @@
     <v-progress-circular
       indeterminate
       color="primary"
-      size="50"
+      :size="size"
     ></v-progress-circular>
   </div>
 </template>
@@ -11,6 +11,12 @@
 <script>
 export default {
   mounted() {},
+  props: {
+    size: {
+      type: String,
+      default: "50",
+    },
+  },
 };
 </script>
 

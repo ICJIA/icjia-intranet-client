@@ -2,7 +2,9 @@ import Vue from "vue";
 
 // const slug = require("slug");
 // slug.defaults.mode = "rfc3986";
-import moment from "moment";
+const moment = require("moment");
+// eslint-disable-next-line no-unused-vars
+const tz = require("moment-timezone");
 
 Vue.filter("format", function (d) {
   var monthNames = [
@@ -72,8 +74,17 @@ Vue.filter("truncate", function (string, maxWords) {
   return string;
 });
 
+Vue.filter("ChicagoTime", function (timestamp) {
+  const tstamp = moment(timestamp);
+  return tstamp.tz("America/Chicago").format("h:mm a");
+});
+
 Vue.filter("timeDateFormat", function (timestamp) {
   return moment(timestamp).format("h:mm:ss a, MMMM Do YYYY ");
+});
+
+Vue.filter("timeFormat", function (timestamp) {
+  return moment(timestamp).format("h:mm a");
 });
 
 Vue.filter("dateTimeFormat", function (timestamp) {

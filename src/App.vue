@@ -24,8 +24,11 @@
     <v-main>
       <ApolloQuery :query="GET_ALERT" notifyOnNetworkStatusChange>
         <template slot-scope="{ result }">
-          <div v-if="isLoading(result.loading)">
-            <Loader></Loader>
+          <!-- <div v-if="isLoading(result.loading)">
+            <Loader size="20"></Loader>
+          </div> -->
+          <div v-if="result.error" class="text-center error apollo">
+            {{ result.error }}
           </div>
           <div v-if="!isLoading(result.loading) && !result.error">
             <HomeAlert

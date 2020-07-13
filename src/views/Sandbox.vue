@@ -7,31 +7,28 @@
 
       <div v-if="!isLoading(result.loading) && !result.error">
         <!-- START: home components -->
-        <!-- <HomeAlert
-          :type="result.data.home.alert.alertType"
-          :text="result.data.home.alert.text"
-          :dismissable="result.data.home.alert.dismissable"
-          v-if="result.data.home.alert"
-        ></HomeAlert> -->
 
         <HomeSlider
           :slides="result.data.home.slider"
           v-if="result.data.home.slider"
         ></HomeSlider>
 
-        <!-- <h2>Quick_menus</h2>
-        {{ result.data.home.quick_menu }}
-        <br /> -->
-
-        <HomeQuickMenus :menus="result.data.home.quick_menu"></HomeQuickMenus>
+        <HomeQuickMenus
+          :menus="result.data.home.quick_menu"
+          v-if="result.data.home.quick_menu"
+        ></HomeQuickMenus>
 
         <h2>Posts</h2>
         {{ result.data.posts }}
         <br />
 
-        <h2>Events</h2>
+        <!-- <h2>Events</h2>
         {{ result.data.events }}
-        <br />
+        <br /> -->
+        <HomeEvents
+          :events="result.data.events"
+          v-if="result.data.events"
+        ></HomeEvents>
 
         <!-- END: home components -->
       </div>
