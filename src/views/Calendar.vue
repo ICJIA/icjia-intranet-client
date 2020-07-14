@@ -1,5 +1,6 @@
 <template>
   <v-container fluid>
+    {{ events }}
     <v-row class="fill-height">
       <v-col>
         <v-sheet height="64" elevation="3">
@@ -187,6 +188,7 @@ export default {
           end: second,
           color: this.colors[this.rnd(0, this.colors.length - 1)],
           timed: !allDay,
+          details: "These are the details for the event",
         });
       }
 

@@ -2503,7 +2503,7 @@
           },
           {
             "kind": "OBJECT",
-            "name": "EventsConnectionBody",
+            "name": "EventsConnectionDetails",
             "ofType": null
           },
           {
@@ -2513,7 +2513,7 @@
           },
           {
             "kind": "OBJECT",
-            "name": "EventsConnectionAllDay",
+            "name": "EventsConnectionTimed",
             "ofType": null
           },
           {
@@ -4097,7 +4097,7 @@
             "deprecationReason": null
           },
           {
-            "name": "body",
+            "name": "details",
             "description": "",
             "args": [],
             "type": {
@@ -4121,7 +4121,7 @@
             "deprecationReason": null
           },
           {
-            "name": "allDay",
+            "name": "timed",
             "description": "",
             "args": [],
             "type": {
@@ -4331,7 +4331,7 @@
             "deprecationReason": null
           },
           {
-            "name": "body",
+            "name": "details",
             "description": "",
             "args": [],
             "type": {
@@ -4339,7 +4339,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "EventsConnectionBody",
+                "name": "EventsConnectionDetails",
                 "ofType": null
               }
             },
@@ -4363,7 +4363,7 @@
             "deprecationReason": null
           },
           {
-            "name": "allDay",
+            "name": "timed",
             "description": "",
             "args": [],
             "type": {
@@ -4371,7 +4371,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "EventsConnectionAllDay",
+                "name": "EventsConnectionTimed",
                 "ofType": null
               }
             },
@@ -4663,7 +4663,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "EventsConnectionBody",
+        "name": "EventsConnectionDetails",
         "description": "",
         "fields": [
           {
@@ -4733,7 +4733,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "EventsConnectionAllDay",
+        "name": "EventsConnectionTimed",
         "description": "",
         "fields": [
           {
@@ -11179,7 +11179,7 @@
             "defaultValue": null
           },
           {
-            "name": "body",
+            "name": "details",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -11199,7 +11199,7 @@
             "defaultValue": null
           },
           {
-            "name": "allDay",
+            "name": "timed",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -11311,7 +11311,7 @@
             "defaultValue": null
           },
           {
-            "name": "body",
+            "name": "details",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -11331,7 +11331,7 @@
             "defaultValue": null
           },
           {
-            "name": "allDay",
+            "name": "timed",
             "description": "",
             "type": {
               "kind": "SCALAR",

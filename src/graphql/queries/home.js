@@ -33,14 +33,14 @@ const GET_HOME = gql`
       }
     }
 
-    events(where: { isPublished: true }, sort: "start:asc", limit: 5) {
+    events(where: { isPublished: true }, sort: "start:asc", limit: 4) {
       id
       name
       start
       end
-      allDay
+      timed
       summary
-      body
+      details
       isPublished
     }
 

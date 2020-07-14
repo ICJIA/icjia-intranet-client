@@ -3,7 +3,7 @@
     <div v-for="(event, index) in newEvents" :key="index + event.id">
       <v-card color="grey lighten-4" class="mb-5" elevation="0">
         <div class="d-flex flex-no-wrap">
-          <div class="px-5">
+          <div class="px-5" style="max-height: 150px;">
             <v-container fill-height>
               <v-row align="center" justify="center" fill-height>
                 <v-col fill-height>
@@ -24,7 +24,7 @@
             <div class="px-5 py-4">
               <div
                 style="font-size: 12px; font-weight: 900; color: #777;"
-                v-if="!event.allDay"
+                v-if="event.timed"
               >
                 <span>{{ event.start | ChicagoTime }}</span>
                 <span v-if="event.end">
@@ -42,13 +42,18 @@
 
               <v-card-subtitle>{{ event.summary }}</v-card-subtitle>
 
-              <br />
-              <v-btn small @click.native="event.show = !event.show"
-                >Full description</v-btn
+              <div
+                class="hover readMore"
+                @click.prevent="event.show = !event.show"
               >
+                Read more...
+              </div>
+              <!-- <v-btn small @click.native="event.show = !event.show"
+                >Full description</v-btn
+              > -->
               <v-slide-y-transition>
                 <div v-show="event.show" class="mt-2">
-                  {{ event.body }}
+                  {{ event.details }}
                 </div>
               </v-slide-y-transition>
             </div>
@@ -85,4 +90,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+.readMore {
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.readMore:hover {
+  color: #777;
+}
+</style>
