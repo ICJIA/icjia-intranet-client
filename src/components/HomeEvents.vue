@@ -22,7 +22,7 @@
 
           <div style="border-left: 1px solid #ccc;">
             <div class="px-5 py-4">
-              <div
+              <!-- <div
                 style="font-size: 12px; font-weight: 900; color: #777;"
                 v-if="event.timed"
               >
@@ -37,6 +37,9 @@
                 style="font-size: 12px; font-weight: 900; color: #777;"
               >
                 <span>ALL DAY</span>
+              </div> -->
+              <div style="font-size: 12px; font-weight: 900; color: #777;">
+                {{ getRange(event.start, event.end, event.timed) }}
               </div>
               <h2>{{ event.name }}</h2>
 
@@ -66,9 +69,29 @@
 </template>
 
 <script>
-// import moment from "moment";
+/* eslint-disable no-unused-vars */
+const moment = require("moment");
+const tz = require("moment-timezone");
 export default {
-  methods: {},
+  methods: {
+    getRange(start, end, timed) {
+      let range;
+      let localStart = moment(start).tz("America/Chicago");
+      let localEnd = moment(end).tz("America/Chicago");
+      let daysBetween = moment(localEnd).diff(moment(localStart), "days");
+
+      if (daysBetween === 0 && timed) {
+        range = `${localStart.format("h:mm:ss a")} to ${localEnd.format(
+          "h:mm:ss a"
+        )}`;
+      } else if (daysBetween === 0 && !timed) {
+        range = ``;
+      } else if (daysBetween > 0) {
+        range = `through ${localEnd.format(" MMMM D YYYY")}`;
+      }
+      return range;
+    },
+  },
   created() {
     this.newEvents = this.events.map((events) => ({
       ...events,
