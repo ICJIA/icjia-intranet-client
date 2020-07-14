@@ -22,23 +22,8 @@
 
           <div style="border-left: 1px solid #ccc;">
             <div class="px-5 py-4">
-              <!-- <div
-                style="font-size: 12px; font-weight: 900; color: #777;"
-                v-if="event.timed"
-              >
-                <span>{{ event.start | ChicagoTime }}</span>
-                <span v-if="event.end">
-                  to
-                  <span>{{ event.end | ChicagoTime }}</span>
-                </span>
-              </div>
-              <div
-                v-else
-                style="font-size: 12px; font-weight: 900; color: #777;"
-              >
-                <span>ALL DAY</span>
-              </div> -->
               <div style="font-size: 12px; font-weight: 900; color: #777;">
+                <span style="color: #333;">{{ event.type | upperCase }}</span>
                 {{ getRange(event.start, event.end, event.timed) }}
               </div>
               <h2>{{ event.name }}</h2>
@@ -50,10 +35,10 @@
                 @click.prevent="event.show = !event.show"
               >
                 <span v-if="!event.show">
-                  Show details...
+                  Details...
                 </span>
                 <span v-else>
-                  Hide details
+                  Hide
                 </span>
               </div>
               <!-- <v-btn small @click.native="event.show = !event.show"
@@ -88,13 +73,13 @@ export default {
       let daysBetween = moment(localEnd).diff(moment(localStart), "days");
 
       if (daysBetween === 0 && timed) {
-        range = `${localStart.format("h:mm:ss a")} to ${localEnd.format(
+        range = ` | ${localStart.format("h:mm:ss a")} to ${localEnd.format(
           "h:mm:ss a"
         )}`;
       } else if (daysBetween === 0 && !timed) {
         range = ``;
       } else if (daysBetween > 0) {
-        range = `through ${localEnd.format(" MMMM D YYYY")}`;
+        range = ` | through ${localEnd.format(" MMMM D YYYY")}`;
       }
       return range;
     },
