@@ -49,14 +49,21 @@
                 class="hover readMore"
                 @click.prevent="event.show = !event.show"
               >
-                Read more...
+                <span v-if="!event.show">
+                  Show details...
+                </span>
+                <span v-else>
+                  Hide details
+                </span>
               </div>
               <!-- <v-btn small @click.native="event.show = !event.show"
                 >Full description</v-btn
               > -->
               <v-slide-y-transition>
-                <div v-show="event.show" class="mt-2">
-                  {{ event.details }}
+                <div class="py-3 mt-2" v-show="event.show">
+                  <div class="mt-2 pl-5">
+                    {{ event.details }}
+                  </div>
                 </div>
               </v-slide-y-transition>
             </div>

@@ -42,6 +42,7 @@ const GET_HOME = gql`
       summary
       details
       isPublished
+      type
     }
 
     posts(where: { isPublished: true }, sort: "created_at:desc", limit: 5) {
