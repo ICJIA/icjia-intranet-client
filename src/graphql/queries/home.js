@@ -33,7 +33,7 @@ const GET_HOME = gql`
       }
     }
 
-    events(where: { isPublished: true }, sort: "start:asc", limit: 4) {
+    events(where: { isPublished: true }, sort: "start:asc") {
       id
       name
       start
