@@ -96,8 +96,10 @@
 <script>
 /* eslint-disable no-unused-vars */
 import { GET_EVENTS } from "@/graphql/queries/events";
+
 import NProgress from "nprogress";
 const moment = require("moment");
+const tz = require("moment-timezone");
 export default {
   data: () => ({
     focus: "",
@@ -128,6 +130,10 @@ export default {
   },
   mounted() {
     this.$refs.calendar.checkChange();
+    let now = moment().tz("America/Chicago");
+    console.log("now " + now.toString());
+    console.log("start " + now.startOf("day").toString());
+    console.log("end " + now.endOf("day").toString());
   },
   apollo: {
     events: {
@@ -138,8 +144,8 @@ export default {
       },
       result(ApolloQueryResult) {
         this.currentEvents = this.events.map((event) => {
-          event.start = moment(event.start).toDate();
-          event.end = moment(event.end).toDate();
+          event.start = moment(event.start).tz("America/Chicago").toDate();
+          event.end = moment(event.end).tz("America/Chicago").toDate();
           event.color = this.colors[this.rnd(0, this.colors.length - 1)];
           return event;
         });
