@@ -22,11 +22,12 @@
     </v-fab-transition>
 
     <v-main>
-      <ApolloQuery :query="GET_ALERT" notifyOnNetworkStatusChange>
+      <ApolloQuery
+        :query="GET_ALERT"
+        notifyOnNetworkStatusChange
+        v-if="!$route.meta.hideAlert"
+      >
         <template slot-scope="{ result }">
-          <!-- <div v-if="isLoading(result.loading)">
-            <Loader size="20"></Loader>
-          </div> -->
           <div v-if="result.error" class="text-center error apollo">
             {{ result.error }}
           </div>
@@ -49,10 +50,13 @@
 
 <script>
 import { GET_ALERT } from "@/graphql/queries/alert.js";
+import NProgress from "nprogress";
 export default {
   /* eslint-disable no-unused-vars */
   name: "App",
-  mounted() {},
+  mounted() {
+    console.log(this.$route.meta);
+  },
 
   components: {},
 

@@ -52,6 +52,7 @@ export default {
   },
 
   mounted() {
+    console.log(this.$route.meta);
     this.$nextTick(this.$refs.identifier.focus);
   },
   data() {

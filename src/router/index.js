@@ -28,48 +28,72 @@ const routes = [
   {
     path: "/login",
     name: "Login",
+    meta: {
+      hideAlert: true,
+    },
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/Login.vue"),
   },
   {
     path: "/logout",
     name: "Logout",
+    meta: {
+      hideAlert: true,
+    },
     component: () =>
       import(/* webpackChunkName: "logout" */ "../views/Logout.vue"),
   },
   {
     path: "/register",
     name: "Register",
+    meta: {
+      hideAlert: true,
+    },
     component: () =>
       import(/* webpackChunkName: "register" */ "../views/Register.vue"),
   },
   {
     path: "/forgot",
     name: "Forgot",
+    meta: {
+      hideAlert: true,
+    },
     component: () =>
       import(/* webpackChunkName: "forgot" */ "../views/Forgot.vue"),
   },
   {
     path: "/reset",
     name: "Reset",
+    meta: {
+      hideAlert: true,
+    },
     component: () =>
       import(/* webpackChunkName: "reset" */ "../views/Reset.vue"),
   },
   {
     path: "/sandbox",
     name: "Sandbox",
+    meta: {
+      requiresAuth: true,
+    },
     component: () =>
       import(/* webpackChunkName: "sandbox" */ "../views/Sandbox.vue"),
   },
   {
     path: "/sandbox2",
     name: "Sandbox2",
+    meta: {
+      requiresAuth: true,
+    },
     component: () =>
       import(/* webpackChunkName: "sandbox2" */ "../views/Sandbox2.vue"),
   },
   {
     path: "/sandbox3",
     name: "Sandbox3",
+    meta: {
+      requiresAuth: true,
+    },
     component: () =>
       import(/* webpackChunkName: "sandbox3" */ "../views/Sandbox3.vue"),
   },
@@ -160,6 +184,9 @@ const routes = [
     path: "*",
     name: "FourOhFour",
     component: () => import(/* webpackChunkName: '404' */ "../views/404.vue"),
+    meta: {
+      hideAlert: true,
+    },
   },
 ];
 

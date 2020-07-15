@@ -37,9 +37,6 @@
                 <v-list-item @click="type = 'month'">
                   <v-list-item-title>Month</v-list-item-title>
                 </v-list-item>
-                <!-- <v-list-item @click="type = '4day'">
-                  <v-list-item-title>4 days</v-list-item-title>
-                </v-list-item> -->
               </v-list>
             </v-menu>
           </v-toolbar>
@@ -55,7 +52,6 @@
             @click:event="showEvent"
             @click:more="viewDay"
             @click:date="viewDay"
-            @change="updateRange"
           ></v-calendar>
           <v-menu
             v-model="selectedOpen"
@@ -76,15 +72,20 @@
                 <v-btn icon>
                   <v-icon>mdi-dots-vertical</v-icon>
                 </v-btn> -->
+                <v-btn small dark @click="selectedOpen = false">CLOSE</v-btn>
               </v-toolbar>
               <v-card-text>
                 <span v-html="selectedEvent.details"></span>
               </v-card-text>
-              <v-card-actions>
-                <v-btn text color="secondary" @click="selectedOpen = false"
-                  >Cancel</v-btn
+              <!-- <v-card-actions>
+                <v-btn
+                  small
+                  outlined
+                  color="secondary"
+                  @click="selectedOpen = false"
+                  >CLOSE</v-btn
                 >
-              </v-card-actions>
+              </v-card-actions> -->
             </v-card>
           </v-menu>
         </v-sheet>
@@ -130,10 +131,11 @@ export default {
   },
   mounted() {
     this.$refs.calendar.checkChange();
-    let now = moment().tz("America/Chicago");
-    console.log("now " + now.toString());
-    console.log("start " + now.startOf("day").toString());
-    console.log("end " + now.endOf("day").toString());
+    // let now = moment().tz("America/Chicago");
+    // console.log("now " + now.toString());
+    // console.log("start " + now.startOf("day").toString());
+    // console.log("end " + now.endOf("day").toString());
+    console.log(moment().tz("America/Chicago").startOf("day").toString());
   },
   apollo: {
     events: {
@@ -186,29 +188,7 @@ export default {
 
       nativeEvent.stopPropagation();
     },
-    updateRange() {
-      console.log(this.events);
-      // let events = [
-      //   {
-      //     name: "Event 1",
-      //     start: "2020-07-13T13:30:00.216Z",
-      //     end: "2020-07-13T22:00:00.000Z",
-      //     timed: false,
-      //     // color: this.colors[this.rnd(0, this.colors.length - 1)],
-      //     details:
-      //       "\nLorem markdownum vertuntur statuo. Tu auro deceperat obsessae sustinet arcus, coma manet, inque, quae premeret sic; caput quo pomaria. Ire pater, lucis genas creatus silentum, luctus terras nescio.\n\nSuperabat ferunt ignipedum imitetur, et frustra et Bacchi adimunt? Muta dixit Romuleae me venit corpore, ab hanc adii quod digitis tecta poterentur. Inferias pietate laniaverat illi liquidus ferrum ei fata atavosque me aer sublimes temptare. In axis, incipere quem tum et Tiberinus succinctae teneo, monumentis.\n",
-      //   },
-      //   {
-      //     name: "Event 2",
-      //     start: "2020-07-16T13:30:00.000Z",
-      //     end: "2020-07-16T14:30:00.000Z",
-      //     timed: true,
-      //     //color: this.colors[this.rnd(0, this.colors.length - 1)],
-      //     details:
-      //       "Lorem markdownum nocti Eurynomes contigit maxima aristas sacerdos sanguine putes, harenae solebat dum atque freta adfuit. Montes concutit cruorem.\n\nMors bene victrix, quae lingua non nomen sub, ales sed aquas femina inerti et inter et. Hostem vocabitur ecce, ubi oblitis haec gratamque facite quid.\n\nNec pestifer nigri, inmensum prohibet carmina ubi facundia voce; Neleius cognataque. Pleno meritos avidos flentibus bracchia tu factus civilia usu! Quo Iovis ululatibus, Troiana in monitu, lucis dedit ea movit spoliisque Pandione luctu uni; est et infelix. Sedes perque est auras mora tegumenque torrem pariter nimiumque similisque, me qui mota et pectoraque bello partes. Quoque iam Halesi pecus ergo in cum infestae Astraea utque?\n\n## Est delubris in hederae ibimus Laelapa adsumit\n\nFestam amor, te vidi proxima, illic et penates sonat dixit traxit tantaeque abiit strictis imago. Ad enim tela gravitas Thisbes Ianthe vidisse imago enim rogus per. Excussae quod Autonoe, reponunt casus.\n\nMurmura oculosque luces et, laudatos Phocaico sit altera in sublimia faveas reducere boum octonis: guttura. Recidendum boves se a corpore morari quamquam aquarum: vir nodosque este tutus? Licet furoris iaculante flamma arboris, sistere moderato qui aut.\n\n",
-      //   },
-      // ];
-    },
+
     rnd(a, b) {
       return Math.floor((b - a + 1) * Math.random()) + a;
     },

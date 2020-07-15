@@ -19,7 +19,12 @@
 </template>
 
 <script>
-export default {};
+import NProgress from "nprogress";
+export default {
+  created() {
+    NProgress.done();
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>
