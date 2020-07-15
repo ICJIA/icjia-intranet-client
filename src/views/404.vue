@@ -19,11 +19,8 @@
 </template>
 
 <script>
-import NProgress from "nprogress";
 export default {
-  created() {
-    NProgress.done();
-  },
+  created() {},
 };
 </script>
 
