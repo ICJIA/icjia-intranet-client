@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 const GET_HOME = gql`
-  query Home {
+  query Home($start: String!, $eventLimit: Int!) {
     home {
       id
       created_at
@@ -33,7 +33,27 @@ const GET_HOME = gql`
       }
     }
 
-    events(where: { isPublished: true }, sort: "start:asc") {
+    eventRange: events(
+      limit: $eventLimit
+      where: { isPublished: true, start_lte: $start, end_gte: $start }
+      sort: "start:asc"
+    ) {
+      id
+      name
+      start
+      end
+      timed
+      summary
+      details
+      isPublished
+      type
+    }
+
+    events(
+      limit: 5
+      where: { isPublished: true, start_gte: $start }
+      sort: "start:asc"
+    ) {
       id
       name
       start

@@ -54,9 +54,7 @@ import NProgress from "nprogress";
 export default {
   /* eslint-disable no-unused-vars */
   name: "App",
-  mounted() {
-    console.log(this.$route.meta);
-  },
+  mounted() {},
 
   components: {},
 

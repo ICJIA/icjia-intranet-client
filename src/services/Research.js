@@ -4,7 +4,7 @@ import NProgress from "nprogress";
 const axios = require("axios");
 const api = axios.create({
   baseURL: "https://researchhub.icjia-api.cloud/graphql",
-  timeout: 10000,
+  timeout: 15000,
 });
 
 api.interceptors.request.use((config) => {

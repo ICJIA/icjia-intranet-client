@@ -1,5 +1,10 @@
 <template>
-  <ApolloQuery :query="GET_HOME" notifyOnNetworkStatusChange>
+  <ApolloQuery
+    :query="GET_HOME"
+    notifyOnNetworkStatusChange
+    :variables="{ start: now, eventLimit }"
+    @result="afterFetch"
+  >
     <template slot-scope="{ result }">
       <div v-if="isLoading(result.loading)">
         <Loader></Loader>
@@ -22,12 +27,9 @@
         {{ result.data.posts }}
         <br />
 
-        <!-- <h2>Events</h2>
-        {{ result.data.events }}
-        <br /> -->
         <HomeEvents
-          :events="result.data.events"
-          v-if="result.data.events"
+          :events="mergedEvents"
+          v-if="result.data.events && result.data.eventRange"
         ></HomeEvents>
 
         <!-- END: home components -->
@@ -35,19 +37,35 @@
       <div v-if="result.error" class="text-center error apollo">
         {{ result.error }}
       </div>
-      <Research></Research>
+      <!-- <Research></Research> -->
     </template>
   </ApolloQuery>
 </template>
 <script>
 import { GET_HOME } from "@/graphql/queries/home.js";
+// eslint-disable-next-line no-unused-vars
+import _ from "lodash";
+import moment from "moment";
+// eslint-disable-next-line no-unused-vars
+import tz from "moment-timezone";
 export default {
   name: "Home",
   components: {},
-
+  computed: {
+    name() {
+      return this.data;
+    },
+  },
+  created() {
+    this.now = moment().tz("America/Chicago").format("YYYY-MM-DD");
+  },
+  mounted() {},
   data() {
     return {
       GET_HOME,
+      now: null,
+      mergedEvents: () => [],
+      eventLimit: 5,
     };
   },
   methods: {
@@ -55,6 +73,14 @@ export default {
       // eslint-disable-next-line no-undef
       loading ? NProgress.start() : NProgress.done();
       return loading ? true : false;
+    },
+
+    afterFetch(result) {
+      if (result.data && result.data.events && result.data.eventRange) {
+        let mergedEvents = [...result.data.events, ...result.data.eventRange];
+        mergedEvents = _.sortBy(mergedEvents, (o) => o.start);
+        this.mergedEvents = mergedEvents.slice(0, this.eventLimit);
+      }
     },
   },
 };
