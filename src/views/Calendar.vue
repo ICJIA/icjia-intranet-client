@@ -137,7 +137,7 @@ export default {
     // console.log("now " + now.toString());
     // console.log("start " + now.startOf("day").toString());
     // console.log("end " + now.endOf("day").toString());
-    console.log(moment().tz("America/Chicago").startOf("day").toString());
+    //console.log(moment().tz("America/Chicago").startOf("day").toString());
   },
   apollo: {
     events: {

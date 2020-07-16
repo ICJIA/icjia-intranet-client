@@ -62,7 +62,6 @@
         </div>
       </v-card>
     </div>
-    {{ newEvents }}
   </div>
 </template>
 
