@@ -37,7 +37,7 @@
       <div v-if="result.error" class="text-center error apollo">
         {{ result.error }}
       </div>
-      <!-- <Research></Research> -->
+      <Research></Research>
     </template>
   </ApolloQuery>
 </template>

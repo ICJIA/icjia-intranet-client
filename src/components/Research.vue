@@ -55,7 +55,7 @@
     <!-- <div v-if="loading">
       <Loader></Loader>
     </div> -->
-    <div class="text-center" v-if="!disabled">
+    <div class="text-center" v-if="!disabled && alreadySeen">
       <v-btn
         class="ma-2"
         :loading="loading"
@@ -87,10 +87,12 @@ export default {
       max: 25,
       disabled: false,
       query: null,
+      alreadySeen: false,
     };
   },
   created() {
     this.fetchContent();
+    this.alreadySeen = true;
   },
   methods: {
     getKey(index) {
