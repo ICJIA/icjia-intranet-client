@@ -2,7 +2,7 @@
   <ApolloQuery
     :query="GET_HOME"
     notifyOnNetworkStatusChange
-    :variables="{ start: now, eventLimit }"
+    :variables="{ now, eventLimit }"
     @result="afterFetch"
   >
     <template slot-scope="{ result }">
@@ -65,7 +65,7 @@ export default {
       GET_HOME,
       now: null,
       mergedEvents: () => [],
-      eventLimit: 5,
+      eventLimit: 4,
     };
   },
   methods: {
