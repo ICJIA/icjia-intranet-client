@@ -6,8 +6,9 @@ module.exports = {
   //   process.env.NODE_ENV === `production` ? appConfig.publicPath : "/",
   publicPath: "/",
   configureWebpack: (config) => {
-    config.entry.app = "./src/entry.js";
+    (config.devtool = "source-map"), (config.entry.app = "./src/entry.js");
   },
+
   devServer: {
     proxy: {
       "/.netlify/functions": {

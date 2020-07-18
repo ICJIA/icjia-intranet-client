@@ -5,7 +5,7 @@ import {
   restartWebsockets,
 } from "vue-cli-plugin-apollo/graphql-client";
 import appConfig from "./config.json";
-console.log(appConfig.baseGraphQL);
+console.log("appConfig", appConfig.api.baseGraphQL);
 // Install the vue plugin
 Vue.use(VueApollo);
 
@@ -14,7 +14,7 @@ const AUTH_TOKEN = "jwt";
 
 // Http endpoint
 const httpEndpoint =
-  process.env.VUE_APP_GRAPHQL_HTTP || "http://localhost:1337/graphql";
+  appConfig.api.baseGraphQL || "http://localhost:1337/graphql";
 
 // Config
 const defaultOptions = {
@@ -22,7 +22,7 @@ const defaultOptions = {
   httpEndpoint,
   // You can use `wss` for secure connection (recommended in production)
   // Use `null` to disable subscriptions
-  //wsEndpoint: process.env.VUE_APP_GRAPHQL_WS || "ws://localhost:4000/graphql",
+  //wsEndpoint: appConfig.api.baseGraphQL || "ws://localhost:4000/graphql",
   wsEndpoint: null,
   // LocalStorage token
   tokenName: AUTH_TOKEN,

@@ -115,7 +115,7 @@ export default {
   },
   data() {
     return {
-      base: process.env.VUE_APP_BASE_HTTP,
+      base: this.$myApp.config.api.base,
     };
   },
 };

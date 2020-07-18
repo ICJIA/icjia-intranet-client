@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import store from "@/store";
 import NProgress from "nprogress";
+import appConfig from "@/config.json";
 
 Vue.use(VueRouter);
 
@@ -192,7 +193,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
-  base: process.env.BASE_URL,
+  base: appConfig.publicPath,
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

@@ -1,8 +1,17 @@
 <template>
   <div>
-    <div v-for="(event, index) in newEvents" :key="index + event.id">
+    <div v-if="!newEvents.length">
+      <v-card
+        color="grey lighten-4"
+        class="mb-5 text-center py-5"
+        elevation="0"
+      >
+        <h2>No upcoming events</h2></v-card
+      >
+    </div>
+    <div v-for="(event, index) in newEvents" :key="index + event.id" v-else>
       <v-card color="grey lighten-4" class="mb-5" elevation="0">
-        <div class="d-flex flex-no-wrap" style="">
+        <div class="d-flex flex-no-wrap" style>
           <div class="px-5" style="max-height: 150px;">
             <v-container fill-height>
               <v-row
@@ -12,10 +21,10 @@
                 style="width: 80px;"
               >
                 <v-col fill-height class="text-center">
-                  <span style="font-size: 14px; color: #666;">{{
-                    event.start | month
-                  }}</span
-                  ><br />
+                  <span style="font-size: 14px; color: #666;">
+                    {{ event.start | month }}
+                  </span>
+                  <br />
                   <span
                     style="font-size: 26px; font-weight: 900; color: #0d4474;"
                     >{{ event.start | day }}</span
@@ -40,21 +49,15 @@
                 class="hover readMore"
                 @click.prevent="event.show = !event.show"
               >
-                <span v-if="!event.show">
-                  Details...
-                </span>
-                <span v-else>
-                  Hide
-                </span>
+                <span v-if="!event.show">Details...</span>
+                <span v-else>Hide</span>
               </div>
               <!-- <v-btn small @click.native="event.show = !event.show"
                 >Full description</v-btn
-              > -->
+              >-->
               <v-slide-y-transition>
                 <div class="py-3 mt-2" v-show="event.show">
-                  <div class="mt-2 pl-5">
-                    {{ event.details }}
-                  </div>
+                  <div class="mt-2 pl-5">{{ event.details }}</div>
                 </div>
               </v-slide-y-transition>
             </div>
@@ -94,6 +97,7 @@ export default {
       ...events,
       show: false,
     }));
+    // console.log(this.newEvents.length);
   },
   data() {
     return {
