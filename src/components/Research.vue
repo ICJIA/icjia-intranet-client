@@ -76,7 +76,7 @@
 
 <script>
 import { nanoid } from "nanoid";
-import { getRecentArticles } from "@/services/Research";
+import { getHubArticles } from "@/services/External";
 export default {
   data() {
     return {
@@ -100,7 +100,7 @@ export default {
     },
     async fetchContent() {
       this.loading = true;
-      this.query = await getRecentArticles(this.start, this.limit);
+      this.query = await getHubArticles(this.start, this.limit);
 
       this.articles.push(...this.query);
       this.loading = false;

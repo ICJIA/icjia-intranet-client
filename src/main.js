@@ -59,15 +59,4 @@ new Vue({
   vuetify,
   apolloProvider: createProvider(),
   render: (h) => h(App),
-  // mounted: function () {
-  //   this.$nextTick(function () {
-  //     // Code that will run only after the
-  //     // entire view has been rendered
-  //     // eslint-disable-next-line no-unused-vars
-  //     var msnry = new Masonry(".masonry", {
-  //       // options
-  //       itemSelector: "[class*='col-']",
-  //     });
-  //   });
-  // },
 }).$mount("#app");

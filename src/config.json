@@ -3,6 +3,7 @@
   "namespace": "icjia-",
   "api": {
     "base": "https://dev.icjia-api.cloud",
+    "baseGraphQL": "https://dev.icjia-api.cloud/graphql",
     "baseClient": "https://intranet.icjia.cloud",
     "forgetPassword": "/auth/forgot-password",
     "resetPassword": "/auth/reset-password",

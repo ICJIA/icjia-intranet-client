@@ -27,7 +27,7 @@ async function queryEndpoint(query) {
   return content;
 }
 
-const getRecentArticlesQuery = (start, limit) => {
+const getHubArticlesQuery = (start, limit) => {
   return `{
       articles (sort: "date:desc", limit: ${limit}, start: ${start}, where: {status: "published"}) {
         title
@@ -43,9 +43,9 @@ const getRecentArticlesQuery = (start, limit) => {
     }`;
 };
 
-const getRecentArticles = async (start, limit) => {
+const getHubArticles = async (start, limit) => {
   try {
-    let articles = await queryEndpoint(getRecentArticlesQuery(start, limit));
+    let articles = await queryEndpoint(getHubArticlesQuery(start, limit));
     //console.log(articles.data.data.articles);
     return articles.data.data.articles;
   } catch (e) {
@@ -56,4 +56,4 @@ const getRecentArticles = async (start, limit) => {
   }
 };
 
-export { getRecentArticles };
+export { getHubArticles };
