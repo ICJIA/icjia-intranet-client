@@ -12,5 +12,10 @@
     "login": "/auth/local",
     "timeout": 10000,
     "register": "/auth/local/register"
-  }
+  },
+  "home": {
+    "eventLimit": 4,
+    "postLimit": 5
+  },
+  "timezone": "America/Chicago"
 }

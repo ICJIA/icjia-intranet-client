@@ -2,7 +2,7 @@
   <ApolloQuery
     :query="GET_HOME"
     notifyOnNetworkStatusChange
-    :variables="{ now, eventLimit }"
+    :variables="{ now, eventLimit, postLimit }"
     @result="afterFetch"
   >
     <template slot-scope="{ result }">
@@ -57,15 +57,18 @@ export default {
     },
   },
   created() {
-    this.now = moment().tz("America/Chicago").format("YYYY-MM-DD");
+    this.now = moment().tz(this.$myApp.config.timezone).format("YYYY-MM-DD");
   },
-  mounted() {},
+  mounted() {
+    console.log(this.$myApp.config.timezone);
+  },
   data() {
     return {
       GET_HOME,
       now: null,
       mergedEvents: () => [],
-      eventLimit: 4,
+      eventLimit: this.$myApp.config.home.eventLimit,
+      postLimit: this.$myApp.config.home.postLimit,
     };
   },
   methods: {

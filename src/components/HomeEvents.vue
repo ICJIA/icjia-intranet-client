@@ -76,8 +76,8 @@ export default {
   methods: {
     getRange(start, end, timed) {
       let range;
-      let localStart = moment(start).tz("America/Chicago");
-      let localEnd = moment(end).tz("America/Chicago");
+      let localStart = moment(start).tz(this.$myApp.config.timezone);
+      let localEnd = moment(end).tz(this.$myApp.config.timezone);
       let daysBetween = moment(localEnd).diff(moment(localStart), "days");
 
       if (daysBetween === 0 && timed) {

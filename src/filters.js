@@ -1,10 +1,12 @@
 import Vue from "vue";
-
-// const slug = require("slug");
-// slug.defaults.mode = "rfc3986";
 const moment = require("moment");
 // eslint-disable-next-line no-unused-vars
 const tz = require("moment-timezone");
+
+import appConfig from "./config.json";
+
+// import * as data from "./config.json";
+// const appConfig = data;
 
 Vue.filter("format", function (d) {
   var monthNames = [
@@ -74,9 +76,9 @@ Vue.filter("truncate", function (string, maxWords) {
   return string;
 });
 
-Vue.filter("ChicagoTime", function (timestamp) {
+Vue.filter("localTime", function (timestamp) {
   const tstamp = moment(timestamp);
-  return tstamp.tz("America/Chicago").format("h:mm a");
+  return tstamp.tz(appConfig.timezone).format("h:mm a");
 });
 
 Vue.filter("month", function (timestamp) {

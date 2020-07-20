@@ -133,11 +133,6 @@ export default {
   },
   mounted() {
     this.$refs.calendar.checkChange();
-    // let now = moment().tz("America/Chicago");
-    // console.log("now " + now.toString());
-    // console.log("start " + now.startOf("day").toString());
-    // console.log("end " + now.endOf("day").toString());
-    //console.log(moment().tz("America/Chicago").startOf("day").toString());
   },
   apollo: {
     events: {
@@ -148,8 +143,12 @@ export default {
       },
       result(ApolloQueryResult) {
         this.currentEvents = this.events.map((event) => {
-          event.start = moment(event.start).tz("America/Chicago").toDate();
-          event.end = moment(event.end).tz("America/Chicago").toDate();
+          event.start = moment(event.start)
+            .tz(this.$myApp.config.timezone)
+            .toDate();
+          event.end = moment(event.end)
+            .tz(this.$myApp.config.timezone)
+            .toDate();
           event.color = this.colors[this.rnd(0, this.colors.length - 1)];
           return event;
         });
