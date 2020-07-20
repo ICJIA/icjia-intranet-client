@@ -32,8 +32,13 @@
                 </v-row>
               </div>
             </v-container>
-
-            <HomePosts></HomePosts>
+            <v-container style="min-height: 500px;">
+              <v-row>
+                <v-col>
+                  <HomePosts></HomePosts>
+                </v-col>
+              </v-row>
+            </v-container>
           </v-sheet>
         </v-col>
 
@@ -55,7 +60,13 @@
                 </v-row>
               </div>
             </v-container>
-            <HomeEvents></HomeEvents>
+            <v-container style="min-height: 500px;">
+              <v-row>
+                <v-col>
+                  <HomeEvents></HomeEvents>
+                </v-col>
+              </v-row>
+            </v-container>
           </v-sheet>
         </v-col>
       </v-row>
