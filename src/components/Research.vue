@@ -82,7 +82,7 @@ export default {
     return {
       loading: null,
       articles: [],
-      start: 1,
+      start: 0,
       limit: 3,
       max: 25,
       disabled: false,

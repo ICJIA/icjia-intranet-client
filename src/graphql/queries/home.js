@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 const GET_HOME = gql`
-  query Home($now: String!, $eventLimit: Int!) {
+  query Home($now: String!, $eventLimit: Int!, $postLimit: Int!) {
     home {
       id
       created_at
@@ -65,7 +65,11 @@ const GET_HOME = gql`
       type
     }
 
-    posts(where: { isPublished: true }, sort: "created_at:desc", limit: 5) {
+    posts(
+      where: { isPublished: true }
+      sort: "created_at:desc"
+      limit: $postLimit
+    ) {
       id
       title
       slug

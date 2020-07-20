@@ -39,6 +39,7 @@ const getHubArticlesQuery = (start, limit) => {
         thumbnail
         splash
         date
+        createdAt
       }
     }`;
 };
@@ -46,7 +47,7 @@ const getHubArticlesQuery = (start, limit) => {
 const getHubArticles = async (start, limit) => {
   try {
     let articles = await queryEndpoint(getHubArticlesQuery(start, limit));
-    //console.log(articles.data.data.articles);
+    console.log(articles.data.data.articles);
     return articles.data.data.articles;
   } catch (e) {
     console.log("researchHub error: ", e.toString());
