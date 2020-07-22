@@ -2,7 +2,7 @@
   <div>
     <div v-if="!newEvents.length">
       <v-card
-        color="grey lighten-4"
+        color="grey lighten-5"
         class="mb-5 text-center py-5"
         elevation="0"
       >
@@ -10,7 +10,7 @@
       >
     </div>
     <div v-for="(event, index) in newEvents" :key="index + event.id" v-else>
-      <v-card color="grey lighten-4" class="mb-5" elevation="0">
+      <v-card color="grey lighten-5" class="mb-5" elevation="0">
         <div class="d-flex flex-no-wrap" style>
           <div class="px-5" style="max-height: 150px;">
             <v-container fill-height>
@@ -34,14 +34,20 @@
             </v-container>
           </div>
 
-          <div style="border-left: 1px solid #ccc;">
-            <div class="px-5 py-4">
+          <div
+            style="
+              border-left: 1px solid #ccc;
+              background: #fafafa;
+              width: 100% !important;
+            "
+          >
+            <div class="px-5 py-6">
               <div style="font-size: 12px; font-weight: 900; color: #777;">
-                <!-- <span style="color: #333;">{{ event.type | upperCase }}</span> -->
-                {{ getRange(event.start, event.end, event.timed) }}
                 <span style="color: #333;">{{ event.type | upperCase }}</span>
+                {{ getRange(event.start, event.end, event.timed) }}
+                <!-- <span style="color: #333;">{{ event.type | upperCase }}</span> -->
               </div>
-              <h2>{{ event.name }}</h2>
+              <h2 class="mt-2">{{ event.name }}</h2>
 
               <v-card-subtitle>{{ event.summary }}</v-card-subtitle>
 
@@ -81,13 +87,13 @@ export default {
       let daysBetween = moment(localEnd).diff(moment(localStart), "days");
 
       if (daysBetween === 0 && timed) {
-        range = `${localStart.format("h:mm:ss a")} to ${localEnd.format(
+        range = ` | ${localStart.format("h:mm:ss a")} to ${localEnd.format(
           "h:mm:ss a"
-        )} | `;
+        )}`;
       } else if (daysBetween === 0 && !timed) {
-        range = `All Day | `;
+        range = ` | All Day`;
       } else if (daysBetween > 0) {
-        range = `through ${localEnd.format(" MMMM D YYYY")} | `;
+        range = ` Through ${localEnd.format(" MMMM D YYYY")} | `;
       }
       return range;
     },
