@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 const GET_EVENTS = gql`
   query Events {
-    events {
+    events(sort: "start:asc", where: { isPublished: true }) {
       id
       created_at
       updated_at
