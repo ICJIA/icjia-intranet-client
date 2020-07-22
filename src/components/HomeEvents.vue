@@ -21,8 +21,8 @@
                 style="width: 80px;"
               >
                 <v-col fill-height class="text-center">
-                  <span style="font-size: 14px; color: #666;">
-                    {{ event.start | month }}
+                  <span style="font-size: 14px; color: #666; font-weight: 900;">
+                    {{ event.start | shortMonth }}
                   </span>
                   <br />
                   <span
@@ -87,13 +87,15 @@ export default {
       let daysBetween = moment(localEnd).diff(moment(localStart), "days");
 
       if (daysBetween === 0 && timed) {
-        range = ` | ${localStart.format("h:mm:ss a")} to ${localEnd.format(
-          "h:mm:ss a"
+        range = ` | ${localStart.format("h:mm a")} to ${localEnd.format(
+          "h:mm a"
         )}`;
       } else if (daysBetween === 0 && !timed) {
         range = ` | All Day`;
       } else if (daysBetween > 0) {
-        range = ` Through ${localEnd.format(" MMMM D YYYY")} | `;
+        range = ` | ${localStart.format("MMMM D")} through ${localEnd.format(
+          "MMMM D"
+        )}`;
       }
       return range;
     },

@@ -85,6 +85,10 @@ Vue.filter("month", function (timestamp) {
   return moment(timestamp).format("MMMM");
 });
 
+Vue.filter("shortMonth", function (timestamp) {
+  return moment(timestamp).format("MMM");
+});
+
 Vue.filter("day", function (timestamp) {
   return moment(timestamp).format("D");
 });
