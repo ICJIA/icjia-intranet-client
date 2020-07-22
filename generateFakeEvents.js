@@ -10,7 +10,7 @@ let axiosConfig = {
     Authorization: "Bearer " + process.env.JWT,
   },
 };
-console.log(axiosConfig);
+//console.log(axiosConfig);
 
 function rnd(a, b) {
   return Math.floor((b - a + 1) * Math.random()) + a;
