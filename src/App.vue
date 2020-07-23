@@ -32,12 +32,12 @@
             {{ result.error }}
           </div>
           <div v-if="!isLoading(result.loading) && !result.error">
-            <HomeAlert
+            <Alert
               :type="result.data.home.alert.alertType"
               :text="result.data.home.alert.text"
               :dismissable="result.data.home.alert.dismissable"
               v-if="result.data.home.alert"
-            ></HomeAlert>
+            ></Alert>
           </div>
         </template>
       </ApolloQuery>
