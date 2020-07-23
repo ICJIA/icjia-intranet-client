@@ -14,11 +14,11 @@ export default {
   props: {
     size: {
       type: String,
-      default: "50",
+      default: "100",
     },
     height: {
       type: String,
-      default: "550",
+      default: "500",
     },
   },
 };
