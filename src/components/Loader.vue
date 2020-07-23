@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center my-12">
+  <div class="text-center my-12" :style="{ 'min-height': `${height}px` }">
     <v-progress-circular
       indeterminate
       color="primary"
@@ -15,6 +15,10 @@ export default {
     size: {
       type: String,
       default: "50",
+    },
+    height: {
+      type: String,
+      default: "550",
     },
   },
 };
