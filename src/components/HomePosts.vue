@@ -1,48 +1,31 @@
 <template>
-  <ApolloQuery :query="getHomePosts" notifyOnNetworkStatusChange>
-    <template slot-scope="{ result }">
-      <div v-if="isLoading(result.loading, result.error)">
-        <Loader></Loader>
-      </div>
-
-      <div v-if="!isLoading(result.loading, result.error) && !result.error">
-        <div v-for="post in result.data.posts" :key="post.id">
-          <v-card
-            class="mb-1 mt-1 px-3 py-4 hover card"
-            @click="routeTo(post.slug)"
-            elevation="1"
-          >
-            <div
-              class="text-right"
-              style="font-size: 12px; font-weight: bold; color: #555;"
-            >
-              {{ post.created_at | format }}
-            </div>
-            <v-card-title style="font-size: 18px;">{{
-              post.title
-            }}</v-card-title>
-            <v-card-text style="font-size: 14px;">{{
-              post.summary
-            }}</v-card-text>
-          </v-card>
-        </div>
-      </div>
-      <div v-if="result.error" class="text-center error apollo">
-        {{ result.error }}
-      </div>
-    </template>
-  </ApolloQuery>
+  <div>
+    {{ newPosts }}
+  </div>
 </template>
 <script>
-import { GET_HOME_POSTS } from "@/graphql/queries/getHome.js";
 export default {
-  name: "Home",
+  name: "HomePosts",
   components: {},
 
   data() {
     return {
-      getHomePosts: GET_HOME_POSTS,
+      newPosts: [],
     };
+  },
+  created() {
+    this.newPosts = this.posts.map((posts) => ({
+      ...posts,
+      show: false,
+    }));
+    // console.log(this.newEvents.length);
+  },
+
+  props: {
+    posts: {
+      type: Array,
+      default: () => [],
+    },
   },
   methods: {
     routeTo(slug) {
