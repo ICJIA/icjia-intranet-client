@@ -6,7 +6,7 @@ module.exports = {
   //   process.env.NODE_ENV === `production` ? appConfig.publicPath : "/",
   publicPath: "/",
   configureWebpack: (config) => {
-    (config.devtool = "source-map"), (config.entry.app = "./src/entry.js");
+    config.entry.app = "./src/entry.js";
   },
 
   devServer: {
