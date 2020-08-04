@@ -22,28 +22,33 @@
     </v-fab-transition>
 
     <v-main>
-      <ApolloQuery
-        :query="GET_ALERT"
-        notifyOnNetworkStatusChange
-        v-if="!$route.meta.hideAlert"
-      >
-        <template slot-scope="{ result }">
-          <div v-if="result.error" class="text-center error apollo">
-            {{ result.error }}
-          </div>
-          <div v-if="!isLoading(result.loading) && !result.error">
-            <Alert
-              :type="result.data.home.alert.alertType"
-              :text="result.data.home.alert.text"
-              :dismissable="result.data.home.alert.dismissable"
-              v-if="result.data.home.alert"
-            ></Alert>
-          </div>
-        </template>
-      </ApolloQuery>
-      <transition name="fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
+      <span v-if="!$myApp.config.underConstruction">
+        <ApolloQuery
+          :query="GET_ALERT"
+          notifyOnNetworkStatusChange
+          v-if="!$route.meta.hideAlert"
+        >
+          <template slot-scope="{ result }">
+            <div v-if="result.error" class="text-center error apollo">
+              {{ result.error }}
+            </div>
+            <div v-if="!isLoading(result.loading) && !result.error">
+              <Alert
+                :type="result.data.home.alert.alertType"
+                :text="result.data.home.alert.text"
+                :dismissable="result.data.home.alert.dismissable"
+                v-if="result.data.home.alert"
+              ></Alert>
+            </div>
+          </template>
+        </ApolloQuery>
+        <transition name="fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </span>
+      <span v-else>
+        <ComingSoon></ComingSoon>
+      </span>
     </v-main>
   </v-app>
 </template>

@@ -6,6 +6,7 @@
     class="mt-5 mx-1"
     :type="type"
     :dismissible="dismissable"
+    v-if="!$myApp.config.underConstruction"
   >
     {{ text }}
   </v-alert>

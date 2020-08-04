@@ -52,13 +52,14 @@ export default {
   },
 
   mounted() {
-    console.log(this.$route.meta);
-    this.$nextTick(this.$refs.identifier.focus);
+    // console.log(this.$route.meta);
+    // this.$nextTick(this.$refs.identifier.focus);
+    console.log(this.$myApp.config.underConstruction);
   },
   data() {
     return {
-      identifier: "test12345",
-      password: "test12345",
+      identifier: "",
+      password: "",
       e3: true,
       e4: true,
     };

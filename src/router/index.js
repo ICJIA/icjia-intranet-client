@@ -180,6 +180,15 @@ const routes = [
       requiresAuth: true,
     },
   },
+  // {
+  //   path: "/coming-soon",
+  //   name: "ComingSoon",
+  //   component: () =>
+  //     import(/* webpackChunkName: "comingSoon" */ "../views/ComingSoon.vue"),
+  //   meta: {
+  //     requiresAuth: true,
+  //   },
+  // },
 
   {
     path: "*",
@@ -203,6 +212,8 @@ const router = new VueRouter({
     }
   },
 });
+
+console.log(appConfig.underConstruction);
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
