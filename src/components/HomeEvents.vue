@@ -55,7 +55,9 @@
                 {{ event.name }}
               </h2>
 
-              <v-card-subtitle>{{ event.summary }}</v-card-subtitle>
+              <v-card-subtitle v-if="!event.show">{{
+                event.summary
+              }}</v-card-subtitle>
 
               <div
                 class="hover readMore text-right"

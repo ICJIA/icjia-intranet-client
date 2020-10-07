@@ -16,7 +16,9 @@
           <h2 class="mt-2 hover" @click.prevent="post.show = !post.show">
             {{ post.title }}
           </h2>
-          <v-card-subtitle>{{ post.summary }}</v-card-subtitle>
+          <v-card-subtitle v-if="!post.show">{{
+            post.summary
+          }}</v-card-subtitle>
         </div>
         <div
           class="hover readMore text-right"
