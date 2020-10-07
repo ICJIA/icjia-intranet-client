@@ -23,22 +23,65 @@
           v-if="result.data.home.quick_menu"
         ></HomeQuickMenus>
 
-        <v-container fluid>
+        <v-container fluid style="margin-top: -20px">
           <v-row>
-            <v-col cols="12" md="6">
-              <!-- <h2>Posts</h2>
-              {{ result.data.posts }}</v-col> -->
-              <HomePosts
-                :posts="result.data.posts"
-                v-if="result.data.posts"
-              ></HomePosts>
+            <v-col sm="12" md="6" cols="12" class="child">
+              <v-sheet class="px-2 py-2" elevation="3" style="">
+                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
+                  <div style="background: #225b89" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2 style="color: #fff">News & Updates</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1">
+                        <v-btn outlined small color="white" to="/news"
+                          >news archive&nbsp;<v-icon right small
+                            >view_headline</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+
+                <HomePosts
+                  :posts="result.data.posts"
+                  v-if="result.data.posts"
+                ></HomePosts>
+              </v-sheet>
             </v-col>
-            <v-col cols="12" md="6">
+            <v-col sm="12" md="6" cols="12" class="child">
+              <v-sheet class="px-2 py-2" elevation="3" style="">
+                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
+                  <div style="background: #225b89" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2 style="color: #fff">Upcoming Events</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1">
+                        <v-btn outlined small color="white" to="/calendar"
+                          >Calendar&nbsp;<v-icon right small
+                            >view_headline</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+
+                <HomeEvents
+                  :events="mergedEvents"
+                  v-if="result.data.events && result.data.eventRange"
+                ></HomeEvents>
+              </v-sheet>
+            </v-col>
+
+            <!-- <v-col cols="12" md="6">
               <HomeEvents
                 :events="mergedEvents"
                 v-if="result.data.events && result.data.eventRange"
               ></HomeEvents
-            ></v-col>
+            ></v-col> -->
           </v-row>
         </v-container>
 

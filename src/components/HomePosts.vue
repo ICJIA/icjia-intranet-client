@@ -1,6 +1,46 @@
 <template>
   <div>
-    {{ newPosts }}
+    <div v-if="!newPosts.length">
+      <v-card
+        color="grey lighten-5"
+        class="mb-5 text-center py-5"
+        elevation="1"
+      >
+        <h2>No upcoming posts</h2></v-card
+      >
+    </div>
+
+    <div v-for="(post, index) in newPosts" :key="index + post.id" v-else>
+      <v-card color="grey lighten-4" class="mb-5 py-3 px-3" elevation="1">
+        <div class="px-5 py-6">
+          <h2 class="mt-2 hover" @click.prevent="post.show = !post.show">
+            {{ post.title }}
+          </h2>
+          <v-card-subtitle>{{ post.summary }}</v-card-subtitle>
+        </div>
+        <div
+          class="hover readMore text-right"
+          @click.prevent="post.show = !post.show"
+        >
+          <span v-if="!post.show"
+            ><v-btn outlined x-small>
+              More&nbsp;<v-icon x-small>keyboard_arrow_down</v-icon></v-btn
+            ></span
+          >
+          <span v-else
+            ><v-btn outlined x-small>
+              Less&nbsp;<v-icon x-small>keyboard_arrow_up</v-icon></v-btn
+            ></span
+          >
+        </div>
+
+        <v-slide-y-transition>
+          <div class="py-3 mt-2" v-show="post.show">
+            <div class="mt-2 pl-5">{{ post.body }}</div>
+          </div>
+        </v-slide-y-transition>
+      </v-card>
+    </div>
   </div>
 </template>
 <script>

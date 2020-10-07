@@ -74,6 +74,7 @@ const GET_HOME = gql`
       title
       slug
       summary
+      body
       created_at
       updated_at
     }

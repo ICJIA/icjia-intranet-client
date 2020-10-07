@@ -10,7 +10,7 @@
       >
     </div>
     <div v-for="(event, index) in newEvents" :key="index + event.id" v-else>
-      <v-card color="grey lighten-5" class="mb-5" elevation="0">
+      <v-card color="grey lighten-4" class="mb-5" elevation="0">
         <div class="d-flex flex-no-wrap" style>
           <div class="px-5" style="max-height: 150px">
             <v-container fill-height>
@@ -20,7 +20,11 @@
                 fill-height
                 style="width: 80px"
               >
-                <v-col fill-height class="text-center">
+                <v-col
+                  fill-height
+                  class="text-center hover"
+                  @click.prevent="event.show = !event.show"
+                >
                   <span style="font-size: 14px; color: #666; font-weight: 900">
                     {{ event.start | shortMonth }}
                   </span>
@@ -47,7 +51,9 @@
                 {{ getRange(event.start, event.end, event.timed) }}
                 <!-- <span style="color: #333;">{{ event.type | upperCase }}</span> -->
               </div>
-              <h2 class="mt-2">{{ event.name }}</h2>
+              <h2 class="mt-2 hover" @click.prevent="event.show = !event.show">
+                {{ event.name }}
+              </h2>
 
               <v-card-subtitle>{{ event.summary }}</v-card-subtitle>
 
