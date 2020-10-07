@@ -76,12 +76,31 @@
               </v-sheet>
             </v-col>
 
-            <!-- <v-col cols="12" md="6">
-              <HomeEvents
-                :events="mergedEvents"
-                v-if="result.data.events && result.data.eventRange"
-              ></HomeEvents
-            ></v-col> -->
+            <v-col sm="12" cols="12" class="child">
+              <v-sheet class="px-2 py-2" elevation="3" style="">
+                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
+                  <div style="background: #225b89" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2 style="color: #fff">Latest Research</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1">
+                        <v-btn
+                          outlined
+                          small
+                          color="white"
+                          href="https://icjia.illinois.gov/researchhub"
+                          >Research Hub&nbsp;<v-icon right small
+                            >open_in_new</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+                <Research></Research>
+              </v-sheet>
+            </v-col>
           </v-row>
         </v-container>
 
@@ -90,7 +109,6 @@
       <div v-if="result.error" class="text-center error apollo">
         {{ result.error }}
       </div>
-      <Research></Research>
     </template>
   </ApolloQuery>
 </template>
