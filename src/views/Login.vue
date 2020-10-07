@@ -30,6 +30,10 @@
           <div class="mt-4 text-center">
             <router-link to="/forgot">I forgot my password</router-link>
           </div>
+          <div class="text-center mt-4" style="font-size: 12px;">
+            If this is your first time using the new ICJIA intranet, please
+            <router-link to="/register">register here</router-link>.
+          </div>
           <!-- <div class="mt-6 mb-3 text-center">
             <router-link to="/register" class="mt-3">Register</router-link>
           </div> -->

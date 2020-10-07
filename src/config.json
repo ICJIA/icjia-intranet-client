@@ -18,5 +18,5 @@
     "postLimit": 5
   },
   "timezone": "America/Chicago",
-  "underConstruction": true
+  "underConstruction": false
 }

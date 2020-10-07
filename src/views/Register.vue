@@ -65,8 +65,9 @@
               color="primary"
             ></v-progress-circular>
           </div>
-          <div class="mt-4 text-center">
-            <router-link to="/forgot">I forgot my password</router-link>
+          <div class="mt-5 text-center" style="font-size: 12px;">
+            I'm already registered, but I
+            <router-link to="/forgot">forgot my password</router-link>
           </div>
         </form>
 
