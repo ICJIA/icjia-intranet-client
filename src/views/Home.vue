@@ -23,14 +23,24 @@
           v-if="result.data.home.quick_menu"
         ></HomeQuickMenus>
 
-        <h2>Posts</h2>
-        {{ result.data.posts }}
-        <br />
-
-        <HomeEvents
-          :events="mergedEvents"
-          v-if="result.data.events && result.data.eventRange"
-        ></HomeEvents>
+        <v-container fluid>
+          <v-row>
+            <v-col cols="12" md="6">
+              <!-- <h2>Posts</h2>
+              {{ result.data.posts }}</v-col> -->
+              <HomePosts
+                :posts="result.data.posts"
+                v-if="result.data.posts"
+              ></HomePosts>
+            </v-col>
+            <v-col cols="12" md="6">
+              <HomeEvents
+                :events="mergedEvents"
+                v-if="result.data.events && result.data.eventRange"
+              ></HomeEvents
+            ></v-col>
+          </v-row>
+        </v-container>
 
         <!-- END: home components -->
       </div>

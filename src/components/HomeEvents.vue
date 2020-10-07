@@ -52,11 +52,21 @@
               <v-card-subtitle>{{ event.summary }}</v-card-subtitle>
 
               <div
-                class="hover readMore"
+                class="hover readMore text-right"
                 @click.prevent="event.show = !event.show"
               >
-                <span v-if="!event.show">Details...</span>
-                <span v-else>Hide</span>
+                <span v-if="!event.show"
+                  ><v-btn outlined x-small>
+                    Event Details&nbsp;<v-icon x-small
+                      >keyboard_arrow_down</v-icon
+                    ></v-btn
+                  ></span
+                >
+                <span v-else
+                  ><v-btn outlined x-small>
+                    Hide&nbsp;<v-icon x-small>keyboard_arrow_up</v-icon></v-btn
+                  ></span
+                >
               </div>
               <!-- <v-btn small @click.native="event.show = !event.show"
                 >Full description</v-btn

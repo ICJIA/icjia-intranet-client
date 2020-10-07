@@ -63,7 +63,11 @@
                   :key="index + item"
                   class="px-2 py-2 menuLink"
                 >
-                  <router-link to="/" style="font-size: 12px" class="menuLink">
+                  <router-link
+                    :to="item.url"
+                    style="font-size: 12px"
+                    class="menuLink"
+                  >
                     {{ item.text }}
                   </router-link>
                 </div>

@@ -14,7 +14,7 @@
     "register": "/auth/local/register"
   },
   "home": {
-    "eventLimit": 5,
+    "eventLimit": 3,
     "postLimit": 5
   },
   "timezone": "America/Chicago",
