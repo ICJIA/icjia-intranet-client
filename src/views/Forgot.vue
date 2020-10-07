@@ -1,7 +1,7 @@
 <template>
-  <div class="fill-height" style="background-color: #eee;">
+  <div class="fill-height" style="background-color: #eee">
     <v-row class="fill-height" align="center" justify="center">
-      <v-card class="pt-1 pb-5" style="width: 350px;">
+      <v-card class="pt-1 pb-5" style="width: 350px">
         <div class="text-center mt-5">
           <h2>FORGOT PASSWORD</h2>
         </div>
@@ -34,7 +34,7 @@
             </div>-->
           <div
             class="text-center mt-5"
-            style="color: red; font-size: 12px; font-weight: bold;"
+            style="color: red; font-size: 12px; font-weight: bold"
           >
             {{ $store.getters["auth/authStatus"] }}
           </div>

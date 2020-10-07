@@ -5,6 +5,9 @@
       color="primary"
       :size="size"
     ></v-progress-circular>
+    <div class="mt-12" style="font-size: 12px; font-weight: bold">
+      LOADING ...
+    </div>
   </div>
 </template>
 

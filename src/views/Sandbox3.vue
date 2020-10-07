@@ -4,7 +4,7 @@
       class="grey lighten-5"
       fluid
       v-if="!$apollo.loading"
-      style="background: #ccc !important;"
+      style="background: #ccc !important"
     >
       <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
       <v-row fill-height>
@@ -14,27 +14,27 @@
           cols="12"
           :sm="getWidth('sm')"
           :md="getWidth('md')"
-          style="min-height: 150px;"
+          style="min-height: 150px"
         >
           <v-card
             class="mx-auto px-2 py-5 mb-8"
-            style="background: #fff;"
+            style="background: #fff"
             elevation="0"
             height="250"
           >
             <v-card-text>
               <router-link
                 :to="menu.baseURL"
-                style="font-size: 12px;"
+                style="font-size: 12px"
                 v-if="menu.baseURL"
               >
                 {{ menu.baseName | upperCase }}
               </router-link>
-              <h2 style="color: #333;" class="mt-1 mb-4">
+              <h2 style="color: #333" class="mt-1 mb-4">
                 {{ menu.title }}
               </h2>
 
-              <div style="color: #333;">
+              <div style="color: #333">
                 {{ menu.summary }}
               </div>
             </v-card-text>
@@ -68,14 +68,14 @@
                   :key="index + item"
                   :to="`${item.url}`"
                 >
-                  <v-list-item-title style="font-size: 12px;">{{
+                  <v-list-item-title style="font-size: 12px">{{
                     item.text
                   }}</v-list-item-title>
                 </v-list-item>
                 <v-divider> </v-divider>
                 <v-list-item :to="menu.baseURL">
                   <v-list-item-title
-                    style="font-size: 12px; font-weight: bold; color: #aaa;"
+                    style="font-size: 12px; font-weight: bold; color: #aaa"
                     class="py-2 text-center"
                     >All {{ menu.baseName }}</v-list-item-title
                   >

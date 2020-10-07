@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container class="fill-height mt-8" style="background-color: #eee;">
+    <v-container class="fill-height mt-8" style="background-color: #eee">
       <v-row class="fill-height" align="center" justify="center">
         <v-card class="px-8 py-8">
           <center>
@@ -14,9 +14,7 @@
             The new ICJIA intranet is coming soon.
           </h1>
 
-          <h2 class="text-center mt-3" style="color: #555;">
-            In the meantime:
-          </h2>
+          <h2 class="text-center mt-3" style="color: #555">In the meantime:</h2>
           <div class="mt-4">
             <ul>
               <li>

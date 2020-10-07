@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app style="background: #fff;" elevate-on-scroll>
+    <v-app-bar app style="background: #fff" elevate-on-scroll>
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
       <div class="d-flex align-center">
         <v-img
@@ -24,7 +24,7 @@
             $vuetify.goTo(0);
           })
         "
-        style="font-size: 24px; font-weight: bold; margin-left: 10px;"
+        style="font-size: 24px; font-weight: bold; margin-left: 10px"
         class="hover"
       >
         INTRANET

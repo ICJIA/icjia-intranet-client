@@ -1,5 +1,5 @@
 <template>
-  <v-app id="page-top" style="background: #eee;">
+  <v-app id="page-top" style="background: #eee">
     <AppNav v-if="$store.state.auth.isAuthenticated"></AppNav>
 
     <v-fab-transition>

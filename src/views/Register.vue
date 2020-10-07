@@ -1,7 +1,7 @@
 <template>
-  <div class="fill-height" style="background-color: #eee;">
+  <div class="fill-height" style="background-color: #eee">
     <v-row class="fill-height" align="center" justify="center">
-      <v-card class="pt-1 pb-5" style="width: 350px;">
+      <v-card class="pt-1 pb-5" style="width: 350px">
         <div class="text-center mt-5">
           <h2>REGISTER</h2>
         </div>
@@ -52,7 +52,7 @@
           ></v-text-field>
           <div
             class="text-center mt-2 mb-2"
-            style="color: red; font-size: 12px; font-weight: bold;"
+            style="color: red; font-size: 12px; font-weight: bold"
           >
             {{ $store.getters["auth/authStatus"] }}
           </div>
@@ -65,7 +65,7 @@
               color="primary"
             ></v-progress-circular>
           </div>
-          <div class="mt-5 text-center" style="font-size: 12px;">
+          <div class="mt-5 text-center" style="font-size: 12px">
             I'm already registered, but I
             <router-link to="/forgot">forgot my password</router-link>
           </div>

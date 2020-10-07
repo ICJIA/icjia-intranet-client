@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-sheet elevation="0" border="1px solid #aaa" style="background: #aaa;">
+    <v-sheet elevation="0" border="1px solid #aaa" style="background: #aaa">
       <v-carousel
         height="400"
         cycle
@@ -15,11 +15,7 @@
               justify="center"
               no-gutters
             >
-              <v-col
-                md="4"
-                style="height: 100%; background: #0d4474;"
-                cols="12"
-              >
+              <v-col md="4" style="height: 100%; background: #0d4474" cols="12">
                 <v-row
                   class="fill-height"
                   align="center"
@@ -36,7 +32,7 @@
                   >
                     <div class="text-center">
                       <div
-                        style="font-size: 12px; color: #ccc;"
+                        style="font-size: 12px; color: #ccc"
                         class="text-center mb-3"
                         v-if="slide.postingDate"
                       >
@@ -44,7 +40,7 @@
                       </div>
                       <h2 v-if="slide.title">{{ slide.title }}</h2>
                       <h3
-                        style="color: #aaa; font-size: 14px;"
+                        style="color: #aaa; font-size: 14px"
                         class="mt-5"
                         v-if="slide.summary"
                       >

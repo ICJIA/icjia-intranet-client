@@ -5,9 +5,11 @@
 a {
     font-weight: 900;
     text-decoration: none;
+    background: #fff;
 }
 
-a:hover {
+/* a:hover {
 
     color: #777 !important;
-}
+} */
+

@@ -1,5 +1,5 @@
 <template>
-  <v-sheet elevation="0" border="1px solid #aaa" style="background: #aaa;">
+  <v-sheet elevation="0" border="1px solid #aaa" style="background: #aaa">
     <v-carousel
       height="400"
       cycle
@@ -9,7 +9,7 @@
       <v-carousel-item v-for="(slide, i) in slides" :key="i">
         <v-card color="grey lighten-4" height="100%">
           <v-row class="fill-height" align="center" justify="center" no-gutters>
-            <v-col md="4" style="height: 100%; background: #0d4474;" cols="12">
+            <v-col md="4" style="height: 100%; background: #0d4474" cols="12">
               <v-row
                 class="fill-height"
                 align="center"
@@ -26,13 +26,13 @@
                 >
                   <div class="text-center">
                     <div
-                      style="font-size: 12px; color: #ccc;"
+                      style="font-size: 12px; color: #ccc"
                       class="text-center mb-3"
                     >
                       August 01, 2020
                     </div>
                     <h2>Featured content here</h2>
-                    <h3 style="color: #aaa; font-size: 14px;" class="mt-5">
+                    <h3 style="color: #aaa; font-size: 14px" class="mt-5">
                       Lorem markdownum placuit manet deceptus, ira duris iuncta,
                       rogat reminiscitur vivum traxit Venus pro omnia.
                     </h3>

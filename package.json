@@ -14,6 +14,7 @@
     "start:lambda": "netlify-lambda serve ./src/lambda"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "alpinejs": "^2.6.0",
     "aos": "^3.0.0-beta.6",
     "axios": "^0.19.2",

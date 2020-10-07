@@ -1,5 +1,5 @@
 <template>
-  <div class="fill-height" style="background-color: #eee;">
+  <div class="fill-height" style="background-color: #eee">
     <v-row class="fill-height" align="center" justify="center">
       <v-card class="pt-1 pb-5 pl-3 pr-3" width="350px">
         <div class="text-center mt-5">
@@ -30,7 +30,7 @@
           <div class="mt-4 text-center">
             <router-link to="/forgot">I forgot my password</router-link>
           </div>
-          <div class="text-center mt-4" style="font-size: 12px;">
+          <div class="text-center mt-4" style="font-size: 12px">
             If this is your first time using the new ICJIA intranet, please
             <router-link to="/register">register here</router-link>.
           </div>
@@ -39,7 +39,7 @@
           </div> -->
           <div
             class="text-center mt-5"
-            style="color: red; font-size: 12px; font-weight: bold;"
+            style="color: red; font-size: 12px; font-weight: bold"
           >
             {{ $store.getters["auth/authStatus"] }}
           </div>
@@ -62,8 +62,8 @@ export default {
   },
   data() {
     return {
-      identifier: "",
-      password: "",
+      identifier: "test12345",
+      password: "test12345",
       e3: true,
       e4: true,
     };

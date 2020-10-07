@@ -16,6 +16,8 @@ import "@/filters";
 import Nprogress from "nprogress";
 import "nprogress/nprogress.css";
 
+import "@fortawesome/fontawesome-free/css/all.css";
+
 Vue.config.productionTip = false;
 
 // Set up app wide read-only configs and install as plugin

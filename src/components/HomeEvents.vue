@@ -12,21 +12,21 @@
     <div v-for="(event, index) in newEvents" :key="index + event.id" v-else>
       <v-card color="grey lighten-5" class="mb-5" elevation="0">
         <div class="d-flex flex-no-wrap" style>
-          <div class="px-5" style="max-height: 150px;">
+          <div class="px-5" style="max-height: 150px">
             <v-container fill-height>
               <v-row
                 align="center"
                 justify="center"
                 fill-height
-                style="width: 80px;"
+                style="width: 80px"
               >
                 <v-col fill-height class="text-center">
-                  <span style="font-size: 14px; color: #666; font-weight: 900;">
+                  <span style="font-size: 14px; color: #666; font-weight: 900">
                     {{ event.start | shortMonth }}
                   </span>
                   <br />
                   <span
-                    style="font-size: 26px; font-weight: 900; color: #0d4474;"
+                    style="font-size: 26px; font-weight: 900; color: #0d4474"
                     >{{ event.start | day }}</span
                   >
                 </v-col>
@@ -42,8 +42,8 @@
             "
           >
             <div class="px-5 py-6">
-              <div style="font-size: 12px; font-weight: 900; color: #777;">
-                <span style="color: #333;">{{ event.type | upperCase }}</span>
+              <div style="font-size: 12px; font-weight: 900; color: #777">
+                <span style="color: #333">{{ event.type | upperCase }}</span>
                 {{ getRange(event.start, event.end, event.timed) }}
                 <!-- <span style="color: #333;">{{ event.type | upperCase }}</span> -->
               </div>

@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div v-if="!$apollo.loading">
-      result here
-    </div>
+    <div v-if="!$apollo.loading">result here</div>
     <div v-else>
       <Loader></Loader>
     </div>
