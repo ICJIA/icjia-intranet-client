@@ -12,12 +12,21 @@
       </template>
       <template v-slot:content>
         <v-container fluid>
-          <div
-            v-if="posts && posts.length"
-            v-html="render(posts[0]['body'])"
-            @click="handleClicks"
-            class="dynamic-content"
-          ></div>
+          <v-row>
+            <v-col cols="12" md="9">
+              <div
+                v-if="posts && posts.length"
+                v-html="render(posts[0]['body'])"
+                @click="handleClicks"
+                class="dynamic-content"
+              ></div>
+            </v-col>
+            <v-col cols="12" md="3">
+              <div v-if="posts && posts.length && isMounted">
+                <Toc></Toc>
+              </div>
+            </v-col>
+          </v-row>
         </v-container>
       </template>
     </base-content>
@@ -37,7 +46,11 @@ export default {
     return {
       posts: null,
       error: null,
+      isMounted: false,
     };
+  },
+  mounted() {
+    this.isMounted = true;
   },
 
   methods: {

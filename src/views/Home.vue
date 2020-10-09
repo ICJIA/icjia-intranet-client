@@ -61,7 +61,7 @@
                       <v-col class="text-right mt-1">
                         <v-btn outlined small color="white" to="/calendar"
                           >Calendar&nbsp;<v-icon right small
-                            >view_headline</v-icon
+                            >calendar_today</v-icon
                           ></v-btn
                         >
                       </v-col>
@@ -89,6 +89,7 @@
                           outlined
                           small
                           color="white"
+                          target="_blank"
                           href="https://icjia.illinois.gov/researchhub"
                           >Research Hub&nbsp;<v-icon right small
                             >open_in_new</v-icon

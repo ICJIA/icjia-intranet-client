@@ -20,18 +20,12 @@
             post.summary
           }}</v-card-subtitle>
         </div>
-        <div
-          class="hover readMore text-right"
-          @click.prevent="post.show = !post.show"
-        >
-          <span v-if="!post.show"
-            ><v-btn outlined x-small>
-              More&nbsp;<v-icon x-small>keyboard_arrow_down</v-icon></v-btn
-            ></span
-          >
-          <span v-else
-            ><v-btn outlined x-small>
-              Less&nbsp;<v-icon x-small>keyboard_arrow_up</v-icon></v-btn
+        <div class="hover readMore text-right">
+          <span
+            ><v-btn outlined x-small :to="`/news/${post.slug}`">
+              Read More&nbsp;<v-icon x-small
+                >keyboard_arrow_right</v-icon
+              ></v-btn
             ></span
           >
         </div>
@@ -70,9 +64,9 @@ export default {
     },
   },
   methods: {
-    routeTo(slug) {
-      this.$router.push(`/news/${slug}`);
-    },
+    // routeTo(slug) {
+    //   // this.$router.push(`/news/${slug}`);
+    // },
     isLoading(loading) {
       // eslint-disable-next-line no-undef
       loading ? NProgress.start() : NProgress.done();
