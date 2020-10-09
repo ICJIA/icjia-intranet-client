@@ -98,6 +98,12 @@ export default {
     getKey(index) {
       return nanoid(8) + index;
     },
+    routeTo(article) {
+      window.open(
+        `https://icjia.illinois.gov/researchhub/articles/${article.slug}`
+      );
+    },
+
     async fetchContent() {
       this.loading = true;
       this.query = await getHubArticles(this.start, this.limit);
