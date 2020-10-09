@@ -1,14 +1,14 @@
 <template>
   <div class="ml-5">
     <div class="mb-3" style="font-weight: bold">NAVIGATION</div>
-    <ul class="hover">
+    <ul class="hover toc">
       <span v-for="(item, index) in toc" :key="index">
-        <li v-if="!item.parent">
+        <li v-if="!item.parent" @click="scrollTo(`${item.target}`)">
           <span :id="`scrollTo-${item.id}`" class="tocItem tocParent">{{
             item.text
           }}</span>
         </li>
-        <li v-else>
+        <li v-else @click="scrollTo(`${item.target}`)">
           <ul class="toc">
             <li>
               <span :id="`scrollTo-${item.id}`" class="tocItem tocParent">{{
@@ -35,15 +35,16 @@ export default {
   methods: {
     scrollTo(id) {
       //console.log(id);
-      this.$vuetify.goTo(`#${id}`, { offset: 100 });
+      this.$vuetify.goTo(`#${id}`, { offset: 10 });
     },
     setToc() {
       const sections = Array.from(document.querySelectorAll("h2, h3"));
+
       let parent;
       sections.forEach((section) => {
         let obj = {};
         obj.text = section.innerText;
-        obj.id = section.id;
+        obj.target = section.id;
         obj.nodeName = section.nodeName;
         if (section.nodeName === "H2") {
           parent = section.id;

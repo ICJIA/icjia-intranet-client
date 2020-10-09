@@ -11,7 +11,12 @@
     </div>
 
     <div v-for="(post, index) in newPosts" :key="index + post.id" v-else>
-      <v-card color="grey lighten-4" class="mb-5 py-3 px-3" elevation="1">
+      <v-card
+        color="grey lighten-4"
+        class="mb-5 py-3 px-3 postCard"
+        elevation="1"
+        @click.prevent="routeTo(post.slug)"
+      >
         <div class="px-5 py-6">
           <h2 class="mt-2 hover" @click.prevent="post.show = !post.show">
             {{ post.title }}
@@ -64,9 +69,9 @@ export default {
     },
   },
   methods: {
-    // routeTo(slug) {
-    //   // this.$router.push(`/news/${slug}`);
-    // },
+    routeTo(slug) {
+      this.$router.push(`/news/${slug}`);
+    },
     isLoading(loading) {
       // eslint-disable-next-line no-undef
       loading ? NProgress.start() : NProgress.done();

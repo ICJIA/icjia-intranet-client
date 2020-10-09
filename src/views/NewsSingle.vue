@@ -22,7 +22,10 @@
               ></div>
             </v-col>
             <v-col cols="12" md="3">
-              <div v-if="posts && posts.length && isMounted" class="mainToc">
+              <div
+                v-if="posts && posts.length && isMounted && tocAble"
+                class="mainToc"
+              >
                 <Toc></Toc>
               </div>
             </v-col>
@@ -47,10 +50,13 @@ export default {
       posts: null,
       error: null,
       isMounted: false,
+      tocAble: null,
     };
   },
   mounted() {
     this.isMounted = true;
+    const sections = Array.from(document.querySelectorAll("h2, h3"));
+    this.tocAble = sections.length ? true : false;
   },
 
   methods: {
