@@ -2,7 +2,7 @@
   <div class="fill-height" style="background-color: #eee">
     <v-row class="fill-height" align="center" justify="center">
       <v-card class="pt-1 pb-5 pl-3 pr-3" width="350px">
-        <div class="text-center mt-5">
+        <div class="text-center">
           <h2>LOGIN</h2>
         </div>
         <v-form>
