@@ -22,7 +22,7 @@
               ></div>
             </v-col>
             <v-col cols="12" md="3">
-              <div v-if="posts && posts.length && isMounted">
+              <div v-if="posts && posts.length && isMounted" class="mainToc">
                 <Toc></Toc>
               </div>
             </v-col>
@@ -81,3 +81,12 @@ export default {
   },
 };
 </script>
+
+<style>
+.mainToc {
+  position: -webkit-sticky !important; /* Safari */
+  position: sticky !important;
+  top: 115px !important;
+  font-size: 13px;
+}
+</style>
