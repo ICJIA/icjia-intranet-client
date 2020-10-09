@@ -11,9 +11,16 @@
         </v-container>
       </template>
       <template v-slot:content>
-        <v-container fluid>
+        <v-container fluid v-if="posts && posts.length">
           <v-row>
-            <v-col cols="12" md="9">
+            <v-col
+              cols="12"
+              :md="dynamicFlex(posts[0]['showToc'])"
+              order-md="1"
+              order="2"
+              order-sm="2"
+              class="markdown-body"
+            >
               <div
                 v-if="posts && posts.length"
                 v-html="render(posts[0]['body'])"
@@ -21,11 +28,16 @@
                 class="dynamic-content"
               ></div>
             </v-col>
-            <v-col cols="12" md="3">
-              <div
-                v-if="posts && posts.length && isMounted && tocAble"
-                class="mainToc"
-              >
+            <v-col
+              cols="12"
+              sm="12"
+              md="3"
+              order-md="2"
+              order="1"
+              order-sm="1"
+              v-if="posts && posts.length && posts[0]['showToc']"
+            >
+              <div v-if="posts && posts.length && isMounted" class="mainToc">
                 <Toc></Toc>
               </div>
             </v-col>
@@ -62,6 +74,13 @@ export default {
   methods: {
     render(content) {
       return renderToHtml(content);
+    },
+    dynamicFlex(showToc) {
+      if (this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm) {
+        return "12";
+      } else {
+        return showToc ? "9" : "12";
+      }
     },
   },
   apollo: {
