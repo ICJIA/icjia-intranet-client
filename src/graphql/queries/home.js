@@ -77,6 +77,9 @@ const GET_HOME = gql`
       body
       created_at
       updated_at
+      splash {
+        formats
+      }
     }
   }
 `;
