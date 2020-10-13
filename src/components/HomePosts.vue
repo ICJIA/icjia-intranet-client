@@ -11,37 +11,11 @@
     </div>
 
     <div v-for="(post, index) in newPosts" :key="index + post.id" v-else>
-      <!-- <v-card
-        color="grey lighten-4"
-        class="mb-5 py-3 px-3 postCard"
-        elevation="1"
-        @click.prevent="routeTo(post.slug)"
+      <v-card
+        class="mx-auto my-5 py-5"
+        outlined
+        @click="$router.push(`/news/${post.slug}`)"
       >
-        <div class="px-5 py-6">
-          <h2 class="mt-2 hover" @click.prevent="post.show = !post.show">
-            {{ post.title }}
-          </h2>
-          <v-card-subtitle v-if="!post.show">{{
-            post.summary
-          }}</v-card-subtitle>
-        </div>
-        <div class="hover readMore text-right">
-          <span
-            ><v-btn outlined x-small :to="`/news/${post.slug}`">
-              Read More&nbsp;<v-icon x-small
-                >keyboard_arrow_right</v-icon
-              ></v-btn
-            ></span
-          >
-        </div>
-
-        <v-slide-y-transition>
-          <div class="py-3 mt-2" v-show="post.show">
-            <div class="mt-2 pl-5">{{ post.body }}</div>
-          </div>
-        </v-slide-y-transition>
-      </v-card> -->
-      <v-card class="mx-auto my-5 py-5" outlined>
         <v-list-item three-line>
           <v-list-item-avatar tile size="100" color="grey" v-if="post.splash">
             <v-img
@@ -51,8 +25,8 @@
             ></v-img>
           </v-list-item-avatar>
           <v-list-item-content>
-            <!-- <div class="overline mb-4">OVERLINE</div> -->
-            <h2 class="mt-2 hover">
+            <div class="overline mb-4">{{ post.created_at | format }}</div>
+            <h2 class="mt-0 hover">
               {{ post.title }}
             </h2>
             <v-card-subtitle v-if="!post.show">{{

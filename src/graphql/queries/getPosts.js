@@ -9,6 +9,9 @@ const GET_ALL_POSTS_QUERY = gql`
       summary
       showToc
       body
+      splash {
+        formats
+      }
     }
   }
 `;
@@ -22,6 +25,9 @@ const GET_SINGLE_POST_QUERY = gql`
       summary
       showToc
       body
+      splash {
+        formats
+      }
     }
   }
 `;
