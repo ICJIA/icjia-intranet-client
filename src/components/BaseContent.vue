@@ -13,6 +13,7 @@
     </div>
     <div class="px-4" v-if="!loading">
       <slot name="title"></slot>
+      <slot name="splash"></slot>
       <slot name="content"></slot>
     </div>
     <div v-if="loading">

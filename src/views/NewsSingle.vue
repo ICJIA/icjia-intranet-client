@@ -10,6 +10,11 @@
           </v-row>
         </v-container>
       </template>
+      <template v-slot:splash>
+        <div v-if="posts && posts.length && posts[0]['splash']">
+          <SplashNews :splash="posts[0]['splash']['formats']"></SplashNews>
+        </div>
+      </template>
       <template v-slot:content>
         <v-container fluid v-if="posts && posts.length">
           <v-row>
