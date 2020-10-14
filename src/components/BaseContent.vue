@@ -6,6 +6,9 @@
           <v-col class="text-center">
             <div class="apollo error">
               {{ error }}
+              <div class="text-center my-10">
+                <router-link to="/logout">LOGOUT</router-link>
+              </div>
             </div>
           </v-col>
         </v-row>

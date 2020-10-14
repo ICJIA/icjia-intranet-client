@@ -22,6 +22,7 @@ const mutations = {
     state.jwt = null;
     state.user = null;
     state.isAuthenticated = null;
+    state.userMeta = null;
     console.log("AUTH_LOGOUT");
   },
   AUTH_LOGIN(state, payload) {

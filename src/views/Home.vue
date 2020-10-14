@@ -110,6 +110,9 @@
       <div v-if="result.error" class="text-center error apollo">
         {{ result.error }}
       </div>
+      <div class="text-center my-10">
+        <router-link to="/login">LOGIN AGAIN</router-link>
+      </div>
     </template>
   </ApolloQuery>
 </template>
