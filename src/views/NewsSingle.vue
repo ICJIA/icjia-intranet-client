@@ -1,9 +1,11 @@
 <template>
   <div>
-    <ReadProgress></ReadProgress>
     <v-container fluid>
       <v-card color="gray lighten-4">
         <base-content :loading="$apollo.loading" :error="error">
+          <template v-slot:readingProgress>
+            <ReadProgress></ReadProgress>
+          </template>
           <template v-slot:title>
             <v-container fluid>
               <v-row>
