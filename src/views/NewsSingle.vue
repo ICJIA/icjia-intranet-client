@@ -9,7 +9,7 @@
                 <v-col cols="12">
                   <h1
                     v-if="posts && posts.length"
-                    style="font-size: 36px; line-height: 34px"
+                    style="font-size: 36px; line-height: 40px"
                   >
                     {{ posts[0]["title"] }}
                   </h1>
