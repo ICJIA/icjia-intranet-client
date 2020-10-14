@@ -35,7 +35,7 @@ const GET_HOME = gql`
 
     eventRange: events(
       limit: $eventLimit
-      where: { isPublished: true, start_lte: $now, end_gte: $now }
+      where: { start_lte: $now, end_gte: $now }
       sort: "start:asc"
     ) {
       id
@@ -45,15 +45,11 @@ const GET_HOME = gql`
       timed
       summary
       details
-      isPublished
+
       type
     }
 
-    events(
-      limit: $eventLimit
-      where: { isPublished: true, start_gte: $now }
-      sort: "start:asc"
-    ) {
+    events(limit: $eventLimit, where: { start_gte: $now }, sort: "start:asc") {
       id
       name
       start
@@ -61,17 +57,14 @@ const GET_HOME = gql`
       timed
       summary
       details
-      isPublished
+
       type
     }
 
-    posts(
-      where: { isPublished: true }
-      sort: "created_at:desc"
-      limit: $postLimit
-    ) {
+    posts(sort: "created_at:desc", limit: $postLimit) {
       id
       title
+      kicker
       slug
       summary
       body

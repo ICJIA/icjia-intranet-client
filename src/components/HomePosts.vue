@@ -24,8 +24,16 @@
               alt="Splash image"
             ></v-img>
           </v-list-item-avatar>
+
           <v-list-item-content>
             <div class="overline mb-4">{{ post.created_at | format }}</div>
+            <div
+              style="font-size: 14px; color: #888"
+              class="mb-2"
+              v-if="post.kicker"
+            >
+              {{ post.kicker }}
+            </div>
             <h2 class="mt-0 hover">
               {{ post.title }}
             </h2>
