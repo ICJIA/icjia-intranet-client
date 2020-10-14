@@ -19,5 +19,6 @@
     "postLimit": 4
   },
   "timezone": "America/Chicago",
-  "underConstruction": false
+  "underConstruction": false,
+  "hoursToShowUpdated": 1
 }

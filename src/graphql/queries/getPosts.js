@@ -8,6 +8,18 @@ const GET_ALL_POSTS_QUERY = gql`
       title
       summary
       showToc
+      created_at
+      updated_at
+      updated_by {
+        username
+        firstname
+        lastname
+      }
+      created_by {
+        username
+        firstname
+        lastname
+      }
       body
       splash {
         formats
@@ -24,6 +36,18 @@ const GET_SINGLE_POST_QUERY = gql`
       title
       summary
       showToc
+      created_at
+      updated_at
+      updated_by {
+        username
+        firstname
+        lastname
+      }
+      created_by {
+        username
+        firstname
+        lastname
+      }
       body
       splash {
         formats
