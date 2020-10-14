@@ -20,11 +20,11 @@ export default {
   props: {
     color: {
       type: String,
-      default: "#506888",
+      default: "#0d4474",
     },
     height: {
       type: String,
-      default: "4px",
+      default: "3px",
     },
     opacity: {
       type: [String, Number],
@@ -79,7 +79,7 @@ export default {
   position: fixed;
   display: block;
   z-index: 9999;
-  top: 63px;
+  top: 0px;
   left: 0;
 }
 .read-progress-container .read-progress-bar {
