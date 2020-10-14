@@ -24,6 +24,7 @@
     "get-graphql-schema": "^2.1.2",
     "graphql": "^15.3.0",
     "graphql-request": "^3.0.0",
+    "less-loader": "^7.0.2",
     "lodash": "^4.17.20",
     "markdown-it": "^11.0.1",
     "markdown-it-attrs": "^3.0.3",

@@ -12,6 +12,7 @@
       </v-container>
     </div>
     <div class="px-4" v-if="!loading">
+      <slot name="readingProgress"></slot>
       <slot name="title"></slot>
       <slot name="postedMeta"></slot>
       <slot name="splash"></slot>

@@ -5,6 +5,7 @@ const GET_ALL_POSTS_QUERY = gql`
     posts {
       id
       slug
+      kicker
       title
       summary
       showToc
@@ -35,6 +36,7 @@ const GET_SINGLE_POST_QUERY = gql`
       slug
       title
       summary
+      kicker
       showToc
       created_at
       updated_at

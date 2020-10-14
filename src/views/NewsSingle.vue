@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ReadProgress></ReadProgress>
     <v-container fluid>
       <v-card color="gray lighten-4">
         <base-content :loading="$apollo.loading" :error="error">
@@ -7,6 +8,9 @@
             <v-container fluid>
               <v-row>
                 <v-col cols="12">
+                  <div class="kicker">
+                    {{ posts[0]["kicker"] }}
+                  </div>
                   <h1
                     v-if="posts && posts.length"
                     style="font-size: 36px; line-height: 40px"
@@ -34,11 +38,16 @@
                     v-if="posts && posts.length"
                   ></PostedMeta>
                 </v-col>
-              </v-row> </v-container
-          ></template>
+              </v-row>
+            </v-container>
+          </template>
+
           <template v-slot:splash>
             <div v-if="posts && posts.length && posts[0]['splash']">
               <SplashNews :splash="posts[0]['splash']['formats']"></SplashNews>
+            </div>
+            <div v-else>
+              <v-container fluid> <hr /></v-container>
             </div>
           </template>
           <template v-slot:content>
@@ -167,5 +176,12 @@ export default {
   position: sticky !important;
   top: 115px !important;
   font-size: 13px;
+}
+
+.kicker {
+  font-weight: 900;
+  color: #0d4474;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 </style>
