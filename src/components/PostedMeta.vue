@@ -1,10 +1,12 @@
 <template>
   <div>
     <span v-if="showUpdatedInText">
-      <span style="font-weight: 900" v-if="postedMeta.showUpdated"
-        >Updated: {{ postedMeta.updated_at | format }}&nbsp;//&nbsp;</span
+      <span v-if="postedMeta.showUpdated"
+        >Updated: <strong>{{ postedMeta.updated_at | format }}</strong
+        >&nbsp;//&nbsp;</span
       ></span
-    >Posted {{ postedMeta.created_at | format }} by {{ postedMeta.firstname }}
+    >Posted <strong>{{ postedMeta.created_at | format }}</strong> by
+    {{ postedMeta.firstname }}
     {{ postedMeta.lastname }}
   </div>
 </template>

@@ -49,6 +49,9 @@ export default {
       error: null,
     };
   },
+  created() {
+    this.redraw();
+  },
   mounted() {
     this.redraw();
   },
