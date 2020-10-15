@@ -4,7 +4,7 @@
       <v-row>
         <v-col>
           <div class="text-center">
-            <h1>News & Updates here</h1>
+            <h1>News & Updates</h1>
           </div>
         </v-col>
       </v-row>
@@ -12,8 +12,21 @@
     <v-container>
       <v-row v-masonry id="masonry-group">
         <v-col v-for="(post, index) in posts" :key="index" cols="12" sm="4">
-          <v-card color="white" class="pt-1 pb-1 mx-3 my-3">
-            <v-card-title>{{ post.title }}</v-card-title>
+          <v-card
+            color="white"
+            class="pt-1 pb-1 mx-3 my-3 hover"
+            @click="$router.push(`/news/${post.slug}`)"
+          >
+            <v-card-text style="font-size: 12px"
+              ><PostedMeta
+                :meta="buildMeta(post)"
+                :showUpdatedInText="false"
+              ></PostedMeta
+            ></v-card-text>
+            <v-card-title style="margin-top: -20px">{{
+              post.title
+            }}</v-card-title>
+
             <v-img
               v-if="post.splash"
               :src="`${$myApp.config.api.base}${post.splash.formats.thumbnail.url}`"
@@ -37,13 +50,21 @@ export default {
     };
   },
   mounted() {
-    this.$redrawVueMasonry("#masonry-group");
-    console.log("redraw masonry");
+    this.redraw();
   },
   methods: {
     redraw() {
       this.$redrawVueMasonry("#masonry-group");
-      console.log("redraw masonry -- no pic");
+      console.log("redraw masonry");
+    },
+    buildMeta(post) {
+      let meta = {
+        created_at: post.created_at,
+        updated_at: post.updated_at,
+        updated_by: post.updated_by,
+        created_by: post.created_by,
+      };
+      return meta;
     },
   },
   apollo: {

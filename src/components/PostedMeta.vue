@@ -1,7 +1,9 @@
 <template>
   <div>
-    <span style="font-weight: 900" v-if="postedMeta.showUpdated"
-      >Updated: {{ postedMeta.updated_at | format }}&nbsp;//&nbsp;</span
+    <span v-if="showUpdatedInText">
+      <span style="font-weight: 900" v-if="postedMeta.showUpdated"
+        >Updated: {{ postedMeta.updated_at | format }}&nbsp;//&nbsp;</span
+      ></span
     >Posted {{ postedMeta.created_at | format }} by {{ postedMeta.firstname }}
     {{ postedMeta.lastname }}
   </div>
@@ -34,6 +36,10 @@ export default {
     meta: {
       type: Object,
       default: () => {},
+    },
+    showUpdatedInText: {
+      type: Boolean,
+      default: true,
     },
   },
 };
