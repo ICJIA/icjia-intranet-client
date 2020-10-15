@@ -23,9 +23,9 @@
                 :showUpdatedInText="false"
               ></PostedMeta
             ></v-card-text>
-            <v-card-title style="margin-top: -20px">{{
-              post.title
-            }}</v-card-title>
+            <div class="px-4 mb-5">
+              <h2 style="line-height: 32px">{{ post.title }}</h2>
+            </div>
 
             <v-img
               v-if="post.splash"
