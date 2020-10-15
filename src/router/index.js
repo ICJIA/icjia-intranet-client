@@ -213,7 +213,7 @@ const router = new VueRouter({
   },
 });
 
-console.log(appConfig.underConstruction);
+// console.log(appConfig.underConstruction);
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
@@ -226,6 +226,7 @@ router.beforeEach((to, from, next) => {
       query: { redirect: to.fullPath },
     });
   }
+
   next();
 });
 

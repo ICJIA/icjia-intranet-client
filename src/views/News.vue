@@ -27,11 +27,12 @@
               <h2 style="line-height: 32px">{{ post.title }}</h2>
             </div>
 
-            <v-img
+            <img
               v-if="post.splash"
               :src="`${$myApp.config.api.base}${post.splash.formats.thumbnail.url}`"
-              @load="$redrawVueMasonry('#masonry-group')"
-            ></v-img>
+              @load="redraw"
+              width="100%"
+            />
             <div v-else>{{ redraw() }}</div>
             <v-card-text>{{ post.summary }}</v-card-text>
           </v-card>
@@ -51,9 +52,11 @@ export default {
   },
   created() {
     this.redraw();
+    this.$redrawVueMasonry();
   },
   mounted() {
     this.redraw();
+    console.log("loaded");
   },
   methods: {
     redraw() {

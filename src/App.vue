@@ -43,7 +43,7 @@
           </template>
         </ApolloQuery>
         <transition name="fade" mode="out-in">
-          <router-view style="min-height: 100vh !important"></router-view>
+          <router-view></router-view>
         </transition>
       </span>
       <span v-else>
@@ -59,6 +59,12 @@ import NProgress from "nprogress";
 export default {
   /* eslint-disable no-unused-vars */
   name: "App",
+  watch: {
+    // eslint-disable-next-line no-unused-vars
+    $route(to, from) {
+      console.log(to, from);
+    },
+  },
   mounted() {},
 
   components: {},
@@ -73,6 +79,7 @@ export default {
       loading ? NProgress.start() : NProgress.done();
       return loading ? true : false;
     },
+
     onScroll(e) {
       if (typeof window === "undefined") return;
       const top = window.pageYOffset || e.target.scrollTop || 0;
