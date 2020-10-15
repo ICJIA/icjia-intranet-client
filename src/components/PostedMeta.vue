@@ -4,9 +4,6 @@
       >Updated: {{ postedMeta.updated_at | format }}&nbsp;//&nbsp;</span
     >Posted {{ postedMeta.created_at | format }} by {{ postedMeta.firstname }}
     {{ postedMeta.lastname }}
-
-    <!-- {{ postedMeta }} -->
-    <!-- {{ meta }} -->
   </div>
 </template>
 
