@@ -30,6 +30,7 @@
             <img
               v-if="post.splash"
               :src="`${$myApp.config.api.base}${post.splash.formats.thumbnail.url}`"
+              :lazy-src="`${$myApp.config.api.base}${post.splash.formats.thumbnail.url}`"
               @load="redraw"
               width="100%"
             />
