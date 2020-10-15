@@ -43,7 +43,7 @@
           </template>
         </ApolloQuery>
         <transition name="fade" mode="out-in">
-          <router-view></router-view>
+          <router-view style="min-height: 100vh !important"></router-view>
         </transition>
       </span>
       <span v-else>

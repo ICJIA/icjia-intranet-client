@@ -10,7 +10,7 @@
             <v-container fluid>
               <v-row>
                 <v-col cols="12">
-                  <div class="kicker">
+                  <div class="kicker mb-3">
                     {{ posts[0]["kicker"] }}
                   </div>
                   <h1
