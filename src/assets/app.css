@@ -13,3 +13,13 @@ a {
     color: #777 !important;
 } */
 
+
+#nprogress .bar {
+    background:#b72424 !important;
+    }
+
+      
+#nprogress .spinner-icon {
+    border-top-color: #b72424 !important;
+    border-left-color: #b72424 !important;
+      }
