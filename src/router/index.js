@@ -172,6 +172,15 @@ const routes = [
     },
   },
   {
+    path: "/search",
+    name: "Search",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/Search.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     path: "/forms/:slug",
     name: "FormsSingle",
     component: () =>

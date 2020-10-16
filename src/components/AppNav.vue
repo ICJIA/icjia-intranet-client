@@ -45,7 +45,7 @@
         >Calendar</v-btn
       >
 
-      <v-btn icon>
+      <v-btn icon to="/search">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
       <v-menu left bottom>
