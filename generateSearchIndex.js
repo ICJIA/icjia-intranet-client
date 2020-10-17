@@ -112,7 +112,7 @@ async function main() {
   const searchOptions = myConfig.search;
   const fuseIndex = Fuse.createIndex(searchOptions.keys, searchIndex);
   utils.saveJson(fuseIndex, "./public/searchIndex.json");
-  console.log(`Fuse search index created: ./public/searchIndex.json"`);
+  console.log(`Fuse search index created: ./public/search.json"`);
 }
 
 main();
