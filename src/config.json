@@ -23,21 +23,22 @@
   "hoursToShowUpdated": 1,
   "search": {
     "isCaseSensitive": false,
-    "includeScore": false,
+    "includeScore": true,
     "shouldSort": true,
-    "includeMatches": false,
-    "findAllMatches": false,
+    "includeMatches": true,
+    "findAllMatches": true,
     "minMatchCharLength": 1,
     "location": 0,
-    "threshold": 0.6,
+    "threshold": 0.8,
     "distance": 100,
     "useExtendedSearch": false,
     "ignoreLocation": false,
     "ignoreFieldNorm": false,
     "keys": [
-      "title",
+      "searchMeta",
       "summary",
-      "searchMeta"
+      "title",
+      "headings.text"
     ]
   }
 }
