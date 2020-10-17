@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "npm run build:lambda && vue-cli-service build",
+    "serve": "node generateSearchIndex && vue-cli-service serve",
+    "build": "node generateSearchIndex && npm run build:lambda && vue-cli-service build",
     "build:modern": "npm run build:lambda && vue-cli-service build --modern",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "schema": "get-graphql-schema https://dev.icjia-api.cloud/graphql -j > schema.json",
     "build:serve": "npm run build && serve ./dist --single",
     "build:lambda": "netlify-lambda build ./src/lambda",
-    "start:lambda": "netlify-lambda serve ./src/lambda"
+    "start:lambda": "netlify-lambda serve ./src/lambda",
+    "scripts": "node generateSearchIndex"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
