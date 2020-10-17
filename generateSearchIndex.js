@@ -2,13 +2,13 @@
 /* eslint-disable no-console */
 
 const jsonfile = require("jsonfile");
-const config = require("./src/config.json");
+const myConfig = require("./src/config.json");
 const fs = require("fs");
 const apiDir = "./src/api";
 const fileName = "searchIndex.json";
 const dotenv = require("dotenv").config();
 const JWT = dotenv.parsed.JWT;
-const endpoint = config.api.baseGraphQL;
+const endpoint = myConfig.api.baseGraphQL;
 const cheerio = require("cheerio");
 
 const utils = require("./lib/utils");
@@ -44,14 +44,13 @@ const graphqlClient = new GraphQLClient(endpoint, {
   },
 });
 
-const sections = ["posts", "events"];
-
 const query = gql`
   query {
-    posts {
+    news: posts {
       id
       title
       summary
+      slug
       searchMeta
       body
     }
@@ -60,6 +59,7 @@ const query = gql`
       name
       type
       summary
+      slug
       searchMeta
       details
     }
@@ -69,7 +69,7 @@ const query = gql`
 async function main() {
   const data = await graphqlClient.request(query);
   const sections = Object.keys(data);
-  //console.log(data.posts);
+
   let index = sections.map((section) => {
     let items = data[section].map((item) => {
       let searchObj = {};
@@ -78,6 +78,7 @@ async function main() {
       searchObj.type = item.type || "news";
       searchObj.searchMeta = item.searchMeta || "";
       searchObj.section = section;
+      searchObj.slug = item.slug;
       let markdown = item.body || item.details;
       searchObj.html = md.render(markdown);
       let $ = cheerio.load(searchObj.html);
@@ -93,6 +94,11 @@ async function main() {
       });
       searchObj.headings = JSON.stringify(headings);
       searchObj.markdown = markdown;
+      searchObj.path = `/${section}/${searchObj.slug}`;
+      searchObj.summary = item.summary || "";
+      searchObj.url = `${myConfig.api.baseClient}${searchObj.path}`;
+      delete searchObj.markdown;
+      delete searchObj.html;
       return searchObj;
     });
     return items;
