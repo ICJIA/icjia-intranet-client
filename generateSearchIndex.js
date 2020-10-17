@@ -10,6 +10,7 @@ const dotenv = require("dotenv").config();
 const JWT = dotenv.parsed.JWT;
 const endpoint = myConfig.api.baseGraphQL;
 const cheerio = require("cheerio");
+const Fuse = require("fuse.js");
 
 const utils = require("./lib/utils");
 const blacklist = [
@@ -106,8 +107,12 @@ async function main() {
 
   let searchIndex = index.flat();
   searchIndex = utils.filterUndefined(searchIndex);
-  utils.saveJson(searchIndex, "./public/searchIndex.json");
-  console.log(`Search index created: ./public/searchIndex.json`);
+  utils.saveJson(searchIndex, "./public/siteMeta.json");
+  console.log(`Search index created: ./public/siteMeta.json`);
+  const searchOptions = myConfig.search;
+  const fuseIndex = Fuse.createIndex(searchOptions.keys, searchIndex);
+  utils.saveJson(fuseIndex, "./public/searchIndex.json");
+  console.log(`Fuse search index created: ./public/searchIndex.json"`);
 }
 
 main();
