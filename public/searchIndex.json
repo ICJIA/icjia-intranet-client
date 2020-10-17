@@ -6,7 +6,7 @@
         "searchMeta": "erat fermentum justo nec condimentum neque sapien placerat ante",
         "section": "news",
         "slug": "ligula-suspendisse-ornare-consequat-lectus-in-est-risus-auctor-sed-tristique",
-        "headings": "[]",
+        "headings": [],
         "path": "/news/ligula-suspendisse-ornare-consequat-lectus-in-est-risus-auctor-sed-tristique",
         "summary": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.",
         "url": "https://intranet.icjia.cloud/news/ligula-suspendisse-ornare-consequat-lectus-in-est-risus-auctor-sed-tristique"
@@ -18,7 +18,7 @@
         "searchMeta": "in leo maecenas pulvinar lobortis",
         "section": "news",
         "slug": "dictumst-etiam-faucibus-cursus-urna-ut",
-        "headings": "[]",
+        "headings": [],
         "path": "/news/dictumst-etiam-faucibus-cursus-urna-ut",
         "summary": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc.",
         "url": "https://intranet.icjia.cloud/news/dictumst-etiam-faucibus-cursus-urna-ut"
@@ -30,7 +30,7 @@
         "searchMeta": "",
         "section": "news",
         "slug": "vel-dapibus-at-diam-nam-tristique-tortor-eu-pede",
-        "headings": "[]",
+        "headings": [],
         "path": "/news/vel-dapibus-at-diam-nam-tristique-tortor-eu-pede",
         "summary": "Aliquam erat volutpat. In congue. Etiam justo.",
         "url": "https://intranet.icjia.cloud/news/vel-dapibus-at-diam-nam-tristique-tortor-eu-pede"
@@ -42,7 +42,40 @@
         "searchMeta": "",
         "section": "news",
         "slug": "integer-ac-neque-duis-bibendum-morbi-non-quam",
-        "headings": "[{\"text\":\"Se cadit\",\"id\":\"se-cadit\"},{\"text\":\"Ira proles\",\"id\":\"ira-proles\"},{\"text\":\"Tangam sanguineam\",\"id\":\"tangam-sanguineam\"},{\"text\":\"Miserisque Alpino antiquique rates petebant perdere inritus\",\"id\":\"miserisque-alpino-antiquique-rates-petebant-perdere-inritus\"},{\"text\":\"Stabat non umbra huc sub vana iam\",\"id\":\"stabat-non-umbra-huc-sub-vana-iam\"},{\"text\":\"Audax accessit pennas lumine erat reverentia at\",\"id\":\"audax-accessit-pennas-lumine-erat-reverentia-at\"},{\"text\":\"Mactandus orbem\",\"id\":\"mactandus-orbem\"},{\"text\":\"Cacumine mutanda\",\"id\":\"cacumine-mutanda\"}]",
+        "headings": [
+            {
+                "text": "Se cadit",
+                "id": "se-cadit"
+            },
+            {
+                "text": "Ira proles",
+                "id": "ira-proles"
+            },
+            {
+                "text": "Tangam sanguineam",
+                "id": "tangam-sanguineam"
+            },
+            {
+                "text": "Miserisque Alpino antiquique rates petebant perdere inritus",
+                "id": "miserisque-alpino-antiquique-rates-petebant-perdere-inritus"
+            },
+            {
+                "text": "Stabat non umbra huc sub vana iam",
+                "id": "stabat-non-umbra-huc-sub-vana-iam"
+            },
+            {
+                "text": "Audax accessit pennas lumine erat reverentia at",
+                "id": "audax-accessit-pennas-lumine-erat-reverentia-at"
+            },
+            {
+                "text": "Mactandus orbem",
+                "id": "mactandus-orbem"
+            },
+            {
+                "text": "Cacumine mutanda",
+                "id": "cacumine-mutanda"
+            }
+        ],
         "path": "/news/integer-ac-neque-duis-bibendum-morbi-non-quam",
         "summary": "Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
         "url": "https://intranet.icjia.cloud/news/integer-ac-neque-duis-bibendum-morbi-non-quam"
@@ -54,7 +87,7 @@
         "searchMeta": "turpis adipiscing lorem vitae mattis nibh ligula nec sem duis",
         "section": "news",
         "slug": "condimentum-curabitur-in-libero-ut-massa-volutpat-convallis-morbi-odio-odio-elementum",
-        "headings": "[]",
+        "headings": [],
         "path": "/news/condimentum-curabitur-in-libero-ut-massa-volutpat-convallis-morbi-odio-odio-elementum",
         "summary": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. ",
         "url": "https://intranet.icjia.cloud/news/condimentum-curabitur-in-libero-ut-massa-volutpat-convallis-morbi-odio-odio-elementum"
@@ -66,7 +99,20 @@
         "searchMeta": "",
         "section": "news",
         "slug": "tamen-promissa-est-viscera-ille-tritonida-neque",
-        "headings": "[{\"text\":\"Quid quondam iam cur stabantque\",\"id\":\"quid-quondam-iam-cur-stabantque\"},{\"text\":\"Dixit iaces ad leaena stirpi praefert\",\"id\":\"dixit-iaces-ad-leaena-stirpi-praefert\"},{\"text\":\"Nitenti semel inscius cetera os est precari\",\"id\":\"nitenti-semel-inscius-cetera-os-est-precari\"}]",
+        "headings": [
+            {
+                "text": "Quid quondam iam cur stabantque",
+                "id": "quid-quondam-iam-cur-stabantque"
+            },
+            {
+                "text": "Dixit iaces ad leaena stirpi praefert",
+                "id": "dixit-iaces-ad-leaena-stirpi-praefert"
+            },
+            {
+                "text": "Nitenti semel inscius cetera os est precari",
+                "id": "nitenti-semel-inscius-cetera-os-est-precari"
+            }
+        ],
         "path": "/news/tamen-promissa-est-viscera-ille-tritonida-neque",
         "summary": "Visa uno vitae tendebant Cumaeae medio. Ferro genero velaturque in mersum, sufficiunt iunctis magni laceros arma aderat. Test",
         "url": "https://intranet.icjia.cloud/news/tamen-promissa-est-viscera-ille-tritonida-neque"
@@ -78,7 +124,24 @@
         "searchMeta": "",
         "section": "news",
         "slug": "flumen-terris-pertulit-rogum-amori-in-aquarum",
-        "headings": "[{\"text\":\"Istis dum Cerberon amens moderatius siqua\",\"id\":\"istis-dum-cerberon-amens-moderatius-siqua\"},{\"text\":\"Erat subitae conrepta vidit persequitur funes cristata\",\"id\":\"erat-subitae-conrepta-vidit-persequitur-funes-cristata\"},{\"text\":\"Vidit per siccoque pollue\",\"id\":\"vidit-per-siccoque-pollue\"},{\"text\":\"Cum Hodites si belli in neque in\",\"id\":\"cum-hodites-si-belli-in-neque-in\"}]",
+        "headings": [
+            {
+                "text": "Istis dum Cerberon amens moderatius siqua",
+                "id": "istis-dum-cerberon-amens-moderatius-siqua"
+            },
+            {
+                "text": "Erat subitae conrepta vidit persequitur funes cristata",
+                "id": "erat-subitae-conrepta-vidit-persequitur-funes-cristata"
+            },
+            {
+                "text": "Vidit per siccoque pollue",
+                "id": "vidit-per-siccoque-pollue"
+            },
+            {
+                "text": "Cum Hodites si belli in neque in",
+                "id": "cum-hodites-si-belli-in-neque-in"
+            }
+        ],
         "path": "/news/flumen-terris-pertulit-rogum-amori-in-aquarum",
         "summary": "Flumen terris pertulit rogum; amori in aquarum rupisset, leonibus et. Arcesius nomenque sumpsere hederae, in aquam Libys principio sororum hortaturque Inarimen. Threicio cantato. Meta finita, visa vitam, membrisque: committi sinus. Rubefactaque census aequor: non iniqui Typhoeus sorbent vectabantur inermi dubiaque tellurem sumusve.",
         "url": "https://intranet.icjia.cloud/news/flumen-terris-pertulit-rogum-amori-in-aquarum"
@@ -90,7 +153,7 @@
         "searchMeta": "felis ut at dolor",
         "section": "events",
         "slug": "nullam-orci-pede-venenatis-non-sodales-sed-tincidunt-eu-felis-fusce-posuere",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nullam-orci-pede-venenatis-non-sodales-sed-tincidunt-eu-felis-fusce-posuere",
         "summary": "Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
         "url": "https://intranet.icjia.cloud/events/nullam-orci-pede-venenatis-non-sodales-sed-tincidunt-eu-felis-fusce-posuere"
@@ -102,7 +165,7 @@
         "searchMeta": "eleifend donec",
         "section": "events",
         "slug": "luctus-nec-molestie-sed-justo",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/luctus-nec-molestie-sed-justo",
         "summary": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
         "url": "https://intranet.icjia.cloud/events/luctus-nec-molestie-sed-justo"
@@ -114,7 +177,7 @@
         "searchMeta": "donec pharetra magna vestibulum aliquet ultrices erat",
         "section": "events",
         "slug": "nisl-venenatis-lacinia-aenean-sit-amet-justo-morbi-ut",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nisl-venenatis-lacinia-aenean-sit-amet-justo-morbi-ut",
         "summary": "Duis mattis egestas metus.",
         "url": "https://intranet.icjia.cloud/events/nisl-venenatis-lacinia-aenean-sit-amet-justo-morbi-ut"
@@ -126,7 +189,7 @@
         "searchMeta": "odio",
         "section": "events",
         "slug": "lectus-in-est-risus-auctor-sed-tristique-in-tempus-sit-amet",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/lectus-in-est-risus-auctor-sed-tristique-in-tempus-sit-amet",
         "summary": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
         "url": "https://intranet.icjia.cloud/events/lectus-in-est-risus-auctor-sed-tristique-in-tempus-sit-amet"
@@ -138,7 +201,7 @@
         "searchMeta": "praesent blandit lacinia erat",
         "section": "events",
         "slug": "tellus-nisi-eu-orci-mauris-lacinia-sapien",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/tellus-nisi-eu-orci-mauris-lacinia-sapien",
         "summary": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
         "url": "https://intranet.icjia.cloud/events/tellus-nisi-eu-orci-mauris-lacinia-sapien"
@@ -150,7 +213,7 @@
         "searchMeta": "sapien sapien non mi",
         "section": "events",
         "slug": "ipsum-ac-tellus-semper-interdum-mauris-ullamcorper-purus-sit-amet",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/ipsum-ac-tellus-semper-interdum-mauris-ullamcorper-purus-sit-amet",
         "summary": "Integer ac leo. Pellentesque ultrices mattis odio.",
         "url": "https://intranet.icjia.cloud/events/ipsum-ac-tellus-semper-interdum-mauris-ullamcorper-purus-sit-amet"
@@ -162,7 +225,7 @@
         "searchMeta": "arcu libero rutrum ac lobortis vel",
         "section": "events",
         "slug": "augue-quam-sollicitudin-vitae-consectetuer-eget-rutrum-at-lorem-integer-tincidunt-ante",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/augue-quam-sollicitudin-vitae-consectetuer-eget-rutrum-at-lorem-integer-tincidunt-ante",
         "summary": "Integer non velit.",
         "url": "https://intranet.icjia.cloud/events/augue-quam-sollicitudin-vitae-consectetuer-eget-rutrum-at-lorem-integer-tincidunt-ante"
@@ -174,7 +237,7 @@
         "searchMeta": "rutrum rutrum neque aenean auctor gravida sem praesent id massa",
         "section": "events",
         "slug": "nulla-facilisi-cras-non-velit-nec-nisi-vulputate-nonummy",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nulla-facilisi-cras-non-velit-nec-nisi-vulputate-nonummy",
         "summary": "Morbi non quam nec dui luctus rutrum. Nulla tellus.",
         "url": "https://intranet.icjia.cloud/events/nulla-facilisi-cras-non-velit-nec-nisi-vulputate-nonummy"
@@ -186,7 +249,7 @@
         "searchMeta": "tempor turpis nec euismod",
         "section": "events",
         "slug": "mi-pede-malesuada-in-imperdiet-et-commodo-vulputate-justo-in-blandit-ultrices",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/mi-pede-malesuada-in-imperdiet-et-commodo-vulputate-justo-in-blandit-ultrices",
         "summary": "Curabitur gravida nisi at nibh.",
         "url": "https://intranet.icjia.cloud/events/mi-pede-malesuada-in-imperdiet-et-commodo-vulputate-justo-in-blandit-ultrices"
@@ -198,7 +261,7 @@
         "searchMeta": "nisl duis",
         "section": "events",
         "slug": "maecenas-pulvinar-lobortis-est-phasellus-sit-amet",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/maecenas-pulvinar-lobortis-est-phasellus-sit-amet",
         "summary": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.",
         "url": "https://intranet.icjia.cloud/events/maecenas-pulvinar-lobortis-est-phasellus-sit-amet"
@@ -210,7 +273,7 @@
         "searchMeta": "blandit non interdum in ante",
         "section": "events",
         "slug": "libero-non-mattis-pulvinar-nulla-pede-ullamcorper-augue",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/libero-non-mattis-pulvinar-nulla-pede-ullamcorper-augue",
         "summary": "Nunc nisl.",
         "url": "https://intranet.icjia.cloud/events/libero-non-mattis-pulvinar-nulla-pede-ullamcorper-augue"
@@ -222,7 +285,7 @@
         "searchMeta": "in faucibus orci",
         "section": "events",
         "slug": "nunc-viverra-dapibus-nulla-suscipit-ligula-in-lacus-curabitur-at-ipsum",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nunc-viverra-dapibus-nulla-suscipit-ligula-in-lacus-curabitur-at-ipsum",
         "summary": "Pellentesque at nulla.",
         "url": "https://intranet.icjia.cloud/events/nunc-viverra-dapibus-nulla-suscipit-ligula-in-lacus-curabitur-at-ipsum"
@@ -234,7 +297,7 @@
         "searchMeta": "ut nunc vestibulum ante",
         "section": "events",
         "slug": "nisl-aenean-lectus-pellentesque-eget-nunc-donec-quis-orci-eget",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nisl-aenean-lectus-pellentesque-eget-nunc-donec-quis-orci-eget",
         "summary": "In sagittis dui vel nisl.",
         "url": "https://intranet.icjia.cloud/events/nisl-aenean-lectus-pellentesque-eget-nunc-donec-quis-orci-eget"
@@ -246,7 +309,7 @@
         "searchMeta": "donec ut dolor morbi vel lectus",
         "section": "events",
         "slug": "morbi-sem-mauris-laoreet-ut-rhoncus-aliquet-pulvinar-sed",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/morbi-sem-mauris-laoreet-ut-rhoncus-aliquet-pulvinar-sed",
         "summary": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.",
         "url": "https://intranet.icjia.cloud/events/morbi-sem-mauris-laoreet-ut-rhoncus-aliquet-pulvinar-sed"
@@ -258,7 +321,7 @@
         "searchMeta": "habitasse platea dictumst morbi vestibulum velit id",
         "section": "events",
         "slug": "id-nisl-venenatis-lacinia-aenean-sit-amet-justo-morbi-ut",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/id-nisl-venenatis-lacinia-aenean-sit-amet-justo-morbi-ut",
         "summary": "Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",
         "url": "https://intranet.icjia.cloud/events/id-nisl-venenatis-lacinia-aenean-sit-amet-justo-morbi-ut"
@@ -270,7 +333,7 @@
         "searchMeta": "posuere cubilia curae donec pharetra magna vestibulum",
         "section": "events",
         "slug": "pellentesque-eget-nunc-donec-quis-orci-eget-orci-vehicula-condimentum-curabitur",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/pellentesque-eget-nunc-donec-quis-orci-eget-orci-vehicula-condimentum-curabitur",
         "summary": "Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
         "url": "https://intranet.icjia.cloud/events/pellentesque-eget-nunc-donec-quis-orci-eget-orci-vehicula-condimentum-curabitur"
@@ -282,7 +345,7 @@
         "searchMeta": "phasellus id sapien in sapien iaculis congue vivamus metus",
         "section": "events",
         "slug": "odio-curabitur-convallis-duis-consequat",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/odio-curabitur-convallis-duis-consequat",
         "summary": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",
         "url": "https://intranet.icjia.cloud/events/odio-curabitur-convallis-duis-consequat"
@@ -294,7 +357,7 @@
         "searchMeta": "at nunc commodo",
         "section": "events",
         "slug": "tristique-est-et-tempus-semper-est",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/tristique-est-et-tempus-semper-est",
         "summary": "Sed vel enim sit amet nunc viverra dapibus.",
         "url": "https://intranet.icjia.cloud/events/tristique-est-et-tempus-semper-est"
@@ -306,7 +369,7 @@
         "searchMeta": "congue diam id ornare imperdiet sapien urna",
         "section": "events",
         "slug": "elit-sodales-scelerisque-mauris-sit-amet-eros-suspendisse",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/elit-sodales-scelerisque-mauris-sit-amet-eros-suspendisse",
         "summary": "Proin risus. Praesent lectus.",
         "url": "https://intranet.icjia.cloud/events/elit-sodales-scelerisque-mauris-sit-amet-eros-suspendisse"
@@ -318,7 +381,7 @@
         "searchMeta": "a feugiat",
         "section": "events",
         "slug": "nulla-sed-accumsan-felis-ut-at-dolor-quis-odio",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nulla-sed-accumsan-felis-ut-at-dolor-quis-odio",
         "summary": "Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula.",
         "url": "https://intranet.icjia.cloud/events/nulla-sed-accumsan-felis-ut-at-dolor-quis-odio"
@@ -330,7 +393,7 @@
         "searchMeta": "sem fusce consequat nulla nisl nunc nisl duis",
         "section": "events",
         "slug": "elementum-in-hac-habitasse-platea-dictumst-morbi-vestibulum-velit-id",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/elementum-in-hac-habitasse-platea-dictumst-morbi-vestibulum-velit-id",
         "summary": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.",
         "url": "https://intranet.icjia.cloud/events/elementum-in-hac-habitasse-platea-dictumst-morbi-vestibulum-velit-id"
@@ -342,7 +405,7 @@
         "searchMeta": "in hac habitasse platea dictumst etiam faucibus cursus urna",
         "section": "events",
         "slug": "tincidunt-in-leo-maecenas-pulvinar-lobortis-est",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/tincidunt-in-leo-maecenas-pulvinar-lobortis-est",
         "summary": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
         "url": "https://intranet.icjia.cloud/events/tincidunt-in-leo-maecenas-pulvinar-lobortis-est"
@@ -354,7 +417,7 @@
         "searchMeta": "luctus et ultrices posuere",
         "section": "events",
         "slug": "ac-leo-pellentesque-ultrices-mattis",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/ac-leo-pellentesque-ultrices-mattis",
         "summary": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
         "url": "https://intranet.icjia.cloud/events/ac-leo-pellentesque-ultrices-mattis"
@@ -366,7 +429,7 @@
         "searchMeta": "varius integer ac leo pellentesque",
         "section": "events",
         "slug": "sed-sagittis-nam-congue-risus-semper-porta-volutpat-quam-pede-lobortis",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/sed-sagittis-nam-congue-risus-semper-porta-volutpat-quam-pede-lobortis",
         "summary": "Duis bibendum.",
         "url": "https://intranet.icjia.cloud/events/sed-sagittis-nam-congue-risus-semper-porta-volutpat-quam-pede-lobortis"
@@ -378,7 +441,7 @@
         "searchMeta": "aliquam convallis",
         "section": "events",
         "slug": "nullam-orci-pede-venenatis-non",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nullam-orci-pede-venenatis-non",
         "summary": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.",
         "url": "https://intranet.icjia.cloud/events/nullam-orci-pede-venenatis-non"
@@ -390,7 +453,7 @@
         "searchMeta": "eu pede",
         "section": "events",
         "slug": "at-velit-vivamus-vel-nulla",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/at-velit-vivamus-vel-nulla",
         "summary": "Morbi non lectus.",
         "url": "https://intranet.icjia.cloud/events/at-velit-vivamus-vel-nulla"
@@ -402,7 +465,7 @@
         "searchMeta": "in lectus pellentesque at nulla suspendisse",
         "section": "events",
         "slug": "curae-mauris-viverra-diam-vitae-quam-suspendisse-potenti-nullam-porttitor-lacus",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/curae-mauris-viverra-diam-vitae-quam-suspendisse-potenti-nullam-porttitor-lacus",
         "summary": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",
         "url": "https://intranet.icjia.cloud/events/curae-mauris-viverra-diam-vitae-quam-suspendisse-potenti-nullam-porttitor-lacus"
@@ -414,7 +477,7 @@
         "searchMeta": "metus sapien ut nunc vestibulum ante ipsum primis in faucibus",
         "section": "events",
         "slug": "nullam-porttitor-lacus-at-turpis-donec-posuere-metus",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nullam-porttitor-lacus-at-turpis-donec-posuere-metus",
         "summary": "Duis ac nibh.",
         "url": "https://intranet.icjia.cloud/events/nullam-porttitor-lacus-at-turpis-donec-posuere-metus"
@@ -426,7 +489,7 @@
         "searchMeta": "pellentesque ultrices mattis",
         "section": "events",
         "slug": "nunc-rhoncus-dui-vel-sem-sed-sagittis-nam-congue-risus-semper",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nunc-rhoncus-dui-vel-sem-sed-sagittis-nam-congue-risus-semper",
         "summary": "Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
         "url": "https://intranet.icjia.cloud/events/nunc-rhoncus-dui-vel-sem-sed-sagittis-nam-congue-risus-semper"
@@ -438,7 +501,7 @@
         "searchMeta": "pulvinar nulla pede ullamcorper",
         "section": "events",
         "slug": "ut-mauris-eget-massa-tempor-convallis-nulla-neque",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/ut-mauris-eget-massa-tempor-convallis-nulla-neque",
         "summary": "Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.",
         "url": "https://intranet.icjia.cloud/events/ut-mauris-eget-massa-tempor-convallis-nulla-neque"
@@ -450,7 +513,7 @@
         "searchMeta": "scelerisque mauris sit amet eros suspendisse accumsan tortor",
         "section": "events",
         "slug": "dapibus-dolor-vel-est-donec-odio-justo",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/dapibus-dolor-vel-est-donec-odio-justo",
         "summary": "Nulla tellus.",
         "url": "https://intranet.icjia.cloud/events/dapibus-dolor-vel-est-donec-odio-justo"
@@ -462,7 +525,7 @@
         "searchMeta": "posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti",
         "section": "events",
         "slug": "etiam-justo-etiam-pretium-iaculis-justo-in-hac-habitasse-platea-dictumst",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/etiam-justo-etiam-pretium-iaculis-justo-in-hac-habitasse-platea-dictumst",
         "summary": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.",
         "url": "https://intranet.icjia.cloud/events/etiam-justo-etiam-pretium-iaculis-justo-in-hac-habitasse-platea-dictumst"
@@ -474,7 +537,7 @@
         "searchMeta": "nunc rhoncus",
         "section": "events",
         "slug": "at-nibh-in-hac-habitasse-platea-dictumst-aliquam",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/at-nibh-in-hac-habitasse-platea-dictumst-aliquam",
         "summary": "Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst.",
         "url": "https://intranet.icjia.cloud/events/at-nibh-in-hac-habitasse-platea-dictumst-aliquam"
@@ -486,7 +549,7 @@
         "searchMeta": "maecenas tristique est et tempus semper est quam",
         "section": "events",
         "slug": "platea-dictumst-aliquam-augue-quam-sollicitudin-vitae-consectetuer",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/platea-dictumst-aliquam-augue-quam-sollicitudin-vitae-consectetuer",
         "summary": "Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",
         "url": "https://intranet.icjia.cloud/events/platea-dictumst-aliquam-augue-quam-sollicitudin-vitae-consectetuer"
@@ -498,7 +561,7 @@
         "searchMeta": "id mauris vulputate elementum nullam",
         "section": "events",
         "slug": "id-pretium-iaculis-diam-erat-fermentum-justo-nec",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/id-pretium-iaculis-diam-erat-fermentum-justo-nec",
         "summary": "Ut at dolor quis odio consequat varius. Integer ac leo.",
         "url": "https://intranet.icjia.cloud/events/id-pretium-iaculis-diam-erat-fermentum-justo-nec"
@@ -510,7 +573,7 @@
         "searchMeta": "duis",
         "section": "events",
         "slug": "pede-venenatis-non-sodales-sed-tincidunt",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/pede-venenatis-non-sodales-sed-tincidunt",
         "summary": "Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat.",
         "url": "https://intranet.icjia.cloud/events/pede-venenatis-non-sodales-sed-tincidunt"
@@ -522,7 +585,7 @@
         "searchMeta": "lacinia sapien quis libero nullam",
         "section": "events",
         "slug": "nulla-tempus-vivamus-in-felis",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nulla-tempus-vivamus-in-felis",
         "summary": "In blandit ultrices enim.",
         "url": "https://intranet.icjia.cloud/events/nulla-tempus-vivamus-in-felis"
@@ -534,7 +597,7 @@
         "searchMeta": "congue diam id",
         "section": "events",
         "slug": "amet-consectetuer-adipiscing-elit-proin-interdum",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/amet-consectetuer-adipiscing-elit-proin-interdum",
         "summary": "Fusce posuere felis sed lacus.",
         "url": "https://intranet.icjia.cloud/events/amet-consectetuer-adipiscing-elit-proin-interdum"
@@ -546,7 +609,7 @@
         "searchMeta": "potenti nullam porttitor lacus",
         "section": "events",
         "slug": "erat-fermentum-justo-nec-condimentum-neque-sapien-placerat-ante",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/erat-fermentum-justo-nec-condimentum-neque-sapien-placerat-ante",
         "summary": "Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.",
         "url": "https://intranet.icjia.cloud/events/erat-fermentum-justo-nec-condimentum-neque-sapien-placerat-ante"
@@ -558,7 +621,7 @@
         "searchMeta": "quam fringilla rhoncus mauris enim leo rhoncus",
         "section": "events",
         "slug": "proin-leo-odio-porttitor-id-consequat-in-consequat",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/proin-leo-odio-porttitor-id-consequat-in-consequat",
         "summary": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
         "url": "https://intranet.icjia.cloud/events/proin-leo-odio-porttitor-id-consequat-in-consequat"
@@ -570,7 +633,7 @@
         "searchMeta": "ultrices erat tortor sollicitudin mi sit amet lobortis",
         "section": "events",
         "slug": "dis-parturient-montes-nascetur-ridiculus-mus-etiam-vel-augue-vestibulum-rutrum",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/dis-parturient-montes-nascetur-ridiculus-mus-etiam-vel-augue-vestibulum-rutrum",
         "summary": "Etiam pretium iaculis justo.",
         "url": "https://intranet.icjia.cloud/events/dis-parturient-montes-nascetur-ridiculus-mus-etiam-vel-augue-vestibulum-rutrum"
@@ -582,7 +645,7 @@
         "searchMeta": "neque sapien placerat ante nulla justo aliquam quis",
         "section": "events",
         "slug": "sapien-cursus-vestibulum-proin-eu",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/sapien-cursus-vestibulum-proin-eu",
         "summary": "Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",
         "url": "https://intranet.icjia.cloud/events/sapien-cursus-vestibulum-proin-eu"
@@ -594,7 +657,7 @@
         "searchMeta": "in hac habitasse platea dictumst morbi vestibulum",
         "section": "events",
         "slug": "viverra-pede-ac-diam-cras-pellentesque-volutpat",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/viverra-pede-ac-diam-cras-pellentesque-volutpat",
         "summary": "Fusce consequat. Nulla nisl.",
         "url": "https://intranet.icjia.cloud/events/viverra-pede-ac-diam-cras-pellentesque-volutpat"
@@ -606,7 +669,7 @@
         "searchMeta": "congue risus",
         "section": "events",
         "slug": "eleifend-luctus-ultricies-eu-nibh-quisque-id-justo-sit-amet",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/eleifend-luctus-ultricies-eu-nibh-quisque-id-justo-sit-amet",
         "summary": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
         "url": "https://intranet.icjia.cloud/events/eleifend-luctus-ultricies-eu-nibh-quisque-id-justo-sit-amet"
@@ -618,7 +681,7 @@
         "searchMeta": "ut rhoncus aliquet pulvinar sed nisl",
         "section": "events",
         "slug": "mi-sit-amet-lobortis-sapien",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/mi-sit-amet-lobortis-sapien",
         "summary": "Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
         "url": "https://intranet.icjia.cloud/events/mi-sit-amet-lobortis-sapien"
@@ -630,7 +693,7 @@
         "searchMeta": "pretium quis lectus suspendisse potenti",
         "section": "events",
         "slug": "cubilia-curae-mauris-viverra-diam-vitae",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/cubilia-curae-mauris-viverra-diam-vitae",
         "summary": "Mauris lacinia sapien quis libero.",
         "url": "https://intranet.icjia.cloud/events/cubilia-curae-mauris-viverra-diam-vitae"
@@ -642,7 +705,7 @@
         "searchMeta": "ultrices libero non mattis pulvinar nulla pede ullamcorper augue a",
         "section": "events",
         "slug": "libero-quis-orci-nullam-molestie",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/libero-quis-orci-nullam-molestie",
         "summary": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",
         "url": "https://intranet.icjia.cloud/events/libero-quis-orci-nullam-molestie"
@@ -654,7 +717,7 @@
         "searchMeta": "vestibulum proin eu",
         "section": "events",
         "slug": "nec-euismod-scelerisque-quam-turpis-adipiscing-lorem",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nec-euismod-scelerisque-quam-turpis-adipiscing-lorem",
         "summary": "Mauris lacinia sapien quis libero.",
         "url": "https://intranet.icjia.cloud/events/nec-euismod-scelerisque-quam-turpis-adipiscing-lorem"
@@ -666,7 +729,7 @@
         "searchMeta": "nec condimentum neque sapien placerat ante nulla",
         "section": "events",
         "slug": "sit-amet-sem-fusce-consequat-nulla-nisl-nunc-nisl-duis",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/sit-amet-sem-fusce-consequat-nulla-nisl-nunc-nisl-duis",
         "summary": "Aliquam sit amet diam in magna bibendum imperdiet.",
         "url": "https://intranet.icjia.cloud/events/sit-amet-sem-fusce-consequat-nulla-nisl-nunc-nisl-duis"
@@ -678,7 +741,7 @@
         "searchMeta": "eget tincidunt eget tempus vel pede",
         "section": "events",
         "slug": "donec-pharetra-magna-vestibulum-aliquet-ultrices-erat-tortor-sollicitudin-mi",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/donec-pharetra-magna-vestibulum-aliquet-ultrices-erat-tortor-sollicitudin-mi",
         "summary": "Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
         "url": "https://intranet.icjia.cloud/events/donec-pharetra-magna-vestibulum-aliquet-ultrices-erat-tortor-sollicitudin-mi"
@@ -690,7 +753,7 @@
         "searchMeta": "at nulla suspendisse",
         "section": "events",
         "slug": "tempor-convallis-nulla-neque-libero-convallis",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/tempor-convallis-nulla-neque-libero-convallis",
         "summary": "Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue.",
         "url": "https://intranet.icjia.cloud/events/tempor-convallis-nulla-neque-libero-convallis"
@@ -702,7 +765,7 @@
         "searchMeta": "dictumst aliquam augue quam sollicitudin vitae consectetuer",
         "section": "events",
         "slug": "eleifend-pede-libero-quis-orci-nullam-molestie-nibh-in",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/eleifend-pede-libero-quis-orci-nullam-molestie-nibh-in",
         "summary": "Aenean sit amet justo. Morbi ut odio.",
         "url": "https://intranet.icjia.cloud/events/eleifend-pede-libero-quis-orci-nullam-molestie-nibh-in"
@@ -714,7 +777,7 @@
         "searchMeta": "leo odio condimentum id luctus nec",
         "section": "events",
         "slug": "vestibulum-vestibulum-ante-ipsum-primis-in-faucibus-orci-luctus",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/vestibulum-vestibulum-ante-ipsum-primis-in-faucibus-orci-luctus",
         "summary": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
         "url": "https://intranet.icjia.cloud/events/vestibulum-vestibulum-ante-ipsum-primis-in-faucibus-orci-luctus"
@@ -726,7 +789,7 @@
         "searchMeta": "vitae mattis nibh ligula nec sem duis aliquam convallis",
         "section": "events",
         "slug": "massa-id-nisl-venenatis-lacinia-aenean-sit-amet",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/massa-id-nisl-venenatis-lacinia-aenean-sit-amet",
         "summary": "Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.",
         "url": "https://intranet.icjia.cloud/events/massa-id-nisl-venenatis-lacinia-aenean-sit-amet"
@@ -738,7 +801,7 @@
         "searchMeta": "ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse",
         "section": "events",
         "slug": "nec-nisi-volutpat-eleifend-donec-ut-dolor",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nec-nisi-volutpat-eleifend-donec-ut-dolor",
         "summary": "Curabitur at ipsum ac tellus semper interdum.",
         "url": "https://intranet.icjia.cloud/events/nec-nisi-volutpat-eleifend-donec-ut-dolor"
@@ -750,7 +813,7 @@
         "searchMeta": "bibendum felis sed interdum venenatis",
         "section": "events",
         "slug": "auctor-gravida-sem-praesent-id-massa-id-nisl",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/auctor-gravida-sem-praesent-id-massa-id-nisl",
         "summary": "Ut tellus. Nulla ut erat id mauris vulputate elementum.",
         "url": "https://intranet.icjia.cloud/events/auctor-gravida-sem-praesent-id-massa-id-nisl"
@@ -762,7 +825,7 @@
         "searchMeta": "a ipsum integer",
         "section": "events",
         "slug": "et-ultrices-posuere-cubilia-curae-nulla-dapibus-dolor-vel-est-donec",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/et-ultrices-posuere-cubilia-curae-nulla-dapibus-dolor-vel-est-donec",
         "summary": "Sed accumsan felis. Ut at dolor quis odio consequat varius.",
         "url": "https://intranet.icjia.cloud/events/et-ultrices-posuere-cubilia-curae-nulla-dapibus-dolor-vel-est-donec"
@@ -774,7 +837,7 @@
         "searchMeta": "convallis nulla neque libero convallis eget eleifend luctus",
         "section": "events",
         "slug": "nisl-ut-volutpat-sapien-arcu-sed",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nisl-ut-volutpat-sapien-arcu-sed",
         "summary": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
         "url": "https://intranet.icjia.cloud/events/nisl-ut-volutpat-sapien-arcu-sed"
@@ -786,7 +849,7 @@
         "searchMeta": "enim blandit mi in porttitor pede",
         "section": "events",
         "slug": "in-hac-habitasse-platea-dictumst-maecenas-ut-massa",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/in-hac-habitasse-platea-dictumst-maecenas-ut-massa",
         "summary": "Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.",
         "url": "https://intranet.icjia.cloud/events/in-hac-habitasse-platea-dictumst-maecenas-ut-massa"
@@ -798,7 +861,7 @@
         "searchMeta": "in",
         "section": "events",
         "slug": "posuere-cubilia-curae-duis-faucibus-accumsan-odio",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/posuere-cubilia-curae-duis-faucibus-accumsan-odio",
         "summary": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
         "url": "https://intranet.icjia.cloud/events/posuere-cubilia-curae-duis-faucibus-accumsan-odio"
@@ -810,7 +873,7 @@
         "searchMeta": "nullam orci pede venenatis non sodales sed",
         "section": "events",
         "slug": "volutpat-dui-maecenas-tristique-est-et-tempus-semper",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/volutpat-dui-maecenas-tristique-est-et-tempus-semper",
         "summary": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.",
         "url": "https://intranet.icjia.cloud/events/volutpat-dui-maecenas-tristique-est-et-tempus-semper"
@@ -822,7 +885,7 @@
         "searchMeta": "lobortis est phasellus",
         "section": "events",
         "slug": "curabitur-convallis-duis-consequat-dui-nec-nisi-volutpat-eleifend-donec-ut-dolor",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/curabitur-convallis-duis-consequat-dui-nec-nisi-volutpat-eleifend-donec-ut-dolor",
         "summary": "Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula.",
         "url": "https://intranet.icjia.cloud/events/curabitur-convallis-duis-consequat-dui-nec-nisi-volutpat-eleifend-donec-ut-dolor"
@@ -834,7 +897,7 @@
         "searchMeta": "augue vestibulum rutrum rutrum neque aenean auctor gravida sem",
         "section": "events",
         "slug": "in-felis-donec-semper-sapien-a-libero-nam-dui-proin",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/in-felis-donec-semper-sapien-a-libero-nam-dui-proin",
         "summary": "In sagittis dui vel nisl. Duis ac nibh.",
         "url": "https://intranet.icjia.cloud/events/in-felis-donec-semper-sapien-a-libero-nam-dui-proin"
@@ -846,7 +909,7 @@
         "searchMeta": "sem",
         "section": "events",
         "slug": "elementum-pellentesque-quisque-porta-volutpat-erat-quisque-erat-eros-viverra-eget",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/elementum-pellentesque-quisque-porta-volutpat-erat-quisque-erat-eros-viverra-eget",
         "summary": "Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula.",
         "url": "https://intranet.icjia.cloud/events/elementum-pellentesque-quisque-porta-volutpat-erat-quisque-erat-eros-viverra-eget"
@@ -858,7 +921,7 @@
         "searchMeta": "lectus aliquam sit amet diam in",
         "section": "events",
         "slug": "convallis-eget-eleifend-luctus-ultricies-eu-nibh-quisque-id-justo",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/convallis-eget-eleifend-luctus-ultricies-eu-nibh-quisque-id-justo",
         "summary": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
         "url": "https://intranet.icjia.cloud/events/convallis-eget-eleifend-luctus-ultricies-eu-nibh-quisque-id-justo"
@@ -870,7 +933,7 @@
         "searchMeta": "vel enim sit amet nunc",
         "section": "events",
         "slug": "arcu-libero-rutrum-ac-lobortis",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/arcu-libero-rutrum-ac-lobortis",
         "summary": "Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus.",
         "url": "https://intranet.icjia.cloud/events/arcu-libero-rutrum-ac-lobortis"
@@ -882,7 +945,7 @@
         "searchMeta": "at velit eu est congue elementum in hac",
         "section": "events",
         "slug": "nulla-eget-eros-elementum-pellentesque-quisque-porta-volutpat",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nulla-eget-eros-elementum-pellentesque-quisque-porta-volutpat",
         "summary": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
         "url": "https://intranet.icjia.cloud/events/nulla-eget-eros-elementum-pellentesque-quisque-porta-volutpat"
@@ -894,7 +957,7 @@
         "searchMeta": "vel augue",
         "section": "events",
         "slug": "nulla-justo-aliquam-quis-turpis-eget-elit-sodales-scelerisque-mauris",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/nulla-justo-aliquam-quis-turpis-eget-elit-sodales-scelerisque-mauris",
         "summary": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
         "url": "https://intranet.icjia.cloud/events/nulla-justo-aliquam-quis-turpis-eget-elit-sodales-scelerisque-mauris"
@@ -906,7 +969,7 @@
         "searchMeta": "aliquam erat volutpat in congue etiam justo etiam",
         "section": "events",
         "slug": "posuere-felis-sed-lacus-morbi",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/posuere-felis-sed-lacus-morbi",
         "summary": "Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",
         "url": "https://intranet.icjia.cloud/events/posuere-felis-sed-lacus-morbi"
@@ -918,7 +981,7 @@
         "searchMeta": "sem sed sagittis nam",
         "section": "events",
         "slug": "in-purus-eu-magna-vulputate-luctus-cum-sociis-natoque-penatibus-et-magnis",
-        "headings": "[]",
+        "headings": [],
         "path": "/events/in-purus-eu-magna-vulputate-luctus-cum-sociis-natoque-penatibus-et-magnis",
         "summary": "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
         "url": "https://intranet.icjia.cloud/events/in-purus-eu-magna-vulputate-luctus-cum-sociis-natoque-penatibus-et-magnis"

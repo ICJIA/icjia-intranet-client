@@ -92,7 +92,7 @@ async function main() {
         headingObj.id = id;
         headings.push(headingObj);
       });
-      searchObj.headings = JSON.stringify(headings);
+      searchObj.headings = headings;
       searchObj.markdown = markdown;
       searchObj.path = `/${section}/${searchObj.slug}`;
       searchObj.summary = item.summary || "";
