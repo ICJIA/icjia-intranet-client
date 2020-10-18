@@ -11,6 +11,7 @@ const JWT = dotenv.parsed.JWT;
 const endpoint = myConfig.api.baseGraphQL;
 const cheerio = require("cheerio");
 const Fuse = require("fuse.js");
+const toc = require("./lib/markdown-toc-fork");
 
 const utils = require("./lib/utils");
 const blacklist = [
@@ -83,6 +84,7 @@ async function main() {
       let markdown = item.body || item.details;
       searchObj.html = md.render(markdown);
       let $ = cheerio.load(searchObj.html);
+      searchObj.markdown = markdown;
       let headings = [];
       $("h2, h3").filter(function () {
         let data = $(this);
@@ -93,8 +95,8 @@ async function main() {
         headingObj.id = id;
         headings.push(headingObj);
       });
+      searchObj.toc = toc(markdown).json;
       searchObj.headings = headings;
-      searchObj.markdown = markdown;
       searchObj.path = `/${section}/${searchObj.slug}`;
       searchObj.summary = item.summary || "";
       searchObj.url = `${myConfig.api.baseClient}${searchObj.path}`;
@@ -107,12 +109,15 @@ async function main() {
 
   let searchIndex = index.flat();
   searchIndex = utils.filterUndefined(searchIndex);
-  utils.saveJson(searchIndex, "./public/siteMeta.json");
-  console.log(`Search index created: ./public/siteMeta.json`);
-  const searchOptions = myConfig.search;
-  const fuseIndex = Fuse.createIndex(searchOptions.keys, searchIndex);
-  utils.saveJson(fuseIndex, "./public/searchIndex.json");
-  console.log(`Fuse search index created: ./public/search.json"`);
+  const fuseIndex = Fuse.createIndex(myConfig.search.keys, searchIndex);
+  fs.writeFileSync(
+    "./public/fuse-index.json",
+    JSON.stringify(fuseIndex.toJSON())
+  );
+  console.log(`Fuse search index created: ./public/fuse-index.json"`);
+
+  utils.saveJson(searchIndex, "./public/site-meta.json");
+  console.log(`Site meta created: ./public/site-meta.json"`);
 }
 
 main();
