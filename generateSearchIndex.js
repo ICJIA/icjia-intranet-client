@@ -6,7 +6,7 @@ const myConfig = require("./src/config.json");
 const fs = require("fs");
 const apiDir = "./src/api";
 const fileName = "searchIndex.json";
-// const dotenv = require("dotenv").config();
+const dotenv = require("dotenv").config();
 const JWT = process.env.JWT;
 const endpoint = myConfig.api.baseGraphQL;
 const cheerio = require("cheerio");
@@ -109,9 +109,9 @@ async function main() {
       });
       searchObj.toc = toc(markdown).json;
       searchObj.headings = headings;
-      searchObj.path = `/${section}/${searchObj.slug}`;
+      searchObj.route = `/${section}/${searchObj.slug}`;
       searchObj.summary = item.summary || "";
-      searchObj.url = `${myConfig.api.baseClient}${searchObj.path}`;
+      searchObj.url = `${myConfig.api.baseClient}${searchObj.route}`;
       delete searchObj.markdown;
       delete searchObj.html;
       return searchObj;
@@ -130,6 +130,7 @@ async function main() {
 
   utils.saveJson(searchIndex, "./public/site-meta.json");
   console.log(`Site meta created: ./public/site-meta.json"`);
+  //console.log(searchIndex);
 }
 
 main();
