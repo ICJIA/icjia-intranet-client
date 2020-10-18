@@ -145,6 +145,15 @@ const routes = [
     },
   },
   {
+    path: "/events/:slug",
+    name: "Events",
+    component: () =>
+      import(/* webpackChunkName: "documents" */ "../views/Events.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     path: "/support",
     name: "Support",
     component: () =>
