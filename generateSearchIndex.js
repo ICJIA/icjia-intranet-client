@@ -5,7 +5,6 @@ const jsonfile = require("jsonfile");
 const myConfig = require("./src/config.json");
 const fs = require("fs");
 const apiDir = "./src/api";
-const fileName = "searchIndex.json";
 const dotenv = require("dotenv").config();
 const JWT = process.env.JWT;
 const endpoint = myConfig.api.baseGraphQL;
@@ -89,7 +88,7 @@ async function main() {
       let searchObj = {};
       searchObj.id = item.id;
       searchObj.title = item.title || item.name;
-      searchObj.type = item.type || "news";
+      searchObj.contentType = item.type || "news";
       searchObj.searchMeta = item.searchMeta || "";
       searchObj.section = section;
       searchObj.slug = item.slug;
@@ -119,18 +118,18 @@ async function main() {
     return items;
   });
 
-  let searchIndex = index.flat();
-  searchIndex = utils.filterUndefined(searchIndex);
-  const fuseIndex = Fuse.createIndex(myConfig.search.keys, searchIndex);
+  let siteMeta = index.flat();
+  siteMeta = utils.filterUndefined(siteMeta);
+  const fuseIndex = Fuse.createIndex(myConfig.search.keys, siteMeta);
   fs.writeFileSync(
     "./public/fuse-index.json",
     JSON.stringify(fuseIndex.toJSON())
   );
   console.log(`Fuse search index created: ./public/fuse-index.json"`);
 
-  utils.saveJson(searchIndex, "./public/site-meta.json");
+  utils.saveJson(siteMeta, "./public/site-meta.json");
   console.log(`Site meta created: ./public/site-meta.json"`);
-  //console.log(searchIndex);
+  //console.log(siteMeta);
 }
 
 main();
