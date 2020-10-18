@@ -6,7 +6,7 @@
 // const fs = require("fs");
 // const apiDir = "./src/api";
 // const fileName = "searchIndex.json";
-const dotenv = require("dotenv").config();
+// const dotenv = require("dotenv").config();
 // const JWT = dotenv.parsed.JWT;
 // const endpoint = myConfig.api.baseGraphQL;
 // const cheerio = require("cheerio");
@@ -122,4 +122,4 @@ const dotenv = require("dotenv").config();
 
 // main();
 
-console.log(dotenv);
+console.log(process.env);
