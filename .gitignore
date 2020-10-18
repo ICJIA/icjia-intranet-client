@@ -24,5 +24,4 @@ pnpm-debug.log*
 
 package-lock.json
 
-public/site-meta.json
-public/fuse-index.json
+
