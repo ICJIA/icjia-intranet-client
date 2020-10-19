@@ -10,7 +10,9 @@
             placeholder="Search ICJIA Intranet"
             @keyup="instantSearch"
           />
-
+          <div style="font-size: 12px" class="text-right mb-9">
+            {{ queryResults.length }} result{{ resultNumber }}
+          </div>
           <div v-if="query && query.length">
             <div
               v-for="(result, index) in queryResults"
@@ -45,15 +47,10 @@
                   ><div v-html="result.summary"></div
                 ></v-card-text>
               </v-card>
-              <!-- <div v-html="result.title"></div>
-              <div v-html="result.summary"></div>
-              <div v-html="result.contentType"></div>
-              <div v-html="result.type"></div> -->
             </div>
           </div>
-        </v-form>
-      </v-col></v-container
-    >
+        </v-form> </v-col
+    ></v-container>
   </div>
 </template>
 
@@ -107,14 +104,25 @@ export default {
       queryResults: [],
       content: "",
       fuse: null,
+      resultNumber: "s",
     };
   },
   async created() {
     this.fuse = new Fuse(this.$myApp.siteMeta, this.$myApp.config.search);
   },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.textfield.focus();
+    });
+  },
   methods: {
     instantSearch() {
       this.queryResults = highlight(this.fuse.search(this.query));
+      if (this.queryResults.lenth === 1) {
+        this.resultNumber = "";
+      } else {
+        this.resultNumber = "s";
+      }
     },
   },
 };
