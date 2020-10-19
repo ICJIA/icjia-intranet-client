@@ -90,18 +90,4 @@ export default {
 };
 </script>
 
-<style>
-.info-card:hover {
-  box-shadow: 0px 0px 25px #000000;
-  z-index: 2;
-  -webkit-transition: all 100ms ease-in;
-  -webkit-transform: scale(1.04);
-  -ms-transition: all 100ms ease-in;
-  -ms-transform: scale(1.04);
-  -moz-transition: all 100ms ease-in;
-  -moz-transform: scale(1.04);
-  transition: all 100ms ease-in;
-  transform: scale(1.04);
-  cursor: pointer;
-}
-</style>
+<style></style>

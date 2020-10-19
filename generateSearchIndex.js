@@ -96,18 +96,18 @@ async function main() {
       searchObj.html = md.render(markdown);
       let $ = cheerio.load(searchObj.html);
       searchObj.markdown = markdown;
-      let headings = [];
-      $("h2, h3").filter(function () {
-        let data = $(this);
-        let text = data.text();
-        let id = data.attr("id");
-        let headingObj = {};
-        headingObj.text = text;
-        headingObj.id = id;
-        headings.push(headingObj);
-      });
+      // let headings = [];
+      // $("h2, h3").filter(function () {
+      //   let data = $(this);
+      //   let text = data.text();
+      //   let id = data.attr("id");
+      //   let headingObj = {};
+      //   headingObj.text = text;
+      //   headingObj.id = id;
+      //   headings.push(headingObj);
+      // });
+      //  searchObj.headings = headings;
       searchObj.toc = toc(markdown).json;
-      searchObj.headings = headings;
       searchObj.route = `/${section}/${searchObj.slug}`;
       searchObj.summary = item.summary || "";
       searchObj.url = `${myConfig.api.baseClient}${searchObj.route}`;

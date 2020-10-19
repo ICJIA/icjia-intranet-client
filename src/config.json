@@ -38,7 +38,8 @@
       "searchMeta",
       "summary",
       "title",
-      "headings.text"
+      "headings.text",
+      "contentType"
     ]
   }
 }

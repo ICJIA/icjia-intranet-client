@@ -46,7 +46,7 @@ export default {
     },
     error: {
       type: String,
-      default: null,
+      default: "",
     },
   },
 };
