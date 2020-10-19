@@ -145,10 +145,19 @@ const routes = [
     },
   },
   {
-    path: "/events/:slug",
+    path: "/events",
     name: "Events",
+    redirect: { name: "Calendar" },
+
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/events/:slug",
+    name: "EventSingle",
     component: () =>
-      import(/* webpackChunkName: "documents" */ "../views/Events.vue"),
+      import(/* webpackChunkName: "documents" */ "../views/EventSingle.vue"),
     meta: {
       requiresAuth: true,
     },

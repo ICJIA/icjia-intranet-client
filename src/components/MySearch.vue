@@ -30,11 +30,11 @@
                     text-transform: uppercase;
                     color: #777;
                   "
-                  class="text-right mb-3"
+                  class="text-right mb-5"
                 >
                   <span
                     v-html="highlight(result.item.contentType)"
-                    style="color: #222 !important"
+                    style="color: #0d4474 !important"
                   ></span>
                   <span v-if="result.item.type">&nbsp;|&nbsp;</span>
                   <span
