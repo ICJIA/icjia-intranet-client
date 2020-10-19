@@ -70,7 +70,16 @@ export default {
   },
   methods: {
     routeTo(result) {
-      console.log(result);
+      let route;
+      switch (result.item.contentType) {
+        case "news":
+          route = `/news/${result.item.slug}`;
+          break;
+        default:
+          route = `/events/${result.item.slug}`;
+          break;
+      }
+      this.$router.push(route);
     },
     highlight(text) {
       let pattern = new RegExp(this.query, "gi");
