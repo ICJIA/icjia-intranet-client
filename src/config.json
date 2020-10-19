@@ -27,18 +27,17 @@
     "shouldSort": true,
     "includeMatches": true,
     "findAllMatches": true,
-    "minMatchCharLength": 1,
+    "minMatchCharLength": 3,
     "location": 0,
-    "threshold": 0.8,
+    "threshold": 0.4,
     "distance": 100,
     "useExtendedSearch": false,
     "ignoreLocation": false,
     "ignoreFieldNorm": false,
     "keys": [
-      "searchMeta",
       "summary",
       "title",
-      "headings.text",
+      "toc.content",
       {
         "name": "contentType",
         "weight": 1
