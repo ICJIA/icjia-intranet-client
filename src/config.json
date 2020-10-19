@@ -39,8 +39,14 @@
       "summary",
       "title",
       "headings.text",
-      "contentType",
-      "type"
+      {
+        "name": "contentType",
+        "weight": 2
+      },
+      {
+        "name": "type",
+        "weight": 3
+      }
     ]
   }
 }
