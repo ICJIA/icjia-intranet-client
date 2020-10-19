@@ -88,7 +88,8 @@ async function main() {
       let searchObj = {};
       searchObj.id = item.id;
       searchObj.title = item.title || item.name;
-      searchObj.contentType = item.type || "news";
+      searchObj.contentType = section;
+      searchObj.type = item.type;
       searchObj.searchMeta = item.searchMeta || "";
       searchObj.section = section;
       searchObj.slug = item.slug;

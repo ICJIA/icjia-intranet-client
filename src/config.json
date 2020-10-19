@@ -39,7 +39,8 @@
       "summary",
       "title",
       "headings.text",
-      "contentType"
+      "contentType",
+      "type"
     ]
   }
 }

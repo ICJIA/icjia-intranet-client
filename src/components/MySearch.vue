@@ -21,7 +21,7 @@
                 elevation="1"
                 class="px-5 py-4 info-card"
                 color="grey lighten-5"
-                @click="routeTo(result)"
+                @click="$router.push(result.item.route)"
               >
                 <div
                   style="
@@ -31,8 +31,18 @@
                     color: #777;
                   "
                   class="text-right mb-3"
-                  v-html="highlight(result.item.contentType)"
-                ></div>
+                >
+                  <span
+                    v-html="highlight(result.item.contentType)"
+                    style="color: #222 !important"
+                  ></span>
+                  <span v-if="result.item.type">&nbsp;|&nbsp;</span>
+                  <span
+                    v-if="result.item.type"
+                    v-html="highlight(result.item.type)"
+                  ></span>
+                </div>
+
                 <h2><span v-html="highlight(result.item.title)"></span></h2>
                 <v-card-text v-if="result.item.summary"
                   ><div v-html="highlight(result.item.summary)"></div
@@ -69,18 +79,6 @@ export default {
     this.fuse = new Fuse(this.$myApp.siteMeta, this.$myApp.config.search);
   },
   methods: {
-    routeTo(result) {
-      let route;
-      switch (result.item.contentType) {
-        case "news":
-          route = `/news/${result.item.slug}`;
-          break;
-        default:
-          route = `/events/${result.item.slug}`;
-          break;
-      }
-      this.$router.push(route);
-    },
     highlight(text) {
       let pattern = new RegExp(this.query, "gi");
       let str = text.replace(
