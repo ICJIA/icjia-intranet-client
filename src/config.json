@@ -37,7 +37,7 @@
     "keys": [
       "summary",
       "title",
-      "toc.content",
+      "headings",
       {
         "name": "contentType",
         "weight": 1

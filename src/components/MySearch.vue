@@ -19,7 +19,7 @@
               :key="index"
               class="my-5"
             >
-              <v-card
+              <!-- <v-card
                 elevation="1"
                 class="px-5 py-4 info-card"
                 color="grey lighten-5"
@@ -46,11 +46,13 @@
                 <v-card-text v-if="result.summary"
                   ><div v-html="result.summary"></div
                 ></v-card-text>
-              </v-card>
+              </v-card> -->
+              {{ result }}
             </div>
           </div>
-        </v-form> </v-col
-    ></v-container>
+        </v-form>
+      </v-col></v-container
+    >
   </div>
 </template>
 
@@ -58,15 +60,22 @@
 /* eslint-disable no-unused-vars */
 import Fuse from "fuse.js";
 import _ from "lodash";
+function sortByKey(array, key) {
+  return array.sort(function (a, b) {
+    var x = a[key];
+    var y = b[key];
+    return x < y ? -1 : x > y ? 1 : 0;
+  });
+}
 const highlight = (fuseSearchResult, highlightClassName = "highlight") => {
-  // const set = (obj, path, value) => {
-  //   const pathValue = path.split(".");
-  //   let i;
-  //   for (i = 0; i < pathValue.length - 1; i++) {
-  //     obj = obj[pathValue[i]];
-  //   }
-  //   obj[pathValue[i]] = value;
-  // };
+  const set = (obj, path, value) => {
+    const pathValue = path.split(".");
+    let i;
+    for (i = 0; i < pathValue.length - 1; i++) {
+      obj = obj[pathValue[i]];
+    }
+    obj[pathValue[i]] = value;
+  };
   const generateHighlightedText = (inputText, regions = []) => {
     let content = "";
     let nextUnhighlightedRegionStartingIndex = 0;
@@ -88,7 +97,7 @@ const highlight = (fuseSearchResult, highlightClassName = "highlight") => {
     .map(({ item, matches }) => {
       const highlightedItem = Object.assign({}, item);
       matches.forEach((match) => {
-        _.set(
+        set(
           highlightedItem,
           match.key,
           generateHighlightedText(match.value, match.indices)
@@ -117,12 +126,15 @@ export default {
   },
   methods: {
     instantSearch() {
-      this.queryResults = highlight(this.fuse.search(this.query));
-      if (this.queryResults.lenth === 1) {
-        this.resultNumber = "";
-      } else {
-        this.resultNumber = "s";
-      }
+      // let queryResults = this.fuse.search(this.query);
+      // let displayQuery = queryResults.map((item) => {
+      //   let obj = item;
+      //   obj.item.title = "test here";
+      //   return obj;
+      // });
+      // this.queryResults = displayQuery;
+      let queryResults = this.fuse.search(this.query);
+      this.queryResults = queryResults;
     },
   },
 };
