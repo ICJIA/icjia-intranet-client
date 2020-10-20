@@ -1,8 +1,18 @@
+const { arrayReplaceAt } = require("markdown-it/lib/common/utils");
+
 let regionStart = "<span class='highlight'>";
 let regionEnd = "</span>";
 
-// const _ = require("lodash");
-let raw = [];
+const _ = require("lodash");
+
+function mergeKeys(arr) {
+  return _.chain(arr)
+    .groupBy("key")
+    .mapValues(function (v) {
+      return _.chain(v).orderBy("refIndex").map("value").flattenDeep();
+    })
+    .value();
+}
 
 let text = [
   {
@@ -64,32 +74,49 @@ let text = [
   },
   {
     item: {
-      id: "18",
-      title: "Tristique Est Et Tempus Semper Est",
-      contentType: "events",
-      type: "general",
-      searchMeta: "at nunc commodo",
-      section: "events",
-      slug: "tristique-est-et-tempus-semper-est",
-      headings: [],
-      route: "/events/tristique-est-et-tempus-semper-est",
-      summary: "Sed vel enim sit amet nunc viverra dapibus.",
+      id: "130",
+      title: "Tamen promissa est viscera ille Tritonida neque",
+      contentType: "news",
+      searchMeta: "",
+      section: "news",
+      slug: "tamen-promissa-est-viscera-ille-tritonida-neque",
+      headings: [
+        "Quid quondam iam cur stabantque",
+        "Dixit iaces ad leaena stirpi praefert",
+        "Nitenti semel inscius cetera os est precari",
+      ],
+      route: "/news/tamen-promissa-est-viscera-ille-tritonida-neque",
+      summary:
+        "Visa uno vitae tendebant Cumaeae medio. Ferro genero velaturque in mersum, sufficiunt iunctis magni laceros arma aderat. Test",
       url:
-        "https://intranet.icjia.cloud/events/tristique-est-et-tempus-semper-est",
+        "https://intranet.icjia.cloud/news/tamen-promissa-est-viscera-ille-tritonida-neque",
     },
-    refIndex: 24,
+    refIndex: 5,
     matches: [
       {
-        indices: [[2, 5]],
-        value: "Tristique Est Et Tempus Semper Est",
+        indices: [[90, 92]],
+        value:
+          "Visa uno vitae tendebant Cumaeae medio. Ferro genero velaturque in mersum, sufficiunt iunctis magni laceros arma aderat. Test",
+        key: "summary",
+      },
+      {
+        indices: [[10, 12]],
+        value: "Tamen promissa est viscera ille Tritonida neque",
         key: "title",
       },
+      {
+        indices: [[22, 24]],
+        value: "Dixit iaces ad leaena stirpi praefert",
+        key: "headings",
+        refIndex: 1,
+      },
     ],
-    score: 0.2026843601314348,
+    score: 0.5123101137049096,
   },
 ];
 let matchedText = [];
 text.forEach((t) => {
+  let arr = [];
   t.matches.forEach((match) => {
     let highlighted = {};
     let pair = match.indices.shift();
@@ -112,27 +139,9 @@ text.forEach((t) => {
     if (match.refIndex >= 0) {
       highlighted.refIndex = match.refIndex;
     }
-    matchedText.push(highlighted);
-    console.log(matchedText);
+    arr.push(highlighted);
   });
-  //console.log(t.item.id, matchedText);
-  // let obj = {};
-  // obj.id = t.item.id;
-  // obj.matches = JSON.stringify(matchedText);
-  // raw.push(obj);
+
+  matchedText.push(mergeKeys(arr));
 });
-
-console.log(raw);
-
-// console.log(matchedText);
-
-// function mergeHeadings(arr) {
-//   return _.chain(arr)
-//     .groupBy("key")
-//     .mapValues(function (v) {
-//       return _.chain(v).orderBy("refIndex").map("value").flattenDeep();
-//     })
-//     .value();
-// }
-
-// console.log(JSON.stringify(mergeHeadings(matchedText)));
+console.log(JSON.parse(JSON.stringify(matchedText)));
