@@ -47,8 +47,8 @@
                   ><div v-html="result.summary"></div
                 ></v-card-text>
               </v-card> -->
-              {{ result }}
             </div>
+            {{ queryResults }}
           </div>
         </v-form>
       </v-col></v-container

@@ -1,5 +1,3 @@
-const { arrayReplaceAt } = require("markdown-it/lib/common/utils");
-
 let regionStart = "<span class='highlight'>";
 let regionEnd = "</span>";
 
@@ -139,9 +137,20 @@ text.forEach((t) => {
     if (match.refIndex >= 0) {
       highlighted.refIndex = match.refIndex;
     }
+
     arr.push(highlighted);
   });
+  delete t.item.headings;
+  delete t.item.searchMeta;
+  delete t.item.slug;
+  delete t.item.url;
+  delete t.item.id;
+  let obj = {};
+  obj.key = "original";
+  obj.value = t.item;
+  arr.push(obj);
 
   matchedText.push(mergeKeys(arr));
 });
-console.log(JSON.parse(JSON.stringify(matchedText)));
+let raw = JSON.parse(JSON.stringify(matchedText));
+console.log(raw[1]);

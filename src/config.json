@@ -35,9 +35,18 @@
     "ignoreLocation": false,
     "ignoreFieldNorm": false,
     "keys": [
-      "summary",
-      "title",
-      "headings",
+      {
+        "name": "summary",
+        "weight": 1
+      },
+      {
+        "name": "title",
+        "weight": 1
+      },
+      {
+        "name": "headings",
+        "weight": 1
+      },
       {
         "name": "contentType",
         "weight": 1
