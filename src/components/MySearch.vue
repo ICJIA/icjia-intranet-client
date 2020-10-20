@@ -19,7 +19,7 @@
               :key="index"
               class="my-5"
             >
-              <!-- <v-card
+              <v-card
                 elevation="1"
                 class="px-5 py-4 info-card"
                 color="grey lighten-5"
@@ -46,13 +46,11 @@
                 <v-card-text v-if="result.summary"
                   ><div v-html="result.summary"></div
                 ></v-card-text>
-              </v-card> -->
-              {{ result }}
+              </v-card>
             </div>
           </div>
-        </v-form>
-      </v-col></v-container
-    >
+        </v-form> </v-col
+    ></v-container>
   </div>
 </template>
 
@@ -126,15 +124,8 @@ export default {
   },
   methods: {
     instantSearch() {
-      // let queryResults = this.fuse.search(this.query);
-      // let displayQuery = queryResults.map((item) => {
-      //   let obj = item;
-      //   obj.item.title = "test here";
-      //   return obj;
-      // });
-      // this.queryResults = displayQuery;
       let queryResults = this.fuse.search(this.query);
-      this.queryResults = queryResults;
+      this.queryResults = highlight(queryResults);
     },
   },
 };
