@@ -113,7 +113,7 @@ let text = [
   },
 ];
 let matchedText = [];
-text.forEach((t) => {
+const results = text.map((t) => {
   let arr = [];
   t.matches.forEach((match) => {
     let highlighted = {};
@@ -140,17 +140,19 @@ text.forEach((t) => {
 
     arr.push(highlighted);
   });
-  delete t.item.headings;
-  delete t.item.searchMeta;
-  delete t.item.slug;
-  delete t.item.url;
-  delete t.item.id;
-  let obj = {};
-  obj.key = "original";
-  obj.value = t.item;
-  arr.push(obj);
-
-  matchedText.push(mergeKeys(arr));
+  // delete t.item.headings;
+  // delete t.item.searchMeta;
+  // delete t.item.slug;
+  // delete t.item.url;
+  // delete t.item.id;
+  // let obj = {};
+  // obj.key = "original";
+  // obj.value = t.item;
+  // arr.push(obj);
+  delete t.matches;
+  t.matched = JSON.parse(JSON.stringify(mergeKeys(arr)));
+  return t;
 });
-let raw = JSON.parse(JSON.stringify(matchedText));
-console.log(raw[1]);
+// let raw = JSON.parse(JSON.stringify(matchedText));
+// console.log(raw[0]);
+console.log(results[0]);
