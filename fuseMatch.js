@@ -112,6 +112,7 @@ let text = [
     score: 0.5123101137049096,
   },
 ];
+// eslint-disable-next-line no-unused-vars
 let matchedText = [];
 const results = text.map((t) => {
   let arr = [];
