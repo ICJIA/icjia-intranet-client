@@ -23,7 +23,7 @@
                 <a href="mailto: john.klaer@illinois.gov">John Klaer</a>.
               </li>
               <li>
-                For Human Resources questions, please contact
+                For HR questions, please contact
                 <a href="mailto: zina.smith@illinois.gov">Zina Smith</a>
               </li>
               <li>
