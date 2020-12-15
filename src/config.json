@@ -16,7 +16,7 @@
   },
   "home": {
     "eventLimit": 5,
-    "postLimit": 4
+    "postLimit": 5
   },
   "timezone": "America/Chicago",
   "underConstruction": false,
