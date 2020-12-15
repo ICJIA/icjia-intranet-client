@@ -19,7 +19,7 @@
     "postLimit": 4
   },
   "timezone": "America/Chicago",
-  "underConstruction": false,
+  "underConstruction": true,
   "hoursToShowUpdated": 1,
   "search": {
     "isCaseSensitive": false,
