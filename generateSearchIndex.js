@@ -64,7 +64,7 @@ const query = gql`
       title
       summary
       slug
-      searchMeta
+
       body
     }
     events {
@@ -73,7 +73,7 @@ const query = gql`
       type
       summary
       slug
-      searchMeta
+
       details
     }
   }
@@ -90,7 +90,7 @@ async function main() {
       searchObj.title = item.title || item.name;
       searchObj.contentType = section;
       searchObj.type = item.type;
-      searchObj.searchMeta = item.searchMeta || "";
+
       searchObj.section = section;
       searchObj.slug = item.slug;
       let markdown = item.body || item.details;

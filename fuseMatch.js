@@ -18,7 +18,7 @@ let text = [
       id: "131",
       title: "Flumen terris pertulit rogum istis amori in aquarum ",
       contentType: "news",
-      searchMeta: "",
+
       section: "news",
       slug: "flumen-terris-pertulit-rogum-istis-amori-in-aquarum",
       headings: [
@@ -75,7 +75,7 @@ let text = [
       id: "130",
       title: "Tamen promissa est viscera ille Tritonida neque",
       contentType: "news",
-      searchMeta: "",
+
       section: "news",
       slug: "tamen-promissa-est-viscera-ille-tritonida-neque",
       headings: [
@@ -142,7 +142,7 @@ const results = text.map((t) => {
     arr.push(highlighted);
   });
   // delete t.item.headings;
-  // delete t.item.searchMeta;
+
   // delete t.item.slug;
   // delete t.item.url;
   // delete t.item.id;
