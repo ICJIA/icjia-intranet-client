@@ -46,6 +46,26 @@
         </v-form>
       </v-card>
     </v-row>
+    <v-bottom-sheet v-model="sheet" v-if="showRegistrationModal">
+      <v-sheet class="text-center" height="200px">
+        <div class="py-8">
+          <div class="">
+            If this is your first time using the new ICJIA intranet, you must
+            register your illinois.gov address and create a password.
+          </div>
+          <div class="pt-2">
+            <router-link to="/register" @click="hideForGood"
+              >Click here</router-link
+            >
+            to register.
+          </div>
+
+          <v-btn @click="hideForGood" class="mt-6" large dark color="red">
+            Go to Login
+          </v-btn>
+        </div>
+      </v-sheet>
+    </v-bottom-sheet>
   </div>
 </template>
 
@@ -66,9 +86,24 @@ export default {
       password: "test12345",
       e3: true,
       e4: true,
+      sheet: true,
     };
   },
+  computed: {
+    showRegistrationModal() {
+      //console.log("local storage: ", localStorage.getItem("showCensusModal"));
+      if (localStorage.getItem("showRegistrationModal")) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  },
   methods: {
+    hideForGood() {
+      localStorage.setItem("showRegistrationModal", false);
+      this.sheet = false;
+    },
     login() {
       let identifier = this.identifier.toLowerCase();
       let password = this.password;
