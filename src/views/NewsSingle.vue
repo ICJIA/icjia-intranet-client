@@ -98,7 +98,7 @@
 <script>
 import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
-import { GET_SINGLE_POST_QUERY } from "@/graphql/queries/getPosts";
+import { GET_SINGLE_POST_QUERY } from "@/graphql/queries/posts";
 export default {
   name: "Home",
   mixins: [handleClicks],

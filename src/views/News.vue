@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { GET_ALL_POSTS_QUERY } from "@/graphql/queries/getPosts";
+import { GET_ALL_POSTS_QUERY } from "@/graphql/queries/posts";
 export default {
   data() {
     return {
