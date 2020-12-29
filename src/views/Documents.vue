@@ -11,7 +11,73 @@
     </v-container>
     <v-container>
       <v-row>
-        {{ documents }}
+        <v-col>
+          <v-data-table
+            :headers="headers"
+            :items="documents"
+            :items-per-page="15"
+            class="elevation-3 hover my-8"
+            show-expand
+            item-key="title"
+            :single-expand="singleExpand"
+            :expanded.sync="expanded"
+            @click:row="clicked"
+            :search="search"
+            :loading="loading"
+            loading-text="Loading..."
+          >
+            <template v-slot:top>
+              <div class="pt-5">
+                <v-text-field
+                  v-model="search"
+                  label="Search All Documents"
+                  class="mx-4"
+                ></v-text-field>
+              </div>
+            </template>
+            <template v-slot:item.updated_at="{ item }">
+              <div style="font-size: 14px !important">
+                <strong>{{ item.updated_at | dateFormat }}</strong>
+              </div>
+            </template>
+            <template v-slot:item.unit="{ item }">
+              <div
+                style="color: #aaa; font-weight: bold"
+                v-if="item.unit && item.unit.title"
+              >
+                {{ item.unit.title }}
+              </div>
+              <div v-else style="color: #aaa; font-weight: bold">All units</div>
+            </template>
+            <template v-slot:item.file="{ item }">
+              <v-avatar
+                color="grey lighten-2"
+                size="40"
+                class="my-3"
+                @click.stop.prevent="download(item.file)"
+              >
+                <span
+                  style="
+                    font-size: 10px !important;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                  "
+                  >{{ item.file.ext.substring(1) }}</span
+                >
+              </v-avatar>
+            </template>
+            <template v-slot:expanded-item="{ headers, item }">
+              <td
+                :colspan="headers.length"
+                style="padding: 0 !important; margin: 0 !important"
+              >
+                <v-card color="grey lighten-4" class="px-5 py-5 mx-2 my-2">
+                  {{ item }}
+                </v-card>
+              </td>
+            </template></v-data-table
+          >
+        </v-col>
       </v-row>
     </v-container>
   </div>
@@ -23,11 +89,67 @@ export default {
   data() {
     return {
       error: null,
+      expanded: [],
+      search: "",
+      singleExpand: true,
+      loading: true,
+      headers: [
+        {
+          text: "Last updated",
+          align: "start",
+          sortable: true,
+          value: "updated_at",
+          width: "200px",
+        },
+        {
+          text: "Title",
+          align: "start",
+          sortable: true,
+          value: "title",
+          width: "300px",
+        },
+        {
+          text: "Unit",
+          align: "start",
+          sortable: true,
+          value: "unit.title",
+        },
+        {
+          text: "Download",
+          align: "center",
+          sortable: false,
+          value: "file",
+        },
+      ],
     };
   },
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    download(file) {
+      let download = `https://dev.icjia-api.cloud${file.url}`;
+      //console.log("download: ", download);
+      if (file.ext === ".pdf") {
+        window.open(download);
+      } else {
+        location.href = download;
+      }
+    },
+
+    clicked(value) {
+      //console.log(value);
+      if (value === this.expanded[0]) {
+        this.expanded = [];
+      } else {
+        if (this.expanded.length) {
+          this.expanded.shift();
+          this.expanded.push(value);
+        } else {
+          this.expanded.push(value);
+        }
+      }
+    },
+  },
   apollo: {
     documents: {
       prefetch: true,
@@ -37,6 +159,10 @@ export default {
       },
       error(error) {
         this.error = JSON.stringify(error.message);
+      },
+      // eslint-disable-next-line no-unused-vars
+      result(ApolloQueryResult) {
+        this.loading = false;
       },
     },
   },

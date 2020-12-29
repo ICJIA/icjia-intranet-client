@@ -10,6 +10,7 @@ const GET_ALL_DOCUMENTS = gql`
       file {
         url
         name
+        ext
       }
       slug
       unit {
