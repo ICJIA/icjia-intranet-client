@@ -5,9 +5,11 @@
         >Updated: <strong>{{ postedMeta.updated_at | format }}</strong
         >&nbsp;//&nbsp;</span
       ></span
-    >Posted <strong>{{ postedMeta.created_at | format }}</strong> by
+    ><strong>{{ postedMeta.created_at | format }}</strong>
+
+    <!-- by
     {{ postedMeta.firstname }}
-    {{ postedMeta.lastname }}
+    {{ postedMeta.lastname }} -->
   </div>
 </template>
 
@@ -27,8 +29,7 @@ export default {
       let start = moment(this.meta.created_at);
       let end = moment(this.meta.updated_at);
       let duration = moment.duration(end.diff(start));
-      obj.showUpdated =
-        duration.asHours() > this.$myApp.config.hoursToShowUpdated;
+      obj.showUpdated = duration.asHours() > 24;
       obj.hoursSinceCreated = duration.asHours();
 
       return obj;

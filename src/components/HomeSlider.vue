@@ -31,13 +31,6 @@
                     "
                   >
                     <div class="text-center">
-                      <div
-                        style="font-size: 12px; color: #ccc"
-                        class="text-center mb-3"
-                        v-if="slide.postingDate"
-                      >
-                        {{ slide.postingDate | format }}
-                      </div>
                       <h2 v-if="slide.title">{{ slide.title }}</h2>
                       <h3
                         style="color: #aaa; font-size: 14px"

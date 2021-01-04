@@ -24,7 +24,6 @@ const GET_HOME = gql`
         slide {
           title
           url
-          postingDate
           summary
           image {
             formats

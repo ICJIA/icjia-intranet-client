@@ -40,16 +40,16 @@
                 <strong>{{ item.updated_at | dateFormat }}</strong>
               </div>
             </template>
-            <template v-slot:item.unit="{ item }">
+            <template v-slot:item.unit.title="{ item }">
               <div
                 style="color: #aaa; font-weight: bold"
                 v-if="item.unit && item.unit.title"
               >
                 {{ item.unit.title }}
               </div>
-              <div v-else style="color: #aaa; font-weight: bold">All units</div>
+              <div v-else style="color: #aaa; font-weight: bold">General</div>
             </template>
-            <template v-slot:item.file="{ item }">
+            <template v-slot:item.file.ext="{ item }">
               <v-avatar
                 color="grey lighten-2"
                 size="40"
@@ -72,7 +72,34 @@
                 style="padding: 0 !important; margin: 0 !important"
               >
                 <v-card color="grey lighten-4" class="px-5 py-5 mx-2 my-2">
-                  {{ item }}
+                  <h2
+                    style="
+                      font-size: 30px;
+                      border-bottom: 1px solid #ccc;
+                      padding-bottom: 6px;
+                      margin-bottom: 20px;
+                    "
+                  >
+                    {{ item.title }}
+                  </h2>
+                  <div
+                    v-if="item.body"
+                    class="mb-2 markdown-body"
+                    v-html="render(item.body)"
+                  ></div>
+                  <div
+                    v-html="render(item.summary)"
+                    v-if="item.summary && !item.body"
+                    class="mb-2"
+                  ></div>
+
+                  <div
+                    class="mt-3 hover file-download"
+                    style="font-weight: bold"
+                    @click="download(item.file)"
+                  >
+                    {{ item.file.name }}
+                  </div>
                 </v-card>
               </td>
             </template></v-data-table
@@ -84,8 +111,11 @@
 </template>
 
 <script>
+import { handleClicks } from "@/mixins/handleClicks";
+import { renderToHtml } from "@/services/Markdown";
 import { GET_ALL_DOCUMENTS } from "@/graphql/queries/documents";
 export default {
+  mixins: [handleClicks],
   data() {
     return {
       error: null,
@@ -118,7 +148,7 @@ export default {
           text: "Download",
           align: "center",
           sortable: false,
-          value: "file",
+          value: "file.ext",
         },
       ],
     };
@@ -126,6 +156,9 @@ export default {
   created() {},
   mounted() {},
   methods: {
+    render(content) {
+      return renderToHtml(content);
+    },
     download(file) {
       let download = `https://dev.icjia-api.cloud${file.url}`;
       //console.log("download: ", download);
@@ -169,4 +202,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.file-download {
+  color: rgb(38, 38, 155);
+}
+.file-download:hover {
+  color: #555;
+  text-decoration: underline;
+}
+</style>
