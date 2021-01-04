@@ -64,7 +64,6 @@ const query = gql`
       title
       summary
       slug
-      searchMeta
       body
     }
     events {
@@ -73,7 +72,6 @@ const query = gql`
       type
       summary
       slug
-      searchMeta
       details
     }
   }
