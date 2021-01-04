@@ -18,6 +18,7 @@ import moment from "moment";
 export default {
   computed: {
     postedMeta() {
+      //TODO: Change to published
       let obj = {};
       obj.created_at = this.meta.created_at;
       obj.updated_at = this.meta.updated_at;

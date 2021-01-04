@@ -21,3 +21,9 @@ npm run build
 
 Rename ```.env.sample``` to ```.env```, then add env variables.
 
+## Deployments
+
+- https://intranet.icjia.cloud for ```master``` builds
+
+- https://dev--icjia-intranet.netlify.app/ for ```dev``` builds
+

@@ -61,7 +61,7 @@
           </div>
 
           <v-btn @click="hideForGood" class="mt-6" large dark color="red">
-            Go to Login
+            I understand
           </v-btn>
         </div>
       </v-sheet>
