@@ -18,6 +18,13 @@
     "eventLimit": 4,
     "postLimit": 3
   },
+  "image": {
+    "server": "https://image.icjia.cloud",
+    "thumbHeight": 100,
+    "thumbWidth": 0,
+    "splashHeight": 400,
+    "splashWidth": 0
+  },
   "timezone": "America/Chicago",
   "underConstruction": false,
   "hoursToShowUpdated": 1,

@@ -18,6 +18,11 @@ const GET_ALL_DOCUMENTS = gql`
         title
         slug
       }
+      related {
+        title
+        slug
+        summary
+      }
     }
   }
 `;

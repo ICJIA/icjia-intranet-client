@@ -45,6 +45,7 @@
     "netlify-lambda": "^2.0.1",
     "nprogress": "^0.2.0",
     "slug": "^3.3.4",
+    "thumbor-url-builder": "^0.1.1",
     "vue": "^2.6.11",
     "vue-analytics": "^5.22.1",
     "vue-apollo": "^3.0.4",
