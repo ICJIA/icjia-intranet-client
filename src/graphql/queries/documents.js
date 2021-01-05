@@ -7,6 +7,7 @@ const GET_ALL_DOCUMENTS = gql`
       updated_at
       title
       summary
+      externalURL
       body
       file {
         url

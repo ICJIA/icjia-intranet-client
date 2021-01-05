@@ -49,23 +49,15 @@
               </div>
               <div v-else style="color: #aaa; font-weight: bold">General</div>
             </template>
-            <template v-slot:item.file.ext="{ item }">
-              <v-avatar
-                color="grey lighten-2"
-                size="40"
-                class="my-3"
-                @click.stop.prevent="download(item.file)"
-              >
-                <span
-                  style="
-                    font-size: 10px !important;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                  "
-                  >{{ item.file.ext.substring(1) }}</span
-                >
-              </v-avatar>
+            <template v-slot:item.file="{ item }">
+              <div style="color: #aaa; font-weight: bold" v-if="item.file">
+                {{ item.file.ext }}
+              </div>
+              <div style="color: #aaa; font-weight: bold" v-else>
+                {{ item.externalURL }}
+              </div>
             </template>
+
             <template v-slot:expanded-item="{ headers, item }">
               <td
                 :colspan="headers.length"
@@ -98,7 +90,7 @@
                     style="font-weight: bold"
                     @click="download(item.file)"
                   >
-                    {{ item.file.name }}
+                    {{ item }}
                   </div>
                 </v-card>
               </td>
@@ -148,13 +140,13 @@ export default {
           text: "Download",
           align: "center",
           sortable: false,
-          value: "file.ext",
+          value: "file",
         },
       ],
     };
   },
+
   created() {},
-  mounted() {},
   methods: {
     render(content) {
       return renderToHtml(content);
