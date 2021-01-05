@@ -19,9 +19,20 @@
         <v-list-item three-line>
           <v-list-item-avatar tile size="100" color="grey" v-if="post.splash">
             <v-img
-              :src="getThumbnail(post)"
-              :lazy-src="getThumbnail(post)"
-              alt="Splash image"
+              :src="
+                getImageURL(
+                  $myApp.config.api.base + post.splash.formats.thumbnail.url
+                )
+              "
+              :lazy-src="
+                getImageURL(
+                  $myApp.config.api.base + post.splash.formats.thumbnail.url,
+                  0,
+                  0,
+                  1
+                )
+              "
+              :alt="getAltText(post)"
             ></v-img>
           </v-list-item-avatar>
 
@@ -54,6 +65,7 @@
   </div>
 </template>
 <script>
+import { getImageURL } from "@/services/Image";
 export default {
   name: "HomePosts",
   components: {},
@@ -61,6 +73,7 @@ export default {
   data() {
     return {
       newPosts: [],
+      getImageURL,
     };
   },
   created() {
@@ -86,6 +99,13 @@ export default {
         return `${this.$myApp.config.api.base}${post.splash.formats.thumbnail.url}`;
       } else {
         return `${this.$myApp.config.defaultAvatar}`;
+      }
+    },
+    getAltText(post) {
+      if (post.splash.alternativeText) {
+        return post.splash.alternativeText;
+      } else {
+        return "ICJIA Thumbnail Image";
       }
     },
     isLoading(loading) {
