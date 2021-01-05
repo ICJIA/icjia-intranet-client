@@ -1,9 +1,9 @@
-let dayjs = require("dayjs");
-let now = new Date();
-let utc = require("dayjs/plugin/utc");
-let timezone = require("dayjs/plugin/timezone");
-let advancedFormat = require("dayjs/plugin/advancedFormat");
-let relativeTime = require("dayjs/plugin/relativeTime");
+const dayjs = require("dayjs");
+const now = new Date();
+const utc = require("dayjs/plugin/utc");
+const timezone = require("dayjs/plugin/timezone");
+const advancedFormat = require("dayjs/plugin/advancedFormat");
+const relativeTime = require("dayjs/plugin/relativeTime");
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Chicago");
@@ -38,4 +38,4 @@ const dateDiff = function (
   return diff;
 };
 
-export { displayDate, displayTime, timeFromDate, dateDiff };
+console.log(displayDate());

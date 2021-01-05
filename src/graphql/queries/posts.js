@@ -11,6 +11,7 @@ const GET_ALL_POSTS_QUERY = gql`
       showToc
       created_at
       updated_at
+      published_at
       updated_by {
         username
         firstname
@@ -40,6 +41,7 @@ const GET_SINGLE_POST_QUERY = gql`
       showToc
       created_at
       updated_at
+      published_at
       updated_by {
         username
         firstname

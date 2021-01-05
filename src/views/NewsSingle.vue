@@ -158,6 +158,7 @@ export default {
           });
         } else {
           this.meta = {
+            published_at: ApolloQueryResult.data.posts[0]["published_at"],
             created_at: ApolloQueryResult.data.posts[0]["created_at"],
             updated_at: ApolloQueryResult.data.posts[0]["updated_at"],
             updated_by: ApolloQueryResult.data.posts[0]["updated_by"],
