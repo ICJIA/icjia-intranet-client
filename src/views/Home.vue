@@ -34,7 +34,7 @@
                         <h2 style="color: #fff">News & Updates</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn outlined small color="white" to="/news"
+                        <v-btn outlined small to="/news"
                           >news archive&nbsp;<v-icon right small
                             >view_headline</v-icon
                           ></v-btn
@@ -59,8 +59,8 @@
                         <h2 style="color: #fff">Upcoming Events</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn outlined small color="white" to="/calendar"
-                          >Calendar&nbsp;<v-icon right small
+                        <v-btn outlined small to="/calendar"
+                          >calender&nbsp;<v-icon right small
                             >calendar_today</v-icon
                           ></v-btn
                         >
