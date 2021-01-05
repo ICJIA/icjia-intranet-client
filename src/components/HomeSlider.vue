@@ -53,8 +53,20 @@
               <v-col md="8" cols="12" class="hidden-sm-and-down">
                 <v-img
                   v-if="slide.image && slide.image.formats"
-                  :src="`${base}${slide.image.formats.large.url}`"
-                  :lazy-src="`${base}${slide.image.formats.thumbnail.url}`"
+                  :src="
+                    getImageURL(
+                      $myApp.config.api.base + slide.image.formats.large.url
+                    )
+                  "
+                  :lazy-src="
+                    getImageURL(
+                      $myApp.config.api.base +
+                        slide.image.formats.thumbnail.url,
+                      0,
+                      0,
+                      1
+                    )
+                  "
                   aspect-ratio="1.7"
                   max-height="400"
                 >
@@ -81,6 +93,7 @@
 </template>
 
 <script>
+import { getImageURL } from "@/services/Image";
 export default {
   mounted() {},
   methods: {
@@ -105,6 +118,7 @@ export default {
   data() {
     return {
       base: this.$myApp.config.api.base,
+      getImageURL,
     };
   },
 };

@@ -33,6 +33,14 @@
                 )
               "
               :alt="getAltText(post)"
+            >
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular
+                    indeterminate
+                    color="blue darken-3"
+                  ></v-progress-circular>
+                </v-row> </template
             ></v-img>
           </v-list-item-avatar>
 
@@ -94,13 +102,7 @@ export default {
     routeTo(slug) {
       this.$router.push(`/news/${slug}`);
     },
-    getThumbnail(post) {
-      if (post.splash) {
-        return `${this.$myApp.config.api.base}${post.splash.formats.thumbnail.url}`;
-      } else {
-        return `${this.$myApp.config.defaultAvatar}`;
-      }
-    },
+
     getAltText(post) {
       if (post.splash.alternativeText) {
         return post.splash.alternativeText;
