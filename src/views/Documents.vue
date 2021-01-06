@@ -84,7 +84,10 @@
                 :colspan="headers.length"
                 style="padding: 0 !important; margin: 0 !important"
               >
-                <v-card color="grey lighten-4" class="px-5 py-5 mx-2 my-2">
+                <v-card
+                  color="grey lighten-4"
+                  class="px-5 py-5 mx-2 my-2 pb-10"
+                >
                   <h2
                     style="
                       font-size: 30px;
@@ -118,7 +121,106 @@
                     class="mb-2"
                   ></div>
 
-                  {{ item }}
+                  <div class="mt-3" style="font-weight: bold" v-if="item.file">
+                    <v-btn
+                      dark
+                      color="#0D4474"
+                      x-small
+                      @click="download(item.file)"
+                    >
+                      {{ item.file.name }}&nbsp;&nbsp;<v-icon right small
+                        >cloud_download</v-icon
+                      ></v-btn
+                    >
+                  </div>
+                  <div
+                    class="mt-3"
+                    style="font-weight: bold"
+                    v-if="item.externalURL"
+                  >
+                    <v-btn
+                      dark
+                      color="#0D4474"
+                      x-small
+                      @click="goToExternal(item.externalURL)"
+                      style="text-transform: none !important"
+                    >
+                      {{ item.externalURL }}&nbsp;&nbsp;<v-icon right small
+                        >open_in_new</v-icon
+                      ></v-btn
+                    >
+                  </div>
+                  <div
+                    v-if="item.related && item.related.length"
+                    style="
+                      border-bottom: 1px solid #ccc;
+                      padding-bottom: 5px;
+                      font-weight: bold;
+                    "
+                    class="my-4 mt-10"
+                  >
+                    Related Documents
+                  </div>
+                  <div v-if="item.related && item.related.length">
+                    <div
+                      v-for="(item, index) in item.related"
+                      :key="`related-${index}`"
+                      class="pl-5 mb-8"
+                    >
+                      <div style="font-weight: bold; font-size: 12px">
+                        {{ item.title }}
+                      </div>
+                      <div
+                        v-if="item.body"
+                        class="mb-2 markdown-body"
+                        v-html="render(item.body)"
+                        style="font-size: 12px"
+                      ></div>
+                      <div
+                        v-html="render(item.summary)"
+                        v-if="item.summary && !item.body"
+                        style="font-size: 12px"
+                        class="mb-2"
+                      ></div>
+                      <div
+                        class="mt-3"
+                        style="font-weight: bold"
+                        v-if="item.file"
+                      >
+                        <v-btn
+                          dark
+                          color="grey darken-1"
+                          x-small
+                          @click="download(item.file)"
+                          style="margin-top: -12px"
+                        >
+                          {{ item.file.name }}&nbsp;&nbsp;<v-icon right small
+                            >cloud_download</v-icon
+                          ></v-btn
+                        >
+                      </div>
+                      <div
+                        class="mt-3"
+                        style="font-weight: bold"
+                        v-if="item.externalURL"
+                      >
+                        <v-btn
+                          dark
+                          color="#0D4474"
+                          x-small
+                          @click="goToExternal(item.externalURL)"
+                          style="
+                            text-transform: none !important;
+                            margin-top: -12px;
+                          "
+                        >
+                          {{ item.externalURL }}&nbsp;&nbsp;<v-icon right small
+                            >open_in_new</v-icon
+                          ></v-btn
+                        >
+                      </div>
+                    </div>
+                  </div>
                 </v-card>
               </td>
             </template></v-data-table

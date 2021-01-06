@@ -6,7 +6,7 @@
 
         &nbsp;|&nbsp;</span
       ></span
-    ><span v-if="postedMeta.showUpdated">Published: </span
+    ><span v-if="postedMeta.showUpdated"></span
     ><span style="font-weight: 400">{{
       postedMeta.published_at | format
     }}</span>

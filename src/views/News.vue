@@ -20,10 +20,7 @@
             @click="$router.push(`/news/${post.slug}`)"
           >
             <v-card-text style="font-size: 12px"
-              ><PostedMeta
-                :meta="buildMeta(post)"
-                :showUpdatedInText="false"
-              ></PostedMeta
+              ><PostedMeta :meta="post" :showUpdatedInText="false"></PostedMeta
             ></v-card-text>
             <div class="px-4 mb-5">
               <h2 style="line-height: 32px">{{ post.title }}</h2>

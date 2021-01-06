@@ -20,9 +20,22 @@ const GET_ALL_DOCUMENTS = gql`
         slug
       }
       related {
+        published_at
+        updated_at
         title
         slug
+        unit {
+          title
+          slug
+        }
+        externalURL
         summary
+        body
+        file {
+          url
+          name
+          ext
+        }
       }
     }
   }
