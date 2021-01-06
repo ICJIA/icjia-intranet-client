@@ -1,10 +1,11 @@
 <template>
   <div>
+    <Breadcrumb :key="$route.path" title="Forms"></Breadcrumb>
     <v-container>
       <v-row>
         <v-col>
           <div class="text-center">
-            <h1>All forms here</h1>
+            <h1>Online forms here</h1>
           </div>
         </v-col>
       </v-row>
