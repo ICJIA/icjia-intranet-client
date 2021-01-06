@@ -67,15 +67,15 @@ const query = gql`
 
       body
     }
-    events {
-      id
-      name
-      type
-      summary
-      slug
+    # events {
+    #   id
+    #   name
+    #   type
+    #   summary
+    #   slug
 
-      details
-    }
+    #   details
+    # }
   }
 `;
 
@@ -117,15 +117,17 @@ async function main() {
 
   let siteMeta = index.flat();
   siteMeta = utils.filterUndefined(siteMeta);
-  const fuseIndex = Fuse.createIndex(myConfig.search.keys, siteMeta);
-  fs.writeFileSync(
-    "./public/fuse-index.json",
-    JSON.stringify(fuseIndex.toJSON())
-  );
-  console.log(`Fuse search index created: ./public/fuse-index.json"`);
+  // const fuseIndex = Fuse.createIndex(myConfig.search.keys, siteMeta);
+  // fs.writeFileSync(
+  //   "./public/fuse-index.json",
+  //   JSON.stringify(fuseIndex.toJSON())
+  // );
+  // console.log(`Fuse search index created: ./public/fuse-index.json"`);
 
-  utils.saveJson(siteMeta, "./public/site-meta.json");
-  console.log(`Site meta created: ./public/site-meta.json"`);
+  // utils.saveJson(siteMeta, "./public/site-meta.json");
+  // console.log(`Site meta created: ./public/site-meta.json"`);
+  utils.saveJson(siteMeta, "./src/assets/site-meta.json");
+  console.log(`Site meta created: ./src/assets/site-meta.json"`);
   //console.log(siteMeta);
 }
 

@@ -1,7 +1,6 @@
 import config from "@/config.json";
 
-import siteMeta from "../../public/site-meta.json";
-import fuseIndex from "../../public/fuse-index.json";
+import siteMeta from "../assets/site-meta.json";
 
 const computedPublicPath =
   process.env.NODE_ENV === `production` ? config.publicPath : "";
@@ -9,7 +8,7 @@ const computedPublicPath =
 let myApp = {
   config,
   siteMeta,
-  fuseIndex,
+
   computedPublicPath,
 };
 

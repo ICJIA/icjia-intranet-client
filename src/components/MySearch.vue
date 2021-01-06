@@ -106,6 +106,7 @@ const highlight = (fuseSearchResult, highlightClassName = "highlight") => {
       return highlightedItem;
     });
 };
+import searchIndex from "@/assets/site-meta.json";
 export default {
   data() {
     return {
@@ -117,7 +118,7 @@ export default {
     };
   },
   async created() {
-    this.fuse = new Fuse(this.$myApp.siteMeta, this.$myApp.config.search);
+    this.fuse = new Fuse(searchIndex, this.$myApp.config.search);
   },
   mounted() {
     this.$nextTick(() => {
