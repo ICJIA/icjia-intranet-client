@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Breadcrumb :key="$route.path" :title="$route.params.slug"></Breadcrumb>
     <v-container>
       <v-row>
         <v-col>

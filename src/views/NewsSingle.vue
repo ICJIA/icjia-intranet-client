@@ -1,5 +1,10 @@
 <template>
   <div>
+    <Breadcrumb
+      v-if="posts"
+      :key="$route.path"
+      :title="posts[0]['title']"
+    ></Breadcrumb>
     <v-container fluid>
       <v-card color="gray lighten-4" style="min-height: 100vh">
         <base-content :loading="$apollo.loading" :error="error">

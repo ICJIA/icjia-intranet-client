@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Breadcrumb :key="$route.path" title="News & Updates"></Breadcrumb>
     <v-container>
       <v-row>
         <v-col>
