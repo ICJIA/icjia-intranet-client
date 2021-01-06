@@ -76,6 +76,17 @@ const query = gql`
 
     #   details
     # }
+    documents {
+      title
+      summary
+      externalURL
+      body
+      slug
+      unit {
+        title
+        slug
+      }
+    }
   }
 `;
 
@@ -93,7 +104,7 @@ async function main() {
 
       searchObj.section = section;
       searchObj.slug = item.slug;
-      let markdown = item.body || item.details;
+      let markdown = item.body || item.details || "";
       searchObj.html = md.render(markdown);
       let $ = cheerio.load(searchObj.html);
       searchObj.markdown = markdown;
