@@ -150,76 +150,84 @@
                       ></v-btn
                     >
                   </div>
-                  <div
-                    v-if="item.related && item.related.length"
-                    style="
-                      border-bottom: 1px solid #ccc;
-                      padding-bottom: 5px;
-                      font-weight: bold;
-                    "
-                    class="my-4 mt-10"
-                  >
-                    Related Documents
-                  </div>
                   <div v-if="item.related && item.related.length">
-                    <div
-                      v-for="(item, index) in item.related"
-                      :key="`related-${index}`"
-                      class="pl-5 mb-8"
-                    >
-                      <div style="font-weight: bold; font-size: 12px">
-                        {{ item.title }}
-                      </div>
+                    <v-sheet color="grey lighten-3" class="mt-8 px-5 py-5">
                       <div
-                        v-if="item.body"
-                        class="mb-2 markdown-body"
-                        v-html="render(item.body)"
-                        style="font-size: 12px"
-                      ></div>
-                      <div
-                        v-html="render(item.summary)"
-                        v-if="item.summary && !item.body"
-                        style="font-size: 12px"
-                        class="mb-2"
-                      ></div>
-                      <div
-                        class="mt-3"
-                        style="font-weight: bold"
-                        v-if="item.file"
+                        v-if="item.related && item.related.length"
+                        style="
+                          border-bottom: 1px solid #ccc;
+                          padding-bottom: 5px;
+                          font-weight: bold;
+                        "
+                        class=""
                       >
-                        <v-btn
-                          dark
-                          color="grey darken-1"
-                          x-small
-                          @click="download(item.file)"
-                          style="margin-top: -12px"
-                        >
-                          {{ item.file.name }}&nbsp;&nbsp;<v-icon right small
-                            >cloud_download</v-icon
-                          ></v-btn
-                        >
+                        Related Documents
                       </div>
-                      <div
-                        class="mt-3"
-                        style="font-weight: bold"
-                        v-if="item.externalURL"
-                      >
-                        <v-btn
-                          dark
-                          color="#0D4474"
-                          x-small
-                          @click="goToExternal(item.externalURL)"
-                          style="
-                            text-transform: none !important;
-                            margin-top: -12px;
-                          "
+                      <div v-if="item.related && item.related.length">
+                        <div
+                          v-for="(item, index) in item.related"
+                          :key="`related-${index}`"
+                          class="pl-5 py-5"
                         >
-                          {{ item.externalURL }}&nbsp;&nbsp;<v-icon right small
-                            >open_in_new</v-icon
-                          ></v-btn
-                        >
+                          <div style="font-weight: bold; font-size: 12px">
+                            {{ item.title }}
+                          </div>
+                          <div
+                            v-if="item.body"
+                            class="mb-2 markdown-body"
+                            v-html="render(item.body)"
+                            style="font-size: 12px"
+                          ></div>
+                          <div
+                            v-html="render(item.summary)"
+                            v-if="item.summary && !item.body"
+                            style="font-size: 12px"
+                            class="mb-2"
+                          ></div>
+                          <div
+                            class="mt-3"
+                            style="font-weight: bold"
+                            v-if="item.file"
+                          >
+                            <v-btn
+                              dark
+                              color="grey darken-1"
+                              x-small
+                              @click="download(item.file)"
+                              style="margin-top: -12px"
+                            >
+                              {{ item.file.name }}&nbsp;&nbsp;<v-icon
+                                right
+                                small
+                                >cloud_download</v-icon
+                              ></v-btn
+                            >
+                          </div>
+                          <div
+                            class="mt-3"
+                            style="font-weight: bold"
+                            v-if="item.externalURL"
+                          >
+                            <v-btn
+                              dark
+                              color="#0D4474"
+                              x-small
+                              @click="goToExternal(item.externalURL)"
+                              style="
+                                text-transform: none !important;
+                                margin-top: -15px;
+                              "
+                            >
+                              {{ item.externalURL }}&nbsp;&nbsp;<v-icon
+                                right
+                                small
+                                >open_in_new</v-icon
+                              ></v-btn
+                            >
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </v-sheet>
                   </div>
                 </v-card>
               </td>
