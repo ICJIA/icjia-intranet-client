@@ -46,7 +46,7 @@
 
           <template v-slot:splash>
             <div v-if="posts && posts.length && posts[0]['splash']">
-              <SplashNews :splash="posts[0]['splash']['formats']"></SplashNews>
+              <SplashNews :splash="posts[0]['splash']"></SplashNews>
             </div>
             <div v-else>
               <v-container fluid> <hr /></v-container>

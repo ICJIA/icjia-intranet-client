@@ -21,7 +21,10 @@
             <v-img
               :src="
                 getImageURL(
-                  $myApp.config.api.base + post.splash.formats.thumbnail.url
+                  $myApp.config.api.base + post.splash.formats.thumbnail.url,
+                  0,
+                  0,
+                  100
                 )
               "
               :lazy-src="

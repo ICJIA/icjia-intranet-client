@@ -50,12 +50,32 @@
               <div v-else style="color: #aaa; font-weight: bold">General</div>
             </template>
             <template v-slot:item.file="{ item }">
-              <div style="color: #aaa; font-weight: bold" v-if="item.file">
-                {{ item.file.ext }}
-              </div>
-              <div style="color: #aaa; font-weight: bold" v-else>
-                {{ item.externalURL }}
-              </div>
+              <v-avatar
+                color="grey lighten-2"
+                size="40"
+                class="my-3"
+                @click.stop.prevent="download(item.file)"
+                v-if="item.file"
+              >
+                <span
+                  style="
+                    font-size: 10px !important;
+                    font-weight: 900;
+                    text-transform: uppercase;
+                  "
+                  >{{ item.file.ext.substring(1) }}</span
+                >
+              </v-avatar>
+
+              <v-avatar
+                color="grey lighten-2"
+                size="40"
+                class="my-3"
+                v-else
+                @click.stop.prevent="goToExternal(item.externalURL)"
+              >
+                <v-icon small style="font-weight: 900">open_in_new</v-icon>
+              </v-avatar>
             </template>
 
             <template v-slot:expanded-item="{ headers, item }">
@@ -75,6 +95,18 @@
                     {{ item.title }}
                   </h2>
                   <div
+                    class="text-left"
+                    style="
+                      color: #555;
+                      font-size: 12px;
+                      margin-top: -10px;
+                      margin-bottom: 25px;
+                    "
+                  >
+                    <PostedMeta :meta="item"></PostedMeta>
+                  </div>
+
+                  <div
                     v-if="item.body"
                     class="mb-2 markdown-body"
                     v-html="render(item.body)"
@@ -85,13 +117,7 @@
                     class="mb-2"
                   ></div>
 
-                  <div
-                    class="mt-3 hover file-download"
-                    style="font-weight: bold"
-                    @click="download(item.file)"
-                  >
-                    {{ item }}
-                  </div>
+                  {{ item }}
                 </v-card>
               </td>
             </template></v-data-table
@@ -136,8 +162,14 @@ export default {
           sortable: true,
           value: "unit.title",
         },
+        // {
+        //   text: "External",
+        //   align: "start",
+        //   sortable: false,
+        //   value: "externalURL",
+        // },
         {
-          text: "Download",
+          text: "Download/Link",
           align: "center",
           sortable: false,
           value: "file",
@@ -150,6 +182,9 @@ export default {
   methods: {
     render(content) {
       return renderToHtml(content);
+    },
+    goToExternal(url) {
+      window.open(url);
     },
     download(file) {
       let download = `https://dev.icjia-api.cloud${file.url}`;

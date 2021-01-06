@@ -2,8 +2,8 @@
   <div>
     <v-container fluid>
       <v-img
-        :src="getImagePath(splash.large.url)"
-        :lazy-src="getImagePath(splash.thumbnail.url, 0, 0, 1)"
+        :src="getImagePath(splash.url, 0, 0, 50)"
+        :lazy-src="getImagePath(splash.formats.thumbnail.url)"
         width="100%"
         height="400"
         class="mb-5"
