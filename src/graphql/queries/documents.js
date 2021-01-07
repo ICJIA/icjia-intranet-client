@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 const GET_ALL_DOCUMENTS = gql`
   query Documents {
     documents(sort: "published_at:desc") {
+      id
       published_at
       updated_at
       title
@@ -19,22 +20,21 @@ const GET_ALL_DOCUMENTS = gql`
         title
         slug
       }
-      related {
-        published_at
-        updated_at
+      clusters {
+        id
         title
-        slug
-        unit {
+        summary
+        documents {
+          id
           title
           slug
-        }
-        externalURL
-        summary
-        body
-        file {
-          url
-          name
-          ext
+          file {
+            url
+            name
+            ext
+          }
+          summary
+          externalURL
         }
       }
     }

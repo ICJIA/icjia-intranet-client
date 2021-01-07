@@ -27,3 +27,4 @@ package-lock.json
 public/site-meta.json
 public/fuse-index.json
 src/assets/site-meta.json
+src/assets/units.json

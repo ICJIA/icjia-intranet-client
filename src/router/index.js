@@ -207,6 +207,33 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: "/units/",
+    name: "UnitPages",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/Units.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/units/:unit/",
+    name: "UnitPageSingle",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/UnitSingleList.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/units/:unit/:slug/",
+    name: "UnitPageSingle",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/UnitSingle.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
   // {
   //   path: "/coming-soon",
   //   name: "ComingSoon",

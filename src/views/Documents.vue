@@ -150,81 +150,75 @@
                       ></v-btn
                     >
                   </div>
-                  <div v-if="item.related && item.related.length">
+
+                  <div v-if="item.clusters && item.clusters.length">
                     <v-sheet color="grey lighten-3" class="mt-8 px-5 py-5">
                       <div
-                        v-if="item.related && item.related.length"
                         style="
                           border-bottom: 1px solid #ccc;
                           padding-bottom: 5px;
                           font-weight: bold;
                         "
-                        class=""
+                        class="mb-5"
                       >
-                        Related Documents
+                        Related
                       </div>
-                      <div v-if="item.related && item.related.length">
+
+                      <div
+                        v-for="(cluster, index) in item.clusters"
+                        :key="`cluster-${index}`"
+                        class="ml-5 mt-5"
+                      >
+                        <div style="font-weight: bold">{{ cluster.title }}</div>
+                        <div style="" class="mt-2">{{ cluster.summary }}</div>
                         <div
-                          v-for="(item, index) in item.related"
-                          :key="`related-${index}`"
-                          class="pl-5 py-5"
+                          v-for="(clusterItem, index) in cluster.documents"
+                          :key="`clusterItem-${index}`"
                         >
-                          <div style="font-weight: bold; font-size: 12px">
-                            {{ item.title }}
-                          </div>
-                          <div
-                            v-if="item.body"
-                            class="mb-2 markdown-body"
-                            v-html="render(item.body)"
-                            style="font-size: 12px"
-                          ></div>
-                          <div
-                            v-html="render(item.summary)"
-                            v-if="item.summary && !item.body"
-                            style="font-size: 12px"
-                            class="mb-2"
-                          ></div>
-                          <div
-                            class="mt-3"
-                            style="font-weight: bold"
-                            v-if="item.file"
-                          >
-                            <v-btn
-                              dark
-                              color="grey darken-1"
-                              x-small
-                              @click="download(item.file)"
-                              style="margin-top: -12px"
-                            >
-                              {{ item.file.name }}&nbsp;&nbsp;<v-icon
-                                right
-                                small
-                                >cloud_download</v-icon
-                              ></v-btn
-                            >
-                          </div>
-                          <div
-                            class="mt-3"
-                            style="font-weight: bold"
-                            v-if="item.externalURL"
-                          >
-                            <v-btn
-                              dark
-                              color="#0D4474"
-                              x-small
-                              @click="goToExternal(item.externalURL)"
-                              style="
-                                text-transform: none !important;
-                                margin-top: -15px;
-                              "
-                            >
-                              {{ item.externalURL }}&nbsp;&nbsp;<v-icon
-                                right
-                                small
-                                >open_in_new</v-icon
-                              ></v-btn
-                            >
-                          </div>
+                          <ul class="mt-3">
+                            <li>
+                              <span v-if="!clusterItem.externalURL">
+                                {{ clusterItem.title }}
+                              </span>
+
+                              <span v-if="clusterItem.file">
+                                <v-avatar
+                                  color="grey lighten-2"
+                                  size="25"
+                                  @click.stop.prevent="
+                                    download(clusterItem.file)
+                                  "
+                                >
+                                  <span
+                                    style="
+                                      font-size: 8px !important;
+                                      font-weight: 900;
+                                      text-transform: uppercase;
+                                    "
+                                    >{{
+                                      clusterItem.file.ext.substring(1)
+                                    }}</span
+                                  >
+                                </v-avatar>
+                              </span>
+                              <span v-if="clusterItem.externalURL">
+                                <!-- <v-avatar
+                                  color="grey lighten-2"
+                                  size="25"
+                                  style="margin-top: -10px"
+                                  class="my-3"
+                                  @click.stop.prevent="
+                                    goToExternal(clusterItem.externalURL)
+                                  "
+                                >
+                                  <v-icon x-small style="font-weight: 900"
+                                    >open_in_new</v-icon
+                                  >
+                                </v-avatar> -->
+                                {{ clusterItem.externalURL }}
+                              </span>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </v-sheet>

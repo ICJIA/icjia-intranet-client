@@ -38,9 +38,7 @@
       <v-btn small text to="/documents" class="hidden-sm-and-down"
         >Documents</v-btn
       >
-      <v-btn small text to="/support" class="hidden-sm-and-down"
-        >Technical Support</v-btn
-      >
+      <v-btn small text to="/units/" class="hidden-sm-and-down">Units</v-btn>
       <v-btn small text to="/calendar" class="hidden-sm-and-down"
         >Calendar</v-btn
       >
