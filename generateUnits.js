@@ -38,6 +38,7 @@ const query = gql`
       title
       slug
       shortname
+      summary
     }
   }
 `;
@@ -50,6 +51,7 @@ async function main() {
       let obj = {};
       obj.id = item.id;
       obj.title = item.title;
+      obj.summary = item.summary || "No unit summary";
       obj.slug = item.slug;
       obj.shortname = item.shortname.toLowerCase();
       obj.path = `/units/${item.slug}/`;

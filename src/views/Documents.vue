@@ -121,34 +121,38 @@
                     class="mb-2"
                   ></div>
 
-                  <div class="mt-3" style="font-weight: bold" v-if="item.file">
-                    <v-btn
-                      dark
-                      color="#0D4474"
-                      x-small
-                      @click="download(item.file)"
-                    >
-                      {{ item.file.name }}&nbsp;&nbsp;<v-icon right small
-                        >cloud_download</v-icon
-                      ></v-btn
-                    >
+                  <div class="mt-3" v-if="item.file">
+                    <ul>
+                      <li
+                        @click.stop.prevent="download(item.file)"
+                        class="download-link"
+                      >
+                        {{ item.title }}&nbsp;&nbsp;
+                        <v-avatar color="grey lighten-2" size="25">
+                          <span
+                            style="
+                              font-size: 8px !important;
+                              font-weight: 900;
+                              text-transform: uppercase;
+                            "
+                            >{{ item.file.ext.substring(1) }}</span
+                          >
+                        </v-avatar>
+                      </li>
+                    </ul>
                   </div>
                   <div
                     class="mt-3"
-                    style="font-weight: bold"
                     v-if="item.externalURL"
+                    @click.stop.prevent="goToExternal(item.externalURL)"
                   >
-                    <v-btn
-                      dark
-                      color="#0D4474"
-                      x-small
-                      @click="goToExternal(item.externalURL)"
-                      style="text-transform: none !important"
-                    >
-                      {{ item.externalURL }}&nbsp;&nbsp;<v-icon right small
-                        >open_in_new</v-icon
-                      ></v-btn
-                    >
+                    <ul>
+                      <li class="download-link">
+                        {{ item.externalURL }}&nbsp;&nbsp;<v-icon right small
+                          >open_in_new</v-icon
+                        >
+                      </li>
+                    </ul>
                   </div>
 
                   <div v-if="item.clusters && item.clusters.length">
@@ -176,19 +180,19 @@
                           :key="`clusterItem-${index}`"
                         >
                           <ul class="mt-3">
-                            <li>
-                              <span v-if="!clusterItem.externalURL">
+                            <li class="download-link">
+                              <span
+                                v-if="!clusterItem.externalURL"
+                                @click.stop.prevent="download(clusterItem.file)"
+                              >
                                 {{ clusterItem.title }}
                               </span>
 
-                              <span v-if="clusterItem.file">
-                                <v-avatar
-                                  color="grey lighten-2"
-                                  size="25"
-                                  @click.stop.prevent="
-                                    download(clusterItem.file)
-                                  "
-                                >
+                              <span
+                                v-if="clusterItem.file"
+                                @click.stop.prevent="download(clusterItem.file)"
+                              >
+                                <v-avatar color="grey lighten-2" size="25">
                                   <span
                                     style="
                                       font-size: 8px !important;
@@ -201,21 +205,16 @@
                                   >
                                 </v-avatar>
                               </span>
-                              <span v-if="clusterItem.externalURL">
-                                <!-- <v-avatar
-                                  color="grey lighten-2"
-                                  size="25"
-                                  style="margin-top: -10px"
-                                  class="my-3"
-                                  @click.stop.prevent="
-                                    goToExternal(clusterItem.externalURL)
-                                  "
-                                >
-                                  <v-icon x-small style="font-weight: 900"
-                                    >open_in_new</v-icon
-                                  >
-                                </v-avatar> -->
+                              <span
+                                v-if="clusterItem.externalURL"
+                                @click.stop.prevent="
+                                  goToExternal(clusterItem.externalURL)
+                                "
+                              >
                                 {{ clusterItem.externalURL }}
+                                <v-icon small style="font-weight: 900"
+                                  >open_in_new</v-icon
+                                >
                               </span>
                             </li>
                           </ul>
@@ -335,11 +334,13 @@ export default {
 </script>
 
 <style>
-.file-download {
+.download-link {
   color: rgb(38, 38, 155);
+  font-weight: bold;
 }
-.file-download:hover {
+.download-link:hover {
   color: #555;
+
   text-decoration: underline;
 }
 </style>

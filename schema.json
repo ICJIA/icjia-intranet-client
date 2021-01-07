@@ -5835,18 +5835,6 @@
             "deprecationReason": null
           },
           {
-            "name": "unit",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "Unit",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "published_at",
             "description": null,
             "args": [],
@@ -5854,6 +5842,63 @@
               "kind": "SCALAR",
               "name": "DateTime",
               "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "units",
+            "description": null,
+            "args": [
+              {
+                "name": "sort",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "limit",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "start",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Unit",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -6061,22 +6106,6 @@
               "ofType": {
                 "kind": "OBJECT",
                 "name": "UnitPageConnectionBody",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "unit",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "UnitPageConnectionUnit",
                 "ofType": null
               }
             },
@@ -6352,41 +6381,6 @@
       },
       {
         "kind": "OBJECT",
-        "name": "UnitPageConnectionUnit",
-        "description": null,
-        "fields": [
-          {
-            "name": "key",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "connection",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "UnitPageConnection",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
         "name": "UnitPageConnectionPublished_at",
         "description": null,
         "fields": [
@@ -6475,12 +6469,16 @@
             "defaultValue": null
           },
           {
-            "name": "unit",
+            "name": "units",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -6566,12 +6564,16 @@
             "defaultValue": null
           },
           {
-            "name": "unit",
+            "name": "units",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -6830,7 +6832,7 @@
             "deprecationReason": null
           },
           {
-            "name": "description",
+            "name": "summary",
             "description": null,
             "args": [],
             "type": {
@@ -6853,18 +6855,6 @@
                 "name": "String",
                 "ofType": null
               }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "unit_page",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "UnitPage",
-              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -6932,6 +6922,63 @@
               "ofType": {
                 "kind": "OBJECT",
                 "name": "Document",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "unit_pages",
+            "description": null,
+            "args": [
+              {
+                "name": "sort",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "limit",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "start",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "UnitPage",
                 "ofType": null
               }
             },
@@ -7116,7 +7163,7 @@
             "deprecationReason": null
           },
           {
-            "name": "description",
+            "name": "summary",
             "description": null,
             "args": [],
             "type": {
@@ -7124,7 +7171,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "UnitConnectionDescription",
+                "name": "UnitConnectionSummary",
                 "ofType": null
               }
             },
@@ -7141,22 +7188,6 @@
               "ofType": {
                 "kind": "OBJECT",
                 "name": "UnitConnectionShortname",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "unit_page",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "UnitConnectionUnit_page",
                 "ofType": null
               }
             },
@@ -7362,7 +7393,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "UnitConnectionDescription",
+        "name": "UnitConnectionSummary",
         "description": null,
         "fields": [
           {
@@ -7407,41 +7438,6 @@
             "type": {
               "kind": "SCALAR",
               "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "connection",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "UnitConnection",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "UnitConnectionUnit_page",
-        "description": null,
-        "fields": [
-          {
-            "name": "key",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
               "ofType": null
             },
             "isDeprecated": false,
@@ -7527,7 +7523,7 @@
             "defaultValue": null
           },
           {
-            "name": "description",
+            "name": "summary",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7565,12 +7561,16 @@
             "defaultValue": null
           },
           {
-            "name": "unit_page",
+            "name": "unit_pages",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -7636,7 +7636,7 @@
             "defaultValue": null
           },
           {
-            "name": "description",
+            "name": "summary",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7670,12 +7670,16 @@
             "defaultValue": null
           },
           {
-            "name": "unit_page",
+            "name": "unit_pages",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -13407,11 +13411,6 @@
           },
           {
             "kind": "OBJECT",
-            "name": "UnitPageConnectionUnit",
-            "ofType": null
-          },
-          {
-            "kind": "OBJECT",
             "name": "UnitPageConnectionPublished_at",
             "ofType": null
           },
@@ -13477,17 +13476,12 @@
           },
           {
             "kind": "OBJECT",
-            "name": "UnitConnectionDescription",
+            "name": "UnitConnectionSummary",
             "ofType": null
           },
           {
             "kind": "OBJECT",
             "name": "UnitConnectionShortname",
-            "ofType": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "UnitConnectionUnit_page",
             "ofType": null
           },
           {
