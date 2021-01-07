@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10 text-center">All {{ $route.params.unit }} pages here</div>
+  <div class="mt-10 text-center">All {{ $route.params }} pages here</div>
 </template>
 
 <script>

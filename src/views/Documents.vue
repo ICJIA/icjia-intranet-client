@@ -165,7 +165,7 @@
                         "
                         class="mb-5"
                       >
-                        Related
+                        Related Documents
                       </div>
 
                       <div
@@ -180,7 +180,10 @@
                           :key="`clusterItem-${index}`"
                         >
                           <ul class="mt-3">
-                            <li class="download-link">
+                            <li
+                              class="download-link"
+                              v-if="item.id !== clusterItem.id"
+                            >
                               <span
                                 v-if="!clusterItem.externalURL"
                                 @click.stop.prevent="download(clusterItem.file)"
