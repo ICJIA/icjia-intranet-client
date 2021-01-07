@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "node generateSearchIndex && node generateUnits && vue-cli-service serve",
-    "build": "node generateSearchIndex && node generateUnits && npm run build:lambda && vue-cli-service build",
+    "serve": "npm run schema && node generateSearchIndex && node generateUnits && vue-cli-service serve",
+    "build": "npm run schema && node generateSearchIndex && node generateUnits && npm run build:lambda && vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "schema": "get-graphql-schema https://dev.icjia-api.cloud/graphql -j > schema.json",
