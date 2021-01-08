@@ -5,7 +5,7 @@
       <v-row>
         <v-col>
           <div class="text-center">
-            <h1>Agency Documents</h1>
+            <h1>All Documents</h1>
           </div>
         </v-col>
       </v-row>

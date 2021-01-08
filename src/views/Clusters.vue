@@ -31,7 +31,7 @@
               <div class="pt-5">
                 <v-text-field
                   v-model="search"
-                  label="Search All Document Groups"
+                  label="Search for a Document Group"
                   class="mx-4"
                 ></v-text-field>
               </div>
@@ -157,7 +157,7 @@ export default {
       // eslint-disable-next-line no-unused-vars
       result(ApolloQueryResult) {
         this.loading = false;
-        console.log(ApolloQueryResult);
+        //console.log(ApolloQueryResult);
       },
     },
   },

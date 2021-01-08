@@ -35,9 +35,48 @@
         >News & Updates</v-btn
       >
       <v-btn small text to="/forms" class="hidden-sm-and-down">Forms</v-btn>
-      <v-btn small text to="/documents" class="hidden-sm-and-down"
-        >Documents</v-btn
+      <v-menu
+        bottom
+        offset-y
+        origin="center center"
+        transition="scale-transition"
       >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            small
+            text
+            class="hidden-sm-and-down"
+            v-bind="attrs"
+            v-on="on"
+            :class="{ currentRoute: $route.path.includes('documents') }"
+            >Documents <v-icon right small>arrow_drop_down</v-icon>
+          </v-btn>
+        </template>
+        <v-list nav dense elevation="2">
+          <v-list-item
+            @click="
+              $router.push(`/documents/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title>All</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item
+            @click="
+              $router.push(`/documents/clusters/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title>Grouped</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-menu>
       <v-btn small text to="/units/" class="hidden-sm-and-down">Units</v-btn>
       <v-btn small text to="/calendar" class="hidden-sm-and-down"
         >Calendar</v-btn
@@ -67,4 +106,15 @@
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+.v-item--active {
+  background: #fff !important;
+}
+.v-list-item:hover {
+  background: #ccc !important;
+}
+
+.currentRoute {
+  background: #d8d8d8;
+}
+</style>

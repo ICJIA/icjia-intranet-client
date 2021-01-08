@@ -237,7 +237,7 @@ const routes = [
   },
   {
     path: "/units/:unit/",
-    name: "UnitPageSingle",
+    name: "UnitPageList",
     component: () =>
       import(/* webpackChunkName: "forms" */ "../views/UnitSingleList.vue"),
     meta: {
@@ -246,7 +246,7 @@ const routes = [
   },
   {
     path: "/units/:unit/:slug/",
-    name: "UnitPageSingle",
+    name: "UnitPageSingleItem",
     component: () =>
       import(/* webpackChunkName: "forms" */ "../views/UnitSingle.vue"),
     meta: {

@@ -62,7 +62,7 @@ export default {
   watch: {
     // eslint-disable-next-line no-unused-vars
     $route(to, from) {
-      console.log(to, from);
+      //console.log(to, from);
     },
   },
   mounted() {},

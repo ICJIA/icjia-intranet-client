@@ -41,7 +41,7 @@
             class="download-link hover"
           >
             {{ item.title }}&nbsp;&nbsp;
-            <v-avatar color="grey lighten-2" size="25">
+            <v-avatar color="grey lighten-2" size="30">
               <span
                 style="
                   font-size: 8px !important;
@@ -78,7 +78,7 @@
             "
             class="mb-5"
           >
-            Related Documents
+            Related Groups
           </div>
 
           <div
@@ -117,7 +117,7 @@
                     v-if="clusterItem.file"
                     @click.stop.prevent="download(clusterItem.file)"
                   >
-                    <v-avatar color="grey lighten-2" size="25">
+                    <v-avatar color="grey lighten-2" size="30">
                       <span
                         style="
                           font-size: 8px !important;
