@@ -77,7 +77,43 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      <v-btn small text to="/units/" class="hidden-sm-and-down">Units</v-btn>
+
+      <!-- <v-btn small text to="/units/" class="hidden-sm-and-down">Units</v-btn> -->
+
+      <v-menu
+        bottom
+        offset-y
+        origin="center center"
+        transition="scale-transition"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            small
+            text
+            class="hidden-sm-and-down"
+            v-bind="attrs"
+            v-on="on"
+            :class="{ currentRoute: $route.path.includes('units') }"
+            >Units <v-icon right small>arrow_drop_down</v-icon>
+          </v-btn>
+        </template>
+        <v-list nav dense elevation="2">
+          <v-list-item
+            v-for="(unit, index) in $myApp.units"
+            :key="`unitNav-${index}`"
+            @click="
+              $router.push(`${unit.path}`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title>{{ unit.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
       <v-btn small text to="/calendar" class="hidden-sm-and-down"
         >Calendar</v-btn
       >
