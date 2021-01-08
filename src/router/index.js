@@ -18,7 +18,7 @@ const routes = [
     },
   },
   {
-    path: "/about",
+    path: "/about/",
     name: "About",
     meta: {
       requiresAuth: true,
@@ -27,7 +27,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
-    path: "/login",
+    path: "/login/",
     name: "Login",
     meta: {
       hideAlert: true,
@@ -36,7 +36,7 @@ const routes = [
       import(/* webpackChunkName: "login" */ "../views/Login.vue"),
   },
   {
-    path: "/logout",
+    path: "/logout/",
     name: "Logout",
     meta: {
       hideAlert: true,
@@ -45,7 +45,7 @@ const routes = [
       import(/* webpackChunkName: "logout" */ "../views/Logout.vue"),
   },
   {
-    path: "/register",
+    path: "/register/",
     name: "Register",
     meta: {
       hideAlert: true,
@@ -54,7 +54,7 @@ const routes = [
       import(/* webpackChunkName: "register" */ "../views/Register.vue"),
   },
   {
-    path: "/forgot",
+    path: "/forgot/",
     name: "Forgot",
     meta: {
       hideAlert: true,
@@ -63,7 +63,7 @@ const routes = [
       import(/* webpackChunkName: "forgot" */ "../views/Forgot.vue"),
   },
   {
-    path: "/reset",
+    path: "/reset/",
     name: "Reset",
     meta: {
       hideAlert: true,
@@ -99,7 +99,7 @@ const routes = [
       import(/* webpackChunkName: "sandbox3" */ "../views/Sandbox3.vue"),
   },
   {
-    path: "/news",
+    path: "/news/",
     name: "News",
     component: () => import(/* webpackChunkName: "news" */ "../views/News.vue"),
     meta: {
@@ -107,7 +107,7 @@ const routes = [
     },
   },
   {
-    path: "/calendar",
+    path: "/calendar/",
     name: "Calendar",
     component: () =>
       import(/* webpackChunkName: "calendar" */ "../views/Calendar.vue"),
@@ -116,7 +116,7 @@ const routes = [
     },
   },
   {
-    path: "/news/:slug",
+    path: "/news/:slug/",
     name: "NewsSingle",
     component: () =>
       import(/* webpackChunkName: "news" */ "../views/NewsSingle.vue"),
@@ -125,7 +125,7 @@ const routes = [
     },
   },
   {
-    path: "/documents",
+    path: "/documents/",
     name: "Documents",
     component: () =>
       import(/* webpackChunkName: "documents" */ "../views/Documents.vue"),
@@ -134,7 +134,25 @@ const routes = [
     },
   },
   {
-    path: "/documents/:slug",
+    path: "/documents/clusters/",
+    name: "Clusters",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/Clusters.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/documents/clusters/:slug/",
+    name: "ClusterSingle",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/ClusterSingle.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/documents/:slug/",
     name: "DocumentsSingle",
     component: () =>
       import(
@@ -145,7 +163,7 @@ const routes = [
     },
   },
   {
-    path: "/events",
+    path: "/events/",
     name: "Events",
     redirect: { name: "Calendar" },
 
@@ -154,7 +172,7 @@ const routes = [
     },
   },
   {
-    path: "/events/:slug",
+    path: "/events/:slug/",
     name: "EventSingle",
     component: () =>
       import(/* webpackChunkName: "documents" */ "../views/EventSingle.vue"),
@@ -163,7 +181,7 @@ const routes = [
     },
   },
   {
-    path: "/support",
+    path: "/support/",
     name: "Support",
     component: () =>
       import(/* webpackChunkName: "support" */ "../views/Support.vue"),
@@ -172,7 +190,7 @@ const routes = [
     },
   },
   {
-    path: "/support/:slug",
+    path: "/support/:slug/",
     name: "SupportSingle",
     component: () =>
       import(/* webpackChunkName: "support" */ "../views/SupportSingle.vue"),
@@ -181,7 +199,7 @@ const routes = [
     },
   },
   {
-    path: "/forms",
+    path: "/forms/",
     name: "Forms",
     component: () =>
       import(/* webpackChunkName: "forms" */ "../views/Forms.vue"),
@@ -190,7 +208,7 @@ const routes = [
     },
   },
   {
-    path: "/search",
+    path: "/search/",
     name: "Search",
     component: () =>
       import(/* webpackChunkName: "forms" */ "../views/Search.vue"),
@@ -199,7 +217,7 @@ const routes = [
     },
   },
   {
-    path: "/forms/:slug",
+    path: "/forms/:slug/",
     name: "FormsSingle",
     component: () =>
       import(/* webpackChunkName: "forms" */ "../views/FormsSingle.vue"),
@@ -207,6 +225,7 @@ const routes = [
       requiresAuth: true,
     },
   },
+
   {
     path: "/units/",
     name: "UnitPages",
@@ -276,7 +295,7 @@ router.beforeEach((to, from, next) => {
 
   if (requiresAuth && !store.state.auth.isAuthenticated) {
     return next({
-      path: "/login",
+      path: "/login/",
       query: { redirect: to.fullPath },
     });
   }

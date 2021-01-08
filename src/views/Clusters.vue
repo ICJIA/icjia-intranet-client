@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Breadcrumb :key="$route.path" title="Documents"></Breadcrumb>
+    <Breadcrumb :key="$route.path" title="Document Groups"></Breadcrumb>
     <v-container>
       <v-row>
         <v-col>
           <div class="text-center">
-            <h1>Agency Documents</h1>
+            <h1>Document Groups</h1>
           </div>
         </v-col>
       </v-row>
@@ -15,7 +15,7 @@
         <v-col>
           <v-data-table
             :headers="headers"
-            :items="documents"
+            :items="clusters"
             :items-per-page="15"
             class="elevation-3 hover my-8"
             show-expand
@@ -31,52 +31,30 @@
               <div class="pt-5">
                 <v-text-field
                   v-model="search"
-                  label="Search All Documents"
+                  label="Search All Document Groups"
                   class="mx-4"
                 ></v-text-field>
               </div>
             </template>
             <template v-slot:item.updated_at="{ item }">
               <div style="font-size: 14px !important">
-                <strong>{{ item.updated_at | dateFormat }}</strong>
+                {{ item.updated_at | dateFormat }}
               </div>
             </template>
-            <template v-slot:item.unit.title="{ item }">
-              <div
-                style="color: #aaa; font-weight: bold"
-                v-if="item.unit && item.unit.title"
-              >
-                {{ item.unit.title }}
-              </div>
-              <div v-else style="color: #aaa; font-weight: bold">General</div>
-            </template>
-            <template v-slot:item.file="{ item }">
-              <v-avatar
-                color="grey lighten-2"
-                size="40"
-                class="my-3"
-                @click.stop.prevent="download(item.file)"
-                v-if="item.file"
-              >
-                <span
-                  style="
-                    font-size: 10px !important;
-                    font-weight: 900;
-                    text-transform: uppercase;
-                  "
-                  >{{ item.file.ext.substring(1) }}</span
-                >
-              </v-avatar>
 
-              <v-avatar
-                color="grey lighten-2"
-                size="40"
-                class="my-3"
-                v-else
-                @click.stop.prevent="goToExternal(item.externalURL)"
+            <template v-slot:item.title="{ item }">
+              <div style="font-size: 14px !important">
+                <strong> {{ item.title }}</strong>
+              </div>
+            </template>
+
+            <template v-slot:item.slug="{ item }">
+              <v-icon
+                @click.stop.prevent="
+                  $router.push(`/documents/clusters/${item.slug}`)
+                "
+                >link</v-icon
               >
-                <v-icon small style="font-weight: 900">open_in_new</v-icon>
-              </v-avatar>
             </template>
 
             <template v-slot:expanded-item="{ headers, item }">
@@ -84,7 +62,7 @@
                 :colspan="headers.length"
                 style="padding: 0 !important; margin: 0 !important"
               >
-                <DocumentCard :item="item"></DocumentCard>
+                <DocumentClusterCard :item="item"></DocumentClusterCard>
               </td>
             </template>
           </v-data-table>
@@ -97,7 +75,7 @@
 <script>
 import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
-import { GET_ALL_DOCUMENTS } from "@/graphql/queries/documents";
+import { GET_ALL_CLUSTERS } from "@/graphql/queries/clusters";
 export default {
   mixins: [handleClicks],
   data() {
@@ -109,36 +87,26 @@ export default {
       loading: true,
       headers: [
         {
+          text: "Group Title",
+          align: "start",
+          sortable: true,
+          value: "title",
+          width: "300px",
+        },
+
+        {
           text: "Last updated",
           align: "start",
           sortable: true,
           value: "updated_at",
           width: "200px",
         },
+
         {
-          text: "Title",
-          align: "start",
-          sortable: true,
-          value: "title",
-          width: "300px",
-        },
-        {
-          text: "Unit",
-          align: "start",
-          sortable: true,
-          value: "unit.title",
-        },
-        // {
-        //   text: "External",
-        //   align: "start",
-        //   sortable: false,
-        //   value: "externalURL",
-        // },
-        {
-          text: "Download/Link",
+          text: "Link",
           align: "center",
           sortable: false,
-          value: "file",
+          value: "slug",
         },
       ],
     };
@@ -177,9 +145,9 @@ export default {
     },
   },
   apollo: {
-    documents: {
+    clusters: {
       prefetch: true,
-      query: GET_ALL_DOCUMENTS,
+      query: GET_ALL_CLUSTERS,
       variables() {
         return {};
       },
@@ -189,6 +157,7 @@ export default {
       // eslint-disable-next-line no-unused-vars
       result(ApolloQueryResult) {
         this.loading = false;
+        console.log(ApolloQueryResult);
       },
     },
   },
