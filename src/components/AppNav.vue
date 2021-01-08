@@ -54,6 +54,7 @@
         </template>
         <v-list nav dense elevation="2">
           <v-list-item
+            class="appNav"
             @click="
               $router.push(`/documents/`).catch((err) => {
                 $vuetify.goTo(0);
@@ -61,10 +62,13 @@
             "
           >
             <v-list-item-content class="hover">
-              <v-list-item-title>All</v-list-item-title>
+              <v-list-item-title style="font-size: 12px !important"
+                >All</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
           <v-list-item
+            class="appNav"
             @click="
               $router.push(`/documents/clusters/`).catch((err) => {
                 $vuetify.goTo(0);
@@ -72,7 +76,9 @@
             "
           >
             <v-list-item-content class="hover">
-              <v-list-item-title>Grouped</v-list-item-title>
+              <v-list-item-title style="font-size: 12px !important"
+                >Grouped</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -101,6 +107,7 @@
           <v-list-item
             v-for="(unit, index) in $myApp.units"
             :key="`unitNav-${index}`"
+            class="appNav"
             @click="
               $router.push(`${unit.path}`).catch((err) => {
                 $vuetify.goTo(0);
@@ -108,7 +115,9 @@
             "
           >
             <v-list-item-content class="hover">
-              <v-list-item-title>{{ unit.title }}</v-list-item-title>
+              <v-list-item-title style="font-size: 12px !important">{{
+                unit.title
+              }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -143,10 +152,7 @@ export default {};
 </script>
 
 <style>
-.v-item--active {
-  background: #fff !important;
-}
-.v-list-item:hover {
+.appNav.v-list-item:hover {
   background: #ccc !important;
 }
 

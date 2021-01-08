@@ -26,6 +26,7 @@
             :search="search"
             :loading="loading"
             loading-text="Loading..."
+            dense
           >
             <template v-slot:top>
               <div class="pt-5">

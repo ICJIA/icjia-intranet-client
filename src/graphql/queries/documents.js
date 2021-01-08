@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 const GET_ALL_DOCUMENTS = gql`
   query Documents {
-    documents(sort: "published_at:desc") {
+    documents(sort: "updated_at:desc") {
       id
       published_at
       updated_at
