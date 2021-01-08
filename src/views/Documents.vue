@@ -25,14 +25,14 @@
             @click:row="clicked"
             :search="search"
             :loading="loading"
-            loading-text="Loading..."
+            loading-text="Loading ..."
             dense
           >
             <template v-slot:top>
               <div class="pt-5">
                 <v-text-field
                   v-model="search"
-                  label="Search All Documents"
+                  label="Search Documents"
                   class="mx-4"
                 ></v-text-field>
               </div>
