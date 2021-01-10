@@ -10,7 +10,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container>
+    <v-container v-if="documents">
       <v-row>
         <v-col>
           <v-data-table
@@ -92,6 +92,13 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-container v-else>
+      <v-row>
+        <v-col>
+          <loader></loader>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -99,7 +106,9 @@
 import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
 import { GET_ALL_DOCUMENTS } from "@/graphql/queries/documents";
+import Loader from "../components/Loader.vue";
 export default {
+  components: { Loader },
   mixins: [handleClicks],
   data() {
     return {

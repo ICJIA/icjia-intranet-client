@@ -11,9 +11,16 @@
       <v-row>
         <v-col>
           <div v-if="events && events.length" class="mt-4">
-            <v-card>
+            <v-card class="mb-4">
               <EventCard :item="events[0]" :showURL="false"></EventCard>
             </v-card>
+            <div class="text-center">
+              <v-btn x-small to="/events/" exact
+                >Full calendar<v-icon right x-small
+                  >calendar_today</v-icon
+                ></v-btn
+              >
+            </div>
           </div>
           <div v-else>
             <Loader></Loader>

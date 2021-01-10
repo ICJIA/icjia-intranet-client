@@ -82,9 +82,6 @@
                     >CLOSE</v-btn
                   >
                 </v-toolbar>
-                <!-- <v-card-text>
-                  <span v-html="selectedEvent.details"></span>
-                </v-card-text> -->
 
                 <EventCard
                   :item="selectedEvent"

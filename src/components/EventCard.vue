@@ -1,6 +1,6 @@
 <template>
-  <div class="markdown-body">
-    <v-card color="grey lighten-4" class="mb-5" elevation="0">
+  <div class="markdown-body reduce-85">
+    <v-card color="grey lighten-3" class="mb-5" elevation="0">
       <div
         style="
           border-left: 1px solid #ccc;
@@ -9,7 +9,7 @@
         "
       >
         <div class="px-5 py-6">
-          <div style="font-size: 14px">
+          <div style="">
             <span style="color: #333; font-weight: bold">{{
               item.type | upperCase
             }}</span>
@@ -18,7 +18,7 @@
               v-html="getRange(item.start, item.end, item.timed)"
             ></span>
           </div>
-          <h2 class="mt-4" style="font-size: 20px">
+          <h2 class="mt-4" style="">
             {{ item.name }}&nbsp;<v-icon
               v-if="showURL"
               class="hover"
@@ -29,8 +29,8 @@
           </h2>
 
           <div class="py-3">
-            <div class="pl-2" style="font-size: 14px; margin-top: -15px">
-              {{ item.details }}
+            <div class="pl-2" style="margin-top: -15px">
+              <div v-html="render(item.details)"></div>
             </div>
           </div>
           <div
@@ -38,21 +38,12 @@
             style="background: #eee"
           >
             <v-sheet color="grey lighten-3" class="px-3 py-3">
-              <div
-                style="
-                  font-weight: bold;
-
-                  font-size: 14px;
-                "
-              >
-                Related Documents
-              </div>
+              <div style="font-weight: bold">Related Documents</div>
 
               <ul class="mt-2">
                 <span
                   v-for="(document, index) in item.documents"
                   :key="`eventDoc-${index}`"
-                  style="font-size: 13px"
                   class="download-link"
                 >
                   <li
@@ -110,20 +101,26 @@ export default {
       let localStart = moment(start).tz(this.$myApp.config.timezone);
       let localEnd = moment(end).tz(this.$myApp.config.timezone);
       let daysBetween = moment(localEnd).diff(moment(localStart), "days");
+      console.log(daysBetween);
 
       if (daysBetween === 0 && timed) {
-        range = ` | ${localStart.format("h:mm a")} to ${localEnd.format(
+        range = ` | <strong>${localStart.format(
+          "MMMM D, YYYY"
+        )} </strong> | ${localStart.format("h:mm a")} to ${localEnd.format(
           "h:mm a"
         )}`;
       } else if (daysBetween === 0 && !timed) {
-        range = ` | All Day`;
-      } else if (daysBetween > 0) {
+        range = ` | <strong>${localStart.format(
+          "MMMM D, YYYY"
+        )}</strong> | All Day Event`;
+      } else {
         range = ` | <strong>${localStart.format(
           "MMMM D, h:mm a"
         )}</strong> through <strong>${localEnd.format(
           "MMMM D, h:mm a"
         )}</strong>`;
       }
+
       return range;
     },
   },
@@ -147,3 +144,5 @@ export default {
   },
 };
 </script>
+
+<style></style>

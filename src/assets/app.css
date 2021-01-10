@@ -45,3 +45,15 @@ a {
 
   text-decoration: underline;
 }
+
+.reduce-85 {
+  font-size: 85% !important;
+}
+
+.reduce-90 {
+  font-size: 90% !important;
+}
+
+.reduce-95 {
+  font-size: 95% !important;
+}
