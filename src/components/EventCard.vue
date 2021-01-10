@@ -55,10 +55,18 @@
                   style="font-size: 13px"
                   class="download-link"
                 >
-                  <li v-if="document.file" class="hover">
+                  <li
+                    v-if="document.file"
+                    class="hover"
+                    @click.stop.prevent="download(document.file)"
+                  >
                     {{ document.title }}
                   </li>
-                  <li v-else class="hover">
+                  <li
+                    v-else
+                    class="hover"
+                    @click.stop.prevent="goToExternal(document.externalURL)"
+                  >
                     {{ document.title }}&nbsp;<v-icon x-small
                       >open_in_new</v-icon
                     >
