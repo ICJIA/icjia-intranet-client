@@ -12,7 +12,7 @@
 
     <div v-for="(post, index) in newPosts" :key="index + post.id" v-else>
       <v-card
-        class="mx-auto my-5 py-5"
+        class="mx-auto my-5 py-5 news-card"
         outlined
         @click="$router.push(`/news/${post.slug}`)"
       >

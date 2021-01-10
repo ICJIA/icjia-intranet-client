@@ -46,6 +46,7 @@ const GET_HOME = gql`
       timed
       summary
       details
+      slug
 
       type
     }
@@ -59,6 +60,7 @@ const GET_HOME = gql`
       timed
       summary
       details
+      slug
 
       type
     }
