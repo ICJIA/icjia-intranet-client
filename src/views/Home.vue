@@ -59,7 +59,7 @@
                         <h2 style="color: #fff">Upcoming Events</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn outlined small to="/calendar"
+                        <v-btn outlined small to="/events/"
                           >calendar&nbsp;<v-icon right small
                             >calendar_today</v-icon
                           ></v-btn

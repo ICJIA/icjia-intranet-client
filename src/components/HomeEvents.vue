@@ -55,7 +55,6 @@
               <div style="font-size: 12px; font-weight: 900; color: #777">
                 <span style="color: #333">{{ event.type | upperCase }}</span>
                 {{ getRange(event.start, event.end, event.timed) }}
-                <!-- <span style="color: #333;">{{ event.type | upperCase }}</span> -->
               </div>
               <h2 class="mt-2 hover">
                 {{ event.name }}
@@ -63,28 +62,7 @@
 
               <v-card-subtitle>{{ event.summary }}</v-card-subtitle>
 
-              <div class="hover readMore text-right">
-                <!-- <span v-if="!event.show"
-                  ><v-btn outlined x-small>
-                    Event Details&nbsp;<v-icon x-small
-                      >keyboard_arrow_down</v-icon
-                    ></v-btn
-                  ></span
-                > -->
-                <!-- <span v-else
-                  ><v-btn outlined x-small>
-                    Hide&nbsp;<v-icon x-small>keyboard_arrow_up</v-icon></v-btn
-                  ></span
-                > -->
-              </div>
-              <!-- <v-btn small @click.native="event.show = !event.show"
-                >Full description</v-btn
-              >-->
-              <!-- <v-slide-y-transition>
-                <div class="py-3 mt-2" v-show="event.show">
-                  <div class="mt-2 pl-5">{{ event.details }}</div>
-                </div>
-              </v-slide-y-transition> -->
+              <div class="hover readMore text-right"></div>
             </div>
           </div>
         </div>

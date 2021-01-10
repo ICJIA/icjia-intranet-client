@@ -8,17 +8,29 @@
           width: 100% !important;
         "
       >
+        <v-toolbar :color="`${item.color || 'grey darken-2'}`" dark>
+          <v-toolbar-title v-html="item.name" style="font-weight: 900">
+          </v-toolbar-title>
+
+          <v-spacer></v-spacer>
+        </v-toolbar>
         <div class="px-5 py-6">
-          <div style="">
+          <div style="font-size: 16px">
             <span style="color: #333; font-weight: bold">{{
               item.type | upperCase
             }}</span>
             <span
               style="color: #555"
               v-html="getRange(item.start, item.end, item.timed)"
-            ></span>
+            ></span
+            >&nbsp;&nbsp;&nbsp;<span v-if="showURL">|&nbsp;</span>
+            <v-icon
+              v-if="showURL"
+              @click="$router.push(`/events/${item.slug}/`)"
+              >link</v-icon
+            >
           </div>
-          <h2 class="mt-4" style="">
+          <!-- <h2 class="mt-4" style="">
             {{ item.name }}&nbsp;<v-icon
               v-if="showURL"
               class="hover"
@@ -26,10 +38,10 @@
               @click="$router.push(`/events/${item.slug}/`)"
               >link</v-icon
             >
-          </h2>
+          </h2> -->
 
           <div class="py-3">
-            <div class="pl-2" style="margin-top: -15px">
+            <div class="pl-2" style="margin-top: 10px">
               <div v-html="render(item.details)"></div>
             </div>
           </div>
@@ -38,7 +50,16 @@
             style="background: #eee"
           >
             <v-sheet color="grey lighten-3" class="px-3 py-3">
-              <div style="font-weight: bold">Related Documents</div>
+              <div
+                style="
+                  font-weight: bold;
+                  border-bottom: 1px solid #ccc;
+                  padding-bottom: 5px;
+                  margin-bottom: 15px;
+                "
+              >
+                Related Documents
+              </div>
 
               <ul class="mt-2">
                 <span
@@ -106,15 +127,15 @@ export default {
       if (daysBetween === 0 && timed) {
         range = ` | <strong>${localStart.format(
           "MMMM D, YYYY"
-        )} </strong> | ${localStart.format("h:mm a")} to ${localEnd.format(
+        )} </strong>  |  ${localStart.format("h:mm a")} to ${localEnd.format(
           "h:mm a"
         )}`;
       } else if (daysBetween === 0 && !timed) {
-        range = ` | <strong>${localStart.format(
+        range = `  |  <strong>${localStart.format(
           "MMMM D, YYYY"
         )}</strong> | All Day Event`;
       } else {
-        range = ` | <strong>${localStart.format(
+        range = `  |  <strong>${localStart.format(
           "MMMM D, h:mm a"
         )}</strong> through <strong>${localEnd.format(
           "MMMM D, h:mm a"

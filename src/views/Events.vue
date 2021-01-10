@@ -72,7 +72,7 @@
               offset-x
             >
               <v-card color="grey lighten-4" min-width="250px" flat>
-                <v-toolbar :color="selectedEvent.color" dark>
+                <!-- <v-toolbar :color="selectedEvent.color" dark>
                   <v-toolbar-title
                     :id="`event-title-${selectedEvent.id}`"
                     v-html="selectedEvent.name"
@@ -82,7 +82,7 @@
                   <v-btn x-small outlined @click="selectedOpen = false"
                     >CLOSE</v-btn
                   >
-                </v-toolbar>
+                </v-toolbar> -->
 
                 <EventCard
                   :item="selectedEvent"
