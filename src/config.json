@@ -41,6 +41,9 @@
     "general": {
       "color": "deep-purple"
     },
+    "holiday": {
+      "color": "teal"
+    },
     "meeting": {
       "color": "cyan"
     },
