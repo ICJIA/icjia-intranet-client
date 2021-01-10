@@ -31,6 +31,29 @@
   ],
   "timezone": "America/Chicago",
   "underConstruction": false,
+  "events": {
+    "conference": {
+      "color": "blue"
+    },
+    "external": {
+      "color": "indigo"
+    },
+    "general": {
+      "color": "deep-purple"
+    },
+    "meeting": {
+      "color": "cyan"
+    },
+    "party": {
+      "color": "orange"
+    },
+    "seminar": {
+      "color": "green"
+    },
+    "summit": {
+      "color": "red"
+    }
+  },
   "hoursToShowUpdated": 1,
   "search": {
     "isCaseSensitive": false,

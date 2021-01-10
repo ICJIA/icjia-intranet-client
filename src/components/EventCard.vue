@@ -8,7 +8,7 @@
           width: 100% !important;
         "
       >
-        <v-toolbar :color="`${item.color || 'grey darken-2'}`" dark>
+        <v-toolbar :color="getColor(item)" dark>
           <v-toolbar-title v-html="item.name" style="font-weight: 900">
           </v-toolbar-title>
 
@@ -30,15 +30,6 @@
               >link</v-icon
             >
           </div>
-          <!-- <h2 class="mt-4" style="">
-            {{ item.name }}&nbsp;<v-icon
-              v-if="showURL"
-              class="hover"
-              small
-              @click="$router.push(`/events/${item.slug}/`)"
-              >link</v-icon
-            >
-          </h2> -->
 
           <div class="py-3">
             <div class="pl-2" style="margin-top: 10px">
@@ -102,6 +93,13 @@ import { renderToHtml } from "@/services/Markdown";
 export default {
   mixins: [handleClicks],
   methods: {
+    getColor(item) {
+      let color = "grey darken-3";
+      if (this.$myApp.config.events[item.type]) {
+        color = this.$myApp.config.events[item.type]["color"];
+      }
+      return color;
+    },
     render(content) {
       return renderToHtml(content);
     },

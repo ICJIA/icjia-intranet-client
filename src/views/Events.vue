@@ -151,7 +151,13 @@ export default {
           event.end = moment(event.end)
             .tz(this.$myApp.config.timezone)
             .toDate();
-          event.color = this.colors[this.rnd(0, this.colors.length - 1)];
+          //console.log(this.$myApp.config.events[event.type]["color"]);
+          if (this.$myApp.config.events[event.type]) {
+            event.color = this.$myApp.config.events[event.type]["color"];
+          } else {
+            event.color = "grey darken-4";
+          }
+          //event.color = this.colors[this.rnd(0, this.colors.length - 1)];
           return event;
         });
         NProgress.done();
