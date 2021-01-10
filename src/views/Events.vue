@@ -74,6 +74,7 @@
               <v-card color="grey lighten-4" min-width="250px" flat>
                 <v-toolbar :color="selectedEvent.color" dark>
                   <v-toolbar-title
+                    :id="`event-title-${selectedEvent.id}`"
                     v-html="selectedEvent.name"
                   ></v-toolbar-title>
                   <v-spacer></v-spacer>
@@ -115,6 +116,7 @@ export default {
     },
     selectedEvent: {},
     selectedElement: null,
+    selectedID: null,
     selectedOpen: false,
     currentEvents: [],
     events: [],
@@ -175,9 +177,13 @@ export default {
     },
     showEvent({ nativeEvent, event }) {
       const open = () => {
+        // console.log(event.id);
+        // this.$vuetify.goTo(`#page-top`);
         this.selectedEvent = event;
+        this.selectedID = event.id;
         this.selectedElement = nativeEvent.target;
         setTimeout(() => (this.selectedOpen = true), 10);
+        //this.$vuetify.goTo(`#event-title-${this.selectedID}`);
       };
 
       if (this.selectedOpen) {
@@ -185,6 +191,7 @@ export default {
         setTimeout(open, 10);
       } else {
         open();
+        console.log("event-id: ", this.selectedID);
       }
 
       nativeEvent.stopPropagation();
