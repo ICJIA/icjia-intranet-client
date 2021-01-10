@@ -73,35 +73,23 @@
             >
               <v-card color="grey lighten-4" min-width="250px" flat>
                 <v-toolbar :color="selectedEvent.color" dark>
-                  <!-- <v-btn icon>
-                  <v-icon>mdi-pencil</v-icon>
-                </v-btn> -->
                   <v-toolbar-title
                     v-html="selectedEvent.name"
                   ></v-toolbar-title>
                   <v-spacer></v-spacer>
-                  <!-- <v-btn icon>
-                  <v-icon>mdi-heart</v-icon>
-                </v-btn>
-                <v-btn icon>
-                  <v-icon>mdi-dots-vertical</v-icon>
-                </v-btn> -->
-                  <v-btn small outlined @click="selectedOpen = false"
+
+                  <v-btn x-small outlined @click="selectedOpen = false"
                     >CLOSE</v-btn
                   >
                 </v-toolbar>
-                <v-card-text>
+                <!-- <v-card-text>
                   <span v-html="selectedEvent.details"></span>
-                </v-card-text>
-                <!-- <v-card-actions>
-                <v-btn
-                  small
-                  outlined
-                  color="secondary"
-                  @click="selectedOpen = false"
-                  >CLOSE</v-btn
-                >
-              </v-card-actions> -->
+                </v-card-text> -->
+
+                <EventCard
+                  :item="selectedEvent"
+                  :hideClusters="true"
+                ></EventCard>
               </v-card>
             </v-menu>
           </v-sheet>

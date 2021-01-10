@@ -196,18 +196,12 @@ export default {
       type: Object,
       default: () => {},
     },
+    hideClusters: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
 
-<style>
-.download-link {
-  color: rgb(38, 38, 155) !important;
-  font-weight: bold;
-}
-.download-link:hover {
-  color: #555;
-
-  text-decoration: underline;
-}
-</style>
+<style></style>

@@ -123,7 +123,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn small text to="/calendar" class="hidden-sm-and-down"
+      <v-btn small text to="/events/" class="hidden-sm-and-down"
         >Calendar</v-btn
       >
 

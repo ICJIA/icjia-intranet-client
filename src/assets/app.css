@@ -35,3 +35,13 @@ a {
   transform: scale(1.04);
   cursor: pointer;
 }
+
+.download-link {
+  color: rgb(38, 38, 155) !important;
+  font-weight: bold;
+}
+.download-link:hover {
+  color: #555;
+
+  text-decoration: underline;
+}

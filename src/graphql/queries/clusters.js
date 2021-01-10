@@ -7,7 +7,7 @@ const GET_ALL_CLUSTERS = gql`
       title
       slug
       summary
-      documents {
+      documents(sort: "title:asc") {
         id
         title
         slug
@@ -30,7 +30,7 @@ const GET_SINGLE_CLUSTER = gql`
       title
       slug
       summary
-      documents {
+      documents(sort: "title:asc") {
         id
         title
         slug

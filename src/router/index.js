@@ -106,15 +106,7 @@ const routes = [
       requiresAuth: true,
     },
   },
-  {
-    path: "/calendar/",
-    name: "Calendar",
-    component: () =>
-      import(/* webpackChunkName: "calendar" */ "../views/Calendar.vue"),
-    meta: {
-      requiresAuth: true,
-    },
-  },
+
   {
     path: "/news/:slug/",
     name: "NewsSingle",
@@ -162,11 +154,12 @@ const routes = [
       requiresAuth: true,
     },
   },
+
   {
     path: "/events/",
-    name: "Events",
-    redirect: { name: "Calendar" },
-
+    name: "EventCalendar",
+    component: () =>
+      import(/* webpackChunkName: "calendar" */ "../views/Events.vue"),
     meta: {
       requiresAuth: true,
     },
@@ -175,7 +168,7 @@ const routes = [
     path: "/events/:slug/",
     name: "EventSingle",
     component: () =>
-      import(/* webpackChunkName: "documents" */ "../views/EventSingle.vue"),
+      import(/* webpackChunkName: "calendar" */ "../views/EventSingle.vue"),
     meta: {
       requiresAuth: true,
     },

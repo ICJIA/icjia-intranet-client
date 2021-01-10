@@ -20,12 +20,12 @@ const GET_ALL_DOCUMENTS = gql`
         title
         slug
       }
-      clusters {
+      clusters(sort: "title:asc") {
         id
         title
         slug
         summary
-        documents {
+        documents(sort: "title:asc") {
           id
           title
           slug

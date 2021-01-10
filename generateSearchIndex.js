@@ -64,18 +64,15 @@ const query = gql`
       title
       summary
       slug
-
       body
     }
-    # events {
-    #   id
-    #   name
-    #   type
-    #   summary
-    #   slug
-
-    #   details
-    # }
+    events {
+      id
+      name
+      type
+      summary
+      slug
+    }
     documents {
       title
       summary
@@ -123,9 +120,9 @@ async function main() {
       searchObj.headings = headings;
       // searchObj.toc = toc(markdown).json;
       if (section === "clusters") {
-        searchObj.route = `/documents/${section}/${searchObj.slug}`;
+        searchObj.route = `/documents/${section}/${searchObj.slug}/`;
       } else {
-        searchObj.route = `/${section}/${searchObj.slug}`;
+        searchObj.route = `/${section}/${searchObj.slug}/`;
       }
 
       searchObj.summary = item.summary || "";

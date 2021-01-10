@@ -44,7 +44,7 @@
                 class="hover"
                 @click.stop.prevent="goToExternal(clusterItem.externalURL)"
               >
-                {{ clusterItem.externalURL }}
+                {{ clusterItem.title }}
                 <v-icon small style="font-weight: 900">open_in_new</v-icon>
               </span>
             </li>
