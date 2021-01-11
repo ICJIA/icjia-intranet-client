@@ -44,6 +44,12 @@
               No news for {{ unit.shortname }} found.
             </h3>
           </div>
+          <div v-if="$route.params.slug === 'research-and-analysis-unit'">
+            <h2 class="text-center mt-12">Latest Research</h2>
+            <v-card class="mt-5 px-5 py-5">
+              <Research></Research>
+            </v-card>
+          </div>
         </v-col>
       </v-row>
       <v-row>
