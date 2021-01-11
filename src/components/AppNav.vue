@@ -123,9 +123,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn small text to="/events/" class="hidden-sm-and-down"
-        >Calendar</v-btn
-      >
+      <v-btn small text to="/events/" class="hidden-sm-and-down">Events</v-btn>
 
       <v-btn icon to="/search">
         <v-icon>mdi-magnify</v-icon>

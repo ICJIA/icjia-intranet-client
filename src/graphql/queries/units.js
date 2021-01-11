@@ -21,6 +21,8 @@ const GET_SINGLE_UNIT = gql`
       id
       title
       summary
+      slug
+      shortname
       documents(sort: "updated_at:desc") {
         published_at
         updated_at
@@ -28,10 +30,32 @@ const GET_SINGLE_UNIT = gql`
         title
         slug
         summary
+        unit {
+          title
+          slug
+        }
         file {
           ext
           url
           name
+        }
+        clusters {
+          id
+          title
+          slug
+          summary
+          documents {
+            id
+            title
+            slug
+            file {
+              url
+              name
+              ext
+            }
+            summary
+            externalURL
+          }
         }
       }
       posts(sort: "updated_at:desc") {
@@ -41,6 +65,7 @@ const GET_SINGLE_UNIT = gql`
         published_at
         updated_at
         created_at
+        body
       }
     }
   }

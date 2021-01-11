@@ -1,9 +1,8 @@
 <template>
   <div class="markdown-body my-7 mx-5 reduce-90">
-    <v-card color="grey lighten-4" class="px-5 py-5 mx-2 my-2 pb-10">
+    <v-card color="white" class="px-5 py-5 mx-2 my-2 pb-10">
       <h2
         style="
-          font-size: 22px;
           border-bottom: 1px solid #ccc;
           padding-bottom: 6px;
           margin-bottom: 20px;
@@ -15,7 +14,7 @@
         class="text-left"
         style="
           color: #555;
-          font-size: 12px;
+
           margin-top: -10px;
           margin-bottom: 25px;
         "
@@ -44,8 +43,8 @@
             <v-avatar color="grey lighten-2" size="30">
               <span
                 style="
-                  font-size: 8px !important;
                   font-weight: 900;
+                  font-size: 8px;
                   text-transform: uppercase;
                 "
                 >{{ item.file.ext.substring(1) }}</span
@@ -69,7 +68,7 @@
       </div>
 
       <div v-if="item.clusters && item.clusters.length">
-        <v-sheet color="grey lighten-3" class="mt-8 px-5 py-5">
+        <v-sheet class="mt-8 px-5 py-5">
           <div
             style="
               border-bottom: 1px solid #ccc;
@@ -84,7 +83,8 @@
           <div
             v-for="(cluster, index) in item.clusters"
             :key="`cluster-${index}`"
-            class="ml-5 mt-5"
+            class="ml-5 mt-5 px-3 py-3"
+            style="background: #f3f5f7"
           >
             <router-link
               :to="`/documents/clusters/${cluster.slug}`"
@@ -120,9 +120,9 @@
                     <v-avatar color="grey lighten-2" size="30">
                       <span
                         style="
-                          font-size: 8px !important;
                           font-weight: 900;
                           text-transform: uppercase;
+                          font-size: 8px;
                         "
                         >{{ clusterItem.file.ext.substring(1) }}</span
                       >

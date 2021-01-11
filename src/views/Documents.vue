@@ -12,83 +12,13 @@
     </v-container>
     <v-container v-if="documents">
       <v-row>
-        <v-col>
-          <v-data-table
-            :headers="headers"
-            :items="documents"
-            :items-per-page="15"
-            class="elevation-3 hover my-8"
-            show-expand
-            item-key="title"
-            :single-expand="singleExpand"
-            :expanded.sync="expanded"
-            @click:row="clicked"
-            :search="search"
-            :loading="loading"
-            loading-text="Loading ..."
-            dense
-          >
-            <template v-slot:top>
-              <div class="pt-5">
-                <v-text-field
-                  v-model="search"
-                  label="Search Documents"
-                  class="mx-4"
-                ></v-text-field>
-              </div>
-            </template>
-            <template v-slot:item.updated_at="{ item }">
-              <div style="font-size: 14px !important">
-                <strong>{{ item.updated_at | dateFormat }}</strong>
-              </div>
-            </template>
-            <template v-slot:item.unit.title="{ item }">
-              <div
-                style="color: #aaa; font-weight: bold"
-                v-if="item.unit && item.unit.title"
-              >
-                {{ item.unit.title }}
-              </div>
-              <div v-else style="color: #aaa; font-weight: bold">General</div>
-            </template>
-            <template v-slot:item.file="{ item }">
-              <v-avatar
-                color="grey lighten-2"
-                size="40"
-                class="my-3"
-                @click.stop.prevent="download(item.file)"
-                v-if="item.file"
-              >
-                <span
-                  style="
-                    font-size: 10px !important;
-                    font-weight: 900;
-                    text-transform: uppercase;
-                  "
-                  >{{ item.file.ext.substring(1) }}</span
-                >
-              </v-avatar>
-
-              <v-avatar
-                color="grey lighten-2"
-                size="40"
-                class="my-3"
-                v-else
-                @click.stop.prevent="goToExternal(item.externalURL)"
-              >
-                <v-icon small style="font-weight: 900">open_in_new</v-icon>
-              </v-avatar>
-            </template>
-
-            <template v-slot:expanded-item="{ headers, item }">
-              <td
-                :colspan="headers.length"
-                style="padding: 0 !important; margin: 0 !important"
-              >
-                <DocumentCard :item="item"></DocumentCard>
-              </td>
-            </template>
-          </v-data-table>
+        <v-col v-if="documents.length">
+          <DocumentTable :documents="documents"></DocumentTable>
+        </v-col>
+        <v-col v-else>
+          <div class="text-center">
+            <h2>No documents found</h2>
+          </div>
         </v-col>
       </v-row>
     </v-container>

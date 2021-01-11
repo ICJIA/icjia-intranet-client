@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10 text-center">All {{ $route.params }} pages here</div>
+  <div>News table here</div>
 </template>
 
 <script>

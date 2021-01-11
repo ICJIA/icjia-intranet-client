@@ -60,7 +60,7 @@
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn outlined small to="/events/"
-                          >calendar&nbsp;<v-icon right small
+                          >All Events&nbsp;<v-icon right small
                             >calendar_today</v-icon
                           ></v-btn
                         >

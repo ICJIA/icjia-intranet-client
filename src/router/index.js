@@ -229,23 +229,23 @@ const routes = [
     },
   },
   {
-    path: "/units/:unit/",
+    path: "/units/:slug/",
     name: "UnitPageList",
-    component: () =>
-      import(/* webpackChunkName: "forms" */ "../views/UnitSingleList.vue"),
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    path: "/units/:unit/:slug/",
-    name: "UnitPageSingleItem",
     component: () =>
       import(/* webpackChunkName: "forms" */ "../views/UnitSingle.vue"),
     meta: {
       requiresAuth: true,
     },
   },
+  // {
+  //   path: "/units/:unit/:slug/",
+  //   name: "UnitPageSingleItem",
+  //   component: () =>
+  //     import(/* webpackChunkName: "forms" */ "../views/UnitSingle.vue"),
+  //   meta: {
+  //     requiresAuth: true,
+  //   },
+  // },
   // {
   //   path: "/coming-soon",
   //   name: "ComingSoon",

@@ -16,9 +16,7 @@
             </v-card>
             <div class="text-center">
               <v-btn x-small to="/events/" exact
-                >Full calendar<v-icon right x-small
-                  >calendar_today</v-icon
-                ></v-btn
+                >All events<v-icon right x-small>calendar_today</v-icon></v-btn
               >
             </div>
           </div>

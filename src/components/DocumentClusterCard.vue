@@ -1,6 +1,6 @@
 <template>
-  <div class="markdown-body my-7 mx-5">
-    <v-card color="grey lighten-4" class="px-5 py-5 mx-2 my-2 pb-10">
+  <div class="markdown-body my-7 mx-5 reduce-90">
+    <v-card color="white" class="px-5 py-5 mx-2 my-2 pb-10">
       <div>
         <router-link
           :to="`/documents/clusters/${item.slug}`"
