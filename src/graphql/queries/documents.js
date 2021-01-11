@@ -19,6 +19,7 @@ const GET_ALL_DOCUMENTS = gql`
       unit {
         title
         slug
+        shortname
       }
       clusters(sort: "title:asc") {
         id
@@ -61,6 +62,7 @@ const GET_SINGLE_DOCUMENT = gql`
       unit {
         title
         slug
+        shortname
       }
       clusters {
         id

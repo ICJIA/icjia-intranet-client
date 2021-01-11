@@ -30,9 +30,9 @@
       <template v-slot:item.unit.title="{ item }">
         <div
           style="color: #aaa; font-weight: bold"
-          v-if="item.unit && item.unit.title"
+          v-if="item.unit && item.unit.shortname"
         >
-          {{ item.unit.title }}
+          {{ item.unit.shortname }}
         </div>
         <div v-else style="color: #aaa; font-weight: bold">General</div>
       </template>

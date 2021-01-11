@@ -33,6 +33,7 @@ const GET_SINGLE_UNIT = gql`
         unit {
           title
           slug
+          shortname
         }
         file {
           ext
