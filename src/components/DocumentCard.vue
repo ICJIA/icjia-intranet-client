@@ -163,9 +163,14 @@
                         </span>
                       </span>
                     </template>
-                    <span style="font-size: 12px">{{
-                      clusterItem.file.name
-                    }}</span>
+                    <span
+                      style="font-size: 12px"
+                      v-if="
+                        clusterItem && clusterItem.file && clusterItem.file.name
+                      "
+                    >
+                      {{ clusterItem.file.name }}
+                    </span>
                   </v-tooltip>
                   <span
                     v-if="clusterItem.externalURL"
