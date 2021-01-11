@@ -12,7 +12,11 @@
         <v-col>
           <div v-if="events && events.length" class="mt-4">
             <v-card class="mb-4">
-              <EventCard :item="events[0]" :showURL="false"></EventCard>
+              <EventCard
+                :item="events[0]"
+                :showURL="false"
+                :showClose="false"
+              ></EventCard>
             </v-card>
             <div class="text-center">
               <v-btn x-small to="/events/" exact

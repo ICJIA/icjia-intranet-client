@@ -59,6 +59,24 @@ const GET_SINGLE_POST_QUERY = gql`
         lastname
       }
       body
+      documents {
+        published_at
+        updated_at
+        title
+        summary
+        externalURL
+        body
+        file {
+          url
+          name
+          ext
+        }
+        slug
+        unit {
+          title
+          slug
+        }
+      }
       splash {
         url
         formats

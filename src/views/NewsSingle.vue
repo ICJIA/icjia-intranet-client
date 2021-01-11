@@ -74,7 +74,24 @@
                     @click="handleClicks"
                     class="dynamic-content"
                   ></div>
-                  {{ posts[0]["units"] }}
+
+                  <DocumentList
+                    :documents="posts[0]['documents']"
+                    heading="Related Documents"
+                    v-if="
+                      posts &&
+                      posts[0]['documents'] &&
+                      posts[0]['documents'].length
+                    "
+                    class="mt-8"
+                  ></DocumentList>
+                  <UnitTags
+                    :units="posts[0]['units']"
+                    class="mt-5"
+                    v-if="
+                      posts && posts[0]['units'] && posts[0]['units'].length
+                    "
+                  ></UnitTags>
                 </v-col>
                 <!-- <v-col
                   cols="12"

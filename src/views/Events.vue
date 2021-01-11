@@ -87,6 +87,7 @@
                 <EventCard
                   :item="selectedEvent"
                   :hideClusters="true"
+                  @clicked="selectedOpen = false"
                 ></EventCard>
               </v-card>
             </v-menu>
@@ -205,6 +206,9 @@ export default {
 
     rnd(a, b) {
       return Math.floor((b - a + 1) * Math.random()) + a;
+    },
+    closeEvent() {
+      console.log("click", this.selectedOpen);
     },
   },
 };

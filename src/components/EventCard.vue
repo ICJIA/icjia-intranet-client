@@ -13,6 +13,13 @@
           </v-toolbar-title>
 
           <v-spacer></v-spacer>
+          <v-btn
+            x-small
+            outlined
+            @click.prevent.stop="$emit('clicked')"
+            v-if="showClose"
+            >CLOSE</v-btn
+          >
         </v-toolbar>
         <div class="px-5 py-6">
           <div style="font-size: 16px">
@@ -157,6 +164,10 @@ export default {
       default: false,
     },
     showURL: {
+      type: Boolean,
+      default: true,
+    },
+    showClose: {
       type: Boolean,
       default: true,
     },
