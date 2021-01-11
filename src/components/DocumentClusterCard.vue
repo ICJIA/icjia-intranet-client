@@ -2,14 +2,18 @@
   <div class="markdown-body my-7 mx-5 reduce-90">
     <v-card color="white" class="px-5 py-5 mx-2 my-2 pb-10">
       <div>
-        <router-link
-          :to="`/documents/clusters/${item.slug}`"
-          style="background: none !important"
-          class="download-link"
-        >
-          <h2 style="font-size: 22px">{{ item.title }}</h2>
-          &nbsp;
-        </router-link>
+        <h2 style="font-size: 22px">
+          {{ item.title }}
+          <router-link
+            :to="`/documents/clusters/${item.slug}`"
+            style="background: none !important"
+            class="download-link"
+            v-if="getLastItem($route.path) === '/clusters/'"
+            ><v-icon>link</v-icon></router-link
+          >
+        </h2>
+        &nbsp;
+
         <div style="" class="mt-2">{{ item.summary }}</div>
         <div
           v-for="(clusterItem, index) in item.documents"
@@ -70,6 +74,10 @@ export default {
     };
   },
   methods: {
+    getLastItem(path) {
+      let target = "clusters/";
+      return path.substring(path.lastIndexOf("/") - target.length);
+    },
     render(content) {
       return renderToHtml(content);
     },

@@ -14,6 +14,7 @@
           style="background: none !important"
           class=""
           :aria-label="item.title"
+          v-if="getLastItem($route.path) === '/documents/'"
         >
           &nbsp;
 
@@ -174,6 +175,10 @@ export default {
     };
   },
   methods: {
+    getLastItem(path) {
+      let target = "documents/";
+      return path.substring(path.lastIndexOf("/") - target.length);
+    },
     render(content) {
       return renderToHtml(content);
     },
