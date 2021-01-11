@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Breadcrumb :key="$route.path" title="Calendar"></Breadcrumb>
+    <Breadcrumb :key="$route.path" title="Events"></Breadcrumb>
     <v-container fluid>
       <v-row class="fill-height">
         <v-col>

@@ -2,8 +2,8 @@
   <div>
     <Breadcrumb
       :key="$route.path"
-      subpath="Events"
-      subpathURL="`/events/`"
+      subPath="Events"
+      subPathURL="/events/"
       :title="`${events[0].name}`"
       v-if="events && events.length"
     ></Breadcrumb>

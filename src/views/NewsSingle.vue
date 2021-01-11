@@ -4,6 +4,8 @@
       v-if="posts && posts.length"
       :key="$route.path"
       :title="posts[0]['title']"
+      subPath="News"
+      subPathURL="/news/"
     ></Breadcrumb>
     <v-container fluid>
       <v-card color="gray lighten-4" style="min-height: 100vh">

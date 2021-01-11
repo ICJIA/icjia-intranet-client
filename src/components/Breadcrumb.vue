@@ -11,7 +11,12 @@
       class="text-right mb-4"
     >
       <router-link to="/" class="breadcrumb-link">Home</router-link> |
-      <span style="font-weight: 300">{{ truncate(title, 5) }}</span>
+      <span v-if="subPath.length && subPathURL.length"
+        ><router-link :to="subPathURL" class="breadcrumb-link"
+          >{{ subPath }} </router-link
+        >|&nbsp;</span
+      >
+      <span style="font-weight: 300">{{ truncate(title, 4) }}</span>
     </div>
   </div>
 </template>
@@ -21,7 +26,15 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Default Title here",
+      default: "",
+    },
+    subPath: {
+      type: String,
+      default: "",
+    },
+    subPathURL: {
+      type: String,
+      default: "/test/",
     },
   },
   data() {

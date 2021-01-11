@@ -2,8 +2,8 @@
   <div>
     <Breadcrumb
       :key="$route.path"
-      subpath="Units"
-      subpathURL="`/units/`"
+      subPath="Units"
+      subPathURL="/units/"
       :title="`${unit.title}`"
       v-if="units && units.length"
     ></Breadcrumb>

@@ -1,6 +1,12 @@
 <template>
   <div>
-    <Breadcrumb :key="$route.path" :title="$route.params.slug"></Breadcrumb>
+    <Breadcrumb
+      v-if="documents"
+      :key="$route.path"
+      :title="documents[0]['title']"
+      subPath="Documents"
+      subPathURL="/documents/"
+    ></Breadcrumb>
     <v-container>
       <v-row>
         <v-col v-if="documents">
