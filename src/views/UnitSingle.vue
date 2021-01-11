@@ -48,6 +48,13 @@
             <h2 class="text-center mt-12">Latest Research</h2>
             <v-card class="mt-5 px-5 py-5">
               <Research></Research>
+              <div class="py-2 text-center reduce-85">
+                Visit
+                <a href="https://icjia.illinois.gov/researchhub" target="_blank"
+                  >the ResearchHub</a
+                >
+                for all ICJIA's articles, datasets, and applications.
+              </div>
             </v-card>
           </div>
         </v-col>

@@ -82,7 +82,7 @@
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
                       <v-col>
-                        <h2 style="color: #fff">Latest Research</h2>
+                        <h2 style="color: #fff">Recent Research</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn
@@ -99,6 +99,15 @@
                   </div>
                 </v-container>
                 <Research></Research>
+                <div class="py-2 text-center reduce-85">
+                  Visit
+                  <a
+                    href="https://icjia.illinois.gov/researchhub"
+                    target="_blank"
+                    >the ResearchHub</a
+                  >
+                  for all ICJIA's articles, datasets, and applications.
+                </div>
               </v-sheet>
             </v-col>
           </v-row>
