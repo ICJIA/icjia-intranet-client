@@ -31,7 +31,7 @@
                   class="text-center hover"
                   @click.prevent="event.show = !event.show"
                 >
-                  <span style="font-size: 14px; color: #666; font-weight: 900">
+                  <span style="font-size: 14px; color: #222; font-weight: 900">
                     {{ event.start | shortMonth }}
                   </span>
                   <br />
@@ -52,7 +52,7 @@
             "
           >
             <div class="px-5 py-6">
-              <div style="font-size: 12px; font-weight: 900; color: #777">
+              <div style="font-size: 12px; font-weight: 900; color: #222">
                 <span style="color: #333">{{ event.type | upperCase }}</span>
                 {{ getRange(event.start, event.end, event.timed) }}
               </div>

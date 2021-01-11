@@ -50,7 +50,7 @@
           <v-list-item-content>
             <div class="overline mb-4">{{ post.created_at | format }}</div>
             <div
-              style="font-size: 14px; color: #888"
+              style="font-size: 14px; color: #222"
               class="mb-2"
               v-if="post.kicker"
             >

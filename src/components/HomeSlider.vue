@@ -33,7 +33,7 @@
                     <div class="text-center">
                       <h2 v-if="slide.title">{{ slide.title }}</h2>
                       <h3
-                        style="color: #aaa; font-size: 14px"
+                        style="color: #fff; font-size: 14px"
                         class="mt-5"
                         v-if="slide.summary"
                       >
@@ -42,8 +42,8 @@
                       <v-btn
                         v-if="slide.url"
                         class="mt-12"
-                        color="grey"
                         @click="route(slide.url)"
+                        aria-label="Read More button"
                         >Read more</v-btn
                       >
                     </div>

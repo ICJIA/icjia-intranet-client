@@ -9,15 +9,16 @@
         "
       >
         {{ item.title }}
-        <!-- <router-link
+        <router-link
           :to="`/documents/${item.slug}`"
           style="background: none !important"
           class=""
+          :aria-label="item.title"
         >
           &nbsp;
 
           <v-icon small>link</v-icon>
-        </router-link> -->
+        </router-link>
       </h2>
       <div
         class="text-left"

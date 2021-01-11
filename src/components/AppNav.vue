@@ -125,12 +125,12 @@
 
       <v-btn small text to="/events/" class="hidden-sm-and-down">Events</v-btn>
 
-      <v-btn icon to="/search">
+      <v-btn icon to="/search" aria-label="search">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
       <v-menu left bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on">
+          <v-btn icon v-bind="attrs" v-on="on" aria-label="Action menu">
             <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
         </template>
