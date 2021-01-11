@@ -35,6 +35,7 @@
             <NewsTable
               :posts="unit.posts"
               :searchLabel="`Search ${unit.shortname} News`"
+              :unit="unit.shortname"
               v-if="units"
             ></NewsTable>
           </div>

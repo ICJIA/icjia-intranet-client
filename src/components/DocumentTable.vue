@@ -39,19 +39,20 @@
       <template v-slot:item.file="{ item }">
         <v-avatar
           color="grey lighten-2"
-          size="40"
+          size="35"
           class="my-3"
           @click.stop.prevent="download(item.file)"
           v-if="item.file"
         >
-          <span style="font-weight: 900; text-transform: uppercase">{{
-            item.file.ext.substring(1)
-          }}</span>
+          <span
+            style="font-weight: 900; font-size: 10px; text-transform: uppercase"
+            >{{ item.file.ext.substring(1) }}</span
+          >
         </v-avatar>
 
         <v-avatar
           color="grey lighten-2"
-          size="40"
+          size="35"
           class="my-3"
           v-else
           @click.stop.prevent="goToExternal(item.externalURL)"

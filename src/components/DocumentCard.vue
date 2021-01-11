@@ -1,6 +1,6 @@
 <template>
   <div class="markdown-body my-7 mx-5 reduce-90">
-    <v-card color="white" class="px-5 py-5 mx-2 my-2 pb-10">
+    <v-card color="white" class="px-5 py-5 mx-2">
       <h2
         style="
           border-bottom: 1px solid #ccc;
@@ -9,6 +9,15 @@
         "
       >
         {{ item.title }}
+        <!-- <router-link
+          :to="`/documents/${item.slug}`"
+          style="background: none !important"
+          class=""
+        >
+          &nbsp;
+
+          <v-icon small>link</v-icon>
+        </router-link> -->
       </h2>
       <div
         class="text-left"
@@ -67,7 +76,10 @@
         </ul>
       </div>
 
-      <div v-if="item.clusters && item.clusters.length">
+      <div
+        v-if="item.clusters && item.clusters.length"
+        style="margin-top: -20px"
+      >
         <v-sheet class="mt-8 px-5 py-5">
           <div
             style="
@@ -195,6 +207,10 @@ export default {
     item: {
       type: Object,
       default: () => {},
+    },
+    showLink: {
+      type: Boolean,
+      default: false,
     },
     hideClusters: {
       type: Boolean,

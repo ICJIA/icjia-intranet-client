@@ -1,7 +1,7 @@
 <template>
   <div>
     <Breadcrumb
-      v-if="posts"
+      v-if="posts && posts.length"
       :key="$route.path"
       :title="posts[0]['title']"
     ></Breadcrumb>
@@ -74,6 +74,7 @@
                     @click="handleClicks"
                     class="dynamic-content"
                   ></div>
+                  {{ posts[0]["units"] }}
                 </v-col>
                 <!-- <v-col
                   cols="12"

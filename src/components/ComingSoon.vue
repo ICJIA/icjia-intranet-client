@@ -3,16 +3,14 @@
     <v-container class="fill-height mt-8" style="background-color: #eee">
       <v-row class="fill-height" align="center" justify="center">
         <v-card class="px-8 py-8">
-          <center>
+          <center v-if="showLogo">
             <v-img
               src="/icjia-logo.png"
               width="125"
               class="text-center"
             ></v-img>
           </center>
-          <h1 class="text-center mt-5">
-            The new ICJIA intranet is coming soon.
-          </h1>
+          <h1 class="text-center mt-5">{{ message }}</h1>
 
           <h2 class="text-center mt-3" style="color: #555">In the meantime:</h2>
           <div class="mt-4">
@@ -41,7 +39,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    message: {
+      type: String,
+      default: " The new ICJIA intranet is coming soon.",
+    },
+    showLogo: {
+      type: Boolean,
+      default: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>

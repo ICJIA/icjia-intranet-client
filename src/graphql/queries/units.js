@@ -65,7 +65,11 @@ const GET_SINGLE_UNIT = gql`
         published_at
         updated_at
         created_at
-        body
+        units {
+          title
+          slug
+          shortname
+        }
       }
     }
   }

@@ -1,15 +1,10 @@
 <template>
   <div>
     <Breadcrumb :key="$route.path" title="Forms"></Breadcrumb>
-    <v-container>
-      <v-row>
-        <v-col>
-          <div class="text-center">
-            <h1>Online forms here</h1>
-          </div>
-        </v-col>
-      </v-row>
-    </v-container>
+    <ComingSoon
+      message="Online forms are under construction"
+      :showLogo="false"
+    ></ComingSoon>
   </div>
 </template>
 

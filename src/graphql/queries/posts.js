@@ -43,6 +43,11 @@ const GET_SINGLE_POST_QUERY = gql`
       created_at
       updated_at
       published_at
+      units {
+        title
+        slug
+        shortname
+      }
       updated_by {
         username
         firstname
