@@ -2,7 +2,7 @@
   <div>
     <Breadcrumb :key="$route.path" title="Forms"></Breadcrumb>
     <ComingSoon
-      message="Forms are under construction"
+      message="Online forms are under construction"
       :showLogo="false"
     ></ComingSoon>
   </div>

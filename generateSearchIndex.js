@@ -90,6 +90,12 @@ const query = gql`
       summary
       slug
     }
+
+    units {
+      title
+      summary
+      slug
+    }
   }
 `;
 
