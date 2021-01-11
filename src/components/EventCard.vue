@@ -70,16 +70,34 @@
                     class="hover"
                     @click.stop.prevent="download(document.file)"
                   >
-                    {{ document.title }}
+                    <v-tooltip right>
+                      <template v-slot:activator="{ on, attrs }">
+                        <span v-bind="attrs" v-on="on">
+                          {{ document.title }}
+                        </span>
+                      </template>
+                      <span style="font-size: 12px">
+                        {{ document.file.name }}
+                      </span>
+                    </v-tooltip>
                   </li>
                   <li
                     v-else
                     class="hover"
                     @click.stop.prevent="goToExternal(document.externalURL)"
                   >
-                    {{ document.title }}&nbsp;<v-icon x-small
-                      >open_in_new</v-icon
-                    >
+                    <v-tooltip right>
+                      <template v-slot:activator="{ on, attrs }">
+                        <span v-bind="attrs" v-on="on">
+                          {{ document.title }}&nbsp;<v-icon x-small
+                            >open_in_new</v-icon
+                          >
+                        </span>
+                      </template>
+                      <span style="font-size: 12px">
+                        {{ document.externalURL }}
+                      </span>
+                    </v-tooltip>
                   </li>
                 </span>
               </ul>

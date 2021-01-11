@@ -32,24 +32,49 @@
                 v-if="clusterItem.file"
                 @click.stop.prevent="download(clusterItem.file)"
               >
-                <v-avatar color="grey lighten-2" size="25">
-                  <span
-                    style="
-                      font-size: 8px !important;
-                      font-weight: 900;
-                      text-transform: uppercase;
-                    "
-                    >{{ clusterItem.file.ext.substring(1) }}</span
-                  >
-                </v-avatar>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-avatar
+                      color="grey lighten-2"
+                      size="25"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      <span
+                        style="
+                          font-size: 8px !important;
+                          font-weight: 900;
+                          text-transform: uppercase;
+                        "
+                        >{{ clusterItem.file.ext.substring(1) }}</span
+                      >
+                    </v-avatar>
+                  </template>
+                  <span style="font-size: 12px">{{
+                    clusterItem.file.name
+                  }}</span>
+                </v-tooltip>
               </span>
               <span
                 v-if="clusterItem.externalURL"
                 class="hover"
-                @click.stop.prevent="goToExternal(clusterItem.externalURL)"
+                @click.stop.prevent="goToExternal(clusterItem.title)"
               >
                 {{ clusterItem.title }}
-                <v-icon small style="font-weight: 900">open_in_new</v-icon>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-icon
+                      small
+                      style="font-weight: 900"
+                      v-bind="attrs"
+                      v-on="on"
+                      >open_in_new</v-icon
+                    >
+                  </template>
+                  <span style="font-size: 12px">{{
+                    clusterItem.externalURL
+                  }}</span>
+                </v-tooltip>
               </span>
             </li>
           </ul>
