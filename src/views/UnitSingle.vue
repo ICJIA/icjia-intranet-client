@@ -53,7 +53,7 @@
                 <a href="https://icjia.illinois.gov/researchhub" target="_blank"
                   >the ResearchHub</a
                 >
-                for all ICJIA's articles, datasets, and applications.
+                for ICJIA's articles, datasets, and applications.
               </div>
             </v-card>
           </div>

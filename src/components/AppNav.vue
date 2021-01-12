@@ -120,6 +120,20 @@
               }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item
+            @click="
+              $router.push(`/units/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >All units</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-menu>
 
