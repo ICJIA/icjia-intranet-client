@@ -20,62 +20,45 @@
           :key="`clusterItem-${index}`"
         >
           <ul class="mt-3">
-            <li class="download-link hover">
-              <span
-                v-if="!clusterItem.externalURL"
-                @click.stop.prevent="download(clusterItem.file)"
-              >
-                {{ clusterItem.title }}
-              </span>
-
-              <span
-                v-if="clusterItem.file"
-                @click.stop.prevent="download(clusterItem.file)"
-              >
-                <v-tooltip right>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-avatar
-                      color="grey lighten-2"
-                      size="25"
-                      v-bind="attrs"
-                      v-on="on"
-                    >
-                      <span
-                        style="
-                          font-size: 8px !important;
-                          font-weight: 900;
-                          text-transform: uppercase;
-                        "
-                        >{{ clusterItem.file.ext.substring(1) }}</span
-                      >
-                    </v-avatar>
-                  </template>
-                  <span style="font-size: 12px">{{
-                    clusterItem.file.name
-                  }}</span>
-                </v-tooltip>
-              </span>
-              <span
-                v-if="clusterItem.externalURL"
-                class="hover"
-                @click.stop.prevent="goToExternal(clusterItem.title)"
-              >
-                {{ clusterItem.title }}
-                <v-tooltip right>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-icon
-                      small
-                      style="font-weight: 900"
-                      v-bind="attrs"
-                      v-on="on"
-                      >open_in_new</v-icon
-                    >
-                  </template>
-                  <span style="font-size: 12px">{{
-                    clusterItem.externalURL
-                  }}</span>
-                </v-tooltip>
-              </span>
+            <li class="download-link hover" v-if="!clusterItem.externalURL">
+              <v-tooltip right>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    @click.stop.prevent="download(clusterItem.file)"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    {{ clusterItem.title }}
+                    <!-- <v-icon small right>cloud_download</v-icon> -->
+                  </span>
+                </template>
+                <span
+                  style="font-size: 12px"
+                  v-if="
+                    clusterItem && clusterItem.file && clusterItem.file.name
+                  "
+                  >{{ clusterItem.file.name }}</span
+                >
+              </v-tooltip>
+            </li>
+            <li class="download-link hover" v-if="clusterItem.externalURL">
+              <v-tooltip right>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    @click.stop.prevent="download(clusterItem.file)"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    {{ clusterItem.title }}
+                    <v-icon small right>open_in_new</v-icon>
+                  </span>
+                </template>
+                <span
+                  style="font-size: 12px"
+                  v-if="clusterItem && clusterItem.externalURL"
+                  >{{ clusterItem.externalURL }}</span
+                >
+              </v-tooltip>
             </li>
           </ul>
         </div>

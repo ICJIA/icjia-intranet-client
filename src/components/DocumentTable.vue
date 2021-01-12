@@ -30,9 +30,9 @@
       <template v-slot:item.unit.title="{ item }">
         <div
           style="color: #aaa; font-weight: bold"
-          v-if="item.unit && item.unit.shortname"
+          v-if="item.unit && item.unit.title"
         >
-          {{ item.unit.shortname }}
+          {{ item.unit.title }}{{ item.shortname }}
         </div>
         <div v-else style="color: #aaa; font-weight: bold">General</div>
       </template>
@@ -42,7 +42,7 @@
           size="35"
           class="my-3"
           @click.stop.prevent="download(item.file)"
-          v-if="item.file"
+          v-if="!item.externalURL"
         >
           <span
             style="font-weight: 900; font-size: 10px; text-transform: uppercase"
