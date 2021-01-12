@@ -30,6 +30,7 @@ const GET_SINGLE_UNIT = gql`
         title
         slug
         summary
+        externalURL
         unit {
           title
           slug

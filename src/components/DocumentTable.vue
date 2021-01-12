@@ -32,7 +32,7 @@
           style="color: #aaa; font-weight: bold"
           v-if="item.unit && item.unit.title"
         >
-          {{ item.unit.title }}{{ item.shortname }}
+          {{ item.unit.shortname }}
         </div>
         <div v-else style="color: #aaa; font-weight: bold">General</div>
       </template>
@@ -42,12 +42,13 @@
           size="35"
           class="my-3"
           @click.stop.prevent="download(item.file)"
-          v-if="!item.externalURL"
+          v-if="item.file && item.file.length"
         >
-          <span
+          <!-- <span
             style="font-weight: 900; font-size: 10px; text-transform: uppercase"
             >{{ item.file.ext.substring(1) }}</span
-          >
+          > -->
+          <v-icon>cloud_download</v-icon>
         </v-avatar>
 
         <v-avatar
