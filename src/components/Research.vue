@@ -19,7 +19,12 @@
               </v-row>
             </template>
             <div class="card-banner mb-5">
-              <h2 class="px-5 article-title">{{ article.title }}</h2>
+              <div
+                style="font-size: 22px; font-weight: 900"
+                class="px-5 article-title"
+              >
+                {{ article.title }}
+              </div>
             </div>
           </v-img>
 

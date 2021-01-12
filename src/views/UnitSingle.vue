@@ -9,11 +9,11 @@
     ></Breadcrumb>
     <v-container v-if="units && units.length">
       <v-row>
-        <v-col class="">
+        <v-col cols="12" md="9" order-md="1" order="2" order-sm="2">
           <div class="markdown-body">
             <h1 class="text-center">{{ unit.title }}</h1>
             <div v-html="unit.summary" class="mb-12"></div>
-            <h2 class="mt-3 text-center">Documents</h2>
+            <h2 class="mt-3 text-center" id="documents">Documents</h2>
           </div>
           <div v-if="unit.documents.length">
             <DocumentTable
@@ -29,7 +29,7 @@
           </div>
 
           <div class="text-center markdown-body mt-12">
-            <h2 class="">News & Updates</h2>
+            <h2 class="" id="news-and-updates">News & Updates</h2>
           </div>
           <div v-if="unit.posts.length">
             <NewsTable
@@ -45,7 +45,9 @@
             </h3>
           </div>
           <div v-if="$route.params.slug === 'research-and-analysis-unit'">
-            <h2 class="text-center mt-12">Latest Research</h2>
+            <h2 class="text-center mt-12" id="latest-research">
+              Latest Research
+            </h2>
             <v-card class="mt-5 px-5 py-5">
               <Research></Research>
               <div class="py-2 text-center reduce-85">
@@ -58,9 +60,12 @@
             </v-card>
           </div>
         </v-col>
-      </v-row>
-      <v-row>
-        <v-col> </v-col>
+        <v-col cols="12" sm="12" md="3" order-md="2" order="1" order-sm="1">
+          <div class="mainToc" v-if="units">
+            <Toc :key="$route.params"></Toc>
+          </div>
+          <div v-else><Loader></Loader></div>
+        </v-col>
       </v-row>
     </v-container>
     <v-container v-else>
@@ -112,3 +117,12 @@ export default {
   },
 };
 </script>
+
+<style>
+.mainToc {
+  position: -webkit-sticky !important; /* Safari */
+  position: sticky !important;
+  top: 115px !important;
+  font-size: 13px;
+}
+</style>
