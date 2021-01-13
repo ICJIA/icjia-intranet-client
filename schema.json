@@ -10913,6 +10913,16 @@
             "defaultValue": null
           },
           {
+            "name": "confirmationToken",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "created_by",
             "description": null,
             "type": {
@@ -11035,6 +11045,16 @@
           },
           {
             "name": "bio",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "confirmationToken",
             "description": null,
             "type": {
               "kind": "SCALAR",

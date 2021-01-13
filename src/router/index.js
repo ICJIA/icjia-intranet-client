@@ -195,25 +195,26 @@ const routes = [
     path: "/forms/",
     name: "Forms",
     component: () =>
-      import(/* webpackChunkName: "forms" */ "../views/Forms.vue"),
+      import(/* webpackChunkName: "forms" */ "../views/Forms/index.vue"),
     meta: {
       requiresAuth: true,
     },
   },
+  {
+    path: "/forms/contact/",
+    name: "Forms",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/Forms/contact.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+
   {
     path: "/search/",
     name: "Search",
     component: () =>
-      import(/* webpackChunkName: "forms" */ "../views/Search.vue"),
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    path: "/forms/:slug/",
-    name: "FormsSingle",
-    component: () =>
-      import(/* webpackChunkName: "forms" */ "../views/FormsSingle.vue"),
+      import(/* webpackChunkName: "search" */ "../views/Search.vue"),
     meta: {
       requiresAuth: true,
     },
@@ -223,7 +224,7 @@ const routes = [
     path: "/units/",
     name: "UnitPages",
     component: () =>
-      import(/* webpackChunkName: "forms" */ "../views/Units.vue"),
+      import(/* webpackChunkName: "units" */ "../views/Units.vue"),
     meta: {
       requiresAuth: true,
     },
@@ -232,20 +233,12 @@ const routes = [
     path: "/units/:slug/",
     name: "UnitPageList",
     component: () =>
-      import(/* webpackChunkName: "forms" */ "../views/UnitSingle.vue"),
+      import(/* webpackChunkName: "units" */ "../views/UnitSingle.vue"),
     meta: {
       requiresAuth: true,
     },
   },
-  // {
-  //   path: "/units/:unit/:slug/",
-  //   name: "UnitPageSingleItem",
-  //   component: () =>
-  //     import(/* webpackChunkName: "forms" */ "../views/UnitSingle.vue"),
-  //   meta: {
-  //     requiresAuth: true,
-  //   },
-  // },
+
   // {
   //   path: "/coming-soon",
   //   name: "ComingSoon",
