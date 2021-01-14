@@ -201,10 +201,19 @@ const routes = [
     },
   },
   {
-    path: "/forms/contact/",
+    path: "/forms/support/",
     name: "Forms",
     component: () =>
-      import(/* webpackChunkName: "forms" */ "../views/Forms/contact.vue"),
+      import(/* webpackChunkName: "forms" */ "../views/Forms/support.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/forms/laptop/",
+    name: "Forms",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/Forms/laptop.vue"),
     meta: {
       requiresAuth: true,
     },
