@@ -42,23 +42,22 @@
           size="35"
           class="my-3"
           @click.stop.prevent="download(item.file)"
-          v-if="item.file && item.file.length"
+          v-if="item.file"
         >
-          <!-- <span
-            style="font-weight: 900; font-size: 10px; text-transform: uppercase"
+          <span
+            style="font-weight: 400; font-size: 10px; text-transform: uppercase"
             >{{ item.file.ext.substring(1) }}</span
-          > -->
-          <v-icon>cloud_download</v-icon>
+          >
         </v-avatar>
 
         <v-avatar
-          color="grey lighten-2"
+          color="white"
           size="35"
           class="my-3"
           v-else
           @click.stop.prevent="goToExternal(item.externalURL)"
         >
-          <v-icon small style="font-weight: 900">open_in_new</v-icon>
+          <v-icon x-small style="font-weight: 900">open_in_new</v-icon>
         </v-avatar>
       </template>
 

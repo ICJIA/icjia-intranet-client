@@ -34,7 +34,55 @@
       <v-btn small text to="/news" class="hidden-sm-and-down"
         >News & Updates</v-btn
       >
-      <v-btn small text to="/forms" class="hidden-sm-and-down">Forms</v-btn>
+      <v-menu
+        bottom
+        offset-y
+        origin="center center"
+        transition="scale-transition"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            small
+            text
+            class="hidden-sm-and-down"
+            v-bind="attrs"
+            v-on="on"
+            :class="{ currentRoute: $route.path.includes('forms') }"
+            >Forms <v-icon right small>arrow_drop_down</v-icon></v-btn
+          >
+        </template>
+        <v-list nav dense elevation="2">
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/forms/support/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Technical Support Request</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/forms/laptop/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Laptop Request</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
       <v-menu
         bottom
         offset-y

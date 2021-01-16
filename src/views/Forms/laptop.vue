@@ -63,17 +63,18 @@
                     <h2 class="mt-5">When is laptop needed?</h2>
                   </v-col>
                 </v-row>
-                <v-row><v-date-picker v-model="picker"></v-date-picker></v-row>
+                <v-row>date picker here</v-row>
               </v-container>
 
               <v-textarea
                 v-model="comment"
                 auto-grow
                 filled
-                label="Additional Comments"
+                label="Additional Comments or special requests"
                 rows="10"
                 class="mt-3"
                 @click="clearAxiosError"
+                ref="comment"
               ></v-textarea>
 
               <div v-if="showSubmit" class="text-center">

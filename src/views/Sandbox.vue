@@ -13,12 +13,14 @@
           <template v-slot:activator="{ on, attrs }">
             <v-text-field
               v-model="computeddateRequiredFormatted"
-              label="Date required"
+              label="Date requested"
               persistent-hint
               prepend-icon="mdi-calendar"
               readonly
               v-bind="attrs"
               v-on="on"
+              ref="dateRequired"
+              :id="$id('dateRequired')"
             ></v-text-field>
           </template>
           <v-date-picker
@@ -28,20 +30,20 @@
           ></v-date-picker>
         </v-menu>
       </v-col>
-      <v-col> test </v-col>
     </v-row>
   </v-container>
 </template>
 <script>
 export default {
-  data: (vm) => ({
-    dateRequired: new Date().toISOString().substr(0, 10),
-    dateRequiredFormatted: vm.formatDate(
-      new Date().toISOString().substr(0, 10)
-    ),
-
-    required: false,
-  }),
+  data() {
+    return {
+      dateRequired: new Date().toISOString().substr(0, 10),
+      dateRequiredFormatted: this.formatDate(
+        new Date().toISOString().substr(0, 10)
+      ),
+      required: false,
+    };
+  },
 
   computed: {
     computeddateRequiredFormatted() {
@@ -58,15 +60,8 @@ export default {
   methods: {
     formatDate(date) {
       if (!date) return null;
-
       const [year, month, day] = date.split("-");
       return `${month}/${day}/${year}`;
-    },
-    parseDate(date) {
-      if (!date) return null;
-
-      const [month, day, year] = date.split("/");
-      return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
     },
   },
 };

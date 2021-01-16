@@ -55,13 +55,11 @@ Vue.use(VueMeta, {
 // import AOS from "aos";
 // AOS.init();
 
-import DatetimePicker from "vuetify-datetime-picker";
-// (Optional) import 'vuetify-datetime-picker/src/stylus/main.styl'
-
-Vue.use(DatetimePicker);
-
 import VueDummy from "vue-dummy";
 Vue.use(VueDummy);
+
+import UniqueId from "vue-unique-id";
+Vue.use(UniqueId);
 
 new Vue({
   router,
