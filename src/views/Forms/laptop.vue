@@ -51,6 +51,7 @@
                       solo
                       v-if="items"
                       v-model="unit"
+                      aria-label="Select Unit"
                       :error-messages="unitErrors"
                       @input="$v.unit.$touch()"
                       @change="$v.unit.$touch()"
@@ -58,12 +59,24 @@
                     ></v-select
                   ></v-col>
                 </v-row>
+
                 <v-row>
                   <v-col>
-                    <h2 class="mt-5">When is laptop needed?</h2>
+                    <h2 class="mt-5">Date required?</h2>
+                    <Datepicker
+                      refName="required"
+                      @required="getFieldData"
+                      label="Date required"
+                    ></Datepicker>
                   </v-col>
-                </v-row>
-                <v-row>date picker here</v-row>
+                  <v-col>
+                    <h2 class="mt-5">Return on:</h2>
+                    <Datepicker
+                      refName="returned"
+                      @returned="getFieldData"
+                      label="Date Returned"
+                    ></Datepicker> </v-col
+                ></v-row>
               </v-container>
 
               <v-textarea
@@ -76,9 +89,12 @@
                 @click="clearAxiosError"
                 ref="comment"
               ></v-textarea>
+              <div v-if="formData">
+                {{ formData }}
+              </div>
 
               <div v-if="showSubmit" class="text-center">
-                <v-btn @click="submit" dark color="blue ">submit</v-btn>
+                <v-btn @click="submit" dark color="blue darken-4">submit</v-btn>
                 <v-btn @click="clear" class="ml-2">clear</v-btn>&nbsp;
                 <span v-if="showLoader">
                   <v-progress-circular
@@ -115,7 +131,7 @@
 import { validationMixin } from "vuelidate";
 import { required, email } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
-import moment from "moment";
+
 //const config = require("@/config.json");
 // eslint-disable-next-line no-unused-vars
 import axios from "axios";
@@ -142,11 +158,12 @@ export default {
   },
   data() {
     return {
-      name: "",
+      name: "Test Name",
       email: this.$store.state.auth.userMeta.email || null,
-      unit: null,
-
+      unit: "Information Systems Unit",
       comment: "",
+      dates: [],
+      formData: null,
       showSubmit: true,
       showAxiosError: false,
       axiosError: "",
@@ -158,9 +175,6 @@ export default {
     };
   },
   computed: {
-    dateRequired() {
-      return moment(this.datetime).format();
-    },
     title() {
       return "Contact the Admin";
     },
@@ -188,18 +202,18 @@ export default {
       !this.$v.unit.required && errors.push("Unit is required");
       return errors;
     },
-    // commentErrors() {
-    //   const errors = [];
-    //   if (!this.$v.comment.$dirty) return errors;
-    //   !this.$v.comment.required && errors.push("A request is required");
-    //   return errors;
-    // },
+
     // eslint-disable-next-line no-unused-vars
     isSuccess(v) {
       return !this.$v.$invalid && this.$v.$dirty;
     },
   },
   methods: {
+    getFieldData(v) {
+      //console.log("value: ", v);
+      this[v.refName] = v.value;
+      //console.log(this[v.refName]);
+    },
     clearAxiosError() {
       return (this.showAxiosError = false);
     },
@@ -217,13 +231,21 @@ export default {
 
         this.comment = cleanComment;
 
-        let data = {
+        let form = {
           name: this.name,
           email: this.email,
           unit: this.unit,
           comment: this.comment,
         };
-        console.log("submit: ", data);
+
+        let dates = {
+          required: this.required,
+          returned: this.returned,
+        };
+
+        this.formData = { ...form, ...dates };
+        console.table(this.formData);
+        // console.log("submit: ", data);
         this.showLoader = false;
 
         // const vm = this;
@@ -231,7 +253,7 @@ export default {
         // let obj = axios({
         //   method: "post",
         //   url: "http://localhost:5050/intranet/support",
-        //   data: data,
+        //   data: formData,
         //   config: { headers: { "Content-Type": "multipart/form-data" } },
         // })
         //   .then(function (response) {
@@ -264,6 +286,7 @@ export default {
       this.showAxiosError = false;
       this.axiosError = "";
       this.showLoader = false;
+      this.formData = null;
     },
   },
 };
