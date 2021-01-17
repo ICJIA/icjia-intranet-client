@@ -15,7 +15,7 @@
               <v-container>
                 <v-row>
                   <v-col>
-                    <h2>Information</h2>
+                    <h2>Information:</h2>
                   </v-col>
                 </v-row>
                 <v-row>
@@ -62,19 +62,21 @@
 
                 <v-row>
                   <v-col>
-                    <h2 class="mt-5">Date required?</h2>
+                    <h2 class="mt-5">Date required:</h2>
                     <Datepicker
-                      refName="required"
-                      @required="getFieldData"
+                      refName="required_by"
+                      @required_by="getFieldData"
                       label="Date required"
+                      :key="render"
                     ></Datepicker>
                   </v-col>
                   <v-col>
-                    <h2 class="mt-5">Return on:</h2>
+                    <h2 class="mt-5">Date to return:</h2>
                     <Datepicker
-                      refName="returned"
-                      @returned="getFieldData"
-                      label="Date Returned"
+                      refName="return_by"
+                      @return_by="getFieldData"
+                      label="Date to Return"
+                      :key="render"
                     ></Datepicker> </v-col
                 ></v-row>
               </v-container>
@@ -172,6 +174,7 @@ export default {
       successMessage: "",
       isIE: null,
       items: null,
+      render: false,
     };
   },
   computed: {
@@ -217,6 +220,11 @@ export default {
     clearAxiosError() {
       return (this.showAxiosError = false);
     },
+    async reload() {
+      this.render = false;
+      await this.$nextTick();
+      this.render = true;
+    },
 
     submit() {
       this.$v.$touch();
@@ -239,14 +247,15 @@ export default {
         };
 
         let dates = {
-          required: this.required,
-          returned: this.returned,
+          required_by: this.required_by,
+          return_by: this.return_by,
         };
 
         this.formData = { ...form, ...dates };
-        console.table(this.formData);
+        console.log(this.formData);
         // console.log("submit: ", data);
         this.showLoader = false;
+        this.reload();
 
         // const vm = this;
         // // eslint-disable-next-line no-unused-vars
@@ -287,6 +296,7 @@ export default {
       this.axiosError = "";
       this.showLoader = false;
       this.formData = null;
+      this.reload();
     },
   },
 };
