@@ -329,7 +329,7 @@ export default {
         // // eslint-disable-next-line no-unused-vars
         // let obj = axios({
         //   method: "post",
-        //   url: "http://localhost:5050/intranet/support",
+        //   url: "http://localhost:5050/intranet/laptop",
         //   data: formData,
         //   config: { headers: { "Content-Type": "multipart/form-data" } },
         // })

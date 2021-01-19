@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="markdown-body">
     <v-container>
       <v-row>
         <v-col>
           <v-card class="py-5 px-5 mt-5">
             <v-container>
               <v-row>
-                <v-col class="text-center">
+                <v-col cols="12" class="text-center">
                   <h1 class="mb-6">Technical Support Request</h1>
                 </v-col>
               </v-row>
@@ -14,9 +14,15 @@
             <form style="margin-top: 0px">
               <v-container>
                 <v-row>
-                  <v-col>
+                  <v-col cols="12">
+                    <h2>Information:</h2>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12" md="6">
                     <v-text-field
                       v-model="name"
+                      class="heavy"
                       :error-messages="nameErrors"
                       label="Name"
                       required
@@ -25,9 +31,10 @@
                       @click="clearAxiosError"
                     ></v-text-field>
                   </v-col>
-                  <v-col>
+                  <v-col cols="12" md="6">
                     <v-text-field
                       v-model="email"
+                      class="heavy"
                       :error-messages="emailErrors"
                       label="E-mail"
                       required
@@ -37,22 +44,51 @@
                     ></v-text-field>
                   </v-col>
                 </v-row>
+                <v-row>
+                  <v-col cols="12">
+                    <v-select
+                      :items="units"
+                      label="Select Unit"
+                      dense
+                      v-if="units"
+                      v-model="unit"
+                      class="heavy"
+                      aria-label="Select Unit"
+                      :error-messages="unitErrors"
+                      @input="$v.unit.$touch()"
+                      @change="$v.unit.$touch()"
+                      @blur="$v.unit.$touch()"
+                    ></v-select
+                  ></v-col>
+                </v-row>
+
+                <v-row>
+                  <v-col cols="12">
+                    <h2 class="mt-10">Request:</h2>
+                    <v-textarea
+                      v-model="comment"
+                      auto-grow
+                      filled
+                      label="Request"
+                      rows="10"
+                      class="mt-3"
+                      @click="clearAxiosError"
+                      ref="comment"
+                      aria-label="Request"
+                      :error-messages="commentErrors"
+                      @input="$v.comment.$touch()"
+                      @change="$v.comment.$touch()"
+                      @blur="$v.comment.$touch()"
+                    ></v-textarea>
+                    <div v-if="formData">
+                      {{ formData }}
+                    </div>
+                  </v-col>
+                </v-row>
               </v-container>
 
-              <v-textarea
-                v-model="comment"
-                :error-messages="commentErrors"
-                auto-grow
-                filled
-                required
-                label="Technical support request"
-                rows="10"
-                class="mt-3"
-                @click="clearAxiosError"
-              ></v-textarea>
-
-              <div v-if="showSubmit" class="text-xs-center">
-                <v-btn @click="submit" color="green">submit</v-btn>
+              <div v-if="showSubmit" class="text-center">
+                <v-btn @click="submit" dark color="blue darken-4">submit</v-btn>
                 <v-btn @click="clear" class="ml-2">clear</v-btn>&nbsp;
                 <span v-if="showLoader">
                   <v-progress-circular
@@ -75,6 +111,14 @@
                 <br />
                 {{ axiosError }}
               </div>
+              <div
+                v-if="$v.$anyError"
+                style="color: red; font-weight: bold"
+                class="mt-5 text-center"
+              >
+                The form has errors. Please double-check.
+              </div>
+              .
             </form>
           </v-card>
         </v-col>
@@ -89,7 +133,10 @@
 import { validationMixin } from "vuelidate";
 import { required, email } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
+import { generateHours } from "@/services/Utils";
+
 //const config = require("@/config.json");
+// eslint-disable-next-line no-unused-vars
 import axios from "axios";
 
 export default {
@@ -99,19 +146,28 @@ export default {
     return {};
   },
   mounted() {
-    console.log(this.$store.state.auth.userMeta);
+    this.units = this.$myApp.units.map((unit) => {
+      let obj = {};
+      obj.text = `${unit.title}`;
+      obj.value = unit.title;
+      return obj;
+    });
+    this.pickup_intervals = generateHours();
   },
 
   validations: {
     name: { required },
     email: { required, email },
+    unit: { required },
     comment: { required },
   },
   data() {
     return {
-      name: "",
+      name: "Test Name",
       email: this.$store.state.auth.userMeta.email || null,
+      unit: "Information Systems Unit",
       comment: "",
+      formData: null,
       showSubmit: true,
       showAxiosError: false,
       axiosError: "",
@@ -119,6 +175,8 @@ export default {
       id: "",
       successMessage: "",
       isIE: null,
+      units: null,
+      render: false,
     };
   },
   computed: {
@@ -132,7 +190,6 @@ export default {
     nameErrors() {
       const errors = [];
       if (!this.$v.name.$dirty) return errors;
-
       !this.$v.name.required && errors.push("Name is required.");
       return errors;
     },
@@ -143,20 +200,37 @@ export default {
       !this.$v.email.required && errors.push("E-mail is required");
       return errors;
     },
+    unitErrors() {
+      const errors = [];
+      if (!this.$v.unit.$dirty) return errors;
+      !this.$v.unit.required && errors.push("Unit is required");
+      return errors;
+    },
     commentErrors() {
       const errors = [];
       if (!this.$v.comment.$dirty) return errors;
-      !this.$v.comment.required && errors.push("A request is required");
+      !this.$v.comment.required && errors.push("Request is required");
       return errors;
     },
+
     // eslint-disable-next-line no-unused-vars
     isSuccess(v) {
       return !this.$v.$invalid && this.$v.$dirty;
     },
   },
   methods: {
+    getFieldData(v) {
+      //console.log("value: ", v);
+      this[v.refName] = v.value;
+      //console.log(this[v.refName]);
+    },
     clearAxiosError() {
       return (this.showAxiosError = false);
+    },
+    async reload() {
+      this.render = false;
+      await this.$nextTick();
+      this.render = true;
     },
 
     submit() {
@@ -172,40 +246,47 @@ export default {
 
         this.comment = cleanComment;
 
-        let data = {
+        let form = {
+          type: "Technical Support Request",
           name: this.name,
           email: this.email,
+          unit: this.unit,
           comment: this.comment,
         };
-        //console.log("submit: ", data);
 
-        const vm = this;
-        // eslint-disable-next-line no-unused-vars
-        let obj = axios({
-          method: "post",
-          url: "http://localhost:5050/intranet/support",
-          data: data,
-          config: { headers: { "Content-Type": "multipart/form-data" } },
-        })
-          .then(function (response) {
-            //handle success
-            //console.log(response.data)
-            console.log("SUCCESS!", response.data.status, response.data.msg);
-            vm.showSubmit = false;
-            vm.showAxiosError = false;
-            vm.showError = "";
-            vm.successMessage = response.data.msg;
-            vm.showLoader = false;
-          })
-          .catch(function (err) {
-            //handle error
-            //console.log(err)
-            console.log("FAILED...", err);
-            vm.showAxiosError = true;
-            vm.axiosError = err;
-            vm.showLoader = false;
-            vm.$forceUpdate();
-          });
+        this.formData = form;
+        //console.log(this.formData);
+        // console.log("submit: ", data);
+        this.showLoader = false;
+        this.reload();
+
+        // const vm = this;
+        // // eslint-disable-next-line no-unused-vars
+        // let obj = axios({
+        //   method: "post",
+        //   url: "http://localhost:5050/intranet/support",
+        //   data: formData,
+        //   config: { headers: { "Content-Type": "multipart/form-data" } },
+        // })
+        //   .then(function (response) {
+        //     //handle success
+        //     //console.log(response.data)
+        //     console.log("SUCCESS!", response.data.status, response.data.msg);
+        //     vm.showSubmit = false;
+        //     vm.showAxiosError = false;
+        //     vm.showError = "";
+        //     vm.successMessage = response.data.msg;
+        //     vm.showLoader = false;
+        //   })
+        //   .catch(function (err) {
+        //     //handle error
+        //     //console.log(err)
+        //     console.log("FAILED...", err);
+        //     vm.showAxiosError = true;
+        //     vm.axiosError = err;
+        //     vm.showLoader = false;
+        //     vm.$forceUpdate();
+        //   });
       }
     },
     clear() {
@@ -213,10 +294,15 @@ export default {
       this.name = "";
       this.email = this.$store.state.auth.userMeta.email || null;
       this.comment = "";
+      this.unit = "";
       this.showAxiosError = false;
       this.axiosError = "";
       this.showLoader = false;
+      this.formData = null;
+      this.reload();
     },
   },
 };
 </script>
+
+<style></style>

@@ -10,7 +10,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container>
+    <v-container fluid>
       <v-row v-masonry id="masonry-group">
         <v-col v-for="(post, index) in posts" :key="index" cols="12" sm="4">
           <v-card
