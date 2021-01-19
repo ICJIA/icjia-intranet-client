@@ -22,6 +22,7 @@
                   <v-col cols="12" md="6">
                     <v-text-field
                       v-model="name"
+                      class="heavy"
                       :error-messages="nameErrors"
                       label="Name"
                       required
@@ -33,6 +34,7 @@
                   <v-col cols="12" md="6">
                     <v-text-field
                       v-model="email"
+                      class="heavy"
                       :error-messages="emailErrors"
                       label="E-mail"
                       required
@@ -48,9 +50,9 @@
                       :items="units"
                       label="Select Unit"
                       dense
-                      solo
                       v-if="units"
                       v-model="unit"
+                      class="heavy"
                       aria-label="Select Unit"
                       :error-messages="unitErrors"
                       @input="$v.unit.$touch()"
@@ -60,7 +62,7 @@
                   ></v-col>
                 </v-row>
 
-                <v-row>
+                <v-row class="mt-10">
                   <v-col cols="12" md="4">
                     <h2 class="mt-5">Pickup Date:</h2>
                     <Datepicker
@@ -71,12 +73,12 @@
                     ></Datepicker>
                   </v-col>
                   <v-col cols="12" md="4">
-                    <h2 class="mt-5 mb-6">Pickup time:</h2>
+                    <h2 class="mt-5 mb-8">Pickup time:</h2>
                     <v-select
                       :items="pickup_intervals"
+                      class="heavy"
                       label="Select pickup time"
                       dense
-                      solo
                       v-if="pickup_intervals"
                       v-model="pickup_time"
                       aria-label="Select Pickup Time"
@@ -94,15 +96,38 @@
                       @return_date="getFieldData"
                       label="Date to Return"
                       :key="render"
+                      class="heavy"
                     ></Datepicker> </v-col
                 ></v-row>
+                <v-row class="mt-10">
+                  <v-col>
+                    <h2 class="mt-5">Requested accessories:</h2>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col
+                    v-for="(accessory, index) in accessories"
+                    :key="index"
+                    cols="12"
+                    sm="6"
+                    md="3"
+                  >
+                    <v-checkbox
+                      v-model="accessories_requested"
+                      :label="accessory"
+                      :value="accessory"
+                      class="heavy"
+                    ></v-checkbox>
+                  </v-col>
+                </v-row>
                 <v-row>
                   <v-col cols="12">
+                    <h2 class="mt-10">Additional Requests:</h2>
                     <v-textarea
                       v-model="comment"
                       auto-grow
                       filled
-                      label="Additional Comments or special requests"
+                      label="Requests"
                       rows="10"
                       class="mt-3"
                       @click="clearAxiosError"
@@ -139,6 +164,14 @@
                 <br />
                 {{ axiosError }}
               </div>
+              <div
+                v-if="$v.$anyError"
+                style="color: red; font-weight: bold"
+                class="mt-5 text-center"
+              >
+                The form has errors. Please double-check.
+              </div>
+              .
             </form>
           </v-card>
         </v-col>
@@ -200,6 +233,8 @@ export default {
       isIE: null,
       units: null,
       render: false,
+      accessories: ["Bag", "Power Cord", "Verizon Air Card", "Mouse"],
+      accessories_requested: [],
     };
   },
   computed: {
@@ -213,7 +248,6 @@ export default {
     nameErrors() {
       const errors = [];
       if (!this.$v.name.$dirty) return errors;
-
       !this.$v.name.required && errors.push("Name is required.");
       return errors;
     },
@@ -276,6 +310,7 @@ export default {
           email: this.email,
           unit: this.unit,
           comment: this.comment,
+          accessories_requested: this.accessories_requested,
         };
 
         let dates = {
@@ -326,6 +361,7 @@ export default {
       this.comment = "";
       this.unit = "";
       this.pickup_time = "";
+      this.accessories_requested = [];
       this.showAxiosError = false;
       this.axiosError = "";
       this.showLoader = false;
@@ -335,3 +371,5 @@ export default {
   },
 };
 </script>
+
+<style></style>

@@ -17,6 +17,7 @@
         v-bind="attrs"
         v-on="on"
         :ref="refName"
+        :class="{ heavy: heavy }"
       ></v-text-field>
     </template>
     <v-date-picker
@@ -84,6 +85,10 @@ export default {
       type: String,
       required: false,
       default: "dddd, MMMM Do, YYYY",
+    },
+    heavy: {
+      type: Boolean,
+      default: true,
     },
   },
 };
