@@ -27,6 +27,7 @@
   </v-menu>
 </template>
 <script>
+import moment from "moment";
 export default {
   data() {
     return {
@@ -59,8 +60,9 @@ export default {
   methods: {
     formatDate(date) {
       if (!date) return null;
-      const [year, month, day] = date.split("-");
-      return `${month}/${day}/${year}`;
+      // const [year, month, day] = date.split("-");
+      // return `${month}/${day}/${year}`;
+      return moment(date).format(this.format);
     },
     sendData() {
       //console.log("click from child");
@@ -77,6 +79,11 @@ export default {
       type: String,
       required: true,
       default: "Default Label",
+    },
+    format: {
+      type: String,
+      required: false,
+      default: "dddd, MMMM Do, YYYY",
     },
   },
 };

@@ -6,7 +6,7 @@
           <v-card class="py-5 px-5 mt-5">
             <v-container>
               <v-row>
-                <v-col class="text-center">
+                <v-col cols="12" class="text-center">
                   <h1 class="mb-6">Laptop Request</h1>
                 </v-col>
               </v-row>
@@ -14,12 +14,12 @@
             <form style="margin-top: 0px">
               <v-container>
                 <v-row>
-                  <v-col>
+                  <v-col cols="12">
                     <h2>Information:</h2>
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col>
+                  <v-col cols="12" md="6">
                     <v-text-field
                       v-model="name"
                       :error-messages="nameErrors"
@@ -30,7 +30,7 @@
                       @click="clearAxiosError"
                     ></v-text-field>
                   </v-col>
-                  <v-col>
+                  <v-col cols="12" md="6">
                     <v-text-field
                       v-model="email"
                       :error-messages="emailErrors"
@@ -43,13 +43,13 @@
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col>
+                  <v-col cols="12">
                     <v-select
-                      :items="items"
+                      :items="units"
                       label="Select Unit"
                       dense
                       solo
-                      v-if="items"
+                      v-if="units"
                       v-model="unit"
                       aria-label="Select Unit"
                       :error-messages="unitErrors"
@@ -61,39 +61,59 @@
                 </v-row>
 
                 <v-row>
-                  <v-col>
-                    <h2 class="mt-5">Date required:</h2>
+                  <v-col cols="12" md="4">
+                    <h2 class="mt-5">Pickup Date:</h2>
                     <Datepicker
-                      refName="required_by"
-                      @required_by="getFieldData"
+                      refName="pickup_date"
+                      @pickup_date="getFieldData"
                       label="Date required"
                       :key="render"
                     ></Datepicker>
                   </v-col>
-                  <v-col>
-                    <h2 class="mt-5">Date to return:</h2>
+                  <v-col cols="12" md="4">
+                    <h2 class="mt-5 mb-6">Pickup time:</h2>
+                    <v-select
+                      :items="pickup_intervals"
+                      label="Select pickup time"
+                      dense
+                      solo
+                      v-if="pickup_intervals"
+                      v-model="pickup_time"
+                      aria-label="Select Pickup Time"
+                      prepend-icon="mdi-clock"
+                      :error-messages="pickupTimeErrors"
+                      @input="$v.pickup_time.$touch()"
+                      @change="$v.pickup_time.$touch()"
+                      @blur="$v.pickup_time.$touch()"
+                    ></v-select>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <h2 class="mt-5">Return date:</h2>
                     <Datepicker
-                      refName="return_by"
-                      @return_by="getFieldData"
+                      refName="return_date"
+                      @return_date="getFieldData"
                       label="Date to Return"
                       :key="render"
                     ></Datepicker> </v-col
                 ></v-row>
+                <v-row>
+                  <v-col cols="12">
+                    <v-textarea
+                      v-model="comment"
+                      auto-grow
+                      filled
+                      label="Additional Comments or special requests"
+                      rows="10"
+                      class="mt-3"
+                      @click="clearAxiosError"
+                      ref="comment"
+                    ></v-textarea>
+                    <div v-if="formData">
+                      {{ formData }}
+                    </div>
+                  </v-col>
+                </v-row>
               </v-container>
-
-              <v-textarea
-                v-model="comment"
-                auto-grow
-                filled
-                label="Additional Comments or special requests"
-                rows="10"
-                class="mt-3"
-                @click="clearAxiosError"
-                ref="comment"
-              ></v-textarea>
-              <div v-if="formData">
-                {{ formData }}
-              </div>
 
               <div v-if="showSubmit" class="text-center">
                 <v-btn @click="submit" dark color="blue darken-4">submit</v-btn>
@@ -133,6 +153,7 @@
 import { validationMixin } from "vuelidate";
 import { required, email } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
+import { generateHours } from "@/services/Utils";
 
 //const config = require("@/config.json");
 // eslint-disable-next-line no-unused-vars
@@ -145,18 +166,20 @@ export default {
     return {};
   },
   mounted() {
-    this.items = this.$myApp.units.map((unit) => {
+    this.units = this.$myApp.units.map((unit) => {
       let obj = {};
       obj.text = `${unit.title}`;
       obj.value = unit.title;
       return obj;
     });
+    this.pickup_intervals = generateHours();
   },
 
   validations: {
     name: { required },
     email: { required, email },
     unit: { required },
+    pickup_time: { required },
   },
   data() {
     return {
@@ -164,6 +187,8 @@ export default {
       email: this.$store.state.auth.userMeta.email || null,
       unit: "Information Systems Unit",
       comment: "",
+      pickup_time: "8:00 AM",
+      pickup_intervals: null,
       dates: [],
       formData: null,
       showSubmit: true,
@@ -173,7 +198,7 @@ export default {
       id: "",
       successMessage: "",
       isIE: null,
-      items: null,
+      units: null,
       render: false,
     };
   },
@@ -203,6 +228,12 @@ export default {
       const errors = [];
       if (!this.$v.unit.$dirty) return errors;
       !this.$v.unit.required && errors.push("Unit is required");
+      return errors;
+    },
+    pickupTimeErrors() {
+      const errors = [];
+      if (!this.$v.pickup_time.$dirty) return errors;
+      !this.$v.pickup_time.required && errors.push("Pickup time is required");
       return errors;
     },
 
@@ -240,6 +271,7 @@ export default {
         this.comment = cleanComment;
 
         let form = {
+          type: "Laptop Request",
           name: this.name,
           email: this.email,
           unit: this.unit,
@@ -247,8 +279,9 @@ export default {
         };
 
         let dates = {
-          required_by: this.required_by,
-          return_by: this.return_by,
+          pickup_date: this.pickup_date,
+          pickup_time: this.pickup_time,
+          return_date: this.return_date,
         };
 
         this.formData = { ...form, ...dates };
@@ -292,6 +325,7 @@ export default {
       this.email = this.$store.state.auth.userMeta.email || null;
       this.comment = "";
       this.unit = "";
+      this.pickup_time = "";
       this.showAxiosError = false;
       this.axiosError = "";
       this.showLoader = false;

@@ -55,14 +55,14 @@
           <v-list-item
             class="appNav"
             @click="
-              $router.push(`/forms/support/`).catch((err) => {
+              $router.push(`/forms/conference/`).catch((err) => {
                 $vuetify.goTo(0);
               })
             "
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >Technical Support Request</v-list-item-title
+                >Conference Room reservation</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -77,6 +77,20 @@
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
                 >Laptop Request</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/forms/support/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Technical Support Request</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>

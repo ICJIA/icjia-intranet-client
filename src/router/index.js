@@ -202,7 +202,7 @@ const routes = [
   },
   {
     path: "/forms/support/",
-    name: "Forms",
+    name: "FormSupport",
     component: () =>
       import(/* webpackChunkName: "forms" */ "../views/Forms/support.vue"),
     meta: {
@@ -211,9 +211,18 @@ const routes = [
   },
   {
     path: "/forms/laptop/",
-    name: "Forms",
+    name: "FormLaptop",
     component: () =>
       import(/* webpackChunkName: "forms" */ "../views/Forms/laptop.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/forms/conference/",
+    name: "FormConference",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/Forms/conference.vue"),
     meta: {
       requiresAuth: true,
     },

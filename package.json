@@ -14,6 +14,7 @@
     "scripts": "npm run schema && node generateSearchIndex && node generateUnits"
   },
   "dependencies": {
+    "@animxyz/vue": "^0.4.0",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "alpinejs": "^2.8.0",
     "aos": "^3.0.0-beta.6",
@@ -54,6 +55,7 @@
     "vue-meta": "^2.4.0",
     "vue-router": "^3.4.9",
     "vue-unique-id": "^3.1.5",
+    "vue2-timepicker": "^1.1.6",
     "vuelidate": "^0.7.6",
     "vuetify": "^2.4.2",
     "vuetify-datetime-picker": "^2.1.1",

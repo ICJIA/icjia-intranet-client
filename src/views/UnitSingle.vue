@@ -9,7 +9,7 @@
     ></Breadcrumb>
     <v-container v-if="units && units.length">
       <v-row>
-        <v-col cols="12" md="9" order-md="1" order="2" order-sm="2">
+        <v-col cols="12" md="10" order-md="1" order="2" order-sm="2">
           <div class="markdown-body">
             <h1 class="text-center">{{ unit.title }}</h1>
             <div v-html="unit.summary" class="mb-12"></div>
@@ -60,9 +60,9 @@
             </v-card>
           </div>
         </v-col>
-        <v-col cols="12" sm="12" md="3" order-md="2" order="1" order-sm="1">
+        <v-col cols="12" sm="12" md="2" order-md="2" order="1" order-sm="1">
           <div class="mainToc" v-if="units">
-            <Toc :key="$route.params"></Toc>
+            <Toc :key="$route.path"></Toc>
           </div>
           <div v-else><Loader></Loader></div>
         </v-col>
