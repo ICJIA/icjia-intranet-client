@@ -96,6 +96,11 @@ const actions = {
         });
     });
   },
+  reset({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      resolve("reset here");
+    });
+  },
   login({ commit }, payload) {
     commit("CLEAR_STATUS");
     return new Promise((resolve, reject) => {

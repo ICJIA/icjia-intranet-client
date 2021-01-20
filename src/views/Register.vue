@@ -58,14 +58,18 @@
           </div>
 
           <div class="text-center mt-3">
-            <v-btn @click="submit">Register</v-btn>&nbsp;
+            <v-btn @click="submit" v-if="!disabled">Register</v-btn>&nbsp;
             <v-progress-circular
               v-if="isLoading"
               indeterminate
               color="primary"
             ></v-progress-circular>
           </div>
-          <div class="mt-5 text-center" style="font-size: 12px">
+          <div
+            class="mt-5 text-center"
+            style="font-size: 12px"
+            v-if="!disabled"
+          >
             I'm already registered, but I
             <router-link to="/forgot">forgot my password</router-link>
           </div>
@@ -74,6 +78,18 @@
         <!-- <tree-view :data="this.$v" :options="{maxDepth: 3}"></tree-view> -->
       </v-card>
     </v-row>
+    <v-container>
+      <v-row>
+        <v-col>
+          <div class="text-center" style="margin-top: -15px; font-size: 14px">
+            &laquo;
+            <router-link to="/login/" style="background: none"
+              >Back to login</router-link
+            >
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -87,6 +103,9 @@ export default {
   mixins: [validationMixin],
 
   components: {},
+  created() {
+    this.$store.dispatch("auth/logout");
+  },
 
   mounted() {
     this.$nextTick(this.$refs.email.focus);

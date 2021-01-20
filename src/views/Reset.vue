@@ -1,11 +1,196 @@
 <template>
-  <div>
-    <h2>Reset password here</h2>
-  </div>
+  <v-container fill-height>
+    <v-layout row class="text-xs-center" align-center justify-center>
+      <v-flex xs12 sm6 class="animated bounceInDown mt-3 mb-3">
+        <v-card class="px-3 py-5">
+          <div class="text-center">
+            <h2>RESET PASSWORD</h2>
+          </div>
+          <form class="pt-5 pl-3 pr-3" v-if="hasCode" onSubmit="return false;">
+            <v-text-field
+              v-model="password"
+              :error-messages="passwordErrors"
+              label="New Password"
+              :append-icon="e3 ? 'visibility' : 'visibility_off'"
+              @click:append="() => (e3 = !e3)"
+              :type="e3 ? 'password' : 'text'"
+              @input="$v.password.$touch()"
+              @blur="$v.password.$touch()"
+              aria-label="Password"
+              :disabled="disabled"
+              class="mt-2"
+              ref="password"
+            ></v-text-field>
+            <v-text-field
+              v-model="repeatPassword"
+              :error-messages="repeatPasswordErrors"
+              label="Verify New Password"
+              :append-icon="e4 ? 'visibility' : 'visibility_off'"
+              @click:append="() => (e4 = !e4)"
+              :disabled="disabled"
+              :type="e4 ? 'password' : 'text'"
+              aria-label="Verify Password"
+              @input="$v.repeatPassword.$touch()"
+              @blur="$v.repeatPassword.$touch()"
+              class="mt-2"
+            ></v-text-field>
+            <div
+              class="mt-3 text-xs-center"
+              style="height: 50px; font-weight: bold"
+            >
+              {{ this.$store.state.status }}
+            </div>
+            <div v-if="!disabled" class="text-center" style="margin-top: -15px">
+              <v-btn @click="reset">Reset my Password</v-btn>&nbsp;
+              <v-progress-circular
+                v-if="isLoading"
+                indeterminate
+                color="primary"
+              ></v-progress-circular>
+            </div>
+            <div
+              v-if="disabled && !sendAnother"
+              class="text-center"
+              style="margin-top: -15px"
+            >
+              <h3>Your password was successfully reset</h3>
+              <div class="my-3">
+                <router-link to="/login">Log in</router-link>
+              </div>
+            </div>
+          </form>
+          <div v-if="!hasCode" class="mt-5 pl-5 pr-5">
+            <v-btn primary large block @click="forgot" class
+              >Get password reset link</v-btn
+            >
+          </div>
+
+          <div class="mt-3" v-if="sendAnother">
+            <router-link to="/forgot">Send another reset code</router-link>
+          </div>
+
+          <!-- <tree-view :data="this.$v" :options="{maxDepth: 3}"></tree-view> -->
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-export default {};
+import { validationMixin } from "vuelidate";
+import { required, minLength, sameAs } from "vuelidate/lib/validators";
+import passwordComplexity from "@/validators/passwordComplexity";
+
+export default {
+  mixins: [validationMixin],
+
+  components: {},
+
+  created() {
+    this.$store.dispatch("auth/logout");
+    let code = this.$route.query.code;
+    if (!code) {
+      this.hasCode = false;
+    } else {
+      this.hasCode = true;
+      this.code = this.$route.query.code;
+    }
+  },
+
+  mounted() {
+    if (this.$refs.password) {
+      this.$nextTick(this.$refs.password.focus);
+    }
+  },
+
+  validations: {
+    password: {
+      required,
+      minLength: minLength(8),
+      passwordComplexity,
+    },
+    repeatPassword: {
+      sameAsPassword: sameAs("password"),
+    },
+  },
+  data() {
+    return {
+      name: "",
+      e3: true,
+      e4: true,
+      password: "",
+      repeatPassword: "",
+      showSubmit: true,
+      showLoader: false,
+      successMessage: "",
+      disabled: false,
+      hasCode: false,
+      code: "",
+      sendAnother: false,
+    };
+  },
+  computed: {
+    passwordErrors() {
+      const errors = [];
+      if (!this.$v.password.$dirty) return errors;
+      !this.$v.password.minLength &&
+        errors.push("Password must have minimum 8 characters.");
+      !this.$v.password.required && errors.push("Password is required.");
+
+      !this.$v.password.passwordComplexity &&
+        errors.push(
+          "Weak password. Please provide at least one uppercase letter and one number. "
+        );
+      return errors;
+    },
+
+    repeatPasswordErrors() {
+      const errors = [];
+      if (!this.$v.password.$dirty) return errors;
+      !this.$v.repeatPassword.sameAsPassword &&
+        errors.push("Passwords must match");
+      return errors;
+    },
+    isLoading() {
+      return this.$store.getters.isLoading;
+    },
+
+    isSuccess() {
+      return !this.$v.$invalid && this.$v.$dirty;
+    },
+  },
+  methods: {
+    forgot() {
+      this.$router.push("/forgot");
+    },
+    login() {
+      this.$router.push("/");
+    },
+    reset() {
+      this.$v.$touch();
+      if (this.isSuccess) {
+        this.showLoader = true;
+        let password = this.password;
+        let repeatPassword = this.repeatPassword;
+        let payload = {};
+        payload.code = this.code;
+        payload.password = password;
+        payload.passwordConfirmation = repeatPassword;
+        console.log("reset: ", payload);
+        this.$store
+          .dispatch("auth/reset", payload)
+          .then(() => {
+            console.log("Success!");
+            this.disabled = true;
+          })
+          // eslint-disable-next-line no-unused-vars
+          .catch((err) => {
+            console.log(JSON.stringify(err));
+          });
+      }
+    },
+  },
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

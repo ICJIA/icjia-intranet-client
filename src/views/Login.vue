@@ -96,7 +96,7 @@ export default {
       if (localStorage.getItem("showRegistrationModal")) {
         return false;
       } else {
-        return true;
+        return false;
       }
     },
   },
