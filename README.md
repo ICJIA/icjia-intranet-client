@@ -25,5 +25,5 @@ Rename ```.env.sample``` to ```.env```, then add env variables.
 
 - https://intranet.icjia.cloud for ```master``` builds
 
-- https://dev--icjia-intranet.netlify.app/ for ```dev``` builds
+<!-- - https://dev--icjia-intranet.netlify.app/ for ```dev``` builds -->
 
