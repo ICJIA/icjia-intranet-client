@@ -400,8 +400,11 @@ export default {
           end_time: this.end_time,
         };
 
+        let jwt = this.$store.state.auth.jwt;
+
+        console.log("jwt: ", jwt);
+
         this.formData = { ...form, ...dates };
-        console.log(this.formData);
         this.showLoader = false;
         this.reload();
 
@@ -409,7 +412,7 @@ export default {
         // // eslint-disable-next-line no-unused-vars
         // let obj = axios({
         //   method: "post",
-        //   url: "http://localhost:5050/intranet/support",
+        //   url: "http://localhost:5050/intranet/conference",
         //   data: formData,
         //   config: { headers: { "Content-Type": "multipart/form-data" } },
         // })

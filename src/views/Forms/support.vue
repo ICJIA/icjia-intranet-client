@@ -7,7 +7,7 @@
             <v-container>
               <v-row>
                 <v-col cols="12" class="text-center">
-                  <h1 class="mb-6">Technical Support Request</h1>
+                  <h1 class="mb-6">Contact Technical Support</h1>
                 </v-col>
               </v-row>
             </v-container>
@@ -64,12 +64,11 @@
 
                 <v-row>
                   <v-col cols="12">
-                    <h2 class="mt-10">Request:</h2>
                     <v-textarea
                       v-model="comment"
                       auto-grow
                       filled
-                      label="Request"
+                      label="Please provide as much detail as possible"
                       rows="10"
                       class="mt-3"
                       @click="clearAxiosError"
@@ -116,7 +115,7 @@
                 style="color: red; font-weight: bold"
                 class="mt-5 text-center"
               >
-                The form has errors. Please double-check.
+                The form has errors.
               </div>
               .
             </form>
@@ -181,7 +180,7 @@ export default {
   },
   computed: {
     title() {
-      return "Contact the Admin";
+      return "Technical Support Request";
     },
 
     permalink() {
@@ -209,7 +208,7 @@ export default {
     commentErrors() {
       const errors = [];
       if (!this.$v.comment.$dirty) return errors;
-      !this.$v.comment.required && errors.push("Request is required");
+      !this.$v.comment.required && errors.push("Comment is required");
       return errors;
     },
 

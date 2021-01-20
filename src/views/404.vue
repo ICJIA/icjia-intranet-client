@@ -10,6 +10,12 @@
           <div style="font-weight: 700; font-size: 22px" class="mt-2">
             404 | Page not found
           </div>
+          <div class="mt-5">
+            <v-btn x-small to="/" class="mr-2">Back to home page</v-btn>
+            <v-btn x-small to="/forms/support/" class="ml-2"
+              >Contact tech support</v-btn
+            >
+          </div>
         </div>
       </v-flex>
     </v-row>
