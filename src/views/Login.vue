@@ -83,8 +83,8 @@ export default {
   },
   data() {
     return {
-      identifier: "test12345",
-      password: "test12345",
+      identifier: "",
+      password: "",
       e3: true,
       e4: true,
       sheet: true,

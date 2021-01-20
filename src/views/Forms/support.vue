@@ -133,6 +133,7 @@ import { validationMixin } from "vuelidate";
 import { required, email } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
 import { generateHours } from "@/services/Utils";
+import { dbInsert, emailStaff } from "@/services/Forms";
 
 //const config = require("@/config.json");
 // eslint-disable-next-line no-unused-vars
@@ -232,7 +233,7 @@ export default {
       this.render = true;
     },
 
-    submit() {
+    async submit() {
       this.$v.$touch();
 
       if (this.isSuccess) {
@@ -242,10 +243,8 @@ export default {
           /(<([^>]+)>)/gi,
           ""
         );
-
         this.comment = cleanComment;
-
-        let form = {
+        this.formData = {
           type: "Technical Support Request",
           name: this.name,
           email: this.email,
@@ -253,9 +252,13 @@ export default {
           comment: this.comment,
         };
 
-        this.formData = form;
-        //console.log(this.formData);
-        // console.log("submit: ", data);
+        let dbResponse = await dbInsert(
+          this.$store.state.auth.jwt,
+          this.formData
+        );
+        console.log("Database insert status code: ", dbResponse.status);
+        let emailResponse = await emailStaff("intranet/support", this.formData);
+        console.log(emailResponse);
         this.showLoader = false;
         this.reload();
 
