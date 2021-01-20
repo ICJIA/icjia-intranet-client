@@ -2,35 +2,31 @@
   <div>
     <span v-if="showUpdatedInText">
       <span v-if="postedMeta.showUpdated"
-        >Updated: <strong>{{ postedMeta.updated_at | format }}</strong
-        >&nbsp;//&nbsp;</span
+        >Updated: <strong>{{ postedMeta.updated_at | format }}</strong>
+
+        &nbsp;|&nbsp;</span
       ></span
-    >Posted <strong>{{ postedMeta.created_at | format }}</strong> by
-    {{ postedMeta.firstname }}
-    {{ postedMeta.lastname }}
+    ><span v-if="postedMeta.showUpdated"></span
+    ><span style="font-weight: 400">{{
+      postedMeta.published_at | format
+    }}</span>
   </div>
 </template>
 
 <script>
-import moment from "moment";
+import { dateDiff } from "@/services/DateTime";
 export default {
   computed: {
     postedMeta() {
       let obj = {};
-      obj.created_at = this.meta.created_at;
+      obj.published_at = this.meta.published_at;
       obj.updated_at = this.meta.updated_at;
-      obj.firstname =
-        (this.meta.created_by && this.meta.created_by.firstname) || "Intranet";
-      obj.lastname =
-        (this.meta.created_by && this.meta.created_by.lastname) ||
-        "Administrator";
-      let start = moment(this.meta.created_at);
-      let end = moment(this.meta.updated_at);
-      let duration = moment.duration(end.diff(start));
-      obj.showUpdated =
-        duration.asHours() > this.$myApp.config.hoursToShowUpdated;
-      obj.hoursSinceCreated = duration.asHours();
 
+      if (dateDiff(obj.published_at, obj.updated_at, "hours") > 12) {
+        obj.showUpdated = true;
+      } else {
+        obj.showUpdated = false;
+      }
       return obj;
     },
   },
@@ -46,5 +42,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped></style>

@@ -6,8 +6,8 @@ import vuetify from "./plugins/vuetify";
 import "@/assets/app.css";
 import "@/components/_globals";
 import "alpinejs";
-// import "@/assets/css/github-markdown.css";
-// import "@/assets/css/app.css";
+import "@/assets/github-markdown.css";
+import "@/assets/app.css";
 import "@/filters";
 // import "material-design-icons-iconfont/dist/material-design-icons.css";
 // import Masonry from "masonry-layout";
@@ -58,10 +58,14 @@ Vue.use(VueMeta, {
 import VueDummy from "vue-dummy";
 Vue.use(VueDummy);
 
+import UniqueId from "vue-unique-id";
+Vue.use(UniqueId);
+
 new Vue({
   router,
   store,
   vuetify,
   apolloProvider: createProvider(),
+
   render: (h) => h(App),
 }).$mount("#app");

@@ -22,7 +22,9 @@ a {
   border-left-color: #b72424 !important;
 }
 
-.info-card:hover {
+.info-card:hover,
+.event-card:hover,
+.news-card:hover {
   box-shadow: 0px 0px 25px #000000;
   z-index: 2;
   -webkit-transition: all 100ms ease-in;
@@ -34,4 +36,31 @@ a {
   transition: all 100ms ease-in;
   transform: scale(1.04);
   cursor: pointer;
+}
+
+.download-link {
+  color: rgb(38, 38, 155) !important;
+  font-weight: bold;
+}
+.download-link:hover {
+  color: #555;
+
+  text-decoration: underline;
+}
+
+.reduce-85 {
+  font-size: 85% !important;
+}
+
+.reduce-90 {
+  font-size: 90% !important;
+}
+
+.reduce-95 {
+  font-size: 95% !important;
+}
+
+.heavy {
+  font-weight: bold !important;
+  
 }

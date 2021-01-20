@@ -15,11 +15,48 @@
     "register": "/auth/local/register"
   },
   "home": {
-    "eventLimit": 5,
-    "postLimit": 4
+    "eventLimit": 4,
+    "postLimit": 3
   },
+  "image": {
+    "server": "https://image.icjia.cloud",
+    "thumbHeight": 100,
+    "thumbWidth": 0,
+    "splashHeight": 400,
+    "splashWidth": 0
+  },
+  "unitContentTypes": [
+    "posts",
+    "documents"
+  ],
   "timezone": "America/Chicago",
-  "underConstruction": true,
+  "underConstruction": false,
+  "events": {
+    "conference": {
+      "color": "blue"
+    },
+    "external": {
+      "color": "indigo"
+    },
+    "general": {
+      "color": "deep-purple"
+    },
+    "holiday": {
+      "color": "teal"
+    },
+    "meeting": {
+      "color": "cyan"
+    },
+    "party": {
+      "color": "orange"
+    },
+    "seminar": {
+      "color": "green"
+    },
+    "summit": {
+      "color": "red"
+    }
+  },
   "hoursToShowUpdated": 1,
   "search": {
     "isCaseSensitive": false,

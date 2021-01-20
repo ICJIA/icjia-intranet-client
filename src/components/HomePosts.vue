@@ -12,23 +12,45 @@
 
     <div v-for="(post, index) in newPosts" :key="index + post.id" v-else>
       <v-card
-        class="mx-auto my-5 py-5"
+        class="mx-auto my-5 py-5 news-card"
         outlined
         @click="$router.push(`/news/${post.slug}`)"
       >
         <v-list-item three-line>
           <v-list-item-avatar tile size="100" color="grey" v-if="post.splash">
             <v-img
-              :src="getThumbnail(post)"
-              :lazy-src="getThumbnail(post)"
-              alt="Splash image"
+              :src="
+                getImageURL(
+                  $myApp.config.api.base + post.splash.formats.thumbnail.url,
+                  0,
+                  0,
+                  100
+                )
+              "
+              :lazy-src="
+                getImageURL(
+                  $myApp.config.api.base + post.splash.formats.thumbnail.url,
+                  0,
+                  0,
+                  1
+                )
+              "
+              :alt="getAltText(post)"
+            >
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular
+                    indeterminate
+                    color="blue darken-3"
+                  ></v-progress-circular>
+                </v-row> </template
             ></v-img>
           </v-list-item-avatar>
 
           <v-list-item-content>
             <div class="overline mb-4">{{ post.created_at | format }}</div>
             <div
-              style="font-size: 14px; color: #888"
+              style="font-size: 14px; color: #222"
               class="mb-2"
               v-if="post.kicker"
             >
@@ -54,6 +76,7 @@
   </div>
 </template>
 <script>
+import { getImageURL } from "@/services/Image";
 export default {
   name: "HomePosts",
   components: {},
@@ -61,6 +84,7 @@ export default {
   data() {
     return {
       newPosts: [],
+      getImageURL,
     };
   },
   created() {
@@ -81,11 +105,12 @@ export default {
     routeTo(slug) {
       this.$router.push(`/news/${slug}`);
     },
-    getThumbnail(post) {
-      if (post.splash) {
-        return `${this.$myApp.config.api.base}${post.splash.formats.thumbnail.url}`;
+
+    getAltText(post) {
+      if (post.splash.alternativeText) {
+        return post.splash.alternativeText;
       } else {
-        return `${this.$myApp.config.defaultAvatar}`;
+        return "ICJIA Thumbnail Image";
       }
     },
     isLoading(loading) {

@@ -34,7 +34,11 @@
                         <h2 style="color: #fff">News & Updates</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn outlined small color="white" to="/news"
+                        <v-btn
+                          outlined
+                          small
+                          to="/news"
+                          aria-label="Show all news button"
                           >news archive&nbsp;<v-icon right small
                             >view_headline</v-icon
                           ></v-btn
@@ -59,8 +63,12 @@
                         <h2 style="color: #fff">Upcoming Events</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn outlined small color="white" to="/calendar"
-                          >Calendar&nbsp;<v-icon right small
+                        <v-btn
+                          outlined
+                          small
+                          to="/events/"
+                          aria-label="Show all Events button"
+                          >All Events&nbsp;<v-icon right small
                             >calendar_today</v-icon
                           ></v-btn
                         >
@@ -82,13 +90,12 @@
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
                       <v-col>
-                        <h2 style="color: #fff">Latest Research</h2>
+                        <h2 style="color: #fff">Recent Research</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn
                           outlined
                           small
-                          color="white"
                           target="_blank"
                           href="https://icjia.illinois.gov/researchhub"
                           >Research Hub&nbsp;<v-icon right small
@@ -100,6 +107,15 @@
                   </div>
                 </v-container>
                 <Research></Research>
+                <div class="py-2 text-center reduce-85">
+                  Visit
+                  <a
+                    href="https://icjia.illinois.gov/researchhub"
+                    target="_blank"
+                    >the ResearchHub</a
+                  >
+                  for ICJIA's articles, datasets, and applications.
+                </div>
               </v-sheet>
             </v-col>
           </v-row>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Breadcrumb :key="$route.path" title="News & Updates"></Breadcrumb>
     <v-container>
       <v-row>
         <v-col>
@@ -9,7 +10,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container>
+    <v-container fluid>
       <v-row v-masonry id="masonry-group">
         <v-col v-for="(post, index) in posts" :key="index" cols="12" sm="4">
           <v-card
@@ -19,10 +20,7 @@
             @click="$router.push(`/news/${post.slug}`)"
           >
             <v-card-text style="font-size: 12px"
-              ><PostedMeta
-                :meta="buildMeta(post)"
-                :showUpdatedInText="false"
-              ></PostedMeta
+              ><PostedMeta :meta="post" :showUpdatedInText="false"></PostedMeta
             ></v-card-text>
             <div class="px-4 mb-5">
               <h2 style="line-height: 32px">{{ post.title }}</h2>
@@ -45,7 +43,7 @@
 </template>
 
 <script>
-import { GET_ALL_POSTS_QUERY } from "@/graphql/queries/getPosts";
+import { GET_ALL_POSTS_QUERY } from "@/graphql/queries/posts";
 export default {
   data() {
     return {

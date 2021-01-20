@@ -21,10 +21,10 @@ const GET_HOME = gql`
 
       slider {
         id
+
         slide {
           title
           url
-
           summary
           image {
             formats
@@ -39,12 +39,14 @@ const GET_HOME = gql`
       sort: "start:asc"
     ) {
       id
+      published_at
       name
       start
       end
       timed
       summary
       details
+      slug
 
       type
     }
@@ -54,9 +56,11 @@ const GET_HOME = gql`
       name
       start
       end
+      published_at
       timed
       summary
       details
+      slug
 
       type
     }
@@ -70,6 +74,7 @@ const GET_HOME = gql`
       body
       created_at
       updated_at
+      published_at
       splash {
         formats
       }

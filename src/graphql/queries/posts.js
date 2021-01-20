@@ -11,6 +11,7 @@ const GET_ALL_POSTS_QUERY = gql`
       showToc
       created_at
       updated_at
+      published_at
       updated_by {
         username
         firstname
@@ -23,6 +24,7 @@ const GET_ALL_POSTS_QUERY = gql`
       }
       body
       splash {
+        url
         formats
       }
     }
@@ -40,6 +42,12 @@ const GET_SINGLE_POST_QUERY = gql`
       showToc
       created_at
       updated_at
+      published_at
+      units {
+        title
+        slug
+        shortname
+      }
       updated_by {
         username
         firstname
@@ -51,7 +59,26 @@ const GET_SINGLE_POST_QUERY = gql`
         lastname
       }
       body
+      documents {
+        published_at
+        updated_at
+        title
+        summary
+        externalURL
+        body
+        file {
+          url
+          name
+          ext
+        }
+        slug
+        unit {
+          title
+          slug
+        }
+      }
       splash {
+        url
         formats
       }
     }

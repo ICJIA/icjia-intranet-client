@@ -52,6 +52,7 @@
                   color="blue darken-4"
                   v-bind="attrs"
                   v-on="on"
+                  aria-label="Activate quick menu"
                 >
                   <v-icon>mdi-dots-vertical</v-icon>
                 </v-btn>

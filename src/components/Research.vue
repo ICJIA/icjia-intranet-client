@@ -19,7 +19,12 @@
               </v-row>
             </template>
             <div class="card-banner mb-5">
-              <h2 class="px-5 article-title">{{ article.title }}</h2>
+              <div
+                style="font-size: 22px; font-weight: 900"
+                class="px-5 article-title"
+              >
+                {{ article.title }}
+              </div>
             </div>
           </v-img>
 
@@ -55,7 +60,7 @@
     <!-- <div v-if="loading">
       <Loader></Loader>
     </div> -->
-    <div class="text-center" v-if="!disabled && alreadySeen">
+    <div class="text-center" v-if="click < 2">
       <v-btn
         class="ma-2"
         :loading="loading"
@@ -66,11 +71,6 @@
         LOAD MORE
       </v-btn>
     </div>
-    <!-- <div v-if="disabled" class="text-center">
-      Go to
-      <a href="https://icjia.illinois.gov/researchhub">the research hub</a> to
-      see all ICJIA's articles, applications, and datasets.
-    </div> -->
   </div>
 </template>
 
@@ -83,8 +83,9 @@ export default {
       loading: null,
       articles: [],
       start: 0,
+      click: 0,
       limit: 3,
-      max: 25,
+      max: 9,
       disabled: false,
       query: null,
       alreadySeen: false,
@@ -112,11 +113,12 @@ export default {
       this.loading = false;
     },
     async loadMore() {
-      if (this.start >= this.max) {
+      if (this.click >= 2) {
         this.disabled = true;
         return;
       } else {
         this.start = this.start + this.limit;
+        this.click = this.click + 1;
         this.fetchContent();
       }
     },

@@ -84,7 +84,7 @@ export default {
       var i = 0;
       this.$refs["anchor"].classList.add("visible");
       section.forEach((e) => {
-        sections[e.id] = e.offsetTop - 15;
+        sections[e.id] = e.offsetTop - 25;
       });
 
       window.onscroll = () => {

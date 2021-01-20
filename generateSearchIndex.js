@@ -72,7 +72,29 @@ const query = gql`
       type
       summary
       slug
-      details
+    }
+    documents {
+      title
+      summary
+      externalURL
+      body
+      slug
+      unit {
+        title
+        slug
+      }
+    }
+
+    clusters {
+      title
+      summary
+      slug
+    }
+
+    units {
+      title
+      summary
+      slug
     }
   }
 `;
@@ -88,10 +110,10 @@ async function main() {
       searchObj.title = item.title || item.name;
       searchObj.contentType = section;
       searchObj.type = item.type;
-      searchObj.searchMeta = item.searchMeta || "";
+
       searchObj.section = section;
       searchObj.slug = item.slug;
-      let markdown = item.body || item.details;
+      let markdown = item.body || item.details || "";
       searchObj.html = md.render(markdown);
       let $ = cheerio.load(searchObj.html);
       searchObj.markdown = markdown;
@@ -103,7 +125,12 @@ async function main() {
       });
       searchObj.headings = headings;
       // searchObj.toc = toc(markdown).json;
-      searchObj.route = `/${section}/${searchObj.slug}`;
+      if (section === "clusters") {
+        searchObj.route = `/documents/${section}/${searchObj.slug}/`;
+      } else {
+        searchObj.route = `/${section}/${searchObj.slug}/`;
+      }
+
       searchObj.summary = item.summary || "";
       searchObj.url = `${myConfig.api.baseClient}${searchObj.route}`;
       delete searchObj.markdown;
@@ -115,15 +142,9 @@ async function main() {
 
   let siteMeta = index.flat();
   siteMeta = utils.filterUndefined(siteMeta);
-  const fuseIndex = Fuse.createIndex(myConfig.search.keys, siteMeta);
-  fs.writeFileSync(
-    "./public/fuse-index.json",
-    JSON.stringify(fuseIndex.toJSON())
-  );
-  console.log(`Fuse search index created: ./public/fuse-index.json"`);
 
-  utils.saveJson(siteMeta, "./public/site-meta.json");
-  console.log(`Site meta created: ./public/site-meta.json"`);
+  utils.saveJson(siteMeta, "./src/assets/site-meta.json");
+  console.log(`Site meta created: ./src/assets/site-meta.json"`);
   //console.log(siteMeta);
 }
 

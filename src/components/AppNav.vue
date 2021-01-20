@@ -34,23 +34,179 @@
       <v-btn small text to="/news" class="hidden-sm-and-down"
         >News & Updates</v-btn
       >
-      <v-btn small text to="/forms" class="hidden-sm-and-down">Forms</v-btn>
-      <v-btn small text to="/documents" class="hidden-sm-and-down"
-        >Documents</v-btn
+      <v-menu
+        bottom
+        offset-y
+        origin="center center"
+        transition="scale-transition"
       >
-      <v-btn small text to="/support" class="hidden-sm-and-down"
-        >Technical Support</v-btn
-      >
-      <v-btn small text to="/calendar" class="hidden-sm-and-down"
-        >Calendar</v-btn
-      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            small
+            text
+            class="hidden-sm-and-down"
+            v-bind="attrs"
+            v-on="on"
+            :class="{ currentRoute: $route.path.includes('forms') }"
+            >Forms <v-icon right small>arrow_drop_down</v-icon></v-btn
+          >
+        </template>
+        <v-list nav dense elevation="2">
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/forms/conference/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Conference Room reservation</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/forms/laptop/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Laptop Request</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/forms/support/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Technical Support Request</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-menu>
 
-      <v-btn icon to="/search">
+      <v-menu
+        bottom
+        offset-y
+        origin="center center"
+        transition="scale-transition"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            small
+            text
+            class="hidden-sm-and-down"
+            v-bind="attrs"
+            v-on="on"
+            :class="{ currentRoute: $route.path.includes('documents') }"
+            >Documents <v-icon right small>arrow_drop_down</v-icon>
+          </v-btn>
+        </template>
+        <v-list nav dense elevation="2">
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/documents/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >All</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/documents/clusters/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Groups</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+      <!-- <v-btn small text to="/units/" class="hidden-sm-and-down">Units</v-btn> -->
+
+      <v-menu
+        bottom
+        offset-y
+        origin="center center"
+        transition="scale-transition"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            small
+            text
+            class="hidden-sm-and-down"
+            v-bind="attrs"
+            v-on="on"
+            :class="{ currentRoute: $route.path.includes('units') }"
+            >Units <v-icon right small>arrow_drop_down</v-icon>
+          </v-btn>
+        </template>
+        <v-list nav dense elevation="2">
+          <v-list-item
+            v-for="(unit, index) in $myApp.units"
+            :key="`unitNav-${index}`"
+            class="appNav"
+            @click="
+              $router.push(`${unit.path}`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important">{{
+                unit.title
+              }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item
+            @click="
+              $router.push(`/units/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >All units</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+      <v-btn small text to="/events/" class="hidden-sm-and-down">Events</v-btn>
+
+      <v-btn icon to="/search" aria-label="search">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
       <v-menu left bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on">
+          <v-btn icon v-bind="attrs" v-on="on" aria-label="Action menu">
             <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
         </template>
@@ -69,4 +225,12 @@
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+.appNav.v-list-item:hover {
+  background: #ccc !important;
+}
+
+.currentRoute {
+  background: #d8d8d8;
+}
+</style>

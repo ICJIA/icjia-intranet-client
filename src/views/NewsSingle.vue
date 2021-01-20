@@ -1,5 +1,12 @@
 <template>
   <div>
+    <Breadcrumb
+      v-if="posts && posts.length"
+      :key="$route.path"
+      :title="posts[0]['title']"
+      subPath="News"
+      subPathURL="/news/"
+    ></Breadcrumb>
     <v-container fluid>
       <v-card color="gray lighten-4" style="min-height: 100vh">
         <base-content :loading="$apollo.loading" :error="error">
@@ -46,7 +53,7 @@
 
           <template v-slot:splash>
             <div v-if="posts && posts.length && posts[0]['splash']">
-              <SplashNews :splash="posts[0]['splash']['formats']"></SplashNews>
+              <SplashNews :splash="posts[0]['splash']"></SplashNews>
             </div>
             <div v-else>
               <v-container fluid> <hr /></v-container>
@@ -69,6 +76,24 @@
                     @click="handleClicks"
                     class="dynamic-content"
                   ></div>
+
+                  <DocumentList
+                    :documents="posts[0]['documents']"
+                    heading="Related Documents"
+                    v-if="
+                      posts &&
+                      posts[0]['documents'] &&
+                      posts[0]['documents'].length
+                    "
+                    class="mt-8"
+                  ></DocumentList>
+                  <UnitTags
+                    :units="posts[0]['units']"
+                    class="mt-5"
+                    v-if="
+                      posts && posts[0]['units'] && posts[0]['units'].length
+                    "
+                  ></UnitTags>
                 </v-col>
                 <!-- <v-col
                   cols="12"
@@ -98,7 +123,7 @@
 <script>
 import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
-import { GET_SINGLE_POST_QUERY } from "@/graphql/queries/getPosts";
+import { GET_SINGLE_POST_QUERY } from "@/graphql/queries/posts";
 export default {
   name: "Home",
   mixins: [handleClicks],
@@ -158,6 +183,7 @@ export default {
           });
         } else {
           this.meta = {
+            published_at: ApolloQueryResult.data.posts[0]["published_at"],
             created_at: ApolloQueryResult.data.posts[0]["created_at"],
             updated_at: ApolloQueryResult.data.posts[0]["updated_at"],
             updated_by: ApolloQueryResult.data.posts[0]["updated_by"],

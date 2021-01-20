@@ -33,7 +33,7 @@
                     <div class="text-center">
                       <h2 v-if="slide.title">{{ slide.title }}</h2>
                       <h3
-                        style="color: #aaa; font-size: 14px"
+                        style="color: #fff; font-size: 14px"
                         class="mt-5"
                         v-if="slide.summary"
                       >
@@ -42,8 +42,8 @@
                       <v-btn
                         v-if="slide.url"
                         class="mt-12"
-                        color="grey"
                         @click="route(slide.url)"
+                        aria-label="Read More button"
                         >Read more</v-btn
                       >
                     </div>
@@ -53,8 +53,20 @@
               <v-col md="8" cols="12" class="hidden-sm-and-down">
                 <v-img
                   v-if="slide.image && slide.image.formats"
-                  :src="`${base}${slide.image.formats.large.url}`"
-                  :lazy-src="`${base}${slide.image.formats.thumbnail.url}`"
+                  :src="
+                    getImageURL(
+                      $myApp.config.api.base + slide.image.formats.large.url
+                    )
+                  "
+                  :lazy-src="
+                    getImageURL(
+                      $myApp.config.api.base +
+                        slide.image.formats.thumbnail.url,
+                      0,
+                      0,
+                      1
+                    )
+                  "
                   aspect-ratio="1.7"
                   max-height="400"
                 >
@@ -81,6 +93,7 @@
 </template>
 
 <script>
+import { getImageURL } from "@/services/Image";
 export default {
   mounted() {},
   methods: {
@@ -105,6 +118,7 @@ export default {
   data() {
     return {
       base: this.$myApp.config.api.base,
+      getImageURL,
     };
   },
 };

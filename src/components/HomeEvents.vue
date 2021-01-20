@@ -10,7 +10,13 @@
       >
     </div>
     <div v-for="(event, index) in newEvents" :key="index + event.id" v-else>
-      <v-card color="grey lighten-4" class="mb-5" elevation="0">
+      <v-card
+        color="grey lighten-4"
+        class="mb-5 hover event-card"
+        elevation="0"
+        style="border: 1px solid #aaa"
+        @click="$router.push(`/events/${event.slug}/`)"
+      >
         <div class="d-flex flex-no-wrap" style>
           <div class="px-5" style="max-height: 150px">
             <v-container fill-height>
@@ -25,7 +31,7 @@
                   class="text-center hover"
                   @click.prevent="event.show = !event.show"
                 >
-                  <span style="font-size: 14px; color: #666; font-weight: 900">
+                  <span style="font-size: 14px; color: #222; font-weight: 900">
                     {{ event.start | shortMonth }}
                   </span>
                   <br />
@@ -46,44 +52,17 @@
             "
           >
             <div class="px-5 py-6">
-              <div style="font-size: 12px; font-weight: 900; color: #777">
+              <div style="font-size: 12px; font-weight: 900; color: #222">
                 <span style="color: #333">{{ event.type | upperCase }}</span>
                 {{ getRange(event.start, event.end, event.timed) }}
-                <!-- <span style="color: #333;">{{ event.type | upperCase }}</span> -->
               </div>
-              <h2 class="mt-2 hover" @click.prevent="event.show = !event.show">
+              <h2 class="mt-2 hover">
                 {{ event.name }}
               </h2>
 
-              <v-card-subtitle v-if="!event.show">{{
-                event.summary
-              }}</v-card-subtitle>
+              <v-card-subtitle>{{ event.summary }}</v-card-subtitle>
 
-              <div
-                class="hover readMore text-right"
-                @click.prevent="event.show = !event.show"
-              >
-                <span v-if="!event.show"
-                  ><v-btn outlined x-small>
-                    Event Details&nbsp;<v-icon x-small
-                      >keyboard_arrow_down</v-icon
-                    ></v-btn
-                  ></span
-                >
-                <span v-else
-                  ><v-btn outlined x-small>
-                    Hide&nbsp;<v-icon x-small>keyboard_arrow_up</v-icon></v-btn
-                  ></span
-                >
-              </div>
-              <!-- <v-btn small @click.native="event.show = !event.show"
-                >Full description</v-btn
-              >-->
-              <v-slide-y-transition>
-                <div class="py-3 mt-2" v-show="event.show">
-                  <div class="mt-2 pl-5">{{ event.details }}</div>
-                </div>
-              </v-slide-y-transition>
+              <div class="hover readMore text-right"></div>
             </div>
           </div>
         </div>
