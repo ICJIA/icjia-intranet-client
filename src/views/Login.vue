@@ -43,7 +43,9 @@
           >
             {{ $store.getters["auth/authStatus"] }}
           </div>
-          <div class="mt-4 text-center"></div>
+          <div class="mt-4 text-center" style="font-size: 12px">
+            Contact <a href="mailto: admin@icjia.cloud">ICJIA tech support</a>
+          </div>
         </v-form>
       </v-card>
     </v-row>

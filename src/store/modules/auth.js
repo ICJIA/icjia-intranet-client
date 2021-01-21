@@ -121,7 +121,10 @@ const actions = {
         })
         .catch((error) => {
           console.log("An error occurred:", error.response);
-          commit("SET_STATUS", "Network Error: Password Not Reset");
+          commit(
+            "SET_STATUS",
+            `Network Error: Password Not Reset. Please <a href='/reset?code=${payload.code}'>try again</a> or request another <a href='/forgot'>reset link</a>.`
+          );
           reject(error);
         });
     });

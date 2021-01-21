@@ -19,7 +19,7 @@
             ref="email"
           ></v-text-field>
 
-          <div class="text-center">
+          <div class="text-center mt-3">
             <v-btn @click="submit" :disabled="disabled">Send Reset Link</v-btn
             >&nbsp;
             <v-progress-circular
@@ -41,6 +41,12 @@
         </form>
 
         <!-- <tree-view :data="this.$v" :options="{maxDepth: 3}"></tree-view> -->
+        <div class="text-center mt-5" style="font-size: 14px" v-if="disabled">
+          &laquo;
+          <router-link to="/login/" style="background: none"
+            >Back to login</router-link
+          >
+        </div>
       </v-card>
     </v-row>
   </div>

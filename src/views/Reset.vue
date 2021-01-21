@@ -61,13 +61,19 @@
           </form>
           <div v-if="!hasCode" class="mt-5 pl-5 pr-5">
             <v-btn primary large block @click="forgot" class
-              >Email password reset link</v-btn
+              >Send reset password link</v-btn
             >
           </div>
 
           <div class="mt-3" v-if="sendAnother">
             <router-link to="/forgot">Send another reset code</router-link>
           </div>
+
+          <div
+            class="text-center mt-5"
+            style="color: red; font-size: 12px; font-weight: bold"
+            v-html="$store.getters['auth/authStatus']"
+          ></div>
 
           <!-- <tree-view :data="this.$v" :options="{maxDepth: 3}"></tree-view> -->
         </v-card>
