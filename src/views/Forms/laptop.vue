@@ -133,9 +133,9 @@
                       @click="clearAxiosError"
                       ref="comment"
                     ></v-textarea>
-                    <div v-if="formData">
+                    <!-- <div v-if="formData">
                       {{ formData }}
-                    </div>
+                    </div> -->
                   </v-col>
                 </v-row>
               </v-container>
@@ -187,8 +187,7 @@ import { validationMixin } from "vuelidate";
 import { required, email } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
 import { generateHours } from "@/services/Utils";
-
-//const config = require("@/config.json");
+import { dbInsert } from "@/services/Forms";
 // eslint-disable-next-line no-unused-vars
 import axios from "axios";
 
@@ -291,7 +290,7 @@ export default {
       this.render = true;
     },
 
-    submit() {
+    async submit() {
       this.$v.$touch();
 
       if (this.isSuccess) {
@@ -318,40 +317,38 @@ export default {
           pickup_time: this.pickup_time,
           return_date: this.return_date,
         };
-
         this.formData = { ...form, ...dates };
-        console.log(this.formData);
-        // console.log("submit: ", data);
-        this.showLoader = false;
-        this.reload();
-
-        // const vm = this;
-        // // eslint-disable-next-line no-unused-vars
-        // let obj = axios({
-        //   method: "post",
-        //   url: "http://localhost:5050/intranet/laptop",
-        //   data: formData,
-        //   config: { headers: { "Content-Type": "multipart/form-data" } },
-        // })
-        //   .then(function (response) {
-        //     //handle success
-        //     //console.log(response.data)
-        //     console.log("SUCCESS!", response.data.status, response.data.msg);
-        //     vm.showSubmit = false;
-        //     vm.showAxiosError = false;
-        //     vm.showError = "";
-        //     vm.successMessage = response.data.msg;
-        //     vm.showLoader = false;
-        //   })
-        //   .catch(function (err) {
-        //     //handle error
-        //     //console.log(err)
-        //     console.log("FAILED...", err);
-        //     vm.showAxiosError = true;
-        //     vm.axiosError = err;
-        //     vm.showLoader = false;
-        //     vm.$forceUpdate();
-        //   });
+        //console.log(this.formData);
+        let dbResponse = await dbInsert(
+          this.$store.state.auth.jwt,
+          this.formData
+        );
+        console.log("Database insert status code: ", dbResponse.status);
+        const vm = this;
+        // eslint-disable-next-line no-unused-vars
+        let obj = axios({
+          method: "post",
+          url: "https://mail.icjia.cloud/intranet/laptop",
+          data: vm.formData,
+          config: { headers: { "Content-Type": "multipart/form-data" } },
+        })
+          .then(function (response) {
+            console.log("SUCCESS!", response.data.status, response.data.msg);
+            vm.showSubmit = false;
+            vm.showAxiosError = false;
+            vm.showError = "";
+            vm.successMessage = response.data.msg;
+            vm.showLoader = false;
+            vm.reload();
+          })
+          .catch(function (err) {
+            console.log("FAILED: ", err);
+            vm.showAxiosError = true;
+            vm.axiosError = err;
+            vm.showLoader = false;
+            vm.$forceUpdate();
+            vm.reload();
+          });
       }
     },
     clear() {

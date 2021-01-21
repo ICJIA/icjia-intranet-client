@@ -44,7 +44,23 @@ const dbInsert = async function (jwt, formData) {
 
 // eslint-disable-next-line no-unused-vars
 const emailStaff = async function (endpoint, formData) {
-  return "email staff response here";
+  let axiosEmailStaff = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  try {
+    return await api.post(
+      `http://localhost:5050/${endpoint}`,
+      formData,
+      axiosEmailStaff
+    );
+  } catch (e) {
+    console.log(e);
+    NProgress.done();
+    return `mail error: ${e}`;
+  }
 };
 
 export { dbInsert, emailStaff };

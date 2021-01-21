@@ -76,20 +76,14 @@
         </form>
 
         <!-- <tree-view :data="this.$v" :options="{maxDepth: 3}"></tree-view> -->
+        <div class="text-center mt-3" style="font-size: 14px">
+          &laquo;
+          <router-link to="/login/" style="background: none"
+            >Back to login</router-link
+          >
+        </div>
       </v-card>
     </v-row>
-    <v-container>
-      <v-row>
-        <v-col>
-          <div class="text-center" style="margin-top: -15px; font-size: 14px">
-            &laquo;
-            <router-link to="/login/" style="background: none"
-              >Back to login</router-link
-            >
-          </div>
-        </v-col>
-      </v-row>
-    </v-container>
   </div>
 </template>
 
