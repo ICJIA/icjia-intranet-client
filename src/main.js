@@ -57,9 +57,6 @@ Vue.use(VueMeta, {
 import VueDummy from "vue-dummy";
 Vue.use(VueDummy);
 
-import UniqueId from "vue-unique-id";
-Vue.use(UniqueId);
-
 new Vue({
   router,
   store,

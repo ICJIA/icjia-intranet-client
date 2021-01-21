@@ -75,6 +75,10 @@
 </template>
 
 <script>
+// if (!window.crypto) {
+//   window.crypto = window.msCrypto;
+// }
+
 import { nanoid } from "nanoid";
 import { getHubArticles } from "@/services/External";
 export default {

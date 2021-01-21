@@ -19,5 +19,5 @@ module.exports = {
       locales: ["en"],
     },
   },
-  transpileDependencies: ["vuetify"],
+  transpileDependencies: ["vuetify", "nanoid"],
 };
