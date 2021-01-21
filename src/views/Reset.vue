@@ -61,7 +61,7 @@
           </form>
           <div v-if="!hasCode" class="mt-5 pl-5 pr-5">
             <v-btn primary large block @click="forgot" class
-              >Get password reset link</v-btn
+              >Email password reset link</v-btn
             >
           </div>
 
@@ -176,11 +176,11 @@ export default {
         payload.code = this.code;
         payload.password = password;
         payload.passwordConfirmation = repeatPassword;
-        console.log("reset: ", payload);
+
         this.$store
           .dispatch("auth/reset", payload)
           .then(() => {
-            console.log("Success!");
+            console.log("Success! Password reset.");
             this.disabled = true;
           })
           // eslint-disable-next-line no-unused-vars

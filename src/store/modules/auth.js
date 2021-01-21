@@ -31,6 +31,14 @@ const mutations = {
     state.userMeta = payload.userMeta;
     console.log("AUTH_LOGIN");
   },
+  AUTH_RESET(state, payload) {
+    state.status = null;
+    state.jwt = null;
+    state.user = null;
+    state.isAuthenticated = null;
+    state.userMeta = null;
+    console.log("AUTH_RESET");
+  },
 
   CLEAR_STATUS(state) {
     state.status = "";
@@ -98,7 +106,24 @@ const actions = {
   },
   reset({ commit }, payload) {
     return new Promise((resolve, reject) => {
-      resolve("reset here");
+      //console.log("reset payload: ", payload);
+      // resolve(payload);
+      // commit("AUTH_RESET");
+      axios
+        .post(`${config.api.base}${config.api.resetPassword}`, {
+          code: payload.code,
+          password: payload.password,
+          passwordConfirmation: payload.passwordConfirmation,
+        })
+        .then((response) => {
+          commit("AUTH_RESET");
+          resolve(response);
+        })
+        .catch((error) => {
+          console.log("An error occurred:", error.response);
+          commit("SET_STATUS", "Network Error: Password Not Reset");
+          reject(error);
+        });
     });
   },
   login({ commit }, payload) {
