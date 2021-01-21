@@ -174,9 +174,9 @@
                       ref="comment"
                       aria-label="Additional requests"
                     ></v-textarea>
-                    <div v-if="formData">
+                    <!-- <div v-if="formData">
                       {{ formData }}
-                    </div>
+                    </div> -->
                   </v-col>
                 </v-row>
               </v-container>
@@ -228,6 +228,7 @@ import { validationMixin } from "vuelidate";
 import { required, email, integer } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
 import { generateHours } from "@/services/Utils";
+import { dbInsert } from "@/services/Forms";
 
 //const config = require("@/config.json");
 // eslint-disable-next-line no-unused-vars
@@ -369,7 +370,7 @@ export default {
       this.render = true;
     },
 
-    submit() {
+    async submit() {
       this.$v.$touch();
 
       if (this.isSuccess) {
@@ -400,41 +401,38 @@ export default {
           end_time: this.end_time,
         };
 
-        let jwt = this.$store.state.auth.jwt;
-
-        console.log("jwt: ", jwt);
-
         this.formData = { ...form, ...dates };
-        this.showLoader = false;
-        this.reload();
 
-        // const vm = this;
-        // // eslint-disable-next-line no-unused-vars
-        // let obj = axios({
-        //   method: "post",
-        //   url: "https://mail.icjia.cloud/intranet/conference",
-        //   data: formData,
-        //   config: { headers: { "Content-Type": "multipart/form-data" } },
-        // })
-        //   .then(function (response) {
-        //     //handle success
-        //     //console.log(response.data)
-        //     console.log("SUCCESS!", response.data.status, response.data.msg);
-        //     vm.showSubmit = false;
-        //     vm.showAxiosError = false;
-        //     vm.showError = "";
-        //     vm.successMessage = response.data.msg;
-        //     vm.showLoader = false;
-        //   })
-        //   .catch(function (err) {
-        //     //handle error
-        //     //console.log(err)
-        //     console.log("FAILED...", err);
-        //     vm.showAxiosError = true;
-        //     vm.axiosError = err;
-        //     vm.showLoader = false;
-        //     vm.$forceUpdate();
-        //   });
+        let dbResponse = await dbInsert(
+          this.$store.state.auth.jwt,
+          this.formData
+        );
+        console.log("Database insert status code: ", dbResponse.status);
+        const vm = this;
+        // eslint-disable-next-line no-unused-vars
+        let obj = axios({
+          method: "post",
+          url: "https://mail.icjia.cloud/intranet/conference",
+          data: vm.formData,
+          config: { headers: { "Content-Type": "multipart/form-data" } },
+        })
+          .then(function (response) {
+            console.log("SUCCESS!", response.data.status, response.data.msg);
+            vm.showSubmit = false;
+            vm.showAxiosError = false;
+            vm.showError = "";
+            vm.successMessage = response.data.msg;
+            vm.showLoader = false;
+            vm.reload();
+          })
+          .catch(function (err) {
+            console.log("FAILED: ", err);
+            vm.showAxiosError = true;
+            vm.axiosError = err;
+            vm.showLoader = false;
+            vm.$forceUpdate();
+            vm.reload();
+          });
       }
     },
     clear() {
