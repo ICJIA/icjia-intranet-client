@@ -5,7 +5,6 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "@/assets/app.css";
 import "@/components/_globals";
-import "alpinejs";
 import "@/assets/github-markdown.css";
 import "@/assets/app.css";
 import "@/filters";
