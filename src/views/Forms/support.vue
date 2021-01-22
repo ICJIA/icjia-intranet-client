@@ -1,5 +1,11 @@
 <template>
   <div class="markdown-body">
+    <Breadcrumb
+      :key="$route.path"
+      :title="title"
+      subPath="Forms"
+      subPathURL="/forms/"
+    ></Breadcrumb>
     <v-container>
       <v-row>
         <v-col>
@@ -128,12 +134,14 @@
 
 <script>
 /* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 
 import { validationMixin } from "vuelidate";
 import { required, email } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
 import { generateHours } from "@/services/Utils";
 import { dbInsert } from "@/services/Forms";
+import NProgress from "nprogress";
 
 //const config = require("@/config.json");
 // eslint-disable-next-line no-unused-vars
@@ -167,7 +175,7 @@ export default {
       email: this.$store.state.auth.userMeta.email || null,
       unit: "Information Systems Unit",
       comment: "",
-      formData: null,
+      form: null,
       showSubmit: true,
       showAxiosError: false,
       axiosError: "",
@@ -237,6 +245,7 @@ export default {
       this.$v.$touch();
       this.showAxiosError = false;
       if (this.isSuccess) {
+        NProgress.start();
         this.showLoader = true;
         // sanitize comment, then strip html
         const cleanComment = DOMPurify.sanitize(this.comment).replace(
@@ -244,7 +253,7 @@ export default {
           ""
         );
         this.comment = cleanComment;
-        this.formData = {
+        this.form = {
           type: "Technical Support Request",
           name: this.name,
           email: this.email,
@@ -252,41 +261,44 @@ export default {
           comment: this.comment,
         };
 
-        let dbResponse = await dbInsert(
-          this.$store.state.auth.jwt,
-          this.formData
-        );
-        console.log("Database insert status code: ", dbResponse.status);
-
-        const vm = this;
-        // eslint-disable-next-line no-unused-vars
-        let obj = axios({
-          method: "post",
+        let options = {
+          method: "POST",
+          data: this.form,
           url: "https://mail.icjia.cloud/intranet/support",
-          data: vm.formData,
-          config: { headers: { "Content-Type": "multipart/form-data" } },
-        })
-          .then(function (response) {
-            console.log("SUCCESS!", response.data.status, response.data.msg);
-            vm.showSubmit = false;
-            vm.showAxiosError = false;
-            vm.showError = "";
-            vm.successMessage = response.data.msg;
-            vm.showLoader = false;
-            vm.reload();
-          })
-          .catch(function (err) {
-            console.log("FAILED: ", err);
-            vm.showAxiosError = true;
-            vm.axiosError = err;
-            vm.showLoader = false;
-            vm.$forceUpdate();
-            vm.reload();
-          });
+        };
+
+        let dbResponse = await dbInsert(this.$store.state.auth.jwt, this.form);
+        console.log("dbinsert: ", dbResponse);
+
+        try {
+          let res = await axios(options);
+          this.success(res);
+        } catch (err) {
+          this.failed(err);
+        }
       }
+    },
+    failed(res) {
+      console.log("email: ", res);
+      this.showAxiosError = true;
+      this.axiosError = res;
+      this.showLoader = false;
+      NProgress.done();
+      this.reload();
+    },
+    success(res) {
+      console.log("email: ", res);
+      this.showSubmit = false;
+      this.showAxiosError = false;
+      this.showError = "";
+      this.successMessage = res.data.msg;
+      this.showLoader = false;
+      NProgress.done();
+      this.reload();
     },
     clear() {
       this.$v.$reset();
+      this.showSubmit = true;
       this.name = "";
       this.email = this.$store.state.auth.userMeta.email || null;
       this.comment = "";

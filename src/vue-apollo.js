@@ -5,7 +5,7 @@ import {
   restartWebsockets,
 } from "vue-cli-plugin-apollo/graphql-client";
 import appConfig from "./config.json";
-console.log("appConfig", appConfig.api.baseGraphQL);
+//console.log("appConfig", appConfig.api.baseGraphQL);
 // Install the vue plugin
 Vue.use(VueApollo);
 

@@ -5,8 +5,8 @@ else require("./main");
 function isIE(ua) {
   const isIE10orLess = ua.indexOf("MSIE") > -1;
   const isIE11 = ua.indexOf("Trident/") > -1;
-  console.log(ua);
-  console.log(isIE10orLess, isIE11);
+  // console.log(ua);
+  // console.log(isIE10orLess, isIE11);
   return isIE10orLess || isIE11;
 }
 

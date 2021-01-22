@@ -5,13 +5,19 @@
         <v-col>
           <ul>
             <li>
-              <router-link to="/forms/support/" style="background: none"
-                >Technical Support Request</router-link
+              <router-link to="/forms/conference/" style="background: none"
+                >Conference Room Reservation</router-link
               >
             </li>
+
             <li>
               <router-link to="/forms/laptop/" style="background: none"
                 >Laptop Request</router-link
+              >
+            </li>
+            <li>
+              <router-link to="/forms/support/" style="background: none"
+                >Technical Support Request</router-link
               >
             </li>
           </ul>

@@ -1,5 +1,11 @@
 <template>
   <div class="markdown-body">
+    <Breadcrumb
+      :key="$route.path"
+      :title="title"
+      subPath="Forms"
+      subPathURL="/forms/"
+    ></Breadcrumb>
     <v-container>
       <v-row>
         <v-col>
@@ -229,9 +235,7 @@ import { required, email, integer } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
 import { generateHours } from "@/services/Utils";
 import { dbInsert } from "@/services/Forms";
-
-//const config = require("@/config.json");
-// eslint-disable-next-line no-unused-vars
+import NProgress from "nprogress";
 import axios from "axios";
 
 export default {
@@ -271,7 +275,7 @@ export default {
       comment: "",
       end_time: null,
       start_time: null,
-      formData: null,
+      form: null,
       showSubmit: true,
       showAxiosError: false,
       axiosError: "",
@@ -374,6 +378,7 @@ export default {
       this.$v.$touch();
 
       if (this.isSuccess) {
+        NProgress.start();
         this.showLoader = true;
         // sanitize comment, then strip html
         const cleanComment = DOMPurify.sanitize(this.comment).replace(
@@ -383,7 +388,7 @@ export default {
 
         this.comment = cleanComment;
 
-        let form = {
+        let text = {
           type: this.title,
           name: this.name,
           email: this.email,
@@ -401,39 +406,41 @@ export default {
           end_time: this.end_time,
         };
 
-        this.formData = { ...form, ...dates };
+        this.form = { ...text, ...dates };
 
-        let dbResponse = await dbInsert(
-          this.$store.state.auth.jwt,
-          this.formData
-        );
-        console.log("Database insert status code: ", dbResponse.status);
-        const vm = this;
-        // eslint-disable-next-line no-unused-vars
-        let obj = axios({
-          method: "post",
+        let options = {
+          method: "POST",
+          data: this.form,
           url: "https://mail.icjia.cloud/intranet/conference",
-          data: vm.formData,
-          config: { headers: { "Content-Type": "multipart/form-data" } },
-        })
-          .then(function (response) {
-            console.log("SUCCESS!", response.data.status, response.data.msg);
-            vm.showSubmit = false;
-            vm.showAxiosError = false;
-            vm.showError = "";
-            vm.successMessage = response.data.msg;
-            vm.showLoader = false;
-            vm.reload();
-          })
-          .catch(function (err) {
-            console.log("FAILED: ", err);
-            vm.showAxiosError = true;
-            vm.axiosError = err;
-            vm.showLoader = false;
-            vm.$forceUpdate();
-            vm.reload();
-          });
+        };
+
+        let dbResponse = await dbInsert(this.$store.state.auth.jwt, this.form);
+        console.log("dbinsert: ", dbResponse);
+        try {
+          let res = await axios(options);
+          this.success(res);
+        } catch (err) {
+          this.failed(err);
+        }
       }
+    },
+    failed(res) {
+      console.log("email: ", res);
+      this.showAxiosError = true;
+      this.axiosError = res;
+      this.showLoader = false;
+      NProgress.done();
+      this.reload();
+    },
+    success(res) {
+      console.log("email: ", res);
+      this.showSubmit = false;
+      this.showAxiosError = false;
+      this.showError = "";
+      this.successMessage = res.data.msg;
+      this.showLoader = false;
+      NProgress.done();
+      this.reload();
     },
     clear() {
       this.$v.$reset();
