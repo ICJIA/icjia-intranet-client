@@ -45,7 +45,7 @@
               <v-tooltip right>
                 <template v-slot:activator="{ on, attrs }">
                   <span
-                    @click.stop.prevent="download(clusterItem.file)"
+                    @click.stop.prevent="goToExternal(clusterItem.externalURL)"
                     v-bind="attrs"
                     v-on="on"
                   >
@@ -90,7 +90,6 @@ export default {
       return renderToHtml(content);
     },
     goToExternal(url) {
-      //
       if (url.indexOf("://") > 0 || url.indexOf("//") === 0) {
         window.open(url);
         console.log("absolute: ", url);

@@ -53,14 +53,12 @@ export default {
           align: "start",
           sortable: true,
           value: "updated_at",
-          width: "200px",
         },
         {
           text: "Title",
           align: "start",
           sortable: true,
           value: "title",
-          width: "300px",
         },
         {
           text: "Unit",

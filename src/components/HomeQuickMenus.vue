@@ -62,15 +62,17 @@
                 <div
                   v-for="(item, index) in menu.menuItem"
                   :key="index + item"
-                  class="px-2 py-2 menuLink"
+                  class="px-2 py-2 menuLink hover"
+                  @click="goToURL(item.url)"
                 >
-                  <router-link
+                  {{ item.text }}
+                  <!-- <router-link
                     :to="item.url"
                     style="font-size: 12px"
                     class="menuLink"
                   >
                     {{ item.text }}
-                  </router-link>
+                  </router-link> -->
                 </div>
               </v-list>
             </v-menu>
@@ -102,6 +104,15 @@ export default {
     },
   },
   methods: {
+    goToURL(url) {
+      if (url.indexOf("://") > 0 || url.indexOf("//") === 0) {
+        window.open(url);
+        //console.log("absolute: ", url);
+      } else {
+        this.$router.push(url);
+        //console.log("relative: ", url);
+      }
+    },
     getWidth() {
       if (this.$vuetify.breakpoint.xs) {
         return 12;

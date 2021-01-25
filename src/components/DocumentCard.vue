@@ -53,11 +53,11 @@
             <v-tooltip right>
               <template v-slot:activator="{ on, attrs }">
                 <span v-bind="attrs" v-on="on">
-                  {{ item.title }}
+                  {{ item.title }}<v-icon right small>cloud_download</v-icon>
                   <!-- <v-icon small>cloud_download</v-icon> -->
                 </span>
               </template>
-              <span style="font-size: 12px">{{ item.file.name }}</span>
+              <span style="font-size: 12px">{{ item.file.name }} </span>
             </v-tooltip>
           </li>
         </ul>
@@ -129,7 +129,8 @@
                           v-if="!clusterItem.externalURL"
                           @click.stop.prevent="download(clusterItem.file)"
                         >
-                          {{ clusterItem.title }}
+                          {{ clusterItem.title
+                          }}<v-icon right small>cloud_download</v-icon>
                           <!-- <v-icon small>cloud_download</v-icon> -->
                         </span>
                       </span>
@@ -183,9 +184,9 @@
                         >
                       </span>
                     </template>
-                    <span style="font-size: 12px">{{
-                      clusterItem.externalURL
-                    }}</span>
+                    <span style="font-size: 12px"
+                      >{{ clusterItem.externalURL }}
+                    </span>
                   </v-tooltip>
                 </li>
               </ul>

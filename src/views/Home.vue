@@ -31,7 +31,7 @@
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
                       <v-col>
-                        <h2 style="color: #fff">News & Updates</h2>
+                        <h2 style="color: #fff">ICJIA News & Updates</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn

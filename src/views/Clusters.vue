@@ -98,7 +98,6 @@ export default {
           align: "start",
           sortable: true,
           value: "title",
-          width: "300px",
         },
 
         {
@@ -106,7 +105,6 @@ export default {
           align: "start",
           sortable: true,
           value: "updated_at",
-          width: "200px",
         },
 
         {
