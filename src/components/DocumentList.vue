@@ -42,7 +42,14 @@
 export default {
   methods: {
     goToExternal(url) {
-      window.open(url);
+      //
+      if (url.indexOf("://") > 0 || url.indexOf("//") === 0) {
+        window.open(url);
+        console.log("absolute: ", url);
+      } else {
+        this.$router.push(url);
+        console.log("relative: ", url);
+      }
     },
     download(file) {
       let download = `https://dev.icjia-api.cloud${file.url}`;
