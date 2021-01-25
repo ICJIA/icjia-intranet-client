@@ -177,9 +177,11 @@
             "
           >
             <v-list-item-content class="hover">
-              <v-list-item-title style="font-size: 12px !important">{{
-                unit.title
-              }}</v-list-item-title>
+              <v-list-item-title style="font-size: 12px !important"
+                >{{ unit.title }}&nbsp;({{
+                  unit.shortname.toUpperCase()
+                }})</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
           <v-divider></v-divider>
@@ -192,7 +194,7 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >All units</v-list-item-title
+                >List All units</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
