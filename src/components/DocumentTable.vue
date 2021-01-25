@@ -37,40 +37,48 @@
         <div v-else style="color: #aaa; font-weight: bold">General</div>
       </template>
       <template v-slot:item.file.ext="{ item }">
-        <v-avatar
-          color="grey lighten-2"
-          size="35"
-          class="my-3"
-          @click.stop.prevent="download(item.file)"
-          v-if="item.file"
-        >
-          <span
-            style="font-weight: 400; font-size: 10px; text-transform: uppercase"
-            >{{ item.file.ext.substring(1) }}</span
-          >
-        </v-avatar>
-
-        <!-- <v-avatar
-          color="white"
-          size="35"
-          class="my-3"
-          v-else
-          @click.stop.prevent="goToExternal(item.externalURL)"
-        >
-          <v-icon x-small style="font-weight: 900">open_in_new</v-icon>
-        </v-avatar> -->
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-avatar
+              color="grey lighten-2"
+              size="35"
+              class="my-3"
+              @click.stop.prevent="download(item.file)"
+              v-if="item.file"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <span
+                style="
+                  font-weight: 400;
+                  font-size: 10px;
+                  text-transform: uppercase;
+                "
+                >{{ item.file.ext.substring(1) }}
+              </span>
+            </v-avatar>
+          </template>
+          <span v-if="item && item.file">Download {{ item.file.name }}</span>
+        </v-tooltip>
       </template>
 
       <template v-slot:item.externalURL="{ item }">
-        <v-avatar
-          color="white"
-          size="35"
-          class="my-3"
-          v-if="!item.file && item.externalURL"
-          @click.stop.prevent="goToExternal(item.externalURL)"
-        >
-          <v-icon x-small style="font-weight: 900">open_in_new</v-icon>
-        </v-avatar>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-avatar
+              color="white"
+              size="35"
+              class="my-3"
+              v-bind="attrs"
+              v-on="on"
+              v-if="!item.file && item.externalURL"
+              @click.stop.prevent="goToExternal(item.externalURL)"
+            >
+              <v-icon x-small style="font-weight: 900">open_in_new</v-icon>
+            </v-avatar>
+          </template>
+          <span>Go to link</span>
+        </v-tooltip>
       </template>
 
       <template v-slot:expanded-item="{ headers, item }">
