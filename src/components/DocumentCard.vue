@@ -96,7 +96,7 @@
             "
             class="mb-5"
           >
-            Related Groups
+            Related Resources
           </div>
 
           <div
@@ -121,10 +121,7 @@
               :key="`clusterItem-${index}`"
             >
               <ul class="mt-3">
-                <li
-                  class="download-link hover"
-                  v-if="item.id !== clusterItem.id && !clusterItem.externalURL"
-                >
+                <li class="download-link hover" v-if="!clusterItem.externalURL">
                   <v-tooltip right>
                     <template v-slot:activator="{ on, attrs }">
                       <span v-bind="attrs" v-on="on">
@@ -168,10 +165,7 @@
                       }}</span>
                     </v-tooltip>
                   </span> -->
-                <li
-                  class="download-link hover"
-                  v-if="item.id !== clusterItem.id && clusterItem.externalURL"
-                >
+                <li class="download-link hover" v-if="clusterItem.externalURL">
                   <v-tooltip right>
                     <template v-slot:activator="{ on, attrs }">
                       <span

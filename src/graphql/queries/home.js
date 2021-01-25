@@ -11,8 +11,7 @@ const GET_HOME = gql`
         id
         title
         summary
-        baseName
-        baseURL
+
         menuItem {
           text
           url

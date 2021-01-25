@@ -27,16 +27,16 @@
           <strong>{{ item.updated_at | dateFormat }}</strong>
         </div>
       </template>
-      <template v-slot:item.unit.title="{ item }">
+      <template v-slot:item.unit.shortname="{ item }">
         <div
           style="color: #aaa; font-weight: bold"
-          v-if="item.unit && item.unit.title"
+          v-if="item.unit && item.unit.shortname"
         >
           {{ item.unit.shortname }}
         </div>
         <div v-else style="color: #aaa; font-weight: bold">General</div>
       </template>
-      <template v-slot:item.file="{ item }">
+      <template v-slot:item.file.ext="{ item }">
         <v-avatar
           color="grey lighten-2"
           size="35"
@@ -50,11 +50,23 @@
           >
         </v-avatar>
 
-        <v-avatar
+        <!-- <v-avatar
           color="white"
           size="35"
           class="my-3"
           v-else
+          @click.stop.prevent="goToExternal(item.externalURL)"
+        >
+          <v-icon x-small style="font-weight: 900">open_in_new</v-icon>
+        </v-avatar> -->
+      </template>
+
+      <template v-slot:item.externalURL="{ item }">
+        <v-avatar
+          color="white"
+          size="35"
+          class="my-3"
+          v-if="!item.file && item.externalURL"
           @click.stop.prevent="goToExternal(item.externalURL)"
         >
           <v-icon x-small style="font-weight: 900">open_in_new</v-icon>
@@ -104,14 +116,20 @@ export default {
           text: "Unit",
           align: "start",
           sortable: true,
-          value: "unit.title",
+          value: "unit.shortname",
         },
 
         {
-          text: "Download/Link",
+          text: "File",
+          align: "center",
+          sortable: true,
+          value: "file.ext",
+        },
+        {
+          text: "Link",
           align: "center",
           sortable: false,
-          value: "file",
+          value: "externalURL",
         },
       ],
     };
