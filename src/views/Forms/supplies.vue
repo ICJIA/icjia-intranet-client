@@ -156,9 +156,9 @@
                       ref="comment"
                       aria-label="Request"
                     ></v-textarea>
-                    <div v-if="form">
+                    <!-- <div v-if="form">
                       {{ form }}
-                    </div>
+                    </div> -->
                   </v-col>
                 </v-row>
                 <v-row>
@@ -257,9 +257,9 @@ export default {
   },
   data() {
     return {
-      name: "Test Name",
+      name: "",
       email: this.$store.state.auth.userMeta.email || null,
-      unit: "Information Systems Unit",
+      unit: "",
       comment: "",
       form: null,
       showSubmit: true,
@@ -305,11 +305,6 @@ export default {
       const errors = [];
       if (!this.$v.unit.$dirty) return errors;
       !this.$v.unit.required && errors.push("Unit is required");
-      return errors;
-    },
-    supplyErrors() {
-      const errors = [];
-
       return errors;
     },
 
@@ -373,7 +368,7 @@ export default {
           email: this.email,
           unit: this.unit,
           comment: this.comment,
-          supplies: this.supplies,
+          supplies: JSON.stringify(this.supplies),
         };
 
         let options = {
@@ -420,7 +415,7 @@ export default {
       this.showAxiosError = false;
       this.axiosError = "";
       this.showLoader = false;
-      this.formData = null;
+      this.form = null;
       this.clearSupplies();
       this.reload();
       this.$v.$reset();

@@ -306,7 +306,7 @@ export default {
       this.showAxiosError = false;
       this.axiosError = "";
       this.showLoader = false;
-      this.formData = null;
+      this.form = null;
       this.reload();
     },
   },

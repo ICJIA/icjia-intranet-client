@@ -219,9 +219,9 @@ export default {
   },
   data() {
     return {
-      name: "Test Name",
+      name: "",
       email: this.$store.state.auth.userMeta.email || null,
-      unit: "Information Systems Unit",
+      unit: "",
       comment: "",
       pickup_time: "8:00 AM",
       pickup_intervals: null,
@@ -370,7 +370,7 @@ export default {
       this.showAxiosError = false;
       this.axiosError = "";
       this.showLoader = false;
-      this.formData = null;
+      this.form = null;
       this.reload();
     },
   },

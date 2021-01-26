@@ -16,6 +16,11 @@
               >
             </li>
             <li>
+              <router-link to="/forms/supply/" style="background: none"
+                >Office Supply Request</router-link
+              >
+            </li>
+            <li>
               <router-link to="/forms/support/" style="background: none"
                 >Technical Support Request</router-link
               >
