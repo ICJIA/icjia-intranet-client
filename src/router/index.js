@@ -227,6 +227,15 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: "/forms/supplies/",
+    name: "FormSupplyRequest",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/Forms/supplies.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 
   {
     path: "/search/",
