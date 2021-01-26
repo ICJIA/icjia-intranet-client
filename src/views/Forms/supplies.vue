@@ -124,18 +124,19 @@
                       <v-btn
                         small
                         class="mr-2"
-                        :disabled="!isValid"
                         @click="
                           supplies.push({ quantity: '', description: '' })
                         "
+                        :disabled="$v.supplies.$invalid"
                       >
                         Add Another item
                       </v-btn>
+
                       <v-btn
                         small
                         class="ml-2"
                         @click="supplies.pop()"
-                        v-if="supplies.length > 1"
+                        :disabled="supplies.length <= 1"
                         >Remove</v-btn
                       >
                     </div>
@@ -280,9 +281,6 @@ export default {
     };
   },
   computed: {
-    isValid() {
-      return !this.$v.$invalid;
-    },
     title() {
       return "Office Supply Request";
     },
@@ -321,6 +319,14 @@ export default {
     },
   },
   methods: {
+    clearSupplies() {
+      this.supplies = [
+        {
+          quantity: "",
+          description: "",
+        },
+      ];
+    },
     quantityErrors(v) {
       const errors = [];
       if (!this.$v.supplies.$anyDirty) return errors;
@@ -406,7 +412,6 @@ export default {
       this.reload();
     },
     clear() {
-      this.$v.$reset();
       this.showSubmit = true;
       this.name = "";
       this.email = this.$store.state.auth.userMeta.email || null;
@@ -416,7 +421,9 @@ export default {
       this.axiosError = "";
       this.showLoader = false;
       this.formData = null;
+      this.clearSupplies();
       this.reload();
+      this.$v.$reset();
     },
   },
 };
