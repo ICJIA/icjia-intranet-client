@@ -68,6 +68,11 @@
                   ></v-col>
                 </v-row>
                 <v-row>
+                  <v-col cols="12">
+                    <h2>Supplies:</h2>
+                  </v-col>
+                </v-row>
+                <v-row>
                   <v-col>
                     <div
                       v-for="(v, index) in $v.supplies.$each.$iter"
@@ -140,6 +145,11 @@
                         >Remove</v-btn
                       >
                     </div>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="12">
+                    <h2>Additional Comments:</h2>
                   </v-col>
                 </v-row>
 
