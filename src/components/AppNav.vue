@@ -128,7 +128,7 @@
             v-bind="attrs"
             v-on="on"
             :class="{ currentRoute: $route.path.includes('documents') }"
-            >Documents & Resources <v-icon right small>arrow_drop_down</v-icon>
+            >Documents<v-icon right small>arrow_drop_down</v-icon>
           </v-btn>
         </template>
         <v-list nav dense elevation="2">
@@ -156,7 +156,7 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >Groups</v-list-item-title
+                >Grouped</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>

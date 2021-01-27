@@ -87,7 +87,7 @@
         v-if="item.clusters && item.clusters.length"
         style="margin-top: -20px"
       >
-        <v-sheet class="mt-8 px-5 py-5">
+        <v-sheet class="mt-8 px-0 py-5">
           <div
             style="
               border-bottom: 1px solid #ccc;
@@ -102,7 +102,7 @@
           <div
             v-for="(cluster, index) in item.clusters"
             :key="`cluster-${index}`"
-            class="ml-5 mt-5 px-3 py-3"
+            class="mt-5 px-3 py-3"
             style="background: #f3f5f7"
           >
             <router-link
