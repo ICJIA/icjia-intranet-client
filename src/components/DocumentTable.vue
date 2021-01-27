@@ -16,6 +16,11 @@
         itemsPerPageText: 'Number of documents',
         itemsPerPageOptions: [100, 200, 300, -1],
       }"
+      v-if="
+        $vuetify.breakpoint.md ||
+        $vuetify.breakpoint.lg ||
+        $vuetify.breakpoint.xl
+      "
     >
       <template v-slot:top>
         <div class="pt-5">
@@ -30,12 +35,14 @@
         <div>
           <v-chip dark x-small color="#2296F3" v-if="isItNew(item)">
             NEW! </v-chip
-          ><span class="ml-2">{{ item.title }}</span>
+          ><span class="ml-2"
+            ><strong>{{ item.title }}</strong></span
+          >
         </div>
       </template>
       <template v-slot:item.updated_at="{ item }">
         <div>
-          <strong class="ml-3">{{ item.updated_at | dateFormat }}</strong>
+          {{ item.updated_at | dateFormat }}
         </div>
       </template>
       <template v-slot:item.unit.shortname="{ item }">
@@ -101,6 +108,60 @@
         </td>
       </template>
     </v-data-table>
+    <div v-else>
+      <v-simple-table>
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <th class="text-left">Updated</th>
+              <th class="text-left">Title</th>
+
+              <th class="text-left">Download/Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(item, index) in documents"
+              :key="`mobile-table-${index}`"
+              @click.stop.prevent="goToLink(item)"
+              class="hover"
+            >
+              <td>
+                <v-chip
+                  dark
+                  x-small
+                  color="#2296F3"
+                  class="mr-2"
+                  v-if="isItNew(item)"
+                >
+                  NEW! </v-chip
+                >{{ item.updated_at | dateFormatShort }}
+              </td>
+              <td>
+                <strong>{{ item.title }}</strong>
+              </td>
+              <td class="text-center">
+                <span v-if="item.externalURL">
+                  <v-icon small>open_in_new</v-icon>
+                </span>
+                <span v-else>
+                  <v-avatar color="grey lighten-2" size="35" class="my-3">
+                    <span
+                      style="
+                        font-weight: 900;
+                        font-size: 10px;
+                        text-transform: uppercase;
+                      "
+                      >{{ item.file.ext.substring(1) }}
+                    </span>
+                  </v-avatar>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
+    </div>
   </div>
 </template>
 
@@ -169,6 +230,13 @@ export default {
         return true;
       } else {
         return false;
+      }
+    },
+    goToLink(item) {
+      if (item.externalURL) {
+        this.goToExternal(item.externalURL);
+      } else {
+        this.download(item.file);
       }
     },
     goToExternal(url) {

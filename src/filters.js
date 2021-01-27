@@ -110,7 +110,7 @@ Vue.filter("dateFormat", function (timestamp) {
 });
 
 Vue.filter("dateFormatShort", function (timestamp) {
-  return moment(timestamp).format("MMMM DD, YYYY");
+  return moment(timestamp).format("MM/DD/YY");
 });
 
 Vue.filter("timeAgoFormat", function (timestamp) {
