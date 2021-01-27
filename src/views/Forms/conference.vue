@@ -266,9 +266,9 @@ export default {
   },
   data() {
     return {
-      name: "Test Name",
+      name: "",
       email: this.$store.state.auth.userMeta.email || null,
-      unit: "Information Systems Unit",
+      unit: "",
       number_attending: null,
       cleanup: null,
       room: null,

@@ -171,9 +171,9 @@ export default {
   },
   data() {
     return {
-      name: "Test Name",
+      name: "",
       email: this.$store.state.auth.userMeta.email || null,
-      unit: "Information Systems Unit",
+      unit: "",
       comment: "",
       form: null,
       showSubmit: true,
