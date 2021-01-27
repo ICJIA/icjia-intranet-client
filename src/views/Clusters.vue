@@ -49,6 +49,15 @@
 
             <template v-slot:item.title="{ item }">
               <div style="font-size: 14px !important">
+                <v-chip
+                  dark
+                  x-small
+                  color="#2296F3"
+                  class="mr-2"
+                  v-if="isItNew(item)"
+                >
+                  UPDATED!
+                </v-chip>
                 <strong> {{ item.title }}</strong>
               </div>
             </template>
