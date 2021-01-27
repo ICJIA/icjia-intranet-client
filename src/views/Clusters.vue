@@ -10,7 +10,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container v-if="clusters">
+    <v-container v-if="clusters" fluid>
       <v-row>
         <v-col>
           <v-data-table
@@ -26,6 +26,11 @@
             :search="search"
             :loading="loading"
             loading-text="Loading..."
+            v-if="
+              $vuetify.breakpoint.md ||
+              $vuetify.breakpoint.lg ||
+              $vuetify.breakpoint.xl
+            "
           >
             <template v-slot:top>
               <div class="pt-5">
@@ -66,6 +71,46 @@
               </td>
             </template>
           </v-data-table>
+          <div v-if="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs">
+            <v-simple-table>
+              <template v-slot:default>
+                <thead>
+                  <tr>
+                    <th class="text-left">Updated</th>
+                    <th class="text-left">Group Title</th>
+
+                    <th class="text-left">Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(item, index) in clusters"
+                    :key="`mobile-table-${index}`"
+                    @click.stop.prevent="goToLink(item)"
+                    class="hover"
+                  >
+                    <td>
+                      <v-chip
+                        dark
+                        x-small
+                        color="#2296F3"
+                        class="mr-2"
+                        v-if="isItNew(item)"
+                      >
+                        UPDATED! </v-chip
+                      >{{ item.updated_at | dateFormatShort }}
+                    </td>
+                    <td>
+                      <strong>{{ item.title }}</strong>
+                    </td>
+                    <td class="text-center">
+                      <v-icon small>link</v-icon>
+                    </td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -83,6 +128,7 @@
 import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
 import { GET_ALL_CLUSTERS } from "@/graphql/queries/clusters";
+import moment from "moment";
 export default {
   mixins: [handleClicks],
   data() {
@@ -122,6 +168,17 @@ export default {
     render(content) {
       return renderToHtml(content);
     },
+    isItNew(item) {
+      let now = moment(new Date()); //todays date
+      let end = moment(item.updated_at); // another date
+      let duration = moment.duration(now.diff(end));
+      let days = duration.asDays();
+      if (days <= 2) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     goToExternal(url) {
       //
       if (url.indexOf("://") > 0 || url.indexOf("//") === 0) {
@@ -131,6 +188,10 @@ export default {
         this.$router.push(url);
         console.log("relative: ", url);
       }
+    },
+    goToLink(item) {
+      //console.log(`/documents/clusters/${item.slug}`);
+      this.$router.push(`/documents/clusters/${item.slug}`);
     },
     download(file) {
       let download = `https://dev.icjia-api.cloud${file.url}`;
