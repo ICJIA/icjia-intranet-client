@@ -36,6 +36,15 @@ const routes = [
       import(/* webpackChunkName: "login" */ "../views/Login.vue"),
   },
   {
+    path: "/success/",
+    name: "Success",
+    meta: {
+      hideAlert: true,
+    },
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/Success.vue"),
+  },
+  {
     path: "/logout/",
     name: "Logout",
     meta: {
