@@ -12,6 +12,10 @@
       @click:row="clicked"
       :search="search"
       dense
+      :footer-props="{
+        itemsPerPageText: 'Number of documents',
+        itemsPerPageOptions: [100, 200, 300, -1],
+      }"
     >
       <template v-slot:top>
         <div class="pt-5">
@@ -109,6 +113,7 @@ export default {
   mixins: [handleClicks],
   data() {
     return {
+      items_per_page: [100, 200, 300 - 1],
       error: null,
       expanded: [],
       search: "",
