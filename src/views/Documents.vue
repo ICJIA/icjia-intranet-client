@@ -1,16 +1,16 @@
 <template>
   <div>
     <Breadcrumb :key="$route.path" title="Documents"></Breadcrumb>
-    <v-container>
+    <v-container fluid>
       <v-row>
         <v-col>
           <div class="text-center">
-            <h1>All Documents</h1>
+            <h1>ICJIA Documents & Resources</h1>
           </div>
         </v-col>
       </v-row>
     </v-container>
-    <v-container v-if="documents">
+    <v-container v-if="documents" fluid>
       <v-row>
         <v-col v-if="documents.length">
           <DocumentTable :documents="documents"></DocumentTable>

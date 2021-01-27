@@ -13,7 +13,9 @@
           <div class="markdown-body">
             <h1 class="text-center">{{ unit.title }}</h1>
             <div v-html="unit.summary" class="mb-12"></div>
-            <h2 class="mt-3 text-center" id="documents">Documents</h2>
+            <h2 class="mt-3 text-center" id="documents">
+              Documents & Resources
+            </h2>
           </div>
           <div v-if="unit.documents.length">
             <DocumentTable

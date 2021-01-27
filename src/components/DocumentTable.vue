@@ -22,9 +22,16 @@
           ></v-text-field>
         </div>
       </template>
+      <template v-slot:item.title="{ item }">
+        <div>
+          <v-chip dark x-small color="#2296F3" v-if="isItNew(item)">
+            NEW! </v-chip
+          ><span class="ml-2">{{ item.title }}</span>
+        </div>
+      </template>
       <template v-slot:item.updated_at="{ item }">
         <div>
-          <strong>{{ item.updated_at | dateFormat }}</strong>
+          <strong class="ml-3">{{ item.updated_at | dateFormat }}</strong>
         </div>
       </template>
       <template v-slot:item.unit.shortname="{ item }">
@@ -96,6 +103,8 @@
 <script>
 import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
+
+import moment from "moment";
 export default {
   mixins: [handleClicks],
   data() {
@@ -145,6 +154,17 @@ export default {
   methods: {
     render(content) {
       return renderToHtml(content);
+    },
+    isItNew(item) {
+      let now = moment(new Date()); //todays date
+      let end = moment(item.updated_at); // another date
+      let duration = moment.duration(now.diff(end));
+      let days = duration.asDays();
+      if (days <= 2) {
+        return true;
+      } else {
+        return false;
+      }
     },
     goToExternal(url) {
       //

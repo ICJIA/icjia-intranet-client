@@ -1,7 +1,10 @@
 <template>
   <div>
     <v-app-bar app style="background: #fff" elevate-on-scroll>
-      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
+      <v-app-bar-nav-icon
+        @click="toggleDrawer"
+        v-if="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs"
+      ></v-app-bar-nav-icon>
       <div class="d-flex align-center">
         <v-img
           alt="ICJIA Logo"
@@ -125,7 +128,7 @@
             v-bind="attrs"
             v-on="on"
             :class="{ currentRoute: $route.path.includes('documents') }"
-            >Documents <v-icon right small>arrow_drop_down</v-icon>
+            >Documents & Resources <v-icon right small>arrow_drop_down</v-icon>
           </v-btn>
         </template>
         <v-list nav dense elevation="2">
@@ -238,7 +241,15 @@
 </template>
 
 <script>
-export default {};
+import { EventBus } from "@/event-bus";
+export default {
+  methods: {
+    toggleDrawer() {
+      EventBus.$emit("toggleDrawer");
+      console.log("toggle drawer");
+    },
+  },
+};
 </script>
 
 <style>

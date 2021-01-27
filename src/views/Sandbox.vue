@@ -1,97 +1,95 @@
 <template>
-  <div>
-    <v-row>
-      <v-col>
-        <div v-for="(v, index) in $v.supplies.$each.$iter" :key="index">
-          <div class="form-group">
-            <v-row>
-              <v-col cols="12" sm="2">
-                <v-text-field
-                  label="Quantity"
-                  v-model.trim="v.quantity.$model"
-                  :error-messages="quantityErrors(v)"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="10">
-                <v-text-field
-                  label="Description"
-                  v-model.trim="v.description.$model"
-                  :error-messages="descriptionErrors(v)"
-                ></v-text-field>
-              </v-col>
-            </v-row>
-          </div>
-        </div>
-      </v-col>
-    </v-row>
+  <v-list v-if="menuItems && menuItems.length">
+    <div v-for="item in menuItems" :key="item.title">
+      <div v-if="item.items.length">
+        <v-list-group v-model="item.active" no-action>
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title
+                v-text="item.title"
+                style="font-size: 22px; font-weight: bold"
+              ></v-list-item-title>
+            </v-list-item-content>
+          </template>
 
-    <div class="text-center">
-      <v-btn
-        small
-        :disabled="!isValid"
-        @click="supplies.push({ quantity: 0, description: '' })"
-      >
-        Add
-      </v-btn>
-      <v-btn small @click="supplies.pop()" v-if="supplies.length > 1"
-        >Remove</v-btn
-      >
+          <v-list-item
+            v-for="child in item.items"
+            :key="child.title"
+            :to="child.url"
+          >
+            <v-list-item-content style="margin-left: -30px">
+              <v-list-item-title
+                v-text="child.title"
+                style="
+                  font-size: 14px !important;
+                  font-weight: bold;
+                  color: #555;
+                "
+              ></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+      </div>
+      <div v-else>
+        <v-list-item style="margin-bottom: -5px" :to="item.url">
+          <v-list-item-title style="font-size: 22px; font-weight: bold">
+            {{ item.title }}</v-list-item-title
+          >
+        </v-list-item>
+      </div>
     </div>
-  </div>
+  </v-list>
 </template>
 
 <script>
-import { validationMixin } from "vuelidate";
-
-import { required, integer } from "vuelidate/lib/validators";
-
 export default {
-  mixins: [validationMixin],
-  computed: {
-    isValid() {
-      return !this.$v.$invalid;
-    },
-  },
-  methods: {
-    quantityErrors(v) {
-      const errors = [];
-      if (!this.$v.supplies.$anyDirty) return errors;
-      !v.quantity.required && errors.push("Quantity is required.");
-      !v.quantity.integer && errors.push("Quantity must be a number.");
-      return errors;
-    },
-    descriptionErrors(v) {
-      const errors = [];
-      if (!this.$v.supplies.$anyDirty) return errors;
-      !v.description.required && errors.push("Description is required.");
-      return errors;
-    },
-  },
-  data() {
-    return {
-      supplies: [
-        {
-          quantity: 0,
-          description: "",
-        },
-      ],
+  mounted() {
+    let unitArray = this.$myApp.units.map((unit) => {
+      let obj = {};
+      obj.title = unit.title;
+      obj.url = unit.path;
+      return obj;
+    });
+
+    let units = {
+      title: "Units",
+      items: unitArray,
     };
+
+    let events = {
+      url: "/events/",
+      items: [],
+      title: "Events",
+    };
+    this.menuItems = [...this.items, units, events];
+    //console.log(this.menuItems);
   },
-  validations: {
-    supplies: {
-      required,
-      $each: {
-        quantity: {
-          required,
-          integer,
-        },
-        description: {
-          required,
-        },
+
+  data: () => ({
+    menuItems: null,
+    items: [
+      {
+        url: "/news/",
+        items: [],
+        title: "News & Updates",
       },
-    },
-  },
+      {
+        items: [
+          { title: "Conference Room Reservation", url: "/forms/conference/" },
+          { title: "Laptop Request", url: "/forms/laptop/" },
+          { title: "Office Supply Request", url: "/forms/supplies/" },
+          { title: "Technical Support Request", url: "/forms/support/" },
+        ],
+        title: "Online Forms",
+      },
+      {
+        items: [
+          { title: "All", url: "/documents/" },
+          { title: "Grouped", url: "/documents/clusters/" },
+        ],
+        title: "Documents & Resources",
+      },
+    ],
+  }),
 };
 </script>
-
-<style lang="scss" scoped></style>
