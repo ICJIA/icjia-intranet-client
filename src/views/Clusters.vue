@@ -26,6 +26,10 @@
             :search="search"
             :loading="loading"
             loading-text="Loading..."
+            :footer-props="{
+              itemsPerPageText: 'Number of groups',
+              itemsPerPageOptions: [100, 200, 300, -1],
+            }"
             v-if="
               $vuetify.breakpoint.md ||
               $vuetify.breakpoint.lg ||
