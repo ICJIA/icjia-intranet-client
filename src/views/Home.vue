@@ -125,8 +125,10 @@
       </div>
       <div v-if="result.error" class="text-center error apollo">
         {{ result.error }}
-        <div class="text-center my-10">
-          <router-link to="/login">LOGIN AGAIN</router-link>
+        <div class="text-center my-10 py-5">
+          <router-link to="/login"
+            >PLEASE CLICK HERE TO LOGIN AGAIN</router-link
+          >
         </div>
       </div>
     </template>

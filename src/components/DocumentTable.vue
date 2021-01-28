@@ -12,6 +12,8 @@
       @click:row="clicked"
       :search="search"
       dense
+      :sort-by.sync="sortBy"
+      :sort-desc.sync="sortDesc"
       :footer-props="{
         itemsPerPageText: 'Number of documents',
         itemsPerPageOptions: [100, 200, 300, -1],
@@ -200,6 +202,8 @@ export default {
   mixins: [handleClicks],
   data() {
     return {
+      sortBy: "updated_at",
+      sortDesc: true,
       items_per_page: [100, 200, 300 - 1],
       error: null,
       expanded: [],
