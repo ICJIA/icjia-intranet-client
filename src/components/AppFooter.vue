@@ -3,6 +3,7 @@
     <v-card
       flat
       tile
+      fixed
       class="text-center pt-0 pb-2"
       style="width: 100% !important"
       color="#113959"
