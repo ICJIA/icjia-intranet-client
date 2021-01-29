@@ -112,9 +112,9 @@
                   <a
                     href="https://icjia.illinois.gov/researchhub"
                     target="_blank"
-                    >the ResearchHub</a
+                    >ICJIA's ResearchHub</a
                   >
-                  for ICJIA's articles, datasets, and applications.
+                  for articles, datasets, and applications.
                 </div>
               </v-sheet>
             </v-col>
@@ -122,7 +122,7 @@
               <Timeline
                 id="ICJIA_Illinois"
                 sourceType="profile"
-                :options="{ tweetLimit: '4' }"
+                :options="{ tweetLimit: '6' }"
               />
             </v-col>
           </v-row>

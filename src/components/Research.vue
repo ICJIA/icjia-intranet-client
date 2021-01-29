@@ -60,7 +60,7 @@
     <!-- <div v-if="loading">
       <Loader></Loader>
     </div> -->
-    <div class="text-center" v-if="click < 2">
+    <!-- <div class="text-center" v-if="click < 2">
       <v-btn
         class="ma-2"
         :loading="loading"
@@ -70,7 +70,7 @@
       >
         LOAD MORE
       </v-btn>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -88,7 +88,7 @@ export default {
       articles: [],
       start: 0,
       click: 0,
-      limit: 3,
+      limit: 4,
       max: 9,
       disabled: false,
       query: null,
