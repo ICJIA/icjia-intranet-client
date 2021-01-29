@@ -84,7 +84,7 @@
               </v-sheet>
             </v-col>
 
-            <v-col sm="12" cols="12" class="child">
+            <v-col sm="12" cols="12" md="6" class="child">
               <v-sheet class="px-2 py-2" elevation="3" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
                   <div style="background: #225b89" class="px-3 py-3">
@@ -118,6 +118,13 @@
                 </div>
               </v-sheet>
             </v-col>
+            <v-col cols="12" md="6">
+              <Timeline
+                id="ICJIA_Illinois"
+                sourceType="profile"
+                :options="{ tweetLimit: '4' }"
+              />
+            </v-col>
           </v-row>
         </v-container>
 
@@ -141,9 +148,13 @@ import _ from "lodash";
 import moment from "moment";
 // eslint-disable-next-line no-unused-vars
 import tz from "moment-timezone";
+// eslint-disable-next-line no-unused-vars
+import { Tweet, Moment, Timeline } from "vue-tweet-embed";
 export default {
   name: "Home",
-  components: {},
+  components: {
+    Timeline,
+  },
   computed: {
     name() {
       return this.data;
