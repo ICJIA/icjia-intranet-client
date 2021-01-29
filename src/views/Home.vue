@@ -31,7 +31,7 @@
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
                       <v-col>
-                        <h2 style="color: #fff">ICJIA News & Updates</h2>
+                        <h2 style="color: #fff">News & Updates</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn
@@ -119,11 +119,34 @@
               </v-sheet>
             </v-col>
             <v-col cols="12" md="6">
-              <Timeline
-                id="ICJIA_Illinois"
-                sourceType="profile"
-                :options="{ tweetLimit: '6' }"
-              />
+              <v-sheet class="px-2 py-2" elevation="3" style="">
+                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
+                  <div style="background: #225b89" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2 style="color: #fff">ICJIA on Twitter</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1">
+                        <v-btn
+                          outlined
+                          small
+                          target="_blank"
+                          href="https://twitter.com/ICJIA_Illinois"
+                          >Twitter&nbsp;<v-icon right small
+                            >open_in_new</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+                <Timeline
+                  id="ICJIA_Illinois"
+                  sourceType="profile"
+                  :options="{ tweetLimit: '6' }"
+                />
+              </v-sheet>
+              <!--  -->
             </v-col>
           </v-row>
         </v-container>

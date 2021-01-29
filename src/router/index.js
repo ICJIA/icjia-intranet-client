@@ -96,7 +96,7 @@ const routes = [
       requiresAuth: true,
     },
     component: () =>
-      import(/* webpackChunkName: "sandbox2" */ "../views/Sandbox2.vue"),
+      import(/* webpackChunkName: "sandbox" */ "../views/Sandbox2.vue"),
   },
   {
     path: "/sandbox3",
@@ -105,7 +105,7 @@ const routes = [
       requiresAuth: true,
     },
     component: () =>
-      import(/* webpackChunkName: "sandbox3" */ "../views/Sandbox3.vue"),
+      import(/* webpackChunkName: "sandbox" */ "../views/Sandbox3.vue"),
   },
   {
     path: "/news/",
@@ -223,6 +223,15 @@ const routes = [
     name: "FormLaptop",
     component: () =>
       import(/* webpackChunkName: "forms" */ "../views/Forms/laptop.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/forms/vehicle/",
+    name: "FormVehicleRequest",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/Forms/vehicle.vue"),
     meta: {
       requiresAuth: true,
     },
