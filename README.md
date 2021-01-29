@@ -20,7 +20,7 @@ npm run serve
 npm run build
 ```
 
-## ENVIRONMENT VARIABLES
+## Environment Variables
 
 Rename `.env.sample` to `.env`, then add env variables.
 
