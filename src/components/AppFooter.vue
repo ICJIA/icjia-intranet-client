@@ -1,0 +1,62 @@
+<template>
+  <v-footer dark color="#113959" height="auto">
+    <v-card
+      flat
+      tile
+      class="text-center pt-0 pb-2"
+      style="width: 100% !important"
+      color="#113959"
+    >
+      <v-card-text
+        class="pt-2 pb-2 mt-2"
+        color="#113959"
+        style="font-size: 12px"
+      >
+        <div class="mt-1 mb-4">
+          <v-btn
+            color="grey darken-4"
+            style="font-size: 10px"
+            dark
+            href="https://github.com/ICJIA/icjia-intranet-client"
+            target="_blank"
+          >
+            <v-icon size="12px" class="mr-3">fab fa-github</v-icon>
+            &nbsp; Version: {{ info.version }}
+          </v-btn>
+        </div>
+        &copy;&nbsp;
+        <a href="http://icjia.illinois.gov" style="background: none">
+          {{ year }}
+          Illinois Criminal Justice Information Authority </a
+        >&nbsp;|&nbsp;
+        <router-link to="/web-support/" style="background: none"
+          >Contact ICJIA Web Support</router-link
+        >
+      </v-card-text>
+    </v-card>
+  </v-footer>
+</template>
+
+<script>
+const info = require("../../package.json");
+export default {
+  data: () => ({
+    icons: ["fab fa-github"],
+    info: info,
+  }),
+  computed: {
+    year() {
+      return new Date().getFullYear();
+    },
+  },
+};
+</script>
+
+<style scoped>
+a {
+  color: #eee !important;
+}
+a:hover {
+  color: #aaa !important;
+}
+</style>

@@ -51,6 +51,7 @@
       <span v-else>
         <ComingSoon></ComingSoon>
       </span>
+      <AppFooter v-if="$store.state.auth.isAuthenticated"></AppFooter>
     </v-main>
   </v-app>
 </template>

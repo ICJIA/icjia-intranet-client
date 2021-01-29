@@ -11,12 +11,16 @@
     "build:serve": "npm run build && serve ./dist --single",
     "build:lambda": "netlify-lambda build ./src/lambda",
     "start:lambda": "netlify-lambda serve ./src/lambda",
-    "scripts": "npm run schema && node generateSearchIndex && node generateUnits"
+    "scripts": "npm run schema && node generateSearchIndex && node generateUnits",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
+    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
   },
   "dependencies": {
     "@animxyz/vue": "^0.4.0",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "aos": "^3.0.0-beta.6",
+    "auto-changelog": "^2.2.1",
     "axios": "^0.21.1",
     "cheerio": "1.0.0-rc.5",
     "core-js": "^3.8.2",

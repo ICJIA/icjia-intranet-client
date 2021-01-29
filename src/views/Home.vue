@@ -114,7 +114,7 @@
                     target="_blank"
                     >ICJIA's ResearchHub</a
                   >
-                  for articles, datasets, and applications.
+                  for more articles, datasets, and applications.
                 </div>
               </v-sheet>
             </v-col>

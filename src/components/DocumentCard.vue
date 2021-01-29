@@ -35,7 +35,7 @@
 
       <div
         v-if="item.body"
-        class="mb-2 markdown-body"
+        class="mb-6 markdown-body"
         v-html="render(item.body)"
       ></div>
       <div
