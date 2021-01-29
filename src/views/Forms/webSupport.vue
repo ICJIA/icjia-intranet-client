@@ -99,6 +99,9 @@
 
               <div v-if="!showSubmit" class="text-center" style="color: green">
                 {{ successMessage }}
+                <div class="my-3">
+                  &laquo; <router-link to="/login/">Back to login</router-link>
+                </div>
               </div>
               <div
                 v-if="showAxiosError"
