@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="text-center page-form">
     <h1>Vehicle Request form here</h1>
   </div>
 </template>

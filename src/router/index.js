@@ -72,13 +72,14 @@ const routes = [
       import(/* webpackChunkName: "forgot" */ "../views/Forgot.vue"),
   },
   {
-    path: "/reset/",
-    name: "Reset",
+    path: "/web-support/",
+    name: "WebSupport",
     meta: {
       hideAlert: true,
+      hideScrollButton: true,
     },
     component: () =>
-      import(/* webpackChunkName: "reset" */ "../views/Reset.vue"),
+      import(/* webpackChunkName: "reset" */ "../views/Forms/webSupport.vue"),
   },
   {
     path: "/sandbox",

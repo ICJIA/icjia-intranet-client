@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown-body">
+  <div class="markdown-body page-form">
     <Breadcrumb
       :key="$route.path"
       :title="title"

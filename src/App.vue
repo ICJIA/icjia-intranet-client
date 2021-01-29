@@ -17,6 +17,7 @@
         transition="scale-transition"
         @click="toTop"
         aria-label="Click to scroll to top"
+        v-if="!$route.meta.hideScrollButton"
       >
         <v-icon>keyboard_arrow_up</v-icon>
       </v-btn>
@@ -107,5 +108,8 @@ export default {
 .container.full-width {
   width: 100%;
   padding: 0px !important;
+}
+body:not(.page-form) .grecaptcha-badge {
+  display: none;
 }
 </style>

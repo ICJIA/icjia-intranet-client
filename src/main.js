@@ -54,6 +54,15 @@ Vue.use(VueMeta, {
 // import AOS from "aos";
 // AOS.init();
 
+// import { VueReCaptcha } from "vue-recaptcha-v3";
+
+// Vue.use(VueReCaptcha, {
+//   siteKey: "6LdufUEaAAAAAMWt_78I8Z9crd5QLzJmRpaf1cVo",
+//   loaderOptions: {
+//     useRecaptchaNet: true,
+//   },
+// });
+
 import VueDummy from "vue-dummy";
 Vue.use(VueDummy);
 

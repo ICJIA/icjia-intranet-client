@@ -12,8 +12,8 @@
           </div>
           <div class="mt-5">
             <v-btn x-small to="/" class="mr-2">Back to home page</v-btn>
-            <v-btn x-small to="/forms/support/" class="ml-2"
-              >Contact tech support</v-btn
+            <v-btn x-small to="/web-support/" class="ml-2"
+              >Contact web support</v-btn
             >
           </div>
         </div>

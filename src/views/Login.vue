@@ -45,9 +45,7 @@
           </div>
           <div class="mt-4 text-center" style="font-size: 12px">
             Login problems? Contact
-            <a href="mailto: christopher.schweda@illinois.gov"
-              >ICJIA web support</a
-            >
+            <router-link to="/web-support/">ICJIA Web Support</router-link>
           </div>
         </v-form>
       </v-card>

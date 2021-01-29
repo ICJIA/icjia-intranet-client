@@ -1,11 +1,5 @@
 <template>
   <div class="markdown-body page-form">
-    <Breadcrumb
-      :key="$route.path"
-      :title="title"
-      subPath="Forms"
-      subPathURL="/forms/"
-    ></Breadcrumb>
     <v-container>
       <v-row>
         <v-col>
@@ -13,7 +7,7 @@
             <v-container>
               <v-row>
                 <v-col cols="12" class="text-center">
-                  <h1 class="mb-6">Laptop Request</h1>
+                  <h1 class="mb-6">Contact Web Support</h1>
                 </v-col>
               </v-row>
             </v-container>
@@ -68,76 +62,22 @@
                   ></v-col>
                 </v-row>
 
-                <v-row class="mt-10">
-                  <v-col cols="12" md="4">
-                    <h2 class="mt-5">Pickup Date:</h2>
-                    <Datepicker
-                      refName="pickup_date"
-                      @pickup_date="getFieldData"
-                      label="Date required"
-                      :key="render"
-                    ></Datepicker>
-                  </v-col>
-                  <v-col cols="12" md="4">
-                    <h2 class="mt-5 mb-8">Pickup time:</h2>
-                    <v-select
-                      :items="pickup_intervals"
-                      class="heavy"
-                      label="Select pickup time"
-                      dense
-                      v-if="pickup_intervals"
-                      v-model="pickup_time"
-                      aria-label="Select Pickup Time"
-                      prepend-icon="mdi-clock"
-                      :error-messages="pickupTimeErrors"
-                      @input="$v.pickup_time.$touch()"
-                      @change="$v.pickup_time.$touch()"
-                      @blur="$v.pickup_time.$touch()"
-                    ></v-select>
-                  </v-col>
-                  <v-col cols="12" md="4">
-                    <h2 class="mt-5">Return date:</h2>
-                    <Datepicker
-                      refName="return_date"
-                      @return_date="getFieldData"
-                      label="Date to Return"
-                      :key="render"
-                      class="heavy"
-                    ></Datepicker> </v-col
-                ></v-row>
-                <v-row class="mt-10">
-                  <v-col>
-                    <h2 class="mt-5">Requested accessories:</h2>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col
-                    v-for="(accessory, index) in accessories"
-                    :key="index"
-                    cols="12"
-                    sm="6"
-                    md="3"
-                  >
-                    <v-checkbox
-                      v-model="accessories_requested"
-                      :label="accessory"
-                      :value="accessory"
-                      class="heavy"
-                    ></v-checkbox>
-                  </v-col>
-                </v-row>
                 <v-row>
                   <v-col cols="12">
-                    <h2 class="mt-10">Additional Requests:</h2>
                     <v-textarea
                       v-model="comment"
                       auto-grow
                       filled
-                      label="Requests"
+                      label="Please provide as much detail as possible"
                       rows="10"
                       class="mt-3"
                       @click="clearAxiosError"
                       ref="comment"
+                      aria-label="Request"
+                      :error-messages="commentErrors"
+                      @input="$v.comment.$touch()"
+                      @change="$v.comment.$touch()"
+                      @blur="$v.comment.$touch()"
                     ></v-textarea>
                     <!-- <div v-if="formData">
                       {{ formData }}
@@ -163,9 +103,9 @@
               <div
                 v-if="showAxiosError"
                 style="color: red; font-size: 14px"
-                class="mt-3 text-center"
+                class="mt-10 text-center"
               >
-                <b style="font-size: 20px">LAPTOP REQUEST NOT SENT</b>
+                <b style="font-size: 20px">WEB SUPPORT REQUEST NOT SENT</b>
                 <br />
                 <br />
                 {{ axiosError }}
@@ -175,7 +115,7 @@
                 style="color: red; font-weight: bold"
                 class="mt-5 text-center"
               >
-                The form has errors. Please double-check.
+                The form has errors.
               </div>
               .
             </form>
@@ -187,12 +127,18 @@
 </template>
 
 <script>
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+
 import { validationMixin } from "vuelidate";
 import { required, email } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
 import { generateHours } from "@/services/Utils";
 import { dbInsert } from "@/services/Forms";
 import NProgress from "nprogress";
+
+//const config = require("@/config.json");
+// eslint-disable-next-line no-unused-vars
 import axios from "axios";
 
 export default {
@@ -215,17 +161,14 @@ export default {
     name: { required },
     email: { required, email },
     unit: { required },
-    pickup_time: { required },
+    comment: { required },
   },
   data() {
     return {
       name: "",
-      email: this.$store.state.auth.userMeta.email || null,
+      email: null,
       unit: "",
       comment: "",
-      pickup_time: "8:00 AM",
-      pickup_intervals: null,
-      dates: [],
       form: null,
       showSubmit: true,
       showAxiosError: false,
@@ -236,13 +179,11 @@ export default {
       isIE: null,
       units: null,
       render: false,
-      accessories: [" Bag", " Power Cord", " Verizon Air Card", " Mouse"],
-      accessories_requested: [],
     };
   },
   computed: {
     title() {
-      return "Laptop Request";
+      return "Technical Support Request";
     },
 
     permalink() {
@@ -267,10 +208,10 @@ export default {
       !this.$v.unit.required && errors.push("Unit is required");
       return errors;
     },
-    pickupTimeErrors() {
+    commentErrors() {
       const errors = [];
-      if (!this.$v.pickup_time.$dirty) return errors;
-      !this.$v.pickup_time.required && errors.push("Pickup time is required");
+      if (!this.$v.comment.$dirty) return errors;
+      !this.$v.comment.required && errors.push("Comment is required");
       return errors;
     },
 
@@ -280,6 +221,15 @@ export default {
     },
   },
   methods: {
+    async recaptcha() {
+      // (optional) Wait until recaptcha has been loaded.
+      await this.$recaptchaLoaded();
+
+      // Execute reCAPTCHA with action "login".
+      const token = await this.$recaptcha("login");
+
+      // Do stuff with the received token.
+    },
     getFieldData(v) {
       //console.log("value: ", v);
       this[v.refName] = v.value;
@@ -296,7 +246,7 @@ export default {
 
     async submit() {
       this.$v.$touch();
-
+      this.showAxiosError = false;
       if (this.isSuccess) {
         NProgress.start();
         this.showLoader = true;
@@ -305,33 +255,23 @@ export default {
           /(<([^>]+)>)/gi,
           ""
         );
-
         this.comment = cleanComment;
-
-        let text = {
-          type: this.title,
+        this.form = {
+          type: "Technical Support Request",
           name: this.name,
           email: this.email,
           unit: this.unit,
           comment: this.comment,
-          accessories_requested: this.accessories_requested,
         };
-
-        let dates = {
-          pickup_date: this.pickup_date,
-          pickup_time: this.pickup_time,
-          return_date: this.return_date,
-        };
-        this.form = { ...text, ...dates };
 
         let options = {
           method: "POST",
           data: this.form,
-          url: "https://mail.icjia.cloud/intranet/laptop",
+          url: "https://mail.icjia.cloud/intranet/web",
         };
 
-        let dbResponse = await dbInsert(this.$store.state.auth.jwt, this.form);
-        console.log("dbinsert: ", dbResponse);
+        // let dbResponse = await dbInsert(this.$store.state.auth.jwt, this.form);
+        // console.log("dbinsert: ", dbResponse);
 
         try {
           let res = await axios(options);
@@ -361,12 +301,11 @@ export default {
     },
     clear() {
       this.$v.$reset();
+      this.showSubmit = true;
       this.name = "";
-      this.email = this.$store.state.auth.userMeta.email || null;
+      this.email = null;
       this.comment = "";
       this.unit = "";
-      this.pickup_time = "";
-      this.accessories_requested = [];
       this.showAxiosError = false;
       this.axiosError = "";
       this.showLoader = false;
@@ -377,4 +316,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.grecaptcha-badge {
+  display: block !important;
+}
+</style>
