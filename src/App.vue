@@ -1,5 +1,6 @@
 <template>
   <v-app id="page-top" style="background: #eee">
+    <div id="fb-root"></div>
     <AppNav v-if="$store.state.auth.isAuthenticated"></AppNav>
     <AppSidebar></AppSidebar>
 
@@ -71,7 +72,19 @@ export default {
       //console.log(to, from);
     },
   },
-  mounted() {},
+  mounted() {
+    this.$loadScript(
+      "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0"
+    )
+      .then(() => {
+        console.log("facebook script loaded");
+        //this.isLoading = false;
+      })
+      .catch((err) => {
+        console.log(err);
+        //this.isLoading = false;
+      });
+  },
 
   components: {},
 

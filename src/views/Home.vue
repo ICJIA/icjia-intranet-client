@@ -179,7 +179,16 @@
                     </v-row>
                   </div>
                 </v-container>
-                <Facebook></Facebook>
+                <iframe
+                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FICJIA&tabs=timeline&width=500&height=1000&small_header=false&adapt_container_width=true&hide_cover=true&show_facepile=true&appId"
+                  width="1000"
+                  height="1000"
+                  style="border: none; overflow: hidden; width: 100% !important"
+                  scrolling="no"
+                  frameborder="0"
+                  allowfullscreen="true"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                ></iframe>
               </v-sheet>
               <!--  -->
             </v-col>
@@ -238,6 +247,8 @@ import moment from "moment";
 import tz from "moment-timezone";
 // eslint-disable-next-line no-unused-vars
 import { Tweet, Moment, Timeline } from "vue-tweet-embed";
+import { nanoid } from "nanoid";
+
 export default {
   name: "Home",
   components: {
@@ -258,6 +269,7 @@ export default {
     return {
       GET_HOME,
       now: null,
+      nanoid,
       mergedEvents: () => [],
       eventLimit: this.$myApp.config.home.eventLimit,
       postLimit: this.$myApp.config.home.postLimit,

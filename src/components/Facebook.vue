@@ -1,7 +1,5 @@
 <template>
   <div class="text-center">
-    <div id="fb-root"></div>
-
     <div
       class="fb-page"
       data-href="https://www.facebook.com/ICJIA/"
@@ -13,13 +11,7 @@
       data-hide-cover="true"
       data-show-facepile="true"
     >
-      <div class="fb-xfbml-parse-ignore">
-        <Loader
-          loadingText="Loading Facebook Timeline..."
-          height="100"
-          size="35"
-        ></Loader>
-      </div>
+      <div class="fb-xfbml-parse-ignore">Testing</div>
     </div>
   </div>
 </template>
@@ -31,29 +23,29 @@ export default {
       isLoading: true,
     };
   },
-  mounted() {
-    this.$loadScript(
-      "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0"
-    )
-      .then(() => {
-        console.log("script loaded");
-        this.isLoading = false;
-      })
-      .catch((err) => {
-        console.log(err);
-        this.isLoading = false;
-      });
-  },
-  beforeDestroy() {
-    this.$unloadScript(
-      "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0"
-    )
-      .then(() => {
-        console.log("script unloaded");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
+  // mounted() {
+  //   this.$loadScript(
+  //     "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0"
+  //   )
+  //     .then(() => {
+  //       console.log("facebook script loaded");
+  //       this.isLoading = false;
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       this.isLoading = false;
+  //     });
+  // },
+  // beforeDestroy() {
+  //   this.$unloadScript(
+  //     "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0"
+  //   )
+  //     .then(() => {
+  //       console.log("script unloaded");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // },
 };
 </script>
