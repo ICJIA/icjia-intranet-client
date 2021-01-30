@@ -192,7 +192,23 @@
                     frameborder="0"
                     allowfullscreen="false"
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    v-if="
+                      $vuetify.breakpoint.md ||
+                      $vuetify.breakpoint.lg ||
+                      $vuetify.breakpoint.xl
+                    "
                   ></iframe>
+                  <div v-else class="pb-6">
+                    <v-btn
+                      outlined
+                      small
+                      target="_blank"
+                      href="https://facebook.com/ICJIA"
+                      >ICJIA on Facebook&nbsp;<v-icon right small
+                        >open_in_new</v-icon
+                      ></v-btn
+                    >
+                  </div>
                 </v-container>
               </v-sheet>
               <!--  -->
