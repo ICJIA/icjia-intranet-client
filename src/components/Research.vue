@@ -88,7 +88,7 @@ export default {
       articles: [],
       start: 0,
       click: 0,
-      limit: 4,
+      limit: 2,
       max: 9,
       disabled: false,
       query: null,

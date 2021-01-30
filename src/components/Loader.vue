@@ -6,7 +6,7 @@
       :size="size"
     ></v-progress-circular>
     <div class="mt-12" style="font-size: 12px; font-weight: bold">
-      LOADING ...
+      {{ loadingText }}
     </div>
   </div>
 </template>
@@ -22,6 +22,10 @@ export default {
     height: {
       type: String,
       default: "500",
+    },
+    loadingText: {
+      type: String,
+      default: "LOADING...",
     },
   },
 };

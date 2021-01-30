@@ -66,6 +66,9 @@ Vue.use(VueMeta, {
 import VueDummy from "vue-dummy";
 Vue.use(VueDummy);
 
+import LoadScript from "vue-plugin-load-script";
+Vue.use(LoadScript);
+
 new Vue({
   router,
   store,
