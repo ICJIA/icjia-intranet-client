@@ -157,7 +157,7 @@
             </v-col> -->
           </v-row>
           <v-row>
-            <v-col cols="12" md="6">
+            <v-col cols="12" md="6" class="text-center">
               <v-sheet class="px-2 py-2" elevation="3" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
                   <div style="background: #225b89" class="px-3 py-3">
@@ -179,16 +179,21 @@
                     </v-row>
                   </div>
                 </v-container>
-                <iframe
-                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FICJIA&tabs=timeline&width=500&height=1000&small_header=false&adapt_container_width=true&hide_cover=true&show_facepile=true&appId"
-                  width="1000"
-                  height="1000"
-                  style="border: none; overflow: hidden; width: 100% !important"
-                  scrolling="no"
-                  frameborder="0"
-                  allowfullscreen="true"
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                ></iframe>
+                <v-container
+                  fluid
+                  class="text-center"
+                  style="text-align: center"
+                >
+                  <iframe
+                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FICJIA&tabs=timeline&width=1000&height=1000&small_header=false&adapt_container_width=true&hide_cover=true&show_facepile=true&appId"
+                    scrolling="no"
+                    width="500"
+                    height="1000"
+                    frameborder="0"
+                    allowfullscreen="false"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  ></iframe>
+                </v-container>
               </v-sheet>
               <!--  -->
             </v-col>
