@@ -250,7 +250,7 @@ export default {
       let end = moment(item.updated_at); // another date
       let duration = moment.duration(now.diff(end));
       let days = duration.asDays();
-      if (days <= 2) {
+      if (days <= this.$myApp.config.daysToShowNew) {
         return true;
       } else {
         return false;

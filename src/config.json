@@ -14,6 +14,7 @@
     "timeout": 10000,
     "register": "/auth/local/register"
   },
+  "daysToShowNew": 5,
   "home": {
     "eventLimit": 4,
     "postLimit": 3

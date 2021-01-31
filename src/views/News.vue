@@ -23,7 +23,17 @@
               ><PostedMeta :meta="post" :showUpdatedInText="false"></PostedMeta
             ></v-card-text>
             <div class="px-4 mb-5">
-              <h2 style="line-height: 32px">{{ post.title }}</h2>
+              <h2 style="line-height: 32px">
+                <v-chip
+                  dark
+                  x-small
+                  color="#2296F3"
+                  class="mr-2"
+                  v-if="isItNew(post)"
+                >
+                  NEW! </v-chip
+                >{{ post.title }}
+              </h2>
             </div>
 
             <img
@@ -44,6 +54,7 @@
 
 <script>
 import { GET_ALL_POSTS_QUERY } from "@/graphql/queries/posts";
+import moment from "moment";
 export default {
   data() {
     return {
@@ -62,6 +73,17 @@ export default {
     redraw() {
       this.$redrawVueMasonry("#masonry-group");
       console.log("redraw masonry");
+    },
+    isItNew(item) {
+      let now = moment(new Date()); //todays date
+      let end = moment(item.updated_at); // another date
+      let duration = moment.duration(now.diff(end));
+      let days = duration.asDays();
+      if (days <= this.$myApp.config.daysToShowNew) {
+        return true;
+      } else {
+        return false;
+      }
     },
     buildMeta(post) {
       let meta = {

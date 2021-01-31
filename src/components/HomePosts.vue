@@ -48,16 +48,32 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <div class="overline mb-4">{{ post.created_at | format }}</div>
-            <div
+            <div class="overline mb-4">
+              <!-- <span class="" v-if="isItNew(post)">
+                <v-chip dark x-small color="#2296F3" class="mr-2">
+                  NEW!
+                </v-chip> </span
+              > -->
+              {{ post.created_at | format }}
+            </div>
+            <!-- <div
               style="font-size: 14px; color: #222"
               class="mb-2"
               v-if="post.kicker"
             >
               {{ post.kicker }}
-            </div>
-            <h2 class="mt-0 hover">
-              {{ post.title }}
+            </div> -->
+
+            <h2 class="mt-0 hover" style="line-height: 32px">
+              <v-chip
+                v-if="isItNew(post)"
+                dark
+                x-small
+                color="#2296F3"
+                class="mr-2"
+              >
+                NEW! </v-chip
+              >{{ post.title }}
             </h2>
             <v-card-subtitle v-if="!post.show">{{
               post.summary
@@ -77,6 +93,7 @@
 </template>
 <script>
 import { getImageURL } from "@/services/Image";
+import moment from "moment";
 export default {
   name: "HomePosts",
   components: {},
@@ -102,6 +119,17 @@ export default {
     },
   },
   methods: {
+    isItNew(item) {
+      let now = moment(new Date()); //todays date
+      let end = moment(item.updated_at); // another date
+      let duration = moment.duration(now.diff(end));
+      let days = duration.asDays();
+      if (days <= this.$myApp.config.daysToShowNew) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     routeTo(slug) {
       this.$router.push(`/news/${slug}`);
     },

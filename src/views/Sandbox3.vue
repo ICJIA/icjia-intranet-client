@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ $myApp.fuseIndex }}
+    <ResearchApplications></ResearchApplications>
   </div>
 </template>
 

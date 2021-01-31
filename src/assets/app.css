@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+/* body {
+  min-height: 100vh !important;
+} */
+
 a {
   font-weight: 900;
   text-decoration: none;
@@ -62,5 +66,4 @@ a {
 
 .heavy {
   font-weight: bold !important;
-  
 }

@@ -85,13 +85,13 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col sm="12" cols="12" class="child">
+            <v-col sm="12" cols="12" md="6" class="child">
               <v-sheet class="px-2 py-2" elevation="3" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
                       <v-col>
-                        <h2 style="color: #fff">Recent ICJIA Articles</h2>
+                        <h2 style="color: #fff">Recent Articles</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn
@@ -107,7 +107,41 @@
                     </v-row>
                   </div>
                 </v-container>
-                <Research></Research>
+                <ResearchArticles limit="5"></ResearchArticles>
+                <div class="py-2 text-center reduce-85">
+                  Visit
+                  <a
+                    href="https://icjia.illinois.gov/researchhub"
+                    target="_blank"
+                    >ICJIA's ResearchHub</a
+                  >
+                  for more articles, datasets, and applications.
+                </div>
+              </v-sheet>
+            </v-col>
+            <v-col sm="12" cols="12" md="6" class="child">
+              <v-sheet class="px-2 py-2" elevation="3" style="">
+                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
+                  <div style="background: #225b89" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2 style="color: #fff">Recent Applications</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1">
+                        <v-btn
+                          outlined
+                          small
+                          target="_blank"
+                          href="https://icjia.illinois.gov/researchhub"
+                          >Research Hub&nbsp;<v-icon right small
+                            >open_in_new</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+                <ResearchApplications limit="5"></ResearchApplications>
                 <div class="py-2 text-center reduce-85">
                   Visit
                   <a
@@ -143,37 +177,6 @@
                     </v-row>
                   </div>
                 </v-container>
-                <!-- <v-container
-                  fluid
-                  class="text-center"
-                  style="text-align: center"
-                >
-                  <iframe
-                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FICJIA&tabs=timeline&width=1000&height=1000&small_header=false&adapt_container_width=true&hide_cover=true&show_facepile=true&appId"
-                    scrolling="no"
-                    width="500"
-                    height="1000"
-                    frameborder="0"
-                    allowfullscreen="false"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    v-if="
-                      $vuetify.breakpoint.md ||
-                      $vuetify.breakpoint.lg ||
-                      $vuetify.breakpoint.xl
-                    "
-                  ></iframe>
-                  <div v-else class="pb-6">
-                    <v-btn
-                      outlined
-                      small
-                      target="_blank"
-                      href="https://facebook.com/ICJIA"
-                      >ICJIA on Facebook&nbsp;<v-icon right small
-                        >open_in_new</v-icon
-                      ></v-btn
-                    >
-                  </div>
-                </v-container> -->
 
                 <Facebook></Facebook>
               </v-sheet>

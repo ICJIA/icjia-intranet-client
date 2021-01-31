@@ -1,6 +1,5 @@
 <template>
   <v-app id="page-top" style="background: #eee">
-    <div id="fb-root"></div>
     <AppNav v-if="$store.state.auth.isAuthenticated"></AppNav>
     <AppSidebar></AppSidebar>
 
@@ -55,8 +54,8 @@
       <span v-else>
         <ComingSoon></ComingSoon>
       </span>
-      <AppFooter v-if="$store.state.auth.isAuthenticated"></AppFooter>
     </v-main>
+    <AppFooter v-if="$store.state.auth.isAuthenticated"></AppFooter>
   </v-app>
 </template>
 

@@ -2,7 +2,12 @@
   <div>
     <div v-if="articles && articles.length > 0">
       <div v-for="(article, index) in articles" :key="getKey(index)">
-        <v-card class="mb-5 hover card" @click="routeTo(article)">
+        <v-card
+          class="mb-5 px-3 py-3 hover card"
+          style="border: 1px #ccc solid"
+          @click="routeTo(article)"
+          elevation="0"
+        >
           <v-img
             class="white--text align-end"
             height="225px"
@@ -88,7 +93,7 @@ export default {
       articles: [],
       start: 0,
       click: 0,
-      limit: 2,
+      limit: 7,
       max: 9,
       disabled: false,
       query: null,
