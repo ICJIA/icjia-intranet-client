@@ -44,6 +44,31 @@ const getHubArticlesQuery = (start, limit) => {
     }`;
 };
 
+const getHubApplicationsQuery = () => {
+  return `{
+    apps (sort: "date:desc", where: {status: "published"}) {
+      title
+    status
+   createdAt
+    updatedAt
+    contributors
+    date
+    slug
+    description
+    image
+    url
+    articles {
+      title
+      slug
+      }
+    datasets {
+      title
+      slug
+      }
+    }
+  }`;
+};
+
 const getHubArticles = async (start, limit) => {
   try {
     let articles = await queryEndpoint(getHubArticlesQuery(start, limit));
@@ -57,4 +82,16 @@ const getHubArticles = async (start, limit) => {
   }
 };
 
-export { getHubArticles };
+const getHubApplications = async () => {
+  try {
+    let apps = await queryEndpoint(getHubApplicationsQuery());
+    console.log(apps.data.data.apps);
+    return apps.data.data.apps;
+  } catch (e) {
+    console.log("contentServiceError", e.toString());
+    NProgress.done();
+    return [];
+  }
+};
+
+export { getHubArticles, getHubApplications };

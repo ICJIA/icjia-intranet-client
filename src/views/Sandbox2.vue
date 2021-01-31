@@ -45,13 +45,19 @@ export default {
       isLoading: true,
     };
   },
+  created() {
+    console.log("created");
+  },
   mounted() {
+    console.log("mounted");
+    //console.log(window.FB);
     this.$loadScript(
       "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0"
     )
       .then(() => {
-        console.log("script loaded");
+        console.log("FB script loaded");
         this.isLoading = false;
+        window.FB.XFBML.parse();
       })
       .catch((err) => {
         console.log(err);
@@ -63,7 +69,7 @@ export default {
       "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0"
     )
       .then(() => {
-        console.log("script unloaded");
+        console.log("FB script unloaded");
       })
       .catch((err) => {
         console.log(err);
