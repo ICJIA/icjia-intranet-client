@@ -2,7 +2,7 @@
   <div>
     <v-card
       class="mb-5 px-3 py-3"
-      style="border: 1px #ccc solid"
+      style="border: 1px #aaa solid"
       elevation="0"
       v-for="(app, index) in apps.length"
       :key="index"

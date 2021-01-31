@@ -4,7 +4,7 @@
       <div v-for="(article, index) in articles" :key="getKey(index)">
         <v-card
           class="mb-5 px-3 py-3 hover card"
-          style="border: 1px #ccc solid"
+          style="border: 1px #aaa solid"
           @click="routeTo(article)"
           elevation="0"
         >
