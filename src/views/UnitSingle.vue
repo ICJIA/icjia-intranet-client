@@ -114,6 +114,11 @@ export default {
           });
         }
         this.unit = ApolloQueryResult.data.units[0];
+        this.unit.documents = this.unit.documents.map((d) => ({
+          ...d,
+          show: false,
+        }));
+        console.log(this.unit.documents);
       },
     },
   },

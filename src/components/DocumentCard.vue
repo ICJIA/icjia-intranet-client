@@ -1,6 +1,6 @@
 <template>
   <div class="markdown-body my-7 mx-5 reduce-90">
-    <v-card color="white" class="px-8 py-10 mx-2">
+    <v-card color="white" class="px-8 py-8 mx-2">
       <h2
         style="
           border-bottom: 1px solid #ccc;
@@ -109,7 +109,7 @@
             <div
               v-for="(cluster, index) in item.clusters"
               :key="`cluster-${index}`"
-              class="px-3 py-3"
+              class="px-3 py-3 mb-5"
               style="background: #f3f5f7"
             >
               <router-link
