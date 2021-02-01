@@ -8,12 +8,12 @@
 
       <v-btn x-small>
         Files
-        <v-icon x-small right>file_present</v-icon>
+        <v-icon x-small right>cloud_download</v-icon>
       </v-btn>
 
       <v-btn x-small>
         Links
-        <v-icon x-small right>link</v-icon>
+        <v-icon x-small right>open_in_new</v-icon>
       </v-btn>
     </v-btn-toggle>
   </div>
