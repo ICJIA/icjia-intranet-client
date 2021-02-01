@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn-toggle v-model="documentToggle">
+    <v-btn-toggle v-model="documentToggle" color="blue darken-4">
       <v-btn x-small>
         All
         <v-icon x-small right>done_all</v-icon>
