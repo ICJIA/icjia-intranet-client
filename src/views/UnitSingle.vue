@@ -47,18 +47,24 @@
             </h3>
           </div>
           <div v-if="$route.params.slug === 'research-and-analysis-unit'">
-            <h2 class="text-center mt-12" id="latest-research">
-              Latest Research
+            <h2 class="text-center mt-12" id="latest-articles">
+              Recent Articles
             </h2>
             <v-card class="mt-5 px-5 py-5">
-              <Research></Research>
-              <div class="py-2 text-center reduce-85">
+              <ResearchArticles limit="3"></ResearchArticles>
+              <!-- <div class="py-2 text-center reduce-85">
                 Visit
                 <a href="https://icjia.illinois.gov/researchhub" target="_blank"
                   >the ResearchHub</a
                 >
                 for ICJIA's articles, datasets, and applications.
-              </div>
+              </div> -->
+            </v-card>
+            <h2 class="text-center mt-12" id="latest-applications">
+              Recent Applications
+            </h2>
+            <v-card class="mt-5 px-5 py-5">
+              <ResearchApplications limit="3"></ResearchApplications>
             </v-card>
           </div>
         </v-col>

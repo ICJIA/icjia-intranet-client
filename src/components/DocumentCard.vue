@@ -215,6 +215,7 @@
 </template>
 
 <script>
+//TODO: Fix to avoid mutating props
 import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
 export default {
