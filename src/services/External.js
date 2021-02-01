@@ -44,9 +44,9 @@ const getHubArticlesQuery = (start, limit) => {
     }`;
 };
 
-const getHubApplicationsQuery = () => {
+const getHubApplicationsQuery = (limit) => {
   return `{
-    apps (sort: "date:desc", where: {status: "published"}) {
+    apps (sort: "date:desc", limit: ${limit}, where: {status: "published"}) {
       title
     status
    createdAt
@@ -82,9 +82,9 @@ const getHubArticles = async (start, limit) => {
   }
 };
 
-const getHubApplications = async () => {
+const getHubApplications = async (limit) => {
   try {
-    let apps = await queryEndpoint(getHubApplicationsQuery());
+    let apps = await queryEndpoint(getHubApplicationsQuery(limit));
     console.log(apps.data.data.apps);
     return apps.data.data.apps;
   } catch (e) {

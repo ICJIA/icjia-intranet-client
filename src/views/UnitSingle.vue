@@ -51,20 +51,27 @@
               Recent Articles
             </h2>
             <v-card class="mt-5 px-5 py-5">
-              <ResearchArticles limit="3"></ResearchArticles>
-              <!-- <div class="py-2 text-center reduce-85">
+              <ResearchArticles :limit="4"></ResearchArticles>
+              <div class="py-2 text-center reduce-85">
                 Visit
                 <a href="https://icjia.illinois.gov/researchhub" target="_blank"
                   >the ResearchHub</a
                 >
-                for ICJIA's articles, datasets, and applications.
-              </div> -->
+                for all articles, datasets, and applications.
+              </div>
             </v-card>
             <h2 class="text-center mt-12" id="latest-applications">
               Recent Applications
             </h2>
             <v-card class="mt-5 px-5 py-5">
-              <ResearchApplications limit="3"></ResearchApplications>
+              <ResearchApplications :limit="4"></ResearchApplications>
+              <div class="py-2 text-center reduce-85">
+                Visit
+                <a href="https://icjia.illinois.gov/researchhub" target="_blank"
+                  >the ResearchHub</a
+                >
+                for all articles, datasets, and applications.
+              </div>
             </v-card>
           </div>
         </v-col>

@@ -93,7 +93,7 @@ export default {
       articles: [],
       start: 0,
       click: 0,
-      limit: 7,
+
       max: 9,
       disabled: false,
       query: null,
@@ -130,6 +130,12 @@ export default {
         this.click = this.click + 1;
         this.fetchContent();
       }
+    },
+  },
+  props: {
+    limit: {
+      type: Number,
+      default: 4,
     },
   },
 };

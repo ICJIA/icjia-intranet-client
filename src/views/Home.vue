@@ -107,7 +107,7 @@
                     </v-row>
                   </div>
                 </v-container>
-                <ResearchArticles limit="5"></ResearchArticles>
+                <ResearchArticles :limit="4"></ResearchArticles>
                 <div class="py-2 text-center reduce-85">
                   Visit
                   <a
@@ -141,7 +141,7 @@
                     </v-row>
                   </div>
                 </v-container>
-                <ResearchApplications limit="5"></ResearchApplications>
+                <ResearchApplications :limit="5"></ResearchApplications>
                 <div class="py-2 text-center reduce-85">
                   Visit
                   <a
