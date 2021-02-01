@@ -1,3 +1,35 @@
+### 1.1.0 (2021-02-01)
+
+##### Chores
+
+*  README (34591f01)
+*  README (4f8facb3)
+*  update changelog (8239f08b)
+
+##### New Features
+
+*  filter documents by type (b1bb1c46)
+*  hide related resources scaffold (b269383c)
+*  add ResearchHub applications scaffold (714bba43)
+*  facebook timeline integration (c0b43173)
+
+##### Bug Fixes
+
+*  adjust document toggle icons (09ce96fe)
+*  add color to document toggle (a824ce6a)
+*  adjust nav (21edf80e)
+*  add icon to document archive link (79064104)
+*  add link to document archive (07aa1da4)
+*  add limit for hub content (3ab4244a)
+*  R&A unit info (36453c69)
+*  unit resources (b4d1c486)
+*  adjust home layout (f19ebeaa)
+*  (re)enable javascript sdk for facebook (a9325d13)
+*  remove facebook embed for mobile (6a45b3ad)
+*  facebook iframe centering (ecc3a46e)
+*  facebook iframe instead of js SDK (af4c9480)
+*  footer to bottom (c829d419)
+
 ## 1.0.0 (2021-01-29)
 
 ##### Chores
