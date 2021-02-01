@@ -133,6 +133,10 @@ export default {
       },
       // eslint-disable-next-line no-unused-vars
       result(ApolloQueryResult) {
+        this.documents = this.documents.map((d) => ({
+          ...d,
+          show: false,
+        }));
         this.loading = false;
       },
     },

@@ -47,6 +47,11 @@ export default {
           this.$router.push("/404").catch((err) => {
             console.log(err);
           });
+        } else {
+          this.documents = this.documents.map((d) => ({
+            ...d,
+            show: false,
+          }));
         }
       },
     },
