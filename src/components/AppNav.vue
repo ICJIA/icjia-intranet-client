@@ -168,7 +168,9 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >Document Archive</v-list-item-title
+                >Document Archive<v-icon right small
+                  >open_in_new</v-icon
+                ></v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
