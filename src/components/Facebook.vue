@@ -6,7 +6,7 @@
       data-href="https://www.facebook.com/ICJIA/"
       data-tabs="timeline"
       data-width="500"
-      data-height="1000"
+      data-height="1500"
       data-small-header="true"
       data-adapt-container-width="true"
       data-hide-cover="true"

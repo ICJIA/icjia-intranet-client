@@ -12,8 +12,13 @@
     </v-container>
     <v-container v-if="documents" fluid>
       <v-row>
+        <v-col class="text-center">
+          <DocumentToggle></DocumentToggle>
+        </v-col>
+      </v-row>
+      <v-row>
         <v-col v-if="documents.length">
-          <DocumentTable :documents="documents"></DocumentTable>
+          <DocumentTable :documents="filteredDocuments"></DocumentTable>
         </v-col>
         <v-col v-else>
           <div class="text-center">
@@ -36,6 +41,7 @@
 import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
 import { GET_ALL_DOCUMENTS } from "@/graphql/queries/documents";
+import { EventBus } from "@/event-bus";
 import Loader from "../components/Loader.vue";
 export default {
   components: { Loader },
@@ -47,6 +53,9 @@ export default {
       search: "",
       singleExpand: true,
       loading: true,
+      documentFilter: "all",
+      documents: null,
+      filteredDocuments: [],
       headers: [
         {
           text: "Last updated",
@@ -81,8 +90,34 @@ export default {
       ],
     };
   },
+  watch: {
+    documentFilter(newValue) {
+      if (newValue === "all") {
+        this.filteredDocuments = this.documents;
+      }
+      if (newValue === "files") {
+        this.filteredDocuments = this.documents.filter((doc) => {
+          if (doc.file) {
+            return doc;
+          }
+        });
+      }
 
-  created() {},
+      if (newValue === "links") {
+        this.filteredDocuments = this.documents.filter((doc) => {
+          if (doc.externalURL) {
+            return doc;
+          }
+        });
+      }
+    },
+  },
+
+  mounted() {
+    EventBus.$on("toggleDocuments", (val) => {
+      this.documentFilter = val;
+    });
+  },
   methods: {
     render(content) {
       return renderToHtml(content);
@@ -137,6 +172,7 @@ export default {
           ...d,
           show: false,
         }));
+        this.filteredDocuments = this.documents;
         this.loading = false;
       },
     },
