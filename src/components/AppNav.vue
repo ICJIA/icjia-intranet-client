@@ -225,7 +225,7 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >List All units</v-list-item-title
+                >All units</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
