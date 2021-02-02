@@ -33,10 +33,12 @@
         <router-link to="/web-support/" style="background: none"
           >Contact ICJIA Web Support</router-link
         >&nbsp;|&nbsp;
-        <router-link to="/web-support/" style="background: none"
+        <a
+          href="https://github.com/ICJIA/icjia-intranet-client"
+          style="background: none"
           ><v-icon size="12px" class="ml-0">fab fa-github</v-icon>
           {{ info.version }}
-        </router-link>
+        </a>
       </v-card-text>
     </v-card>
   </v-footer>
