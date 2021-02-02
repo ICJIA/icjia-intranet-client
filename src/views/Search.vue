@@ -28,47 +28,35 @@
                 @click="route(result)"
                 class="hover py-2 px-2 mb-5"
               >
-                <!-- <v-btn
-                  v-if="result.file"
-                  color="#0d4474"
-                  fab
-                  small
-                  absolute
-                  top
-                  left
-                  dark
-                  @click="route(result)"
-                >
-                  <v-icon>mdi-cloud-download</v-icon>
-                </v-btn> -->
-
-                <!-- <div
-                  class="text-left"
-                  style="
-                    font-weight: bold;
-                    font-size: 12px;
-                    margin-top: 5px;
-                    color: #0d4474;
-                    text-transform: uppercase;
-                  "
-                >
-                  <div style="display: inline" v-html="result.type"></div>
-                </div> -->
-
                 <div v-if="result.title">
-                  <h2 v-html="result.title"></h2>
+                  <span
+                    style="font-size: 20px; font-weight: bold"
+                    class="ml-3"
+                    v-html="result.title"
+                  ></span>
                 </div>
                 <v-card-text v-if="result.summary"
                   ><div v-html="result.summary"></div
                 ></v-card-text>
-
-                <!-- <v-card-text
-                  v-if="result.headings"
-                  style="margin-top: -15px; margin-left: 15px"
-                >
-                  <h3 v-html="displayHeadings(result.headings)"></h3>
-                </v-card-text> -->
-
+                <v-card-text v-if="result.type === 'download'">
+                  <v-btn
+                    x-small
+                    outlined
+                    @click.stop.prevent="download(result)"
+                  >
+                    Download {{ displayExtension(result)
+                    }}<v-icon right small>cloud_download</v-icon>
+                  </v-btn>
+                </v-card-text>
+                <v-card-text v-if="result.type === 'url'">
+                  <v-btn
+                    x-small
+                    outlined
+                    @click.stop.prevent="goToExternal(result.path)"
+                  >
+                    Go to URL<v-icon right small>open_in_new</v-icon>
+                  </v-btn>
+                </v-card-text>
                 <v-card-text v-if="result.rawText">
                   <span v-html="truncate(result.rawText, 100)"></span>
                 </v-card-text>
@@ -82,6 +70,7 @@
 
 <script>
 /* eslint-disable no-unused-vars */
+import DOMPurify from "dompurify";
 import Fuse from "fuse.js";
 import _ from "lodash";
 import searchIndex from "@/assets/site-meta.json";
@@ -163,18 +152,35 @@ export default {
 
       return string;
     },
+    goToExternal(url) {
+      //
+      if (url.indexOf("://") > 0 || url.indexOf("//") === 0) {
+        window.open(url);
+        console.log("absolute: ", url);
+      } else {
+        this.$router.push(url);
+        console.log("relative: ", url);
+      }
+    },
+    download(result) {
+      let download = `${result.path}`;
+      console.log("download: ", download);
+      //console.log("ext: ", result.ext);
+      if (download.includes("pdf")) {
+        window.open(download);
+      } else {
+        location.href = download;
+      }
+    },
+    displayExtension(item) {
+      if (!item.ext) return;
+      const cleanExt = DOMPurify.sanitize(item.ext).replace(
+        /(<([^>]+)>)/gi,
+        ""
+      );
+      return cleanExt.substring(1);
+    },
     route(item) {
-      // console.log(item.type.includes('content'))
-      // if (item.type.includes('content')) {
-      //   // this.$router.push(item.route)
-      //   // console.log(item.route, item.type, 'click')
-      //   this.$router.push(item.route)
-      // } else {
-      //   console.log('file download: ', item.route, item.type)
-      //   window.open(`${item.route}`)
-      //   // TODO: Add download event here for Google
-      // }
-      console.log(item.route);
       this.$router.push(item.route);
     },
     instantSearch() {

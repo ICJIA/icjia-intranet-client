@@ -80,6 +80,7 @@ const query = gql`
       body
       slug
       file {
+        url
         ext
       }
       unit {
@@ -113,9 +114,13 @@ async function main() {
       searchObj.title = item.title || item.name;
       searchObj.contentType = section;
       if (section === "documents" && item.file) {
-        searchObj.type = item.file.ext;
+        searchObj.type = "download";
+        searchObj.path = `https://dev.icjia-api.cloud${item.file.url}`;
+        searchObj.ext = item.file.ext;
+        //console.log(item.file.url);
       } else if (section === "documents" && item.externalURL) {
-        searchObj.type = item.externalURL;
+        searchObj.type = "url";
+        searchObj.path = item.externalURL;
       }
 
       if (section === "events" && item.type) {

@@ -47,13 +47,15 @@
             outlined
             style="color: #075e60"
             @click.native="apps[app - 1]['show'] = !apps[app - 1]['show']"
-            >Show Related</v-btn
+            >Show Related
+            <v-icon x-small v-if="!apps[app - 1]['show']">expand_more</v-icon>
+            <v-icon x-small v-else>expand_less</v-icon></v-btn
           >
 
           <v-spacer></v-spacer>
 
           <v-btn x-small target="_blank" :href="`${apps[app - 1]['url']}`"
-            >Launch<v-icon right>open_in_new</v-icon></v-btn
+            >Launch<v-icon small right>open_in_new</v-icon></v-btn
           >
         </v-card-actions>
 

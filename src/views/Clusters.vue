@@ -60,7 +60,7 @@
                   class="mr-2"
                   v-if="isItNew(item)"
                 >
-                  UPDATED!
+                  NEW!
                 </v-chip>
                 <strong> {{ item.title }}</strong>
               </div>
@@ -110,7 +110,7 @@
                         class="mr-2"
                         v-if="isItNew(item)"
                       >
-                        UPDATED! </v-chip
+                        NEW! </v-chip
                       >{{ item.updated_at | dateFormatShort }}
                     </td>
                     <td>

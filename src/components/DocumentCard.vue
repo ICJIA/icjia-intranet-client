@@ -89,6 +89,7 @@
           style="font-weight: bold"
           @click.native="item.show = !item.show"
           class="mt-3"
+          outlined
           >Show Related
           <v-icon x-small v-if="!item.show">expand_more</v-icon>
           <v-icon x-small v-else>expand_less</v-icon></v-btn

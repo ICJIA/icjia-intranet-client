@@ -13,6 +13,12 @@
     <v-container v-if="documents" fluid>
       <v-row>
         <v-col class="text-center">
+          <div
+            class="mb-2"
+            style="font-size: 12px; font-weight: 900; color: #666"
+          >
+            Show:
+          </div>
           <DocumentToggle></DocumentToggle>
         </v-col>
       </v-row>

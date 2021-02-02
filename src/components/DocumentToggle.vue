@@ -1,19 +1,19 @@
 <template>
   <div>
-    <v-btn-toggle v-model="documentToggle" color="blue darken-4">
-      <v-btn x-small>
+    <v-btn-toggle v-model="documentToggle" color="blue darken-4" elevation="2">
+      <v-btn small class="px-5" elevation="2">
         All
-        <v-icon x-small right>done_all</v-icon>
+        <!-- <v-icon right>done_all</v-icon> -->
       </v-btn>
 
-      <v-btn x-small>
+      <v-btn small class="px-5" elevation="2">
         Files
-        <v-icon x-small right>cloud_download</v-icon>
+        <!-- <v-icon right>cloud_download</v-icon> -->
       </v-btn>
 
-      <v-btn x-small>
+      <v-btn small class="px-5" elevation="2">
         Links
-        <v-icon x-small right>open_in_new</v-icon>
+        <!-- <v-icon right>open_in_new</v-icon> -->
       </v-btn>
     </v-btn-toggle>
   </div>
