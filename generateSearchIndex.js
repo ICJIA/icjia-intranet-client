@@ -79,6 +79,9 @@ const query = gql`
       externalURL
       body
       slug
+      file {
+        ext
+      }
       unit {
         title
         slug
@@ -109,7 +112,15 @@ async function main() {
       searchObj.id = item.id;
       searchObj.title = item.title || item.name;
       searchObj.contentType = section;
-      searchObj.type = item.type;
+      if (section === "documents" && item.file) {
+        searchObj.type = item.file.ext;
+      } else if (section === "documents" && item.externalURL) {
+        searchObj.type = item.externalURL;
+      }
+
+      if (section === "events" && item.type) {
+        searchObj.type = item.type;
+      }
 
       searchObj.section = section;
       searchObj.slug = item.slug;

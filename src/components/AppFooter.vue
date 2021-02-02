@@ -13,7 +13,7 @@
         color="#113959"
         style="font-size: 12px"
       >
-        <div class="mt-1 mb-4">
+        <!-- <div class="mt-1 mb-4">
           <v-btn
             color="grey darken-4"
             style="font-size: 10px"
@@ -24,7 +24,7 @@
             <v-icon size="12px" class="mr-3">fab fa-github</v-icon>
             &nbsp; Version: {{ info.version }}
           </v-btn>
-        </div>
+        </div> -->
         &copy;&nbsp;
         <a href="http://icjia.illinois.gov" style="background: none">
           {{ year }}
@@ -32,7 +32,11 @@
         >&nbsp;|&nbsp;
         <router-link to="/web-support/" style="background: none"
           >Contact ICJIA Web Support</router-link
-        >
+        >&nbsp;|&nbsp;
+        <router-link to="/web-support/" style="background: none"
+          ><v-icon size="12px" class="ml-0">fab fa-github</v-icon>
+          {{ info.version }}
+        </router-link>
       </v-card-text>
     </v-card>
   </v-footer>

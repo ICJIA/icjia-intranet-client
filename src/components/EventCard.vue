@@ -18,6 +18,7 @@
             outlined
             @click.prevent.stop="$emit('clicked')"
             v-if="showClose"
+            class="ml-3"
             >CLOSE</v-btn
           >
         </v-toolbar>
@@ -152,26 +153,18 @@ export default {
       let localStart = moment(start).tz(this.$myApp.config.timezone);
       let localEnd = moment(end).tz(this.$myApp.config.timezone);
       let daysBetween = moment(localEnd).diff(moment(localStart), "days");
-      console.log(daysBetween);
 
       if (daysBetween === 0 && timed) {
-        range = ` | <strong>${localStart.format(
-          "MMMM D, YYYY"
-        )} </strong>  |  ${localStart.format("h:mm a")} to ${localEnd.format(
+        range = ` | ${localStart.format("h:mm a")} to ${localEnd.format(
           "h:mm a"
         )}`;
       } else if (daysBetween === 0 && !timed) {
-        range = `  |  <strong>${localStart.format(
-          "MMMM D, YYYY"
-        )}</strong> | All Day Event`;
-      } else {
-        range = `  |  <strong>${localStart.format(
-          "MMMM D, h:mm a"
-        )}</strong> through <strong>${localEnd.format(
-          "MMMM D, h:mm a"
-        )}</strong>`;
+        range = ` | All Day`;
+      } else if (daysBetween > 0) {
+        range = ` | ${localStart.format("MMMM D")} through ${localEnd.format(
+          "MMMM D"
+        )}`;
       }
-
       return range;
     },
   },
