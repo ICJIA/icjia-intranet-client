@@ -13,18 +13,6 @@
         color="#113959"
         style="font-size: 12px"
       >
-        <!-- <div class="mt-1 mb-4">
-          <v-btn
-            color="grey darken-4"
-            style="font-size: 10px"
-            dark
-            href="https://github.com/ICJIA/icjia-intranet-client"
-            target="_blank"
-          >
-            <v-icon size="12px" class="mr-3">fab fa-github</v-icon>
-            &nbsp; Version: {{ info.version }}
-          </v-btn>
-        </div> -->
         &copy;&nbsp;
         <a href="http://icjia.illinois.gov" style="background: none">
           {{ year }}
