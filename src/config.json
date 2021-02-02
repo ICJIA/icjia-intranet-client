@@ -57,6 +57,9 @@
     "summit": {
       "color": "red"
     },
+    "training": {
+      "color": "blue-grey"
+    },
     "webinar": {
       "color": "light-blue"
     }
