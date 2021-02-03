@@ -115,7 +115,7 @@ async function main() {
       searchObj.contentType = section;
       if (section === "documents" && item.file) {
         searchObj.type = "download";
-        searchObj.path = `https://dev.icjia-api.cloud${item.file.url}`;
+        searchObj.path = `${this.$myApp.config.api.base}${item.file.url}`;
         searchObj.ext = item.file.ext;
         //console.log(item.file.url);
       } else if (section === "documents" && item.externalURL) {

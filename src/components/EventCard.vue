@@ -140,7 +140,7 @@ export default {
       }
     },
     download(file) {
-      let download = `https://dev.icjia-api.cloud${file.url}`;
+      let download = `${this.$myApp.config.api.base}${file.url}`;
       //console.log("download: ", download);
       if (file.ext === ".pdf") {
         window.open(download);

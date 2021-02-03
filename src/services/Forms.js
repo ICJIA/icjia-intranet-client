@@ -31,7 +31,7 @@ const dbInsert = async function (jwt, { type, email, ...form }) {
   };
   try {
     return await api.post(
-      `https://dev.icjia-api.cloud/forms`,
+      `${this.$myApp.config.api.base}/forms`,
       JSON.stringify(axiosDBSubmitData),
       axiosDBSubmit
     );

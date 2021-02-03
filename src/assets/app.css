@@ -67,3 +67,7 @@ a {
 .heavy {
   font-weight: bold !important;
 }
+
+.v-chip--label {
+  border-radius: 0px !important;
+}

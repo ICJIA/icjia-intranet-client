@@ -183,24 +183,24 @@ const routes = [
       requiresAuth: true,
     },
   },
-  {
-    path: "/support/",
-    name: "Support",
-    component: () =>
-      import(/* webpackChunkName: "support" */ "../views/Support.vue"),
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    path: "/support/:slug/",
-    name: "SupportSingle",
-    component: () =>
-      import(/* webpackChunkName: "support" */ "../views/SupportSingle.vue"),
-    meta: {
-      requiresAuth: true,
-    },
-  },
+  // {
+  //   path: "/support/",
+  //   name: "Support",
+  //   component: () =>
+  //     import(/* webpackChunkName: "support" */ "../views/Support.vue"),
+  //   meta: {
+  //     requiresAuth: true,
+  //   },
+  // },
+  // {
+  //   path: "/support/:slug/",
+  //   name: "SupportSingle",
+  //   component: () =>
+  //     import(/* webpackChunkName: "support" */ "../views/SupportSingle.vue"),
+  //   meta: {
+  //     requiresAuth: true,
+  //   },
+  // },
   {
     path: "/forms/",
     name: "Forms",

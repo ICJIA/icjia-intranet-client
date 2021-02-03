@@ -24,7 +24,10 @@
     </v-fab-transition>
 
     <v-main>
-      <span v-if="!$myApp.config.underConstruction">
+      <span
+        v-if="!$myApp.config.underConstruction"
+        style="min-height: 120vh !important"
+      >
         <ApolloQuery
           :query="GET_ALERT"
           notifyOnNetworkStatusChange

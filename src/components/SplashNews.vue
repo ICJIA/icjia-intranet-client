@@ -27,7 +27,7 @@ export default {
   methods: {
     getImagePath(url) {
       let imgPath;
-      imgPath = `https://dev.icjia-api.cloud${url}`;
+      imgPath = `${this.$myApp.config.api.base}${url}`;
       const thumborImgPath = getImageURL(imgPath);
       return thumborImgPath;
     },
