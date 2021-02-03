@@ -1,6 +1,7 @@
 //import { EventBus } from "@/event-bus";
 // import NProgress from "nprogress";
 const axios = require("axios");
+import myApp from "@/config.json";
 
 const api = axios.create({
   timeout: 15000,
@@ -31,7 +32,7 @@ const dbInsert = async function (jwt, { type, email, ...form }) {
   };
   try {
     return await api.post(
-      `${this.$myApp.config.api.base}/forms`,
+      `${myApp.config.api.base}/forms`,
       JSON.stringify(axiosDBSubmitData),
       axiosDBSubmit
     );

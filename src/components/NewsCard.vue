@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-card
-      class="grid-item px-3 py-3 mb-6 markdown-body info-card"
-      style="border: 1px solid #aaa"
+      class="grid-item px-3 py-3 markdown-body info-card"
+      style="border: 1px solid #bbb"
       @click="$router.push(`/news/${item.slug}`)"
     >
       <!-- <div style="font-size: 12px; margin-left: 15px">
@@ -56,9 +56,9 @@
         ></v-card-text>
 
         <v-card-text v-if="item.title"
-          ><h2 style="margin-top: -20px">
+          ><div style="margin-top: -20px; font-size: 22px; font-weight: bold">
             {{ item.title }}
-          </h2></v-card-text
+          </div></v-card-text
         >
 
         <v-card-text v-if="item.summary" style="margin-top: -15px">{{

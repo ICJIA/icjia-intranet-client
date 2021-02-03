@@ -11,24 +11,22 @@
       </v-row>
       <v-row>
         <v-col>
-          <XyzTransitionGroup appear xyz="fade">
-            <div
-              v-for="(unit, index) in $myApp.units"
-              :key="`unit-${index}`"
-              class="mb-5"
+          <div
+            v-for="(unit, index) in $myApp.units"
+            :key="`unit-${index}`"
+            class="mb-5"
+          >
+            <v-card
+              class="px-6 py-6 info-card markdown-body"
+              color="#f3f5f7"
+              @click="$router.push(unit.path)"
             >
-              <v-card
-                class="px-3 py-3 info-card markdown-body"
-                color="#f3f5f7"
-                @click="$router.push(unit.path)"
-              >
-                <h2 style="font-size: 18px">
-                  {{ unit.title }}
-                </h2>
-                <div class="px-3">{{ unit.summary }}</div>
-              </v-card>
-            </div>
-          </XyzTransitionGroup>
+              <h2 style="font-size: 18px">
+                {{ unit.title }}
+              </h2>
+              <div class="px-3">{{ unit.summary }}</div>
+            </v-card>
+          </div>
         </v-col>
       </v-row>
     </v-container>

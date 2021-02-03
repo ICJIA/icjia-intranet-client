@@ -6,6 +6,9 @@
         <v-col>
           <div v-if="$apollo.error" class="text-center error apollo">
             {{ error }}
+            <div>
+              Please <router-link to="/login">login again</router-link>.
+            </div>
           </div>
           <v-sheet height="64" elevation="3" v-if="!$apollo.loading">
             <v-toolbar flat color="white">

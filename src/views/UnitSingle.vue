@@ -7,14 +7,14 @@
       :title="`${unit.title}`"
       v-if="units && units.length"
     ></Breadcrumb>
-    <v-container v-if="units && units.length" fluid>
+    <v-container v-if="units && units.length">
       <v-row>
-        <v-col cols="12" md="9" order-md="1" order="2" order-sm="2">
+        <v-col cols="12" order-md="1" order="2" order-sm="2">
           <div class="markdown-body">
             <h1 class="text-center">{{ unit.title }}</h1>
             <div v-html="unit.summary" class="mb-12"></div>
             <h2 class="mt-3 text-center" id="documents">
-              Documents & Resources
+              {{ unit.shortname }} Documents & Resources
             </h2>
           </div>
           <div v-if="unit.documents.length">
@@ -22,6 +22,7 @@
               :documents="unit.documents"
               :searchLabel="`Search ${unit.shortname} Documents`"
               v-if="units"
+              :key="$route.path"
             ></DocumentTable>
           </div>
           <div v-else class="mt-4 markdown-body">
@@ -31,15 +32,26 @@
           </div>
 
           <div class="text-center markdown-body mt-12">
-            <h2 class="" id="news-and-updates">News & Updates</h2>
+            <h2 class="" id="news-and-updates">
+              {{ unit.shortname }} News & Updates
+            </h2>
           </div>
-          <div v-if="unit.posts.length">
-            <NewsTable
-              :posts="unit.posts"
-              :searchLabel="`Search ${unit.shortname} News`"
-              :unit="unit.shortname"
-              v-if="units"
-            ></NewsTable>
+          <div v-if="unit && unit.posts && unit.posts.length">
+            <v-container class="view-container mt-6" fluid>
+              <v-row>
+                <v-col
+                  v-for="(item, index) in unit.posts"
+                  :key="index"
+                  cols="12"
+                >
+                  <news-card
+                    :item="item"
+                    :text-only="true"
+                    style="margin-top: -5px"
+                  ></news-card>
+                </v-col>
+              </v-row>
+            </v-container>
           </div>
           <div v-else class="mt-4 markdown-body">
             <h3 style="color: #666" class="text-center">
@@ -48,10 +60,13 @@
           </div>
           <div v-if="$route.params.slug === 'research-and-analysis-unit'">
             <h2 class="text-center mt-12" id="latest-articles">
-              Recent Articles
+              R&A Recent Articles
             </h2>
             <v-card class="mt-5 px-5 py-5">
-              <ResearchArticles :limit="4"></ResearchArticles>
+              <ResearchArticles
+                :limit="4"
+                :key="$route.path"
+              ></ResearchArticles>
               <div class="py-2 text-center reduce-85">
                 Visit
                 <a href="https://icjia.illinois.gov/researchhub" target="_blank"
@@ -61,10 +76,13 @@
               </div>
             </v-card>
             <h2 class="text-center mt-12" id="latest-applications">
-              Recent Applications
+              R&A Recent Applications
             </h2>
             <v-card class="mt-5 px-5 py-5">
-              <ResearchApplications :limit="4"></ResearchApplications>
+              <ResearchApplications
+                :limit="4"
+                :key="$route.path"
+              ></ResearchApplications>
               <div class="py-2 text-center reduce-85">
                 Visit
                 <a href="https://icjia.illinois.gov/researchhub" target="_blank"
@@ -75,12 +93,12 @@
             </v-card>
           </div>
         </v-col>
-        <v-col cols="12" sm="12" md="3" order-md="2" order="1" order-sm="1">
+        <!-- <v-col cols="12" sm="12" md="3" order-md="2" order="1" order-sm="1">
           <div class="mainToc" v-if="units">
-            <Toc :key="$route.path"></Toc>
+            <Toc :key="units.id"></Toc>
           </div>
           <div v-else><Loader></Loader></div>
-        </v-col>
+        </v-col> -->
       </v-row>
     </v-container>
     <v-container v-else>
