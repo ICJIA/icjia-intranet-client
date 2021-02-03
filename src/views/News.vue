@@ -5,7 +5,7 @@
       :key="$route.path"
       title="News"
     ></Breadcrumb>
-    <v-container class="mb-5">
+    <v-container class="mb-0">
       <v-row>
         <v-col>
           <div class="text-center">
@@ -14,11 +14,17 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container fluid class="mb-5">
+    <v-container fluid class="mb-12">
       <v-row>
         <v-col cols="12">
-          <div class="text-right">
-            <ToggleNews @toggle="toggle"></ToggleNews>
+          <div class="text-center">
+            <!-- <div
+              class="mb-2"
+              style="font-size: 12px; font-weight: 900; color: #666"
+            >
+              Show:
+            </div> -->
+            <NewsToggle @toggle="toggle"></NewsToggle>
           </div>
         </v-col>
       </v-row>

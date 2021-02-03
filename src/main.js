@@ -30,8 +30,8 @@ myApp.install = function () {
 };
 Vue.use(myApp);
 
-let VueMasonryPlugin = window["vue-masonry-plugin"].VueMasonryPlugin;
-Vue.use(VueMasonryPlugin);
+// let VueMasonryPlugin = window["vue-masonry-plugin"].VueMasonryPlugin;
+// Vue.use(VueMasonryPlugin);
 
 import browserDetect from "vue-browser-detect-plugin";
 Vue.use(browserDetect);

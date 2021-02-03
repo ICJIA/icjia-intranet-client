@@ -16,7 +16,7 @@
   },
   "daysToShowNew": 7,
   "home": {
-    "eventLimit": 8,
+    "eventLimit": 6,
     "postLimit": 3
   },
   "image": {

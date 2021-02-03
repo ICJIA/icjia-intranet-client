@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card
-      class="grid-item mb-6 markdown-body info-card"
+      class="grid-item pb-6 mb-6 markdown-body info-card"
       outlined
       @click="$router.push(`/news/${item.slug}`)"
     >
