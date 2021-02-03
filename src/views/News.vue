@@ -24,7 +24,14 @@
             >
               Show:
             </div> -->
-            <NewsToggle @toggle="toggle"></NewsToggle>
+            <NewsToggle
+              @toggle="toggle"
+              v-if="
+                $vuetify.breakpoint.md ||
+                $vuetify.breakpoint.lg ||
+                $vuetify.breakpoint.xl
+              "
+            ></NewsToggle>
           </div>
         </v-col>
       </v-row>

@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-card
-      class="grid-item pb-6 mb-6 markdown-body info-card"
-      outlined
+      class="grid-item px-3 py-3 mb-6 markdown-body info-card"
+      style="border: 1px solid #aaa"
       @click="$router.push(`/news/${item.slug}`)"
     >
       <!-- <div style="font-size: 12px; margin-left: 15px">
