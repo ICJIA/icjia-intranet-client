@@ -17,7 +17,7 @@
         style="border: 1px solid #aaa"
         @click="$router.push(`/events/${event.slug}/`)"
       >
-        <div class="d-flex flex-no-wrap" style>
+        <div class="d-flex flex-no-wrap" style="border: 1px solid #aaa">
           <div class="px-5" style="max-height: 150px">
             <v-container fill-height>
               <v-row
