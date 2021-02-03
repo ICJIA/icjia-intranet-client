@@ -11,58 +11,60 @@
     </div>
 
     <div v-for="(post, index) in newPosts" :key="index + post.id" v-else>
-      <v-card
+      <!-- <v-card
         class="mx-auto my-5 py-5 news-card"
         outlined
         @click="$router.push(`/news/${post.slug}`)"
       >
         <v-list-item three-line>
-          <v-list-item-avatar tile size="100" color="grey" v-if="post.splash">
-            <v-img
-              :src="
-                getImageURL(
-                  $myApp.config.api.base + post.splash.formats.thumbnail.url,
-                  0,
-                  0,
-                  100
-                )
-              "
-              :lazy-src="
-                getImageURL(
-                  $myApp.config.api.base + post.splash.formats.thumbnail.url,
-                  0,
-                  0,
-                  1
-                )
-              "
-              :alt="getAltText(post)"
-            >
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="blue darken-3"
-                  ></v-progress-circular>
-                </v-row> </template
-            ></v-img>
-          </v-list-item-avatar>
+          <div
+            v-if="
+              $vuetify.breakpoint.md ||
+              $vuetify.breakpoint.lg ||
+              $vuetify.breakpoint.xl
+            "
+          >
+            <v-list-item-avatar tile size="100" color="grey" v-if="post.splash">
+              <v-img
+                :src="
+                  getImageURL(
+                    $myApp.config.api.base + post.splash.formats.thumbnail.url,
+                    0,
+                    0,
+                    100
+                  )
+                "
+                :lazy-src="
+                  getImageURL(
+                    $myApp.config.api.base + post.splash.formats.thumbnail.url,
+                    0,
+                    0,
+                    1
+                  )
+                "
+                :alt="getAltText(post)"
+              >
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="blue darken-3"
+                    ></v-progress-circular>
+                  </v-row> </template
+              ></v-img>
+            </v-list-item-avatar>
+          </div>
 
           <v-list-item-content>
             <div class="overline mb-4">
-              <!-- <span class="" v-if="isItNew(post)">
-                <v-chip dark x-small color="#2296F3" class="mr-2">
-                  NEW!
-                </v-chip> </span
-              > -->
+             
               {{ post.created_at | format }}
             </div>
-            <!-- <div
-              style="font-size: 14px; color: #222"
-              class="mb-2"
-              v-if="post.kicker"
-            >
-              {{ post.kicker }}
-            </div> -->
+            
 
             <h2 class="mt-0 hover" style="line-height: 32px">
               <v-chip
@@ -87,7 +89,8 @@
             Read More&nbsp;<v-icon x-small>keyboard_arrow_right</v-icon></v-btn
           >
         </v-card-actions>
-      </v-card>
+      </v-card> -->
+      <news-card :item="post" :text-only="false"></news-card>
     </div>
   </div>
 </template>

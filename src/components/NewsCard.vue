@@ -3,7 +3,7 @@
     <v-card
       class="grid-item mb-6 markdown-body info-card"
       outlined
-      @click="$router.push('/')"
+      @click="$router.push(`/news/${item.slug}`)"
     >
       <!-- <div style="font-size: 12px; margin-left: 15px">
         {{ formatDate(item.posted_at) }}
