@@ -74,6 +74,11 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-container v-else>
+      <v-col class="text-center" style="margin-top: -40px">
+        <Loader loadingText="Loading news..."></Loader>
+      </v-col>
+    </v-container>
   </div>
 </template>
 

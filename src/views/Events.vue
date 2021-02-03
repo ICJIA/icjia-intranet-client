@@ -1,7 +1,14 @@
 <template>
   <div>
     <Breadcrumb :key="$route.path" title="Events"></Breadcrumb>
-    <v-container fluid>
+    <v-container v-if="$apollo.loading">
+      <v-row>
+        <v-col class="text-center">
+          <Loader loadingText="Loading events..."></Loader>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container fluid v-if="!$apollo.loading">
       <v-row class="fill-height">
         <v-col>
           <div v-if="$apollo.error" class="text-center error apollo">
@@ -75,18 +82,6 @@
               offset-x
             >
               <v-card color="grey lighten-4" min-width="250px" flat>
-                <!-- <v-toolbar :color="selectedEvent.color" dark>
-                  <v-toolbar-title
-                    :id="`event-title-${selectedEvent.id}`"
-                    v-html="selectedEvent.name"
-                  ></v-toolbar-title>
-                  <v-spacer></v-spacer>
-
-                  <v-btn x-small outlined @click="selectedOpen = false"
-                    >CLOSE</v-btn
-                  >
-                </v-toolbar> -->
-
                 <EventCard
                   :item="selectedEvent"
                   :hideClusters="true"
