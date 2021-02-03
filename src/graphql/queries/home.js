@@ -75,6 +75,7 @@ const GET_HOME = gql`
       updated_at
       published_at
       splash {
+        url
         formats
       }
     }

@@ -10,9 +10,9 @@
       </div> -->
 
       <v-img
-        v-if="item.splash && !textOnly"
-        :src="`${$myApp.config.api.base}${item.splash.formats.small.url}`"
-        :lazy-src="`${$myApp.config.api.base}${item.splash.formats.thumbnail.url}`"
+        v-if="item && item.splash && item.splash.url && !textOnly"
+        :src="getImagePath(item.splash.url, 0, 500, 100)"
+        :lazy-src="getImagePath(item.splash.formats.thumbnail.url)"
         width="100%"
         :height="splashHeight"
         class=""
@@ -93,6 +93,7 @@ export default {
   },
   mounted() {
     this.$emit("init");
+    // console.log(this.item.splash);
   },
 
   methods: {
@@ -109,31 +110,17 @@ export default {
     },
     getImagePath(url, imgWidth = 0, imgHeight = 0, imageQuality = 30) {
       let imgPath;
-      if (this.$store.state.appEnv === "development") {
-        // For Dev
-        // imgPath = `${url}`
-        imgPath = `${this.$store.state.appConfig.clientURL}${url}`;
 
-        const thumborImgPath = getImageURL(
-          imgPath,
-          imgWidth,
-          imgHeight,
-          imageQuality
-        );
-        // console.log(thumborImgPath)
-        return thumborImgPath;
-      } else {
-        imgPath = `${this.$store.state.appConfig.clientURL}${url}`;
+      imgPath = `${this.$myApp.config.api.base}${url}`;
 
-        const thumborImgPath = getImageURL(
-          imgPath,
-          imgWidth,
-          imgHeight,
-          imageQuality
-        );
-        // console.log(thumborImgPath)
-        return thumborImgPath;
-      }
+      const thumborImgPath = getImageURL(
+        imgPath,
+        imgWidth,
+        imgHeight,
+        imageQuality
+      );
+      // console.log(thumborImgPath)
+      return thumborImgPath;
     },
     formatDate() {
       // const temp = new Date(d).toJSON().split("T")[0];
