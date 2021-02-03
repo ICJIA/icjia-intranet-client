@@ -67,8 +67,8 @@
               :text-only="true"
               read-more-text="Read News"
               @init="resize"
-              style="margin-bottom: -10px !important"
               @imageLoaded="resize"
+              class="mb-4"
             ></news-card>
           </div>
         </v-col>
