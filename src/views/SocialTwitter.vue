@@ -33,14 +33,14 @@
             /> -->
             <Twitter></Twitter>
           </v-sheet>
-          <div class="mt-4 text-center" style="font-size: 12px">
+          <!-- <div class="mt-4 text-center" style="font-size: 12px">
             Timeline not appearing?
             <a
               href="https://intranet.icjia.cloud/social/twitter/"
               style="background: none"
               >Refresh this page.</a
             >
-          </div>
+          </div> -->
           <!--  -->
         </v-col>
       </v-row>

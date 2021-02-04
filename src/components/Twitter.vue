@@ -4,7 +4,7 @@
       id="ICJIA_Illinois"
       sourceType="profile"
       :options="{ tweetLimit: '15' }"
-      error-message="This timeline could not be loaded. Please refresh the page."
+      error-message="This timeline could not be loaded. Please <a href='https://intranet.icjia.cloud/social/twitter/'>refresh the page</a>."
       ><Loader size="30" height="10"></Loader
     ></Timeline>
   </div>
