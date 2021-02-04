@@ -141,7 +141,7 @@ import { required, email } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
 import { generateHours } from "@/services/Utils";
 import { dbInsert } from "@/services/Forms";
-import NProgress from "nprogress";
+// import NProgress from "nprogress";
 
 //const config = require("@/config.json");
 // eslint-disable-next-line no-unused-vars
@@ -245,7 +245,7 @@ export default {
       this.$v.$touch();
       this.showAxiosError = false;
       if (this.isSuccess) {
-        NProgress.start();
+        window.NProgress.start();
         this.showLoader = true;
         // sanitize comment, then strip html
         const cleanComment = DOMPurify.sanitize(this.comment).replace(
@@ -283,7 +283,7 @@ export default {
       this.showAxiosError = true;
       this.axiosError = res;
       this.showLoader = false;
-      NProgress.done();
+      window.NProgress.done();
       this.reload();
     },
     success(res) {
@@ -293,7 +293,7 @@ export default {
       this.showError = "";
       this.successMessage = res.data.msg;
       this.showLoader = false;
-      NProgress.done();
+      window.NProgress.done();
       this.reload();
     },
     clear() {

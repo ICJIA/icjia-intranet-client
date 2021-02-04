@@ -14,7 +14,11 @@
         style="font-size: 12px"
       >
         &copy;&nbsp;
-        <a href="http://icjia.illinois.gov" style="background: none">
+        <a
+          href="http://icjia.illinois.gov"
+          target="_blank"
+          style="background: none"
+        >
           {{ year }}
           Illinois Criminal Justice Information Authority </a
         >&nbsp;|&nbsp;
@@ -22,11 +26,25 @@
           >Contact ICJIA Web Support</router-link
         >&nbsp;|&nbsp;
         <a
-          href="https://github.com/ICJIA/icjia-intranet-client"
+          href="http://icjia.illinois.gov/status/"
+          target="_blank"
           style="background: none"
-          ><v-icon size="12px" class="ml-0">fab fa-github</v-icon>
-          {{ info.version }}
-        </a>
+        >
+          Site Status</a
+        >&nbsp;|&nbsp;
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <a
+              href="https://github.com/ICJIA/icjia-intranet-client"
+              style="background: none"
+              v-bind="attrs"
+              v-on="on"
+              ><v-icon size="12px" class="ml-0">fab fa-github</v-icon>
+              {{ info.version }}
+            </a>
+          </template>
+          <span>Find us on GitHub!</span>
+        </v-tooltip>
       </v-card-text>
     </v-card>
   </v-footer>

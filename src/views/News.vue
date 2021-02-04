@@ -26,6 +26,7 @@
             </div> -->
             <NewsToggle
               @toggle="toggle"
+              class="mb-4"
               v-if="
                 $vuetify.breakpoint.md ||
                 $vuetify.breakpoint.lg ||

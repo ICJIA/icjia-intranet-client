@@ -321,7 +321,7 @@ const router = new VueRouter({
 // console.log(appConfig.underConstruction);
 
 router.beforeEach((to, from, next) => {
-  NProgress.start();
+  window.NProgress.start();
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   let jwt = localStorage.getItem("jwt");
 
@@ -336,7 +336,7 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach((routeTo, routeFrom) => {
-  NProgress.done();
+  window.NProgress.done();
 });
 
 export default router;

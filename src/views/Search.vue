@@ -26,7 +26,7 @@
                 elevation="1"
                 color="#f1f3f5"
                 @click="route(result)"
-                class="hover py-2 px-2 mb-5"
+                class="hover py-2 px-2 mb-5 card"
               >
                 <div v-if="result.title">
                   <span
@@ -203,9 +203,9 @@ export default {
 </script>
 
 <style>
-.highlight {
+/* .highlight {
   background: #ffff00;
   font-weight: 900;
   padding: 0px;
-}
+} */
 </style>

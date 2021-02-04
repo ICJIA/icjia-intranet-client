@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card
-      class="grid-item px-3 py-3 markdown-body info-card"
+      class="grid-item px-3 py-3 markdown-body hover card"
       style="border: 1px solid #bbb"
       @click="$router.push(`/news/${item.slug}`)"
     >

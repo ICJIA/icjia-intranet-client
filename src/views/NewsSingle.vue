@@ -89,28 +89,12 @@
                   ></DocumentList>
                   <UnitTags
                     :units="posts[0]['units']"
-                    class="mt-5"
+                    class="mt-8"
                     v-if="
                       posts && posts[0]['units'] && posts[0]['units'].length
                     "
                   ></UnitTags>
                 </v-col>
-                <!-- <v-col
-                  cols="12"
-                  sm="12"
-                  md="3"
-                  order-md="2"
-                  order="1"
-                  order-sm="1"
-                  v-if="posts && posts.length && posts[0]['showToc']"
-                >
-                  <div
-                    v-if="posts && posts.length && isMounted"
-                    class="mainToc"
-                  >
-                    <Toc></Toc>
-                  </div>
-                </v-col> -->
               </v-row>
             </v-container>
           </template>
@@ -148,13 +132,13 @@ export default {
     render(content) {
       return renderToHtml(content);
     },
-    dynamicFlex(showToc) {
-      if (this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm) {
-        return "12";
-      } else {
-        return showToc ? "9" : "12";
-      }
-    },
+    // dynamicFlex(showToc) {
+    //   if (this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm) {
+    //     return "12";
+    //   } else {
+    //     return showToc ? "9" : "12";
+    //   }
+    // },
   },
   apollo: {
     posts: {

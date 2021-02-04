@@ -268,7 +268,7 @@ export default {
   methods: {
     isLoading(loading) {
       // eslint-disable-next-line no-undef
-      loading ? NProgress.start() : NProgress.done();
+      loading ? window.NProgress.start() : window.NProgress.done();
       return loading ? true : false;
     },
 

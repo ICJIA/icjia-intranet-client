@@ -141,25 +141,4 @@ export default {
 };
 </script>
 
-<style>
-.card-banner {
-  background: rgba(79, 80, 79, 0.5);
-  padding: 5px;
-}
-.card:hover {
-  box-shadow: 0px 0px 15px #000000;
-  z-index: 2;
-  -webkit-transition: all 100ms ease-in;
-  -webkit-transform: scale(1.01);
-  -ms-transition: all 100ms ease-in;
-  -ms-transform: scale(1.01);
-  -moz-transition: all 100ms ease-in;
-  -moz-transform: scale(1.01);
-  transition: all 100ms ease-in;
-  transform: scale(1.01);
-  cursor: pointer;
-}
-.article-title {
-  line-height: 1.3em;
-}
-</style>
+<style></style>

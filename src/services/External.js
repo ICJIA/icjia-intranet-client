@@ -1,5 +1,5 @@
 import { EventBus } from "@/event-bus";
-import NProgress from "nprogress";
+// import NProgress from "nprogress";
 
 const axios = require("axios");
 const api = axios.create({
@@ -8,12 +8,12 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  NProgress.start();
+  window.NProgress.start();
   return config;
 });
 
 api.interceptors.response.use((response) => {
-  NProgress.done();
+  window.NProgress.done();
   return response;
 });
 
@@ -77,7 +77,7 @@ const getHubArticles = async (start, limit) => {
   } catch (e) {
     console.log("researchHub error: ", e.toString());
     EventBus.$emit("error", e.toString());
-    NProgress.done();
+    window.NProgress.done();
     return null;
   }
 };
@@ -89,7 +89,7 @@ const getHubApplications = async (limit) => {
     return apps.data.data.apps;
   } catch (e) {
     console.log("contentServiceError", e.toString());
-    NProgress.done();
+    window.NProgress.done();
     return [];
   }
 };
