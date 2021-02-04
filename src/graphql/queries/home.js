@@ -74,6 +74,10 @@ const GET_HOME = gql`
       created_at
       updated_at
       published_at
+      units {
+        title
+        slug
+      }
       splash {
         url
         formats

@@ -21,6 +21,11 @@ const GET_ALL_POSTS_QUERY = gql`
         firstname
         lastname
       }
+      units {
+        title
+        shortname
+        slug
+      }
       body
       splash {
         url
@@ -70,10 +75,6 @@ const GET_SINGLE_POST_QUERY = gql`
           ext
         }
         slug
-        unit {
-          title
-          slug
-        }
       }
       splash {
         url

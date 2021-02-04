@@ -52,8 +52,9 @@
 
       <div class="px-5">
         <v-card-text style="font-size: 12px"
-          ><PostedMeta :meta="item" :showUpdatedInText="true"></PostedMeta
-        ></v-card-text>
+          ><PostedMeta :meta="item" :showUpdatedInText="false"></PostedMeta> |
+          {{ getUnitTitle(item) }}</v-card-text
+        >
 
         <v-card-text v-if="item.title"
           ><div style="margin-top: -20px; font-size: 22px; font-weight: bold">
@@ -97,6 +98,13 @@ export default {
   },
 
   methods: {
+    getUnitTitle(item) {
+      if (item.units && item.units.length) {
+        return item.units[0].title;
+      } else {
+        return "General";
+      }
+    },
     isItNew(item) {
       let now = moment(new Date()); //todays date
       let end = moment(item.updated_at); // another date

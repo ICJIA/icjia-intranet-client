@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <span>
     <span v-if="showUpdatedInText">
       <span v-if="postedMeta.showUpdated"
         >Updated: <strong>{{ postedMeta.updated_at | format }}</strong>
@@ -10,7 +10,7 @@
     ><span style="font-weight: 400">{{
       postedMeta.published_at | format
     }}</span>
-  </div>
+  </span>
 </template>
 
 <script>

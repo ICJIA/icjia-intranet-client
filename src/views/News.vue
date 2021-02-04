@@ -14,7 +14,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container fluid class="mb-12">
+    <v-container fluid class="mb-12" v-if="posts">
       <v-row>
         <v-col cols="12">
           <div class="text-center">
@@ -26,7 +26,7 @@
             </div> -->
             <NewsToggle
               @toggle="toggle"
-              class="mb-4"
+              class="mb-0"
               v-if="
                 $vuetify.breakpoint.md ||
                 $vuetify.breakpoint.lg ||

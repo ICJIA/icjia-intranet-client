@@ -46,6 +46,14 @@
                     :meta="meta"
                     v-if="posts && posts.length"
                   ></PostedMeta>
+                  |
+                  <span
+                    @click="routeToUnit(posts[0].units[0])"
+                    class="hover"
+                    style="font-weight: bold; color: #0d4474"
+                  >
+                    {{ getUnitTitle(posts[0]) }}</span
+                  >
                 </v-col>
               </v-row>
             </v-container>
@@ -131,6 +139,20 @@ export default {
   methods: {
     render(content) {
       return renderToHtml(content);
+    },
+    routeToUnit(unit) {
+      if (unit) {
+        this.$router.push(`/units/${unit.slug}`);
+      } else {
+        this.$router.push("/units/");
+      }
+    },
+    getUnitTitle(item) {
+      if (item.units && item.units.length) {
+        return item.units[0].title;
+      } else {
+        return "General";
+      }
     },
   },
   apollo: {

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="mb-2" style="font-size: 12px; color: #555; font-weight: bold">
+    <!-- <div class="mb-2" style="font-size: 12px; color: #555; font-weight: bold">
       Show as:
-    </div>
+    </div> -->
     <v-btn-toggle v-model="icon" borderless>
       <v-btn value="list" small elevation="2">
-        <span>List</span>
+        <span>List View</span>
 
         <v-icon right small>mdi-format-list-bulleted</v-icon>
       </v-btn>
