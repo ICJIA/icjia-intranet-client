@@ -5401,18 +5401,6 @@
             "deprecationReason": null
           },
           {
-            "name": "showToc",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "kicker",
             "description": null,
             "args": [],
@@ -5800,22 +5788,6 @@
             "deprecationReason": null
           },
           {
-            "name": "showToc",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "PostConnectionShowToc",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "kicker",
             "description": null,
             "args": [],
@@ -6167,41 +6139,6 @@
       },
       {
         "kind": "OBJECT",
-        "name": "PostConnectionShowToc",
-        "description": null,
-        "fields": [
-          {
-            "name": "key",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "connection",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "PostConnection",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
         "name": "PostConnectionKicker",
         "description": null,
         "fields": [
@@ -6405,16 +6342,6 @@
             "defaultValue": null
           },
           {
-            "name": "showToc",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
             "name": "kicker",
             "description": null,
             "type": {
@@ -6539,16 +6466,6 @@
             "type": {
               "kind": "SCALAR",
               "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "showToc",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -13347,11 +13264,6 @@
           {
             "kind": "OBJECT",
             "name": "PostConnectionSummary",
-            "ofType": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "PostConnectionShowToc",
             "ofType": null
           },
           {

@@ -132,13 +132,6 @@ export default {
     render(content) {
       return renderToHtml(content);
     },
-    // dynamicFlex(showToc) {
-    //   if (this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm) {
-    //     return "12";
-    //   } else {
-    //     return showToc ? "9" : "12";
-    //   }
-    // },
   },
   apollo: {
     posts: {

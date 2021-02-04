@@ -10,10 +10,6 @@ import "@/assets/app.css";
 import "@/filters";
 // import "material-design-icons-iconfont/dist/material-design-icons.css";
 // import Masonry from "masonry-layout";
-// NProgress
-// eslint-disable-next-line no-unused-vars
-// import Nprogress from "nprogress";
-// import "nprogress/nprogress.css";
 
 import "@fortawesome/fontawesome-free/css/all.css";
 

@@ -8,7 +8,6 @@ const GET_ALL_POSTS_QUERY = gql`
       kicker
       title
       summary
-      showToc
       created_at
       updated_at
       published_at
@@ -39,7 +38,6 @@ const GET_SINGLE_POST_QUERY = gql`
       title
       summary
       kicker
-      showToc
       created_at
       updated_at
       published_at
