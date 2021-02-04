@@ -100,7 +100,7 @@
 /* eslint-disable no-unused-vars */
 import { GET_EVENTS } from "@/graphql/queries/events";
 
-import NProgress from "nprogress";
+// import NProgress from "nprogress";
 const moment = require("moment");
 const tz = require("moment-timezone");
 export default {
@@ -130,10 +130,12 @@ export default {
     ],
   }),
   created() {
-    NProgress.start();
+    window.NProgress.start();
   },
   mounted() {
-    this.$refs.calendar.checkChange();
+    if (this.$refs.calendar) {
+      this.$refs.calendar.checkChange();
+    }
   },
   apollo: {
     events: {
@@ -159,7 +161,7 @@ export default {
           //event.color = this.colors[this.rnd(0, this.colors.length - 1)];
           return event;
         });
-        NProgress.done();
+        window.NProgress.done();
       },
     },
   },
