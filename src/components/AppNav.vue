@@ -34,9 +34,76 @@
       </div>
       <!-- {{ $store.state.auth.isAuthenticated }} -->
       <v-spacer></v-spacer>
-      <v-btn small text to="/news" class="hidden-sm-and-down"
+      <!-- <v-btn small text to="/news" class="hidden-sm-and-down"
         >News & Updates</v-btn
+      > -->
+      <v-menu
+        bottom
+        offset-y
+        origin="center center"
+        transition="scale-transition"
       >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            small
+            text
+            class="hidden-sm-and-down"
+            v-bind="attrs"
+            v-on="on"
+            :class="{
+              currentRoute:
+                $route.path.includes('news') || $route.path.includes('social'),
+            }"
+            >News & updates<v-icon right small>arrow_drop_down</v-icon>
+          </v-btn>
+        </template>
+        <v-list nav dense elevation="2">
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/news/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >ICJIA News</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-divider></v-divider>
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/social/facebook/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Facebook timeline</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/social/twitter/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Twitter feed</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-menu>
       <v-menu
         bottom
         offset-y
