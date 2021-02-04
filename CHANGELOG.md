@@ -1,3 +1,40 @@
+### 1.2.0 (2021-02-04)
+
+##### Chores
+
+*  remove unused deps / update schema (82f60f42)
+
+##### New Features
+
+*  event toggle list/calendar view (83524315)
+*  add social media in appNav (5a11ef30)
+*  add social media pages (83f57f10)
+
+##### Bug Fixes
+
+*  twitter feed (7c2d5df0)
+*  add twitter refresh (b826a45f)
+*  navigation duplicated error (74073cfb)
+*  add unit to news card (f7f6e51a)
+*  adjust event toggle (5e93b807)
+*  remove search highlight (ae4f973b)
+*  calendar ref error (55842f99)
+*  adjust image sizing on news (96800d99)
+*  margin for newscard layout (122731f0)
+*  add loader for events and news (58266c80)
+*  single unit layouts (38eeae36)
+*  event layout (37364db9)
+*  newscard layout (9fd7c363)
+*  remove vue-masonry (c80ce090)
+*  update new layout on home (17a24f6d)
+*  search index error (e96600fa)
+*  update news card and masonry layout (f6d1387e)
+*  add 'training' to calendar type (d4647532)
+*  add 'webinar' to calendar type (d0aa66be)
+*  footer link (d413cdb7)
+*  search layout / document card layout (8eea9c44)
+*  event display / search index (4383776c)
+
 ### 1.1.0 (2021-02-01)
 
 ##### Chores
