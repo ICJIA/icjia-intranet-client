@@ -253,7 +253,7 @@ export default {
     this.now = moment().tz(this.$myApp.config.timezone).format("YYYY-MM-DD");
   },
   mounted() {
-    console.log(this.$myApp.config.timezone);
+    //console.log(this.$myApp.config.timezone);
   },
   data() {
     return {

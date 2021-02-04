@@ -79,7 +79,7 @@
 
                   <DocumentList
                     :documents="posts[0]['documents']"
-                    heading="Related Documents"
+                    heading="Related Resources"
                     v-if="
                       posts &&
                       posts[0]['documents'] &&

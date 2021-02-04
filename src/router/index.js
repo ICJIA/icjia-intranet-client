@@ -265,6 +265,24 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: "/social/facebook/",
+    name: "Facebook",
+    component: () =>
+      import(/* webpackChunkName: "social" */ "../views/SocialFacebook.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/social/twitter/",
+    name: "Twitter",
+    component: () =>
+      import(/* webpackChunkName: "social" */ "../views/SocialTwitter.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 
   {
     path: "/units/",
