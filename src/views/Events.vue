@@ -8,8 +8,9 @@
         </v-col>
       </v-row>
     </v-container>
+
     <v-container fluid v-if="!$apollo.loading">
-      <v-row class="fill-height">
+      <v-row class="fill-height" v-if="display">
         <v-col>
           <div v-if="$apollo.error" class="text-center error apollo">
             {{ error }}
@@ -17,79 +18,167 @@
               Please <router-link to="/login">login again</router-link>.
             </div>
           </div>
-          <v-sheet height="64" elevation="3" v-if="!$apollo.loading">
-            <v-toolbar flat color="white">
-              <v-btn
-                outlined
-                class="mr-4"
-                color="grey darken-2"
-                @click="setToday"
-                >Today</v-btn
+
+          <div class="text-center mb-10">
+            <EventToggle
+              @toggleEventView="toggleEventView"
+              @toggleFuture="toggleFuture"
+            ></EventToggle>
+          </div>
+
+          <div v-show="display === 'calendar'">
+            <v-sheet height="64" elevation="3" v-if="!$apollo.loading">
+              <v-toolbar flat color="white">
+                <v-btn
+                  outlined
+                  class="mr-4"
+                  color="grey darken-2"
+                  @click="setToday"
+                  >Today</v-btn
+                >
+                <v-btn fab text small color="grey darken-2" @click="prev">
+                  <v-icon small>mdi-chevron-left</v-icon>
+                </v-btn>
+                <v-btn fab text small color="grey darken-2" @click="next">
+                  <v-icon small>mdi-chevron-right</v-icon>
+                </v-btn>
+                <v-toolbar-title v-if="$refs.calendar">{{
+                  $refs.calendar.title
+                }}</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-menu bottom right>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      outlined
+                      color="grey darken-2"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      <span>{{ typeToLabel[type] }}</span>
+                      <v-icon right>mdi-menu-down</v-icon>
+                    </v-btn>
+                  </template>
+                  <v-list>
+                    <v-list-item @click="type = 'day'">
+                      <v-list-item-title>Day</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item @click="type = 'week'">
+                      <v-list-item-title>Week</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item @click="type = 'month'">
+                      <v-list-item-title>Month</v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
+              </v-toolbar>
+            </v-sheet>
+            <v-sheet>
+              <v-calendar
+                ref="calendar"
+                v-model="focus"
+                color="primary"
+                :events="filteredEvents"
+                :event-color="getEventColor"
+                :type="type"
+                @click:event="showEvent"
+                @click:more="viewDay"
+                @click:date="viewDay"
+                style="min-height: 100vh !important"
+              ></v-calendar>
+              <v-menu
+                v-model="selectedOpen"
+                :close-on-content-click="false"
+                :activator="selectedElement"
+                offset-x
               >
-              <v-btn fab text small color="grey darken-2" @click="prev">
-                <v-icon small>mdi-chevron-left</v-icon>
-              </v-btn>
-              <v-btn fab text small color="grey darken-2" @click="next">
-                <v-icon small>mdi-chevron-right</v-icon>
-              </v-btn>
-              <v-toolbar-title v-if="$refs.calendar">{{
-                $refs.calendar.title
-              }}</v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-menu bottom right>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn
-                    outlined
-                    color="grey darken-2"
-                    v-bind="attrs"
-                    v-on="on"
-                  >
-                    <span>{{ typeToLabel[type] }}</span>
-                    <v-icon right>mdi-menu-down</v-icon>
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item @click="type = 'day'">
-                    <v-list-item-title>Day</v-list-item-title>
-                  </v-list-item>
-                  <v-list-item @click="type = 'week'">
-                    <v-list-item-title>Week</v-list-item-title>
-                  </v-list-item>
-                  <v-list-item @click="type = 'month'">
-                    <v-list-item-title>Month</v-list-item-title>
-                  </v-list-item>
-                </v-list>
+                <v-card color="grey lighten-4" min-width="250px" flat>
+                  <EventCard
+                    :item="selectedEvent"
+                    :hideClusters="true"
+                    @clicked="selectedOpen = false"
+                  ></EventCard>
+                </v-card>
               </v-menu>
-            </v-toolbar>
-          </v-sheet>
-          <v-sheet>
-            <v-calendar
-              ref="calendar"
-              v-model="focus"
-              color="primary"
-              :events="currentEvents"
-              :event-color="getEventColor"
-              :type="type"
-              @click:event="showEvent"
-              @click:more="viewDay"
-              @click:date="viewDay"
-              style="min-height: 100vh !important"
-            ></v-calendar>
-            <v-menu
-              v-model="selectedOpen"
-              :close-on-content-click="false"
-              :activator="selectedElement"
-              offset-x
+            </v-sheet>
+          </div>
+          <div v-show="display === 'list'">
+            <div
+              v-for="(event, index) in filteredEvents"
+              :key="index + event.id"
             >
-              <v-card color="grey lighten-4" min-width="250px" flat>
-                <EventCard
-                  :item="selectedEvent"
-                  :hideClusters="true"
-                  @clicked="selectedOpen = false"
-                ></EventCard>
+              <v-card
+                color="grey lighten-4"
+                class="mb-5 hover card"
+                elevation="0"
+                style="border: 1px solid #bbb"
+                @click="$router.push(`/events/${event.slug}/`)"
+              >
+                <div class="d-flex flex-no-wrap" style="border: 1px solid #bbb">
+                  <div class="px-5" style="max-height: 150px">
+                    <v-container fill-height>
+                      <v-row
+                        align="center"
+                        justify="center"
+                        fill-height
+                        style="width: 80px"
+                      >
+                        <v-col
+                          fill-height
+                          class="text-center hover"
+                          @click.prevent="event.show = !event.show"
+                        >
+                          <span
+                            style="
+                              font-size: 14px;
+                              color: #222;
+                              font-weight: 900;
+                            "
+                          >
+                            {{ event.start | shortMonth }}
+                          </span>
+                          <br />
+                          <span
+                            style="
+                              font-size: 26px;
+                              font-weight: 900;
+                              color: #0d4474;
+                            "
+                            >{{ event.start | day }}</span
+                          >
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </div>
+
+                  <div
+                    style="
+                      border-left: 1px solid #ccc;
+                      background: #fafafa;
+                      width: 100% !important;
+                    "
+                  >
+                    <div class="px-5 py-6">
+                      <div
+                        style="font-size: 12px; font-weight: 900; color: #222"
+                      >
+                        <span style="color: #333">{{
+                          event.type | upperCase
+                        }}</span>
+                        {{ getRange(event.start, event.end, event.timed) }}
+                      </div>
+                      <h2 class="mt-2 hover">
+                        {{ event.name }}
+                      </h2>
+
+                      <v-card-subtitle>{{ event.summary }}</v-card-subtitle>
+
+                      <div class="hover readMore text-right"></div>
+                    </div>
+                  </div>
+                </div>
               </v-card>
-            </v-menu>
-          </v-sheet>
+            </div>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -103,10 +192,12 @@ import { GET_EVENTS } from "@/graphql/queries/events";
 // import NProgress from "nprogress";
 const moment = require("moment");
 const tz = require("moment-timezone");
+import { EventBus } from "@/event-bus";
 export default {
   data: () => ({
     focus: "",
     error: "",
+    futureOnly: true,
     type: "month",
     typeToLabel: {
       month: "Month",
@@ -117,7 +208,8 @@ export default {
     selectedElement: null,
     selectedID: null,
     selectedOpen: false,
-    currentEvents: [],
+    filteredEvents: [],
+    display: "calendar",
     events: [],
     colors: [
       "blue",
@@ -137,6 +229,12 @@ export default {
       this.$refs.calendar.checkChange();
     }
   },
+  updated() {
+    console.log("updated");
+    if (this.$refs.calendar) {
+      this.$refs.calendar.checkChange();
+    }
+  },
   apollo: {
     events: {
       query: GET_EVENTS,
@@ -145,7 +243,7 @@ export default {
         this.error = JSON.stringify(error.message);
       },
       result(ApolloQueryResult) {
-        this.currentEvents = this.events.map((event) => {
+        this.events = this.events.map((event) => {
           event.start = moment(event.start)
             .tz(this.$myApp.config.timezone)
             .toDate();
@@ -159,8 +257,10 @@ export default {
             event.color = "grey darken-4";
           }
           //event.color = this.colors[this.rnd(0, this.colors.length - 1)];
+          event.show = false;
           return event;
         });
+        this.filteredEvents = this.events;
         window.NProgress.done();
       },
     },
@@ -169,6 +269,23 @@ export default {
     viewDay({ date }) {
       this.focus = date;
       this.type = "day";
+    },
+    toggleEventView(val) {
+      this.display = val;
+    },
+    toggleFuture(val) {
+      console.log("future only: ", val);
+      let now = new Date();
+      if (val) {
+        this.filteredEvents = this.events.filter((event) => {
+          if (event.start >= now) {
+            return event;
+          }
+        });
+      } else {
+        this.filteredEvents = this.events;
+      }
+      this.$refs.calendar.checkChange();
     },
     getEventColor(event) {
       return event.color;
@@ -202,6 +319,25 @@ export default {
       }
 
       nativeEvent.stopPropagation();
+    },
+    getRange(start, end, timed) {
+      let range;
+      let localStart = moment(start).tz(this.$myApp.config.timezone);
+      let localEnd = moment(end).tz(this.$myApp.config.timezone);
+      let daysBetween = moment(localEnd).diff(moment(localStart), "days");
+
+      if (daysBetween === 0 && timed) {
+        range = ` | ${localStart.format("h:mm a")} to ${localEnd.format(
+          "h:mm a"
+        )}`;
+      } else if (daysBetween === 0 && !timed) {
+        range = ` | All Day`;
+      } else if (daysBetween > 0) {
+        range = ` | ${localStart.format("MMMM D")} through ${localEnd.format(
+          "MMMM D"
+        )}`;
+      }
+      return range;
     },
 
     rnd(a, b) {

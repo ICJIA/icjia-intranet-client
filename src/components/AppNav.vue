@@ -84,7 +84,7 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >Facebook timeline</v-list-item-title
+                >Facebook</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -98,7 +98,7 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >Twitter feed</v-list-item-title
+                >Twitter</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
