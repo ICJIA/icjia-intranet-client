@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container class="mt-6">
-      <v-row class="text-center">
+      <v-row>
         <v-col cols="1"></v-col>
         <v-col cols="10">
           <v-sheet class="px-2 py-2" elevation="3" style="">
@@ -26,12 +26,21 @@
               </div>
             </v-container>
 
-            <Timeline
+            <!-- <Timeline
               id="ICJIA_Illinois"
               sourceType="profile"
-              :options="{ tweetLimit: '3' }"
-            />
+              :options="{ tweetLimit: '15' }"
+            /> -->
+            <Twitter></Twitter>
           </v-sheet>
+          <div class="mt-4 text-center" style="font-size: 12px">
+            Timeline not appearing?
+            <a
+              href="https://intranet.icjia.cloud/social/twitter/"
+              style="background: none"
+              >Refresh this page.</a
+            >
+          </div>
           <!--  -->
         </v-col>
       </v-row>
@@ -41,11 +50,11 @@
 
 <script>
 // eslint-disable-next-line no-unused-vars
-import { Tweet, Moment, Timeline } from "vue-tweet-embed";
+// import { Tweet, Moment, Timeline } from "vue-tweet-embed";
 export default {
-  components: {
-    Timeline,
-  },
+  // components: {
+  //   Timeline,
+  // },
 };
 </script>
 

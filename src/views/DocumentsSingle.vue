@@ -12,6 +12,9 @@
         <v-col v-if="documents">
           <DocumentCard :item="documents[0]"></DocumentCard>
         </v-col>
+        <v-col v-else>
+          <Loader></Loader>
+        </v-col>
       </v-row>
     </v-container>
   </div>
