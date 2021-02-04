@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       icon: "calendar",
-      showHideFuture: true,
+      showHideFuture: false,
     };
   },
   mounted() {
