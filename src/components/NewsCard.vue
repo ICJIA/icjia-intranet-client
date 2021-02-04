@@ -53,7 +53,12 @@
       <div class="px-5">
         <v-card-text style="font-size: 12px"
           ><PostedMeta :meta="item" :showUpdatedInText="false"></PostedMeta> |
-          {{ getUnitTitle(item) }}</v-card-text
+          <span
+            @click.stop.prevent="routeToUnit(item.units[0])"
+            class="hover unit-link"
+            style="font-weight: bold; color: #0d4474"
+            >{{ getUnitTitle(item) }}</span
+          ></v-card-text
         >
 
         <v-card-text v-if="item.title"
@@ -105,6 +110,15 @@ export default {
         return "General";
       }
     },
+    routeToUnit(unit) {
+      if (unit && unit.slug) {
+        this.$router.push(`/units/${unit.slug}`).catch(() => {
+          this.$vuetify.goTo(0);
+        });
+      } else {
+        this.$router.push("/units/");
+      }
+    },
     isItNew(item) {
       let now = moment(new Date()); //todays date
       let end = moment(item.updated_at); // another date
@@ -146,4 +160,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>

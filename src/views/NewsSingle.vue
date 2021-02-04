@@ -49,7 +49,7 @@
                   |
                   <span
                     @click="routeToUnit(posts[0].units[0])"
-                    class="hover"
+                    class="hover unit-link"
                     style="font-weight: bold; color: #0d4474"
                   >
                     {{ getUnitTitle(posts[0]) }}</span
@@ -95,13 +95,13 @@
                     "
                     class="mt-8"
                   ></DocumentList>
-                  <UnitTags
+                  <!-- <UnitTags
                     :units="posts[0]['units']"
                     class="mt-8"
                     v-if="
                       posts && posts[0]['units'] && posts[0]['units'].length
                     "
-                  ></UnitTags>
+                  ></UnitTags> -->
                 </v-col>
               </v-row>
             </v-container>
@@ -142,7 +142,9 @@ export default {
     },
     routeToUnit(unit) {
       if (unit) {
-        this.$router.push(`/units/${unit.slug}`);
+        this.$router.push(`/units/${unit.slug}`).catch(() => {
+          this.$vuetify.goTo(0);
+        });
       } else {
         this.$router.push("/units/");
       }
