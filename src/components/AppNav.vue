@@ -67,8 +67,10 @@
             "
           >
             <v-list-item-content class="hover">
-              <v-list-item-title style="font-size: 12px !important"
-                >ICJIA News</v-list-item-title
+              <v-list-item-title
+                style="font-size: 12px !important; font-weight: bold"
+                ><v-icon small left>view_headline</v-icon>ICJIA News &
+                Updates</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -83,7 +85,8 @@
             "
           >
             <v-list-item-content class="hover">
-              <v-list-item-title style="font-size: 12px !important"
+              <v-list-item-title style="font-size: 12px !important; color: #888"
+                ><v-icon small left>fab fa-facebook</v-icon
                 >Facebook</v-list-item-title
               >
             </v-list-item-content>
@@ -97,7 +100,8 @@
             "
           >
             <v-list-item-content class="hover">
-              <v-list-item-title style="font-size: 12px !important"
+              <v-list-item-title style="font-size: 12px !important; color: #888"
+                ><v-icon small left>fab fa-twitter</v-icon
                 >Twitter</v-list-item-title
               >
             </v-list-item-content>

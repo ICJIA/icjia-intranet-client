@@ -170,7 +170,7 @@
                           target="_blank"
                           href="https://facebook.com/ICJIA"
                           >Facebook&nbsp;<v-icon right small
-                            >open_in_new</v-icon
+                            >fab fa-facebook</v-icon
                           ></v-btn
                         >
                       </v-col>
@@ -197,7 +197,7 @@
                           target="_blank"
                           href="https://twitter.com/ICJIA_Illinois"
                           >Twitter&nbsp;<v-icon right small
-                            >open_in_new</v-icon
+                            >fab fa-twitter</v-icon
                           ></v-btn
                         >
                       </v-col>

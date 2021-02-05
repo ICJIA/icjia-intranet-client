@@ -9,7 +9,7 @@
       <v-row>
         <v-col>
           <div class="text-center">
-            <h1>News & Updates</h1>
+            <h1>ICJIA News & Updates</h1>
           </div>
         </v-col>
       </v-row>

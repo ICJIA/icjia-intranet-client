@@ -12,7 +12,7 @@
         </v-btn>
 
         <v-btn value="calendar" small elevation="2">
-          <span>Calendar</span>
+          <span>Calendar View</span>
 
           <v-icon right small> calendar_today </v-icon>
         </v-btn>
