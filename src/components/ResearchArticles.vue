@@ -9,12 +9,21 @@
           elevation="0"
         >
           <v-img
-            class="white--text align-end"
+            class=""
             height="225px"
             :src="article.splash"
             :lazy-src="article.thumbnail"
             v-if="!$browserDetect.isIE"
           >
+            <v-chip
+              dark
+              color="#2296F3"
+              style="margin-top: -1px !important"
+              v-if="isItNew(article)"
+              class="icjia-card"
+            >
+              NEW!
+            </v-chip>
             <template v-slot:placeholder>
               <v-row class="fill-height ma-0" align="center" justify="center">
                 <v-progress-circular
@@ -23,14 +32,14 @@
                 ></v-progress-circular>
               </v-row>
             </template>
-            <div class="card-banner mb-5">
+            <!-- <div class="card-banner mb-5">
               <div
                 style="font-size: 22px; font-weight: 900"
                 class="px-5 article-title"
               >
                 {{ article.title }}
               </div>
-            </div>
+            </div> -->
           </v-img>
 
           <h3 class="px-5 pt-5">
@@ -83,7 +92,7 @@
 // if (!window.crypto) {
 //   window.crypto = window.msCrypto;
 // }
-
+import moment from "moment";
 import { nanoid } from "nanoid";
 import { getHubArticles } from "@/services/External";
 export default {
@@ -105,6 +114,17 @@ export default {
     this.alreadySeen = true;
   },
   methods: {
+    isItNew(item) {
+      let now = moment(new Date()); //todays date
+      let end = moment(item.date); // another date
+      let duration = moment.duration(now.diff(end));
+      let days = duration.asDays();
+      if (days <= this.$myApp.config.daysToShowNewResearch) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     getKey(index) {
       return nanoid(8) + index;
     },

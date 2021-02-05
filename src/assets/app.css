@@ -85,7 +85,11 @@ a {
   font-weight: bold !important;
 }
 
-.v-chip--label {
+/* .v-chip--label {
+  border-radius: 0px !important;
+} */
+
+.icjia-card.v-chip {
   border-radius: 0px !important;
 }
 

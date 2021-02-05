@@ -15,6 +15,7 @@
     "register": "/auth/local/register"
   },
   "daysToShowNew": 7,
+  "daysToShowNewResearch": 14,
   "home": {
     "eventLimit": 6,
     "postLimit": 3

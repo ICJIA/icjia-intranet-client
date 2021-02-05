@@ -21,9 +21,9 @@
         ><v-chip
           dark
           label
-          style="margin-top: -2px"
+          style="margin-top: -1px"
           color="#2296F3"
-          class=""
+          class="icjia-card"
           v-if="isItNew(item)"
         >
           NEW! </v-chip
@@ -42,7 +42,7 @@
           label
           small
           color="#2296F3"
-          class=""
+          class="icjia-card"
           v-if="isItNew(item)"
           style="margin-top: -2px"
         >
