@@ -28,6 +28,7 @@ const GET_SINGLE_UNIT = gql`
         updated_at
         created_at
         title
+        body
         slug
         summary
         externalURL

@@ -1,6 +1,6 @@
 <template>
-  <div class="markdown-body my-7 mx-5 reduce-90">
-    <v-card color="white" class="px-8 py-8 mx-2">
+  <div class="markdown-body my-5 mx-2">
+    <v-card color="grey lighten-5" class="px-8 py-8 mx-2">
       <h2
         style="
           border-bottom: 1px solid #ccc;
@@ -30,7 +30,7 @@
           margin-bottom: 25px;
         "
       >
-        <PostedMeta :meta="item"></PostedMeta>
+        <PostedMeta :meta="item" class=""></PostedMeta>
       </div>
 
       <div
@@ -88,30 +88,18 @@
           x-small
           style="font-weight: bold"
           @click.native="item.show = !item.show"
-          class="mt-3"
+          class="mt-3 mb-6"
           outlined
           >Show Related
           <v-icon x-small v-if="!item.show">expand_more</v-icon>
           <v-icon x-small v-else>expand_less</v-icon></v-btn
         >
         <v-slide-y-transition>
-          <v-sheet class="px-0 py-5" v-show="item.show">
-            <!-- <div
-              style="
-                border-bottom: 1px solid #ccc;
-                padding-bottom: 5px;
-                font-weight: bold;
-              "
-              class="mb-5"
-            >
-              Related Resources
-            </div> -->
-
+          <v-sheet class="reduce-85" v-show="item.show" color="grey lighten-3">
             <div
               v-for="(cluster, index) in item.clusters"
               :key="`cluster-${index}`"
               class="px-3 py-3 mb-5"
-              style="background: #f3f5f7"
             >
               <router-link
                 :to="`/documents/clusters/${cluster.slug}`"

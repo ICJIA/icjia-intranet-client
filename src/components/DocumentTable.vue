@@ -132,7 +132,7 @@
           :colspan="headers.length"
           style="padding: 0 !important; margin: 0 !important"
         >
-          <DocumentCard :item="item"></DocumentCard>
+          <DocumentCard :item="item" class=""></DocumentCard>
         </td>
       </template>
     </v-data-table>

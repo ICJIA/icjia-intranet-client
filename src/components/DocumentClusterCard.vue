@@ -1,6 +1,6 @@
 <template>
-  <div class="markdown-body my-7 mx-5 reduce-90">
-    <v-card color="white" class="px-5 py-5 mx-2 my-2 pb-10">
+  <div class="markdown-body my-5 mx-2">
+    <v-card color="grey lighten-5" class="px-5 py-5 mx-2 my-2 pb-10 reduce-90">
       <div>
         <h2 style="font-size: 22px">
           {{ item.title }}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-sheet color="grey lighten-3" class="px-3 py-3 reduce-90">
+    <v-sheet color="grey lighten-3" class="px-3 py-3">
       <div
         style="
           font-weight: bold;
