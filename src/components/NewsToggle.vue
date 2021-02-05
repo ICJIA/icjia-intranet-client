@@ -11,7 +11,7 @@
       </v-btn>
 
       <v-btn value="block" small elevation="2">
-        <span>Blocks</span>
+        <span>Block View</span>
 
         <v-icon right small> mdi-view-module </v-icon>
       </v-btn>
