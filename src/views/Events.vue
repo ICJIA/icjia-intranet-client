@@ -20,9 +20,10 @@
           </div>
 
           <div class="text-center mb-10">
+            <h1 class="mb-6">ICJIA Events</h1>
             <EventToggle
               @toggleEventView="toggleEventView"
-              @toggleFuture="toggleFuture"
+              @toggleUpcoming="toggleUpcoming"
             ></EventToggle>
           </div>
 
@@ -120,13 +121,24 @@
                         align="center"
                         justify="center"
                         fill-height
-                        style="width: 80px"
+                        style="width: 100px"
                       >
                         <v-col
                           fill-height
                           class="text-center hover"
                           @click.prevent="event.show = !event.show"
                         >
+                          <!-- <div
+                            style="
+                              font-size: 12px;
+                              font-weight: 400;
+                              color: #555;
+                            "
+                            class="mb-2"
+                          >
+                            {{ getKicker(event.start, event.end, event.timed) }}
+                          </div> -->
+
                           <span
                             style="
                               font-size: 14px;
@@ -144,7 +156,18 @@
                               color: #0d4474;
                             "
                             >{{ event.start | day }}</span
+                          ><span
+                            style="
+                              font-size: 26px;
+                              font-weight: 900;
+                              color: #0d4474;
+                            "
+                            v-if="
+                              isItMultiday(event.start, event.end, event.timed)
+                            "
                           >
+                            - {{ event.end | day }}
+                          </span>
                         </v-col>
                       </v-row>
                     </v-container>
@@ -197,7 +220,7 @@ export default {
   data: () => ({
     focus: "",
     error: "",
-    futureOnly: true,
+    upcomingOnly: true,
     type: "month",
     typeToLabel: {
       month: "Month",
@@ -220,6 +243,7 @@ export default {
       "orange",
       "grey darken-1",
     ],
+    eventKicker: "",
   }),
   created() {
     window.NProgress.start();
@@ -230,7 +254,7 @@ export default {
     }
   },
   updated() {
-    console.log("updated");
+    //console.log("updated");
     if (this.$refs.calendar) {
       this.$refs.calendar.checkChange();
     }
@@ -260,7 +284,9 @@ export default {
           event.show = false;
           return event;
         });
-        this.filteredEvents = this.events;
+        //this.filteredEvents = this.events;
+
+        this.filterUpcoming();
         window.NProgress.done();
       },
     },
@@ -273,15 +299,19 @@ export default {
     toggleEventView(val) {
       this.display = val;
     },
-    toggleFuture(val) {
-      console.log("future only: ", val);
+    filterUpcoming() {
       let now = new Date();
+      this.filteredEvents = this.events.filter((event) => {
+        if (event.end >= now) {
+          return event;
+        }
+      });
+    },
+    toggleUpcoming(val) {
+      console.log("upcoming only: ", val);
+
       if (val) {
-        this.filteredEvents = this.events.filter((event) => {
-          if (event.start >= now) {
-            return event;
-          }
-        });
+        this.filterUpcoming();
       } else {
         this.filteredEvents = this.events;
       }
@@ -329,15 +359,32 @@ export default {
       if (daysBetween === 0 && timed) {
         range = ` | ${localStart.format("h:mm a")} to ${localEnd.format(
           "h:mm a"
-        )}`;
+        )} `;
       } else if (daysBetween === 0 && !timed) {
-        range = ` | All Day`;
+        range = ` | All Day `;
       } else if (daysBetween > 0) {
         range = ` | ${localStart.format("MMMM D")} through ${localEnd.format(
           "MMMM D"
-        )}`;
+        )} `;
       }
+
       return range;
+    },
+
+    isItMultiday(start, end, timed) {
+      let range;
+      let localStart = moment(start).tz(this.$myApp.config.timezone);
+      let localEnd = moment(end).tz(this.$myApp.config.timezone);
+      let daysBetween = moment(localEnd).diff(moment(localStart), "days");
+      let isItMultiday;
+
+      if (daysBetween > 0) {
+        isItMultiday = true;
+      } else {
+        isItMultiday = false;
+      }
+
+      return isItMultiday;
     },
 
     rnd(a, b) {

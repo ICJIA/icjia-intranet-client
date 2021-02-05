@@ -20,12 +20,16 @@
       <div class="mt-5">
         <input
           type="checkbox"
-          id="showHideFuture"
-          name="showHideFuture"
-          v-model="showHideFuture"
+          id="showHideUpcoming"
+          name="showHideUpcoming"
+          v-model="showHideUpcoming"
         />
-        <label for="showHideFuture" aria-label="Show/Hide future events">
-          Future events only</label
+        <label
+          for="showHideUpcoming"
+          aria-label="Show/Hide Upcoming events"
+          style="font-size: 12px"
+        >
+          Upcoming and current events only</label
         >
       </div>
     </div>
@@ -37,12 +41,12 @@ export default {
   data() {
     return {
       icon: "calendar",
-      showHideFuture: false,
+      showHideUpcoming: true,
     };
   },
   mounted() {
     this.$emit("toggleEventView", this.icon);
-    this.$emit("toggleFuture", this.showHideFuture);
+    this.$emit("toggleUpcoming", this.showHideUpcoming);
   },
   watch: {
     icon(newValue, oldValue) {
@@ -53,14 +57,9 @@ export default {
       }
     },
     // eslint-disable-next-line no-unused-vars
-    showHideFuture(newValue, oldValue) {
-      // if (!newValue) {
-      //   this.$emit("toggleFuture", oldValue);
-      // } else {
-      //   this.$emit("toggleFuture", newValue);
-      // }
-      this.$emit("toggleFuture", newValue);
-      console.log(newValue);
+    showHideUpcoming(newValue, oldValue) {
+      this.$emit("toggleUpcoming", newValue);
+      //console.log(newValue);
     },
   },
 };

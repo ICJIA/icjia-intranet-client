@@ -24,7 +24,7 @@
                 align="center"
                 justify="center"
                 fill-height
-                style="width: 80px"
+                style="width: 110px"
               >
                 <v-col
                   fill-height
@@ -38,7 +38,12 @@
                   <span
                     style="font-size: 26px; font-weight: 900; color: #0d4474"
                     >{{ event.start | day }}</span
+                  ><span
+                    style="font-size: 26px; font-weight: 900; color: #0d4474"
+                    v-if="isItMultiday(event.start, event.end, event.timed)"
                   >
+                    - {{ event.end | day }}
+                  </span>
                 </v-col>
               </v-row>
             </v-container>
@@ -95,6 +100,21 @@ export default {
         )}`;
       }
       return range;
+    },
+    isItMultiday(start, end, timed) {
+      let range;
+      let localStart = moment(start).tz(this.$myApp.config.timezone);
+      let localEnd = moment(end).tz(this.$myApp.config.timezone);
+      let daysBetween = moment(localEnd).diff(moment(localStart), "days");
+      let isItMultiday;
+
+      if (daysBetween > 0) {
+        isItMultiday = true;
+      } else {
+        isItMultiday = false;
+      }
+
+      return isItMultiday;
     },
   },
   created() {
