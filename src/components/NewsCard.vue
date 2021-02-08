@@ -121,7 +121,7 @@ export default {
     },
     isItNew(item) {
       let now = moment(new Date()); //todays date
-      let end = moment(item.updated_at); // another date
+      let end = moment(item.published_at); // another date
       let duration = moment.duration(now.diff(end));
       let days = duration.asDays();
       if (days <= this.$myApp.config.daysToShowNew) {
