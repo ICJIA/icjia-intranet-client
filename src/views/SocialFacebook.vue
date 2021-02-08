@@ -12,21 +12,15 @@
                     <h2 style="color: #fff">ICJIA on Facebook</h2>
                   </v-col>
                   <v-col class="text-right mt-1">
-                    <v-btn
-                      outlined
-                      small
-                      target="_blank"
-                      href="https://facebook.com/ICJIA"
-                      >Facebook&nbsp;<v-icon right small
-                        >open_in_new</v-icon
-                      ></v-btn
+                    <v-btn small @click="facebookKey++"
+                      >Refresh <v-icon right small>refresh</v-icon></v-btn
                     >
                   </v-col>
                 </v-row>
               </div>
             </v-container>
 
-            <Facebook></Facebook>
+            <Facebook :key="facebookKey"></Facebook>
           </v-sheet>
           <!--  -->
         </v-col>
@@ -36,7 +30,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      facebookKey: 0,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>

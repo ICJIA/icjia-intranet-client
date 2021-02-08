@@ -26,7 +26,7 @@
         <v-container fluid style="margin-top: -20px">
           <v-row>
             <v-col sm="12" md="6" cols="12" class="child">
-              <v-sheet class="px-2 py-2" elevation="3" style="">
+              <v-sheet class="px-2 py-2" elevation="0" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
@@ -55,7 +55,7 @@
               </v-sheet>
             </v-col>
             <v-col sm="12" md="6" cols="12" class="child">
-              <v-sheet class="px-2 py-2" elevation="3" style="">
+              <v-sheet class="px-2 py-2" elevation="0" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
@@ -86,7 +86,7 @@
           </v-row>
           <v-row>
             <v-col sm="12" cols="12" md="6" class="child">
-              <v-sheet class="px-2 py-2" elevation="3" style="">
+              <v-sheet class="px-2 py-2" elevation="0" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
@@ -120,7 +120,7 @@
               </v-sheet>
             </v-col>
             <v-col sm="12" cols="12" md="6" class="child">
-              <v-sheet class="px-2 py-2" elevation="3" style="">
+              <v-sheet class="px-2 py-2" elevation="0" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
@@ -156,7 +156,7 @@
           </v-row>
           <v-row>
             <v-col cols="12" md="6" class="text-center">
-              <v-sheet class="px-2 py-2" elevation="3" style="">
+              <v-sheet class="px-2 py-2" elevation="0" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
@@ -164,26 +164,20 @@
                         <h2 style="color: #fff">ICJIA on Facebook</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn
-                          outlined
-                          small
-                          target="_blank"
-                          href="https://facebook.com/ICJIA"
-                          >Facebook&nbsp;<v-icon right small
-                            >fab fa-facebook</v-icon
-                          ></v-btn
+                        <v-btn small @click="facebookKey++"
+                          >Refresh <v-icon right small>refresh</v-icon></v-btn
                         >
                       </v-col>
                     </v-row>
                   </div>
                 </v-container>
 
-                <Facebook></Facebook>
+                <Facebook :key="facebookKey"></Facebook>
               </v-sheet>
               <!--  -->
             </v-col>
             <v-col cols="12" md="6">
-              <v-sheet class="px-2 py-2" elevation="3" style="">
+              <v-sheet class="px-2 py-2" elevation="0" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
                   <div style="background: #225b89" class="px-3 py-3">
                     <v-row no-gutters>
@@ -191,33 +185,15 @@
                         <h2 style="color: #fff">ICJIA on Twitter</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn
-                          outlined
-                          small
-                          target="_blank"
-                          href="https://twitter.com/ICJIA_Illinois"
-                          >Twitter&nbsp;<v-icon right small
-                            >fab fa-twitter</v-icon
-                          ></v-btn
+                        <v-btn small @click="twitterKey++"
+                          >Refresh <v-icon right small>refresh</v-icon></v-btn
                         >
                       </v-col>
                     </v-row>
                   </div>
                 </v-container>
-                <Timeline
-                  id="ICJIA_Illinois"
-                  sourceType="profile"
-                  :options="{ tweetLimit: '3' }"
-                  error-message="This timeline could not be loaded. Please <a href='https://intranet.icjia.cloud/'>refresh the page</a>."
-                />
+                <Twitter :key="twitterKey" :tweetLimit="3"></Twitter>
               </v-sheet>
-              <!-- <div class="mt-4 text-center" style="font-size: 12px">
-                Timeline not appearing?
-                <a href="https://intranet.icjia.cloud/" style="background: none"
-                  >Refresh this page.</a
-                >
-              </div> -->
-              <!--  -->
             </v-col>
           </v-row>
         </v-container>
@@ -243,14 +219,12 @@ import moment from "moment";
 // eslint-disable-next-line no-unused-vars
 import tz from "moment-timezone";
 // eslint-disable-next-line no-unused-vars
-import { Tweet, Moment, Timeline } from "vue-tweet-embed";
+//import { Tweet, Moment, Timeline } from "vue-tweet-embed";
 import { nanoid } from "nanoid";
 
 export default {
   name: "Home",
-  components: {
-    Timeline,
-  },
+  components: {},
   computed: {
     name() {
       return this.data;
@@ -266,6 +240,8 @@ export default {
     return {
       GET_HOME,
       now: null,
+      twitterKey: 0,
+      facebookKey: 0,
       nanoid,
       mergedEvents: () => [],
       eventLimit: this.$myApp.config.home.eventLimit,

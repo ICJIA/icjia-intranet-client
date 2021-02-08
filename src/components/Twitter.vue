@@ -3,9 +3,15 @@
     <Timeline
       id="ICJIA_Illinois"
       sourceType="profile"
-      :options="{ tweetLimit: '15' }"
-      error-message="This timeline could not be loaded. Please <a href='https://intranet.icjia.cloud/social/twitter/'>refresh the page</a>."
-      ><Loader size="30" height="10"></Loader
+      :options="{ tweetLimit: tweetLimit }"
+      error-message="<div class='text-center mb-4'>The ICJIA_Illinois timeline could not be loaded. Please refresh.</div>"
+      ><div class="text-center">
+        <v-progress-circular
+          indeterminate
+          color="primary"
+          size="50"
+          class="mb-4"
+        ></v-progress-circular></div
     ></Timeline>
   </div>
 </template>
@@ -17,6 +23,12 @@ export default {
   components: {
     Timeline,
   },
+  props: {
+    tweetLimit: {
+      type: Number,
+      default: 15,
+    },
+  },
   data() {
     return {
       isLoading: true,
@@ -25,28 +37,7 @@ export default {
   created() {
     console.log("created");
   },
-  mounted() {
-    // console.log("mounted");
-    // //console.log(window.FB);
-    // this.$loadScript("https://platform.twitter.com/widgets.js")
-    //   .then(() => {
-    //     console.log("Twitter script loaded");
-    //     this.isLoading = false;
-    //     // window.FB.XFBML.parse();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     this.isLoading = false;
-    //   });
-  },
-  beforeDestroy() {
-    // this.$unloadScript("https://platform.twitter.com/widgets.js")
-    //   .then(() => {
-    //     console.log("Twitter script unloaded");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-  },
+  mounted() {},
+  beforeDestroy() {},
 };
 </script>

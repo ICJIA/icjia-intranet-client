@@ -13,11 +13,14 @@
       data-show-facepile="true"
     >
       <div class="fb-xfbml-parse-ignore">
-        <Loader
-          loadingText="Loading Facebook Timeline..."
-          height="100"
-          size="35"
-        ></Loader>
+        <div class="text-center">
+          <v-progress-circular
+            indeterminate
+            color="primary"
+            size="50"
+            class="mb-4"
+          ></v-progress-circular>
+        </div>
       </div>
     </div>
   </div>

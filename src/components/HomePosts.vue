@@ -4,7 +4,7 @@
       <v-card
         color="grey lighten-5"
         class="mb-5 text-center py-5"
-        elevation="1"
+        elevation="0"
       >
         <h2>No upcoming posts</h2></v-card
       >
