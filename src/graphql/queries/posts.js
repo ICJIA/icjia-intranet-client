@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 const GET_ALL_POSTS_QUERY = gql`
   query getAllPosts {
-    posts(sort: "updated_at:desc") {
+    posts(sort: "published_at:desc") {
       id
       slug
       kicker

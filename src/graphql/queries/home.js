@@ -64,7 +64,7 @@ const GET_HOME = gql`
       type
     }
 
-    posts(sort: "created_at:desc", limit: $postLimit) {
+    posts(sort: "published_at:desc", limit: $postLimit) {
       id
       title
       kicker
