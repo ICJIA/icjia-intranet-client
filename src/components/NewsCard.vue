@@ -2,7 +2,7 @@
   <div>
     <v-card
       class="grid-item px-3 py-3 markdown-body hover card"
-      style="border: 1px solid #bbb"
+      style="border: 1px solid #eee"
       @click="$router.push(`/news/${item.slug}`)"
     >
       <!-- <div style="font-size: 12px; margin-left: 15px">

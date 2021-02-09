@@ -14,10 +14,10 @@
         color="grey lighten-4"
         class="mb-5 hover event-card"
         elevation="0"
-        style="border: 1px solid #bbb"
+        style="border: 1px solid #eee"
         @click="$router.push(`/events/${event.slug}/`)"
       >
-        <div class="d-flex flex-no-wrap" style="border: 1px solid #bbb">
+        <div class="d-flex flex-no-wrap" style="border: 1px solid #eee">
           <div class="px-5" style="max-height: 150px">
             <v-container fill-height>
               <v-row

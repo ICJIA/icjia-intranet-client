@@ -106,6 +106,17 @@
               >
             </v-list-item-content>
           </v-list-item>
+          <v-list-item
+            class="appNav"
+            href="https://www.youtube.com/IllinoisCriminalJusticeInformationAuthority"
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important; color: #888"
+                ><v-icon small left>fab fa-youtube</v-icon>ICJIA on
+                YouTube</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-menu>
       <v-menu

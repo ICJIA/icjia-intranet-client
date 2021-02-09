@@ -3,7 +3,7 @@
     <div v-if="!loading">
       <v-card
         class="mb-5 px-3 py-3"
-        style="border: 1px #aaa solid"
+        style="border: 1px #eee solid"
         elevation="0"
         v-for="(app, index) in apps.length"
         :key="index"
