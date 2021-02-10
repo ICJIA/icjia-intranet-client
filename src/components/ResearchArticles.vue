@@ -6,7 +6,7 @@
           class="mb-5 px-3 py-3 hover card"
           style="border: 1px #eee solid"
           @click="routeTo(article)"
-          elevation="0"
+          elevation="1"
         >
           <v-img
             class=""

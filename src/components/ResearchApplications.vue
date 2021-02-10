@@ -2,11 +2,12 @@
   <div>
     <div v-if="!loading">
       <v-card
-        class="mb-5 px-3 py-3"
+        class="mb-5 px-3 py-3 hover info-card"
         style="border: 1px #eee solid"
-        elevation="0"
+        elevation="1"
         v-for="(app, index) in apps.length"
         :key="index"
+        @click="routeTo(apps[app - 1]['url'])"
       >
         <div class="">
           <v-img
@@ -46,7 +47,9 @@
             x-small
             outlined
             style="color: #075e60"
-            @click.native="apps[app - 1]['show'] = !apps[app - 1]['show']"
+            @click.native.stop.prevent="
+              apps[app - 1]['show'] = !apps[app - 1]['show']
+            "
             >Show Related
             <v-icon x-small v-if="!apps[app - 1]['show']">expand_more</v-icon>
             <v-icon x-small v-else>expand_less</v-icon></v-btn
@@ -54,9 +57,9 @@
 
           <v-spacer></v-spacer>
 
-          <v-btn x-small target="_blank" :href="`${apps[app - 1]['url']}`"
+          <!-- <v-btn x-small target="_blank" :href="`${apps[app - 1]['url']}`"
             >Launch<v-icon small right>open_in_new</v-icon></v-btn
-          >
+          > -->
         </v-card-actions>
 
         <v-slide-y-transition>
@@ -141,10 +144,9 @@ export default {
     this.alreadySeen = true;
   },
   methods: {
-    routeTo(app) {
-      window.open(
-        `https://icjia.illinois.gov/researchhub/applications/${app.slug}`
-      );
+    routeTo(url) {
+      window.open(url);
+      //console.log(app);
     },
 
     async fetchContent() {

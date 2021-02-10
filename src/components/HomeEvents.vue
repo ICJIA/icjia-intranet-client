@@ -4,7 +4,7 @@
       <v-card
         color="grey lighten-5"
         class="mb-5 text-center py-5"
-        elevation="0"
+        elevation="1"
       >
         <h2>No upcoming events</h2></v-card
       >
@@ -13,7 +13,7 @@
       <v-card
         color="grey lighten-4"
         class="mb-5 hover event-card"
-        elevation="0"
+        elevation="1"
         style="border: 1px solid #eee"
         @click="$router.push(`/events/${event.slug}/`)"
       >
