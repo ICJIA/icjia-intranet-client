@@ -7,6 +7,7 @@
         elevation="1"
         v-for="(app, index) in apps.length"
         :key="index"
+        :ripple="false"
         @click="routeTo(apps[app - 1]['url'])"
       >
         <div class="">
@@ -47,9 +48,7 @@
             x-small
             outlined
             style="color: #075e60"
-            @click.native.stop.prevent="
-              apps[app - 1]['show'] = !apps[app - 1]['show']
-            "
+            @click.stop.prevent="apps[app - 1]['show'] = !apps[app - 1]['show']"
             >Show Related
             <v-icon x-small v-if="!apps[app - 1]['show']">expand_more</v-icon>
             <v-icon x-small v-else>expand_less</v-icon></v-btn
