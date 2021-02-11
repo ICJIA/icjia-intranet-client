@@ -14,7 +14,7 @@
     "timeout": 10000,
     "register": "/auth/local/register"
   },
-  "daysToShowNew": 6,
+  "daysToShowNew": 10,
   "daysToShowNewResearch": 10,
   "home": {
     "eventLimit": 6,
