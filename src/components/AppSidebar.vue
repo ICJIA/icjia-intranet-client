@@ -65,6 +65,11 @@ export default {
     menuItems: null,
     items: [
       {
+        url: "/documents/clusters/staff-training-resources/",
+        items: [],
+        title: "Training",
+      },
+      {
         url: "/news/",
         items: [],
         title: "News & Updates",

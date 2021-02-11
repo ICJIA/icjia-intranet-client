@@ -37,6 +37,14 @@
       <!-- <v-btn small text to="/news" class="hidden-sm-and-down"
         >News & Updates</v-btn
       > -->
+
+      <v-btn
+        small
+        text
+        to="/documents/clusters/staff-training-resources"
+        class="hidden-sm-and-down"
+        >Training</v-btn
+      >
       <v-menu
         bottom
         offset-y
@@ -133,7 +141,7 @@
             v-bind="attrs"
             v-on="on"
             :class="{ currentRoute: $route.path.includes('forms') }"
-            >Forms <v-icon right small>arrow_drop_down</v-icon></v-btn
+            >Web Forms <v-icon right small>arrow_drop_down</v-icon></v-btn
           >
         </template>
         <v-list nav dense elevation="2">

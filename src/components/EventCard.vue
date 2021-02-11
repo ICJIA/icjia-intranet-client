@@ -39,9 +39,15 @@
             >
           </div>
 
-          <div class="py-3">
+          <div class="py-3" v-if="item.details">
             <div class="pl-2" style="margin-top: 10px">
               <div v-html="render(item.details)"></div>
+            </div>
+          </div>
+
+          <div class="py-3" v-if="item.summary && !item.details">
+            <div class="pl-2" style="margin-top: 10px">
+              <div v-html="render(item.summary)"></div>
             </div>
           </div>
           <div
