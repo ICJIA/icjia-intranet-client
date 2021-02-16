@@ -302,6 +302,23 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: "/tags/",
+    name: "TagPages",
+    component: () => import(/* webpackChunkName: "tags" */ "../views/Tags.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/tags/:slug/",
+    name: "TagPageList",
+    component: () =>
+      import(/* webpackChunkName: "tags" */ "../views/TagSingle.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 
   // {
   //   path: "/coming-soon",

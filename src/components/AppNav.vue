@@ -38,11 +38,7 @@
         >News & Updates</v-btn
       > -->
 
-      <v-btn
-        small
-        text
-        to="/documents/clusters/staff-training-resources"
-        class="hidden-sm-and-down"
+      <v-btn small text to="/tags/training/" class="hidden-sm-and-down"
         >Training</v-btn
       >
       <v-menu
