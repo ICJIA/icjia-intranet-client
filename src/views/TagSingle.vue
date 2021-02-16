@@ -62,12 +62,20 @@
           <div v-if="tag && tag.events && tag.events.length">
             <v-container class="view-container mt-6" fluid>
               <v-row>
-                <v-col
+                <!-- <v-col
                   v-for="(item, index) in tag.events"
                   :key="index"
                   cols="12"
                 >
-                  {{ item }}
+                  <EventCard
+                    :item="item"
+                    :showURL="false"
+                    :showClose="false"
+                    :showColor="false"
+                  ></EventCard>
+                </v-col> -->
+                <v-col>
+                  <HomeEvents :events="tag.events"></HomeEvents>
                 </v-col>
               </v-row>
             </v-container>
@@ -128,7 +136,7 @@ export default {
           ...d,
           show: false,
         }));
-        console.log(this.tag.documents);
+        //console.log(this.tag.documents);
       },
     },
   },

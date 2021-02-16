@@ -126,8 +126,8 @@ export default {
   mixins: [handleClicks],
   methods: {
     getColor(item) {
-      let color = "grey darken-3";
-      if (this.$myApp.config.events[item.type]) {
+      let color = "grey darken-1";
+      if (this.$myApp.config.events[item.type] && this.showColor) {
         color = this.$myApp.config.events[item.type]["color"];
       }
       return color;
@@ -192,6 +192,10 @@ export default {
       default: true,
     },
     showClose: {
+      type: Boolean,
+      default: true,
+    },
+    showColor: {
       type: Boolean,
       default: true,
     },

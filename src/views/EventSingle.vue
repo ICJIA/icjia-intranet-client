@@ -16,6 +16,7 @@
                 :item="events[0]"
                 :showURL="false"
                 :showClose="false"
+                :showColor="false"
               ></EventCard>
             </v-card>
             <div class="text-center">
