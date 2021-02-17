@@ -174,6 +174,7 @@ export default {
       name: "",
       email: this.$store.state.auth.userMeta.email || null,
       unit: "",
+      editor: "markdown",
       comment: "",
       form: null,
       showSubmit: true,
