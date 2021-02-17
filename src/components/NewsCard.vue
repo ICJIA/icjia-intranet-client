@@ -5,10 +5,6 @@
       style="border: 1px solid #eee"
       @click="$router.push(`/news/${item.slug}`)"
     >
-      <!-- <div style="font-size: 12px; margin-left: 15px">
-        {{ formatDate(item.posted_at) }}
-      </div> -->
-
       <v-img
         v-if="item && item.splash && item.splash.url && !textOnly"
         :src="getImagePath(item.splash.url, 0, 500, 100)"

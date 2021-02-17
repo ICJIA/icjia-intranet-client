@@ -4,7 +4,7 @@
       Show as:
     </div> -->
     <div>
-      <v-btn-toggle v-model="icon" borderless>
+      <v-btn-toggle v-model="icon" borderless v-if="!listViewOnly">
         <v-btn value="list" small elevation="2">
           <span>List View</span>
 
@@ -43,6 +43,12 @@ export default {
       icon: "calendar",
       showHideUpcoming: true,
     };
+  },
+  props: {
+    listViewOnly: {
+      type: Boolean,
+      default: false,
+    },
   },
   mounted() {
     this.$emit("toggleEventView", this.icon);

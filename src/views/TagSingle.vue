@@ -42,11 +42,7 @@
                   :key="index"
                   cols="12"
                 >
-                  <news-card
-                    :item="item"
-                    :text-only="true"
-                    style="margin-top: -5px"
-                  ></news-card>
+                  <news-card :item="item" style="margin-top: -5px"></news-card>
                 </v-col>
               </v-row>
             </v-container>
@@ -62,18 +58,6 @@
           <div v-if="tag && tag.events && tag.events.length">
             <v-container class="view-container mt-6" fluid>
               <v-row>
-                <!-- <v-col
-                  v-for="(item, index) in tag.events"
-                  :key="index"
-                  cols="12"
-                >
-                  <EventCard
-                    :item="item"
-                    :showURL="false"
-                    :showClose="false"
-                    :showColor="false"
-                  ></EventCard>
-                </v-col> -->
                 <v-col>
                   <HomeEvents :events="tag.events"></HomeEvents>
                 </v-col>
@@ -106,8 +90,11 @@ export default {
       item: null,
       tag: null,
       error: null,
+      display: null,
+      filteredEvents: null,
     };
   },
+  methods: {},
   apollo: {
     tags: {
       prefetch: true,
@@ -115,6 +102,7 @@ export default {
       variables() {
         return {
           slug: this.$route.params.slug,
+          now: new Date(),
         };
       },
       error(error) {
@@ -136,7 +124,6 @@ export default {
           ...d,
           show: false,
         }));
-        //console.log(this.tag.documents);
       },
     },
   },

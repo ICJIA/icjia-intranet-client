@@ -7,14 +7,18 @@
       subPath="News"
       subPathURL="/news/"
     ></Breadcrumb>
-    <v-container fluid>
-      <v-card color="gray lighten-4 pb-8" style="min-height: 100vh">
+    <v-container>
+      <v-card
+        color="gray lighten-4 pb-8"
+        style="min-height: 100vh"
+        elevation="0"
+      >
         <base-content :loading="$apollo.loading" :error="error">
-          <template v-slot:readingProgress>
+          <!-- <template v-slot:readingProgress>
             <ReadProgress></ReadProgress>
-          </template>
+          </template> -->
           <template v-slot:title>
-            <v-container fluid>
+            <v-container>
               <v-row>
                 <v-col cols="12">
                   <div class="kicker mb-3">
@@ -32,7 +36,6 @@
           </template>
           <template v-slot:postedMeta>
             <v-container
-              fluid
               style="
                 padding: 0px 15px 0 15px;
                 margin-top: -20px;

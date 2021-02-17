@@ -13,13 +13,13 @@ const GET_ALL_TAGS = gql`
 `;
 
 const GET_SINGLE_TAG = gql`
-  query getSingleUnit($slug: String!) {
+  query getSingleTag($slug: String!, $now: String!) {
     tags(where: { slug: $slug }) {
       id
       title
       summary
       slug
-      events {
+      events(where: { start_gte: $now }, sort: "start:asc") {
         id
         created_at
         updated_at
