@@ -6,7 +6,14 @@
       subPath="Forms"
       subPathURL="/forms/"
     ></Breadcrumb>
-    <v-container>
+    <v-container v-if="isLoading">
+      <v-row>
+        <v-col>
+          <Loader></Loader>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container v-else>
       <v-row>
         <v-col>
           <v-card class="py-5 px-5 mt-5">
@@ -69,8 +76,20 @@
                   ></v-col>
                 </v-row>
 
-                <v-row>
+                <v-row class="mt-8">
                   <v-col cols="12">
+                    <div
+                      style="font-size: 10px; margin-top: -20px"
+                      class="text-right mb-2"
+                    >
+                      For more information about editing your profile in
+                      markdown, see:
+                      <a
+                        href="https://www.markdownguide.org/getting-started/"
+                        target="_blank"
+                        >https://www.markdownguide.org/</a
+                      >
+                    </div>
                     <v-app-bar
                       dense
                       flat
@@ -91,6 +110,7 @@
                         >Markdown</v-btn
                       >
                     </v-app-bar>
+
                     <v-textarea
                       v-model="bio"
                       v-if="markdownMode"
@@ -103,15 +123,7 @@
                       ref="bio"
                       aria-label="Biography Information"
                     ></v-textarea>
-                    <div
-                      style="font-size: 10px; margin-top: -20px"
-                      class="text-right mb-2"
-                    >
-                      For more information about using markdown, see:
-                      <a href="https://www.markdownguide.org/" target="_blank"
-                        >https://www.markdownguide.org/</a
-                      >
-                    </div>
+
                     <div
                       v-if="!markdownMode"
                       style="height: 300px; border: 1px solid #eee"
@@ -226,6 +238,7 @@ export default {
       isIE: null,
       units: null,
       render: false,
+      isLoading: true,
     };
   },
   computed: {
@@ -247,6 +260,8 @@ export default {
       return renderToHtml(content);
     },
     async getProfile() {
+      window.NProgress.start();
+      this.isLoading = true;
       let { data } = await getUserProfile(
         this.$store.state.auth.jwt,
         this.email
@@ -271,6 +286,8 @@ export default {
         this.mode = "create";
       }
       console.log("mode: ", this.mode);
+      window.NProgress.done();
+      this.isLoading = false;
     },
 
     clearStatusMessages() {
