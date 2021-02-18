@@ -107,14 +107,13 @@
                         x-small
                         v-else
                         @click="markdownMode = !markdownMode"
-                        >Markdown</v-btn
+                        >Edit</v-btn
                       >
                     </v-app-bar>
 
                     <v-textarea
                       v-model="bio"
                       v-if="markdownMode"
-                      height="300px"
                       auto-grow
                       filled
                       label="Enter your biographical information. Markdown allowed."
@@ -126,7 +125,7 @@
 
                     <div
                       v-if="!markdownMode"
-                      style="height: 300px; border: 1px solid #eee"
+                      style="border: 1px solid #eee"
                       class="markdown-body py-6 px-5 mb-8"
                       v-html="renderMarkdown(bio)"
                     ></div>
