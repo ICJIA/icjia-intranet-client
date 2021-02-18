@@ -18,7 +18,7 @@ api.interceptors.response.use((response) => {
 
 // eslint-disable-next-line no-unused-vars
 const dbInsert = async function (jwt, { type, email, ...form }) {
-  let axiosDBSubmit = {
+  let axiosHeaders = {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwt}`,
@@ -33,7 +33,7 @@ const dbInsert = async function (jwt, { type, email, ...form }) {
     return await api.post(
       `https://dev.icjia-api.cloud/forms`,
       JSON.stringify(axiosDBSubmitData),
-      axiosDBSubmit
+      axiosHeaders
     );
   } catch (e) {
     console.log(e);
@@ -51,7 +51,7 @@ const getUserProfile = async function (jwt, email) {
   };
 
   try {
-    return await axios.get(
+    return await api.get(
       `https://dev.icjia-api.cloud/biographies?email=${email}`,
       axiosHeaders
     );
@@ -62,4 +62,46 @@ const getUserProfile = async function (jwt, email) {
   }
 };
 
-export { dbInsert, getUserProfile };
+const updateUserProfile = async function (jwt, id, data) {
+  let axiosHeaders = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  };
+
+  try {
+    return await api.put(
+      `https://dev.icjia-api.cloud/biographies/${id}`,
+      JSON.stringify(data),
+      axiosHeaders
+    );
+  } catch (e) {
+    console.log(e);
+
+    return `${e}`;
+  }
+};
+
+const createUserProfile = async function (jwt, data) {
+  let axiosHeaders = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  };
+
+  try {
+    return await api.post(
+      `https://dev.icjia-api.cloud/biographies`,
+      JSON.stringify(data),
+      axiosHeaders
+    );
+  } catch (e) {
+    console.log(e);
+
+    return `${e}`;
+  }
+};
+
+export { dbInsert, getUserProfile, updateUserProfile, createUserProfile };

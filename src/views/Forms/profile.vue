@@ -10,7 +10,7 @@
       <v-row>
         <v-col>
           <v-card class="py-5 px-5 mt-5">
-            <div v-if="mode">Mode: {{ mode }}</div>
+            <!-- <div v-if="mode">Mode: {{ mode }}</div> -->
 
             <v-container>
               <v-row>
@@ -104,7 +104,7 @@
                       height="300px"
                       auto-grow
                       filled
-                      label="Enter your biographical information. You can use markdown."
+                      label="Enter your biographical information."
                       rows="10"
                       @click="clearStatusMessages"
                       ref="bio"

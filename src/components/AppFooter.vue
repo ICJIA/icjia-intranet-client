@@ -22,8 +22,8 @@
           {{ year }}
           Illinois Criminal Justice Information Authority </a
         >&nbsp;|&nbsp;
-        <router-link to="/web-support/" style="background: none"
-          >Contact ICJIA Web Support</router-link
+        <router-link to="/forms/support/" style="background: none"
+          >Contact ICJIA Tech Support</router-link
         >&nbsp;|&nbsp;
         <a
           href="http://icjia.illinois.gov/status/"

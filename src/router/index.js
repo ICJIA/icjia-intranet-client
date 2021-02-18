@@ -329,6 +329,17 @@ const routes = [
   //     requiresAuth: true,
   //   },
   // },
+  {
+    path: "/forms/profile/",
+    name: "UserProfile",
+    component: () =>
+      import(
+        /* webpackChunkName: "UserProfile" */ "../views/Forms/profile.vue"
+      ),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 
   {
     path: "*",

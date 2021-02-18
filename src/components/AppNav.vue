@@ -197,6 +197,20 @@
               >
             </v-list-item-content>
           </v-list-item>
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/forms/profile/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >User Profile</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-menu>
 
@@ -323,15 +337,22 @@
       <v-btn icon to="/search" aria-label="search">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      <v-menu left bottom>
+      <v-menu bottom offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on" aria-label="Action menu">
-            <v-icon>mdi-dots-vertical</v-icon>
+            <v-icon>person</v-icon>
           </v-btn>
         </template>
 
         <v-list>
-          <v-list-item to="/login">
+          <v-list-item to="/forms/profile/">
+            <v-list-item-title>Update Your Profile</v-list-item-title>
+          </v-list-item>
+          <v-list-item to="/forms/support/">
+            <v-list-item-title>Contact Tech Support</v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item to="/login/">
             <v-list-item-title>Logout</v-list-item-title>
           </v-list-item>
         </v-list>

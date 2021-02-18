@@ -25,6 +25,11 @@
                 >Technical Support Request</router-link
               >
             </li>
+            <li>
+              <router-link to="/forms/profile/" style="background: none"
+                >User Profile</router-link
+              >
+            </li>
           </ul>
         </v-col>
       </v-row>
