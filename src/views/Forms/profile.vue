@@ -71,13 +71,6 @@
 
                 <v-row>
                   <v-col cols="12">
-                    <!-- <div
-                      style="font-size: 12px; margin-top: -25px"
-                      class="text-left mb-2"
-                    >
-                      For more information about markdown, please see:
-                      https://markdown.icjia.cloud
-                    </div> -->
                     <v-app-bar
                       dense
                       flat
@@ -104,23 +97,32 @@
                       height="300px"
                       auto-grow
                       filled
-                      label="Enter your biographical information."
+                      label="Enter your biographical information. Markdown allowed."
                       rows="10"
                       @click="clearStatusMessages"
                       ref="bio"
                       aria-label="Biography Information"
                     ></v-textarea>
                     <div
-                      v-else
+                      style="font-size: 10px; margin-top: -20px"
+                      class="text-right mb-2"
+                    >
+                      For more information about using markdown, see:
+                      <a href="https://www.markdownguide.org/" target="_blank"
+                        >https://www.markdownguide.org/</a
+                      >
+                    </div>
+                    <div
+                      v-if="!markdownMode"
                       style="height: 300px; border: 1px solid #eee"
-                      class="markdown-body py-6 px-5"
+                      class="markdown-body py-6 px-5 mb-8"
                       v-html="renderMarkdown(bio)"
                     ></div>
                   </v-col>
                 </v-row>
               </v-container>
 
-              <div v-if="showSubmit" class="text-center">
+              <div v-if="showSubmit" class="text-center mt-5">
                 <v-btn @click="submit" dark color="blue darken-4">{{
                   mode
                 }}</v-btn>
