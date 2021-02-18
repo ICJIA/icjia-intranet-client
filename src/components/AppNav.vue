@@ -346,14 +346,20 @@
 
         <v-list>
           <v-list-item to="/forms/profile/">
-            <v-list-item-title>Update Your Profile</v-list-item-title>
+            <v-list-item-title style="font-size: 12px !important"
+              >Update Your Profile</v-list-item-title
+            >
           </v-list-item>
           <v-list-item to="/forms/support/">
-            <v-list-item-title>Contact Tech Support</v-list-item-title>
+            <v-list-item-title style="font-size: 12px !important"
+              >Contact Tech Support</v-list-item-title
+            >
           </v-list-item>
           <v-divider></v-divider>
           <v-list-item to="/login/">
-            <v-list-item-title>Logout</v-list-item-title>
+            <v-list-item-title style="font-size: 12px !important"
+              >Logout</v-list-item-title
+            >
           </v-list-item>
         </v-list>
       </v-menu>
