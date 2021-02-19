@@ -79,7 +79,17 @@ const routes = [
       hideScrollButton: true,
     },
     component: () =>
-      import(/* webpackChunkName: "reset" */ "../views/Forms/webSupport.vue"),
+      import(/* webpackChunkName: "support" */ "../views/Forms/webSupport.vue"),
+  },
+  {
+    path: "/reset/",
+    name: "WebSupport",
+    meta: {
+      hideAlert: true,
+      hideScrollButton: true,
+    },
+    component: () =>
+      import(/* webpackChunkName: "reset" */ "../views/Reset.vue"),
   },
   {
     path: "/sandbox",
