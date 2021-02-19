@@ -26,6 +26,7 @@ const GET_HOME = gql`
           url
           summary
           image {
+            url
             formats
           }
         }

@@ -53,11 +53,7 @@
               <v-col md="8" cols="12" class="hidden-sm-and-down">
                 <v-img
                   v-if="slide.image && slide.image.formats"
-                  :src="
-                    getImageURL(
-                      $myApp.config.api.base + slide.image.formats.large.url
-                    )
-                  "
+                  :src="getImageURL($myApp.config.api.base + slide.image.url)"
                   :lazy-src="
                     getImageURL(
                       $myApp.config.api.base +

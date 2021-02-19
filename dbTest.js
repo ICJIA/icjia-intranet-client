@@ -1,28 +1,37 @@
-const axios = require("axios");
-// eslint-disable-next-line no-unused-vars
-const dotenv = require("dotenv").config();
+//import { EventBus } from "@/event-bus";
+// import NProgress from "nprogress";
+// const axios = require("axios");
+// const dotenv = require("dotenv").config();
 
-const api = axios.create({
-  timeout: 15000,
-});
+// const api = axios.create({
+//   timeout: 15000,
+// });
 
-const getUserProfile = async function (email) {
-  let axiosHeaders = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.JWT}`,
-    },
-  };
+// api.interceptors.request.use((config) => {
+//   window.NProgress.start();
+//   return config;
+// });
 
-  try {
-    let res = await api.get(
-      `https://dev.icjia-api.cloud/biographies?email=${email}`,
-      axiosHeaders
-    );
-    console.log(res.data);
-  } catch (e) {
-    console.log(e);
-  }
-};
+// api.interceptors.response.use((response) => {
+//   window.NProgress.done();
+//   return response;
+// });
 
-getUserProfile("christopher.schweda@illinois.gov");
+// const getUserProfile = async function (email) {
+//   let axiosHeaders = {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${process.env.JWT}`,
+//     },
+//   };
+
+//   try {
+//     let res = await api.get(
+//       `https://dev.icjia-api.cloud/biographies?email=${email}`,
+//       axiosHeaders
+//     );
+//     console.log(res.data);
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };

@@ -2,7 +2,7 @@
   <div class="markdown-body page-form">
     <Breadcrumb
       :key="$route.path"
-      :title="title"
+      title="User Profile"
       subPath="Forms"
       subPathURL="/forms/"
     ></Breadcrumb>
@@ -34,24 +34,7 @@
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col cols="12" md="4">
-                    <v-text-field
-                      v-model="firstName"
-                      class="heavy"
-                      label="First Name"
-                      @click="clearStatusMessages"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field
-                      v-model="lastName"
-                      class="heavy"
-                      label="Last Name"
-                      required
-                      @click="clearStatusMessages"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" md="4">
+                  <v-col cols="12" md="6">
                     <v-text-field
                       v-model="email"
                       class="heavy"
@@ -60,9 +43,33 @@
                       required
                     ></v-text-field>
                   </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      v-model="phone"
+                      class="heavy"
+                      label="Office Phone"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      v-model="firstName"
+                      class="heavy"
+                      label="First Name"
+                      @click="clearStatusMessages"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      v-model="lastName"
+                      class="heavy"
+                      label="Last Name"
+                      required
+                      @click="clearStatusMessages"
+                    ></v-text-field>
+                  </v-col>
                 </v-row>
                 <v-row>
-                  <v-col cols="12">
+                  <v-col cols="12" md="6">
                     <v-select
                       :items="units"
                       label="Select Unit"
@@ -74,6 +81,14 @@
                       @click="clearStatusMessages"
                     ></v-select
                   ></v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field
+                      style="margin-top: -13px"
+                      v-model="title"
+                      class="heavy"
+                      label="Job Title"
+                    ></v-text-field>
+                  </v-col>
                 </v-row>
 
                 <v-row class="mt-8">
@@ -182,7 +197,7 @@
 <script>
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-
+const slugs = require("slugs");
 import { validationMixin } from "vuelidate";
 import { required, email } from "vuelidate/lib/validators";
 import DOMPurify from "dompurify";
@@ -225,6 +240,9 @@ export default {
       id: null,
       unit: "",
       bio: "",
+      slug: null,
+      title: "",
+      phone: "(312) 793-8550",
       mode: null,
       email: this.$store.state.auth.userMeta.email,
       form: null,
@@ -234,17 +252,13 @@ export default {
       showLoader: false,
       markdownMode: true,
       successMessage: "",
-      isIE: null,
       units: null,
       render: false,
       isLoading: true,
+      fatalError: false,
     };
   },
   computed: {
-    title() {
-      return "User Profile";
-    },
-
     permalink() {
       return null;
     },
@@ -265,6 +279,7 @@ export default {
         this.$store.state.auth.jwt,
         this.email
       );
+
       if (data.length) {
         this.mode = "update";
         let {
@@ -273,9 +288,13 @@ export default {
           lastName = null,
           unit = null,
           bio = null,
+          title = null,
+          phone = null,
         } = data[0];
         this.firstName = firstName;
         this.lastName = lastName;
+        this.title = title;
+        this.phone = phone;
         this.bio = bio;
         this.id = id;
         if (unit) {
@@ -309,6 +328,7 @@ export default {
       if (this.isSuccess) {
         window.NProgress.start();
         this.showLoader = true;
+        let slug = slugs(this.email.split("@")[0]);
 
         this.form = {
           firstName: this.firstName,
@@ -316,6 +336,9 @@ export default {
           email: this.email,
           unit: this.unit,
           bio: this.bio,
+          title: this.title,
+          phone: this.phone,
+          slug,
         };
 
         if (this.mode === "update") {
@@ -326,6 +349,7 @@ export default {
             this.form
           );
           if (dbResponse.status === 200) {
+            console.log("dbUpdate: ", dbResponse);
             this.success("User profile updated successfully");
           } else {
             this.failed(dbResponse);
@@ -336,6 +360,7 @@ export default {
             this.form
           );
           if (dbResponse.status === 200) {
+            console.log("dbCreate: ", dbResponse);
             this.success("User profile created successfully");
           } else {
             this.failed(dbResponse);
