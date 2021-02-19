@@ -90,7 +90,7 @@ export default {
     },
     splashHeight: {
       type: Number,
-      default: 200,
+      default: 250,
     },
   },
   mounted() {
