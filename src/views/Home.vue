@@ -18,60 +18,38 @@
           v-if="result.data.home.slider"
         ></HomeSlider>
 
-        <v-container fluid style="margin-top: -20px">
+        <v-container fluid style="margin-top: 20px">
           <v-row>
-            <v-col sm="12" md="6" cols="12" class="child">
+            <v-col sm="12" md="7" cols="12" class="child">
               <v-sheet class="px-2 py-2" elevation="0" style="">
-                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
-                  <div style="background: #225b89" class="px-3 py-3">
-                    <v-row no-gutters>
-                      <v-col>
-                        <h2 style="color: #fff">News & Updates</h2>
-                      </v-col>
-                      <v-col class="text-right mt-1">
-                        <v-btn
-                          outlined
-                          small
-                          to="/news"
-                          aria-label="Show all news button"
-                          >news archive&nbsp;<v-icon right small
-                            >view_headline</v-icon
-                          ></v-btn
-                        >
-                      </v-col>
-                    </v-row>
-                  </div>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <h2>News & Updates</h2>
+                    </v-col>
+                  </v-row>
                 </v-container>
-
-                <HomePosts
-                  :posts="result.data.posts"
-                  v-if="result.data.posts"
-                ></HomePosts>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <HomePosts
+                        :posts="result.data.posts"
+                        v-if="result.data.posts"
+                      ></HomePosts>
+                    </v-col>
+                  </v-row>
+                </v-container>
               </v-sheet>
             </v-col>
-            <v-col sm="12" md="6" cols="12" class="child">
+            <v-col sm="12" md="5" cols="12" class="child">
               <v-sheet class="px-2 py-2" elevation="0" style="">
-                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
-                  <div style="background: #225b89" class="px-3 py-3">
-                    <v-row no-gutters>
-                      <v-col>
-                        <h2 style="color: #fff">Upcoming Events</h2>
-                      </v-col>
-                      <v-col class="text-right mt-1">
-                        <v-btn
-                          outlined
-                          small
-                          to="/events/"
-                          aria-label="Show all Events button"
-                          >All Events&nbsp;<v-icon right small
-                            >calendar_today</v-icon
-                          ></v-btn
-                        >
-                      </v-col>
-                    </v-row>
-                  </div>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <h2>Upcoming Events</h2>
+                    </v-col>
+                  </v-row>
                 </v-container>
-
                 <HomeEvents
                   :events="mergedEvents"
                   v-if="result.data.events && result.data.eventRange"

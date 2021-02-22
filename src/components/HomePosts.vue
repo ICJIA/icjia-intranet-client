@@ -14,7 +14,7 @@
       v-for="(post, index) in newPosts"
       :key="index + post.id"
       v-else
-      class="mb-5"
+      class="mb-8"
     >
       <news-card :item="post" :text-only="false"></news-card>
     </div>
