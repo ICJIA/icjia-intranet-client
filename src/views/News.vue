@@ -24,7 +24,7 @@
             >
               Show:
             </div> -->
-            <NewsToggle
+            <!-- <NewsToggle
               @toggle="toggle"
               class="mb-0"
               v-if="
@@ -32,7 +32,7 @@
                 $vuetify.breakpoint.lg ||
                 $vuetify.breakpoint.xl
               "
-            ></NewsToggle>
+            ></NewsToggle> -->
           </div>
         </v-col>
       </v-row>
@@ -98,12 +98,13 @@ export default {
       this.resize();
     },
     resize() {
-      const elem = document.querySelector(".masonry");
-      const masonry = new window.Masonry(elem, {
-        itemSelector: ".child",
-      });
-      masonry.layout();
-      console.log("layout resized");
+      return null;
+      // const elem = document.querySelector(".masonry");
+      // const masonry = new window.Masonry(elem, {
+      //   itemSelector: ".child",
+      // });
+      // masonry.layout();
+      // console.log("layout resized");
     },
   },
   apollo: {

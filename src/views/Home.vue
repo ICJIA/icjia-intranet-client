@@ -21,11 +21,16 @@
         <v-container fluid style="margin-top: 20px">
           <v-row>
             <v-col sm="12" md="7" cols="12" class="child">
-              <v-sheet class="px-2 py-2" elevation="0" style="">
+              <v-sheet
+                class="px-2 py-2"
+                elevation="1"
+                style=""
+                color="grey lighten-4"
+              >
                 <v-container>
                   <v-row>
                     <v-col>
-                      <h2>News & Updates</h2>
+                      <h2 style="margin-bottom: 0px">News & Updates</h2>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -42,11 +47,16 @@
               </v-sheet>
             </v-col>
             <v-col sm="12" md="5" cols="12" class="child">
-              <v-sheet class="px-2 py-2" elevation="0" style="">
+              <v-sheet
+                class="px-2 py-2"
+                elevation="1"
+                style=""
+                color="grey lighten-4"
+              >
                 <v-container>
                   <v-row>
                     <v-col>
-                      <h2>Upcoming Events</h2>
+                      <h2 style="margin-bottom: 8px">Upcoming Events</h2>
                     </v-col>
                   </v-row>
                 </v-container>

@@ -3,7 +3,7 @@
     <v-card color="grey lighten-3" class="mb-5" elevation="0">
       <div
         style="
-          border-left: 1px solid #ccc;
+          border-left: 0px solid #ccc;
           background: #fafafa;
           width: 100% !important;
         "

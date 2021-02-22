@@ -5,7 +5,7 @@
       @click="$router.push(`/news/${item.slug}`)"
       min-height="200px"
       elevation="0"
-      color="#f3f3f3"
+      color="#fff"
       v-if="
         $vuetify.breakpoint.md ||
         $vuetify.breakpoint.lg ||
@@ -92,7 +92,7 @@
       class="grid-item markdown-body hover card"
       @click="$router.push(`/news/${item.slug}`)"
       elevation="0"
-      color="#fafafa"
+      color="#fff"
       style="border: 1px solid #ccc"
     >
       <v-img
