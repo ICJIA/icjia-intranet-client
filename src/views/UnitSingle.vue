@@ -44,11 +44,7 @@
                   :key="index"
                   cols="12"
                 >
-                  <news-card
-                    :item="item"
-                    :text-only="true"
-                    style="margin-top: -5px"
-                  ></news-card>
+                  <news-card :item="item" style="margin-top: -5px"></news-card>
                 </v-col>
               </v-row>
             </v-container>

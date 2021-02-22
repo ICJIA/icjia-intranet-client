@@ -148,7 +148,14 @@
         >
 
         <v-card-text v-if="item.title"
-          ><div style="margin-top: -20px; font-size: 22px; font-weight: bold">
+          ><div
+            style="
+              margin-top: -20px;
+              font-size: 22px;
+              font-weight: bold;
+              line-height: 28px;
+            "
+          >
             {{ item.title }}
           </div></v-card-text
         >
