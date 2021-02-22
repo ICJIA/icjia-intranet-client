@@ -7,16 +7,16 @@ const GET_HOME = gql`
       created_at
       updated_at
 
-      quick_menu {
-        id
-        title
-        summary
+      # quick_menu {
+      #   id
+      #   title
+      #   summary
 
-        menuItem {
-          text
-          url
-        }
-      }
+      #   menuItem {
+      #     text
+      #     url
+      #   }
+      # }
 
       slider {
         id

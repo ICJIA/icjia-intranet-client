@@ -7346,22 +7346,6 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
-          },
-          {
-            "name": "quick_menu",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "ComponentMenuQuickMenu",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -7392,20 +7376,6 @@
               "kind": "INPUT_OBJECT",
               "name": "ComponentSliderSliderInput",
               "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "quick_menu",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "INPUT_OBJECT",
-                "name": "ComponentMenuQuickMenuInput",
-                "ofType": null
-              }
             },
             "defaultValue": null
           },
@@ -7457,20 +7427,6 @@
               "kind": "INPUT_OBJECT",
               "name": "editComponentSliderSliderInput",
               "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "quick_menu",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "INPUT_OBJECT",
-                "name": "editComponentMenuQuickMenuInput",
-                "ofType": null
-              }
             },
             "defaultValue": null
           },

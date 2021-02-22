@@ -18,11 +18,6 @@
           v-if="result.data.home.slider"
         ></HomeSlider>
 
-        <HomeQuickMenus
-          :menus="result.data.home.quick_menu"
-          v-if="result.data.home.quick_menu"
-        ></HomeQuickMenus>
-
         <v-container fluid style="margin-top: -20px">
           <v-row>
             <v-col sm="12" md="6" cols="12" class="child">
