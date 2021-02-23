@@ -94,6 +94,7 @@
 <script>
 import { GET_ALL_POSTS_QUERY } from "@/graphql/queries/posts";
 import moment from "moment";
+import _ from "lodash";
 export default {
   data() {
     return {
@@ -107,7 +108,7 @@ export default {
     instantSearch() {
       //console.log(this.query);
       this.filteredPosts = this.posts.filter((p) => {
-        if (p.search.includes(this.query)) {
+        if (_.includes(p.search, this.query)) {
           return p;
         }
       });
