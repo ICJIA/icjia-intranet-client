@@ -14,17 +14,11 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container fluid class="mb-12" v-if="posts">
+    <v-container fluid v-if="posts">
       <v-row>
         <v-col cols="12">
           <div class="text-center">
-            <!-- <div
-              class="mb-2"
-              style="font-size: 12px; font-weight: 900; color: #666"
-            >
-              Show:
-            </div> -->
-            <!-- <NewsToggle
+            <NewsToggle
               @toggle="toggle"
               class="mb-0"
               v-if="
@@ -32,8 +26,22 @@
                 $vuetify.breakpoint.lg ||
                 $vuetify.breakpoint.xl
               "
-            ></NewsToggle> -->
+            ></NewsToggle>
           </div>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container class="mt-8 mb-5">
+      <v-row>
+        <v-col>
+          <v-text-field
+            outlined
+            label="Search news"
+            append-icon="search"
+            v-model="query"
+            @input="instantSearch"
+          ></v-text-field>
         </v-col>
       </v-row>
     </v-container>
@@ -41,7 +49,7 @@
     <v-container v-if="posts" class="view-container" fluid>
       <v-row v-if="view === 'block'" class="masonry">
         <v-col
-          v-for="(item, index) in posts"
+          v-for="(item, index) in filteredPosts"
           :key="index"
           class="child"
           cols="12"
@@ -59,7 +67,7 @@
       <v-row v-if="view === 'list'" style="margin-top: -20px" class="masonry">
         <v-col cols="12" sm="12" class="child">
           <div
-            v-for="(item, index) in posts"
+            v-for="(item, index) in filteredPosts"
             :key="`list-${index}`"
             class="px-5"
           >
@@ -89,9 +97,20 @@ export default {
   data() {
     return {
       view: "block",
+      filteredPosts: null,
+      query: null,
     };
   },
+
   methods: {
+    instantSearch() {
+      //console.log(this.query);
+      this.filteredPosts = this.posts.filter((p) => {
+        if (p.search.includes(this.query)) {
+          return p;
+        }
+      });
+    },
     toggle(e) {
       this.view = e;
       // console.log('view: ', this.view)
@@ -116,6 +135,18 @@ export default {
       },
       error(error) {
         this.error = JSON.stringify(error.message);
+      },
+      result(ApolloQueryResult) {
+        // this.filteredPosts = ApolloQueryResult.data.posts;
+        this.posts = ApolloQueryResult.data.posts.map((p) => {
+          return {
+            ...p,
+            search: `${p.title.toLowerCase()} ${p.summary.toLowerCase()} ${p.units[0][
+              "title"
+            ].toLowerCase()} ${p.units[0]["shortname"].toLowerCase()}`,
+          };
+        });
+        this.filteredPosts = this.posts;
       },
     },
   },

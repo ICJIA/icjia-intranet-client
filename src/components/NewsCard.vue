@@ -3,7 +3,7 @@
     <v-card
       class="grid-item markdown-body hover card"
       @click="$router.push(`/news/${item.slug}`)"
-      min-height="200px"
+      height="200px"
       elevation="0"
       color="#fff"
       v-if="
@@ -14,8 +14,8 @@
     >
       <v-container fluid>
         <v-row>
-          <v-col cols="12" md="4" v-if="item"
-            ><v-img
+          <v-col cols="12" md="4" v-if="item">
+            <v-img
               v-if="item.splash && item.splash.url"
               :src="getImagePath(item.splash.url, 0, 500, 100)"
               :lazy-src="getImagePath(item.splash.formats.thumbnail.url)"

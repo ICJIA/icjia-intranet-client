@@ -5,13 +5,13 @@
     </div> -->
     <v-btn-toggle v-model="icon" borderless>
       <v-btn value="list" small elevation="2">
-        <span>List View</span>
+        <span>List</span>
 
         <v-icon right small>mdi-format-list-bulleted</v-icon>
       </v-btn>
 
       <v-btn value="block" small elevation="2">
-        <span>Block View</span>
+        <span>Blocks</span>
 
         <v-icon right small> mdi-view-module </v-icon>
       </v-btn>
