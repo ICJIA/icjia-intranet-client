@@ -68,6 +68,10 @@ const GET_SINGLE_UNIT = gql`
         published_at
         updated_at
         created_at
+        splash {
+          url
+          formats
+        }
         units {
           title
           slug

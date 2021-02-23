@@ -14,8 +14,9 @@
     >
       <v-container fluid>
         <v-row>
-          <v-col cols="12" md="4" v-if="item && item.splash && item.splash.url"
+          <v-col cols="12" md="4" v-if="item"
             ><v-img
+              v-if="item.splash && item.splash.url"
               :src="getImagePath(item.splash.url, 0, 500, 100)"
               :lazy-src="getImagePath(item.splash.formats.thumbnail.url)"
               width="100%"
@@ -39,11 +40,38 @@
                     color="blue darken-3"
                   ></v-progress-circular>
                 </v-row>
+              </template>
+            </v-img>
+            <v-img
+              v-else
+              src="/icjia-half-splash.jpg"
+              lazy-src="/icjia-half-splash-thumb.jpg"
+              width="100%"
+              height="175px"
+              class=""
+              style="border: 0px solid #fafafa"
+              alt="ICJIA Intranet image"
+              ><v-chip
+                dark
+                label
+                style="margin-top: -1px"
+                color="#2296F3"
+                class="icjia-card"
+                v-if="isItNew(item)"
+              >
+                NEW! </v-chip
+              ><template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular
+                    indeterminate
+                    color="blue darken-3"
+                  ></v-progress-circular>
+                </v-row>
               </template> </v-img
           ></v-col>
-          <v-col cols="12" :md="getCols(item)"
+          <v-col cols="12" md="8"
             ><v-card-text style="font-size: 12px; margin-top: -15px">
-              <div v-if="!item.splash || textOnly">
+              <!-- <div v-if="!item.splash">
                 <v-chip
                   dark
                   label
@@ -55,7 +83,7 @@
                 >
                   NEW!
                 </v-chip>
-              </div>
+              </div> -->
               <PostedMeta :meta="item" :showUpdatedInText="false"></PostedMeta>
               |
               <span
