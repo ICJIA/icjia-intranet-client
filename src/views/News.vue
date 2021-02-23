@@ -37,7 +37,7 @@
         <v-col>
           <v-text-field
             outlined
-            label="Search news"
+            label="Filter news"
             append-icon="search"
             v-model="query"
             @input="instantSearch"
@@ -93,6 +93,7 @@
 
 <script>
 import { GET_ALL_POSTS_QUERY } from "@/graphql/queries/posts";
+import moment from "moment";
 export default {
   data() {
     return {
@@ -143,7 +144,11 @@ export default {
             ...p,
             search: `${p.title.toLowerCase()} ${p.summary.toLowerCase()} ${p.units[0][
               "title"
-            ].toLowerCase()} ${p.units[0]["shortname"].toLowerCase()}`,
+            ].toLowerCase()} ${p.units[0]["shortname"].toLowerCase()} ${moment(
+              p.published_at
+            )
+              .format("MMMM DD, YYYY")
+              .toLowerCase()}`,
           };
         });
         this.filteredPosts = this.posts;
@@ -152,5 +157,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped></style>
