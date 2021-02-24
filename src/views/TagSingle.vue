@@ -5,7 +5,6 @@
       subPath="Tags"
       subPathURL="/tags/"
       :title="`${tag.title}`"
-      v-if="tags && tag.length"
     ></Breadcrumb>
     <v-container v-if="tags && tags.length">
       <v-row>
@@ -42,14 +41,18 @@
             <h2 class="" id="news-and-updates">News & Updates</h2>
           </div>
           <div v-if="tag && tag.posts && tag.posts.length">
-            <v-container class="view-container mt-6" fluid>
+            <v-container class="view-container mt-6">
               <v-row>
                 <v-col
                   v-for="(item, index) in tag.posts"
                   :key="index"
                   cols="12"
                 >
-                  <news-card :item="item" style="margin-top: -5px"></news-card>
+                  <news-card
+                    :item="item"
+                    :textOnly="false"
+                    style="margin-top: -5px"
+                  ></news-card>
                 </v-col>
               </v-row>
             </v-container>
@@ -69,7 +72,7 @@
           </h2>
 
           <div v-if="tag && tag.events && tag.events.length">
-            <v-container class="view-container mt-6" fluid>
+            <v-container class="view-container mt-6">
               <v-row>
                 <v-col>
                   <HomeEvents :events="tag.events"></HomeEvents>

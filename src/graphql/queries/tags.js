@@ -1,3 +1,4 @@
+/* eslint-disable graphql/template-strings */
 import gql from "graphql-tag";
 
 const GET_ALL_TAGS = gql`
@@ -93,6 +94,10 @@ const GET_SINGLE_TAG = gql`
         published_at
         updated_at
         created_at
+        splash {
+          url
+          formats
+        }
         units {
           title
           slug

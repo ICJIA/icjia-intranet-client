@@ -37,14 +37,18 @@
             </h2>
           </div>
           <div v-if="unit && unit.posts && unit.posts.length">
-            <v-container class="view-container mt-6" fluid>
+            <v-container class="view-container mt-6">
               <v-row>
                 <v-col
                   v-for="(item, index) in unit.posts"
                   :key="index"
                   cols="12"
                 >
-                  <news-card :item="item" style="margin-top: -5px"></news-card>
+                  <NewsCard
+                    :item="item"
+                    :textOnly="false"
+                    style="margin-top: -5px"
+                  ></NewsCard>
                 </v-col>
               </v-row>
             </v-container>

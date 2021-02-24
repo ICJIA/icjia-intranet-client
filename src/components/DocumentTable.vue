@@ -34,10 +34,8 @@
         </div>
       </template>
       <template v-slot:item.title="{ item }">
-        <div>
-          <v-chip dark x-small color="#2296F3" v-if="isItNew(item)">
-            NEW! </v-chip
-          ><span class="ml-2"
+        <div class="my-2">
+          <span class=""
             ><strong>{{ item.title }}</strong></span
           >
         </div>
@@ -45,6 +43,15 @@
       <template v-slot:item.updated_at="{ item }">
         <div>
           {{ item.updated_at | dateFormat }}
+        </div>
+      </template>
+      <template v-slot:item.published_at="{ item }">
+        <div>
+          <div>
+            <v-chip dark x-small color="#2296F3" v-if="isItNew(item)">
+              NEW!
+            </v-chip>
+          </div>
         </div>
       </template>
       <template v-slot:item.unit.shortname="{ item }">
@@ -107,25 +114,6 @@
           </v-tooltip>
         </span>
       </template>
-
-      <!-- <template v-slot:item.externalURL="{ item }">
-        <v-tooltip top>
-          <template v-slot:activator="{ on, attrs }">
-            <v-avatar
-              color="white"
-              size="35"
-              class="my-3"
-              v-bind="attrs"
-              v-on="on"
-              v-if="!item.file && item.externalURL"
-              @click.stop.prevent="goToExternal(item.externalURL)"
-            >
-              <v-icon x-small style="font-weight: 900">open_in_new</v-icon>
-            </v-avatar>
-          </template>
-          <span>Go to link</span>
-        </v-tooltip>
-      </template> -->
 
       <template v-slot:expanded-item="{ headers, item }">
         <td
@@ -216,6 +204,12 @@ export default {
           align: "start",
           sortable: true,
           value: "updated_at",
+        },
+        {
+          text: "",
+          align: "start",
+          sortable: false,
+          value: "published_at",
         },
         {
           text: "Title",

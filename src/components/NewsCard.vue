@@ -14,9 +14,9 @@
     >
       <v-container fluid>
         <v-row>
-          <v-col cols="12" md="4" v-if="item">
+          <v-col cols="12" md="4" v-if="item && !textOnly">
             <v-img
-              v-if="item.splash && item.splash.url"
+              v-if="item.splash && item.splash.url && !textOnly"
               :src="getImagePath(item.splash.url, 0, 500, 100)"
               :lazy-src="getImagePath(item.splash.formats.thumbnail.url)"
               width="100%"
@@ -43,7 +43,7 @@
               </template>
             </v-img>
             <v-img
-              v-else
+              v-if="!item.splash && !textOnly"
               src="/icjia-half-splash.jpg"
               lazy-src="/icjia-half-splash-thumb.jpg"
               width="100%"
@@ -67,23 +67,11 @@
                     color="blue darken-3"
                   ></v-progress-circular>
                 </v-row>
-              </template> </v-img
-          ></v-col>
-          <v-col cols="12" md="8"
+              </template>
+            </v-img>
+          </v-col>
+          <v-col cols="12" :md="textOnly ? 12 : 8"
             ><v-card-text style="font-size: 12px; margin-top: -15px">
-              <!-- <div v-if="!item.splash">
-                <v-chip
-                  dark
-                  label
-                  small
-                  color="#2296F3"
-                  class="icjia-card"
-                  v-if="isItNew(item)"
-                  style="margin-top: 2px; margin-bottom: 5px"
-                >
-                  NEW!
-                </v-chip>
-              </div> -->
               <PostedMeta :meta="item" :showUpdatedInText="false"></PostedMeta>
               |
               <span
@@ -103,6 +91,19 @@
                   line-height: 24px;
                 "
               >
+                <span v-if="textOnly">
+                  <v-chip
+                    dark
+                    label
+                    x-small
+                    style="margin-top: -1px"
+                    color="#2296F3"
+                    class="icjia-card mr-2"
+                    v-if="isItNew(item)"
+                  >
+                    NEW!
+                  </v-chip>
+                </span>
                 {{ item.title }}
               </div></v-card-text
             >
@@ -193,69 +194,6 @@
         }}</v-card-text>
       </div>
     </v-card>
-
-    <!-- <v-img
-        v-if="item && item.splash && item.splash.url && !textOnly"
-        :src="getImagePath(item.splash.url, 0, 500, 100)"
-        :lazy-src="getImagePath(item.splash.formats.thumbnail.url)"
-        width="100%"
-        :height="splashHeight"
-        class=""
-        style="border: 0px solid #fafafa"
-        alt="ICJIA Intranet image"
-        ><v-chip
-          dark
-          label
-          style="margin-top: -1px"
-          color="#2296F3"
-          class="icjia-card"
-          v-if="isItNew(item)"
-        >
-          NEW! </v-chip
-        ><template v-slot:placeholder>
-          <v-row class="fill-height ma-0" align="center" justify="center">
-            <v-progress-circular
-              indeterminate
-              color="blue darken-3"
-            ></v-progress-circular>
-          </v-row>
-        </template>
-      </v-img>
-      <div v-if="!item.splash || textOnly">
-        <v-chip
-          dark
-          label
-          small
-          color="#2296F3"
-          class="icjia-card"
-          v-if="isItNew(item)"
-          style="margin-top: -2px"
-        >
-          NEW!
-        </v-chip>
-      </div>
-
-      <div class="px-5">
-        <v-card-text style="font-size: 12px"
-          ><PostedMeta :meta="item" :showUpdatedInText="false"></PostedMeta> |
-          <span
-            @click.stop.prevent="routeToUnit(item.units[0])"
-            class="hover unit-link"
-            style="font-weight: bold; color: #0d4474"
-            >{{ getUnitTitle(item) }}</span
-          ></v-card-text
-        >
-
-        <v-card-text v-if="item.title"
-          ><div style="margin-top: -20px; font-size: 22px; font-weight: bold">
-            {{ item.title }}
-          </div></v-card-text
-        >
-
-        <v-card-text v-if="item.summary" style="margin-top: -15px">{{
-          item.summary
-        }}</v-card-text>
-      </div> -->
   </div>
 </template>
 
@@ -291,13 +229,15 @@ export default {
   },
 
   methods: {
-    getCols(item) {
-      if (item.splash) {
-        return "8";
-      } else {
-        return "12";
-      }
-    },
+    // eslint-disable-next-line no-unused-vars
+    // getCols(item) {
+    //   // if (item.splash) {
+    //   //   return "8";
+    //   // } else {
+    //   //   return "12";
+    //   // }
+    //   return "12";
+    // },
     truncate(str, max = 25) {
       const array = str.trim().split(" ");
       const ellipsis = array.length > max ? "..." : "";

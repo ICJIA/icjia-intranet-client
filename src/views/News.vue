@@ -32,11 +32,12 @@
       </v-row>
     </v-container>
 
-    <v-container class="mt-8 mb-5">
+    <v-container class="mt-8 mb-5" v-if="posts">
       <v-row>
         <v-col>
           <v-text-field
-            outlined
+            filled
+            dense
             label="Filter news"
             append-icon="search"
             v-model="query"

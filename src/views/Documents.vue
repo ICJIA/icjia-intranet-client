@@ -70,6 +70,12 @@ export default {
           value: "updated_at",
         },
         {
+          text: "",
+          align: "start",
+          sortable: false,
+          value: "updated_at",
+        },
+        {
           text: "Title",
           align: "start",
           sortable: true,
