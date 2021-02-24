@@ -98,13 +98,11 @@
                     "
                     class="mt-8"
                   ></DocumentList>
-                  <!-- <UnitTags
-                    :units="posts[0]['units']"
+                  <Tags
+                    :tags="posts[0]['tags']"
                     class="mt-8"
-                    v-if="
-                      posts && posts[0]['units'] && posts[0]['units'].length
-                    "
-                  ></UnitTags> -->
+                    v-if="posts && posts[0]['tags'] && posts[0]['tags'].length"
+                  ></Tags>
                 </v-col>
               </v-row>
             </v-container>

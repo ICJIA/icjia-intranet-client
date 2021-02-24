@@ -1,3 +1,4 @@
+/* eslint-disable graphql/template-strings */
 import gql from "graphql-tag";
 
 const GET_ALL_POSTS_QUERY = gql`
@@ -15,6 +16,13 @@ const GET_ALL_POSTS_QUERY = gql`
         username
         firstname
         lastname
+      }
+      tags(sort: "title:asc") {
+        id
+        title
+        slug
+        created_at
+        summary
       }
       created_by {
         username
@@ -46,11 +54,21 @@ const GET_SINGLE_POST_QUERY = gql`
       created_at
       updated_at
       published_at
+
+      tags(sort: "title:asc") {
+        id
+        title
+        slug
+        created_at
+        summary
+      }
+
       units {
         title
         slug
         shortname
       }
+
       updated_by {
         username
         firstname
