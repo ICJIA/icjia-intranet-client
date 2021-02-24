@@ -8,7 +8,12 @@
         show-arrows-on-hover
       >
         <v-carousel-item v-for="(slide, index) in slides.slide" :key="index">
-          <v-card color="grey lighten-4" height="100%">
+          <v-card
+            color="grey lighten-4"
+            height="100%"
+            class="hover"
+            @click="route(slide.url)"
+          >
             <v-row
               class="fill-height"
               align="center"

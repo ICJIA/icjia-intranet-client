@@ -11,8 +11,7 @@
         <v-col cols="12" order-md="1" order="2" order-sm="2">
           <div class="markdown-body">
             <h1 class="text-center">
-              Items tagged with '<span style="color: #222">{{ tag.title }}</span
-              >'
+              {{ tag.title }}
             </h1>
             <div v-html="tag.summary" class="mb-12"></div>
             <h2
