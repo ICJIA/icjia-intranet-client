@@ -5,7 +5,7 @@
       :headers="headers"
       :items="documents"
       :items-per-page="15"
-      class="elevation-3 hover my-8"
+      class="elevation-0 hover my-8"
       show-expand
       item-key="title"
       :single-expand="singleExpand"
@@ -300,6 +300,10 @@ export default {
     searchLabel: {
       type: String,
       default: "Search Documents",
+    },
+    elevation: {
+      type: Number,
+      default: 2,
     },
     hideFooter: {
       type: Boolean,

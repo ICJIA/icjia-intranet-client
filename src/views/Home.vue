@@ -21,18 +21,22 @@
         <v-container fluid style="margin-top: 20px">
           <v-row>
             <v-col sm="12" md="7" cols="12" class="child">
-              <v-sheet
-                class="px-2 py-2"
-                elevation="1"
-                style=""
-                color="grey lighten-4"
-              >
-                <v-container>
-                  <v-row>
-                    <v-col>
-                      <h2 style="margin-bottom: 0px">News & Updates</h2>
-                    </v-col>
-                  </v-row>
+              <v-sheet class="px-2 py-2" elevation="1" style="">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2>News & Updates</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1">
+                        <v-btn small to="/news/"
+                          >News archive&nbsp;<v-icon right small
+                            >link</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
                 </v-container>
                 <v-container>
                   <v-row>
@@ -47,20 +51,25 @@
               </v-sheet>
             </v-col>
             <v-col sm="12" md="5" cols="12" class="child">
-              <v-sheet
-                class="px-2 py-2"
-                elevation="1"
-                style=""
-                color="grey lighten-4"
-              >
-                <v-container>
-                  <v-row>
-                    <v-col>
-                      <h2 style="margin-bottom: 8px">Upcoming Events</h2>
-                    </v-col>
-                  </v-row>
+              <v-sheet class="px-2 py-2" elevation="1" style="">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2>Upcoming Events</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1">
+                        <v-btn small to="/events/"
+                          >Calendar&nbsp;<v-icon right small
+                            >link</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
                 </v-container>
                 <HomeEvents
+                  class="mt-2"
                   :events="mergedEvents"
                   v-if="result.data.events && result.data.eventRange"
                 ></HomeEvents>
@@ -69,27 +78,32 @@
           </v-row>
           <v-row>
             <v-col>
-              <v-sheet
-                class="px-2 py-2"
-                elevation="1"
-                style=""
-                color="grey lighten-4"
-              >
+              <v-sheet class="px-2 py-2" elevation="1" style="">
                 <v-container fluid>
-                  <v-row>
-                    <v-col>
-                      <h2 style="margin-bottom: 0px; padding-bottom: 0px">
-                        Recent Documents & Resources
-                      </h2>
-                    </v-col>
-                  </v-row>
+                  <v-container fluid style="margin: 0; padding: 0">
+                    <div style="background: #f3f5f7" class="px-3 py-3">
+                      <v-row no-gutters>
+                        <v-col>
+                          <h2>Recent Documents & Resources</h2>
+                        </v-col>
+                        <v-col class="text-right mt-1">
+                          <v-btn small to="/documents/"
+                            >All documents&nbsp;<v-icon right small
+                              >link</v-icon
+                            ></v-btn
+                          >
+                        </v-col>
+                      </v-row>
+                    </div>
+                  </v-container>
 
-                  <v-row style="margin-top: -20px">
+                  <v-row style="margin-top: -30px">
                     <v-col v-if="documents.length">
                       <DocumentTable
                         :documents="filteredDocuments"
                         :hideFooter="true"
                         :hideSearch="true"
+                        elevation="0"
                       ></DocumentTable>
                     </v-col>
                     <v-col v-else>
@@ -104,20 +118,19 @@
           </v-row>
           <v-row>
             <v-col sm="12" cols="12" md="6" class="child">
-              <v-sheet class="px-2 py-2" elevation="0" style="">
-                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
-                  <div style="background: #225b89" class="px-3 py-3">
+              <v-sheet class="px-2 py-2" elevation="0">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
                     <v-row no-gutters>
                       <v-col>
-                        <h2 style="color: #fff">Recent Articles</h2>
+                        <h2>Recent Articles</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn
-                          outlined
                           small
                           target="_blank"
-                          href="https://icjia.illinois.gov/researchhub"
-                          >Research Hub&nbsp;<v-icon right small
+                          href="https://icjia.illinois.gov/researchhub/"
+                          >ResearchHub&nbsp;<v-icon right small
                             >open_in_new</v-icon
                           ></v-btn
                         >
@@ -125,7 +138,7 @@
                     </v-row>
                   </div>
                 </v-container>
-                <ResearchArticles :limit="4"></ResearchArticles>
+                <ResearchArticles :limit="4" class="mt-2"></ResearchArticles>
                 <div class="py-2 text-center reduce-85">
                   Visit
                   <a
@@ -138,20 +151,19 @@
               </v-sheet>
             </v-col>
             <v-col sm="12" cols="12" md="6" class="child">
-              <v-sheet class="px-2 py-2" elevation="0" style="">
-                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
-                  <div style="background: #225b89" class="px-3 py-3">
+              <v-sheet class="px-2 py-2" elevation="0">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
                     <v-row no-gutters>
                       <v-col>
-                        <h2 style="color: #fff">Recent Applications</h2>
+                        <h2>Recent Applications</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn
-                          outlined
                           small
                           target="_blank"
-                          href="https://icjia.illinois.gov/researchhub"
-                          >Research Hub&nbsp;<v-icon right small
+                          href="https://icjia.illinois.gov/researchhub/"
+                          >ResearchHub&nbsp;<v-icon right small
                             >open_in_new</v-icon
                           ></v-btn
                         >
@@ -159,7 +171,10 @@
                     </v-row>
                   </div>
                 </v-container>
-                <ResearchApplications :limit="5"></ResearchApplications>
+                <ResearchApplications
+                  :limit="5"
+                  class="mt-2"
+                ></ResearchApplications>
                 <div class="py-2 text-center reduce-85">
                   Visit
                   <a
@@ -175,11 +190,11 @@
           <v-row>
             <v-col cols="12" md="6" class="text-center">
               <v-sheet class="px-2 py-2" elevation="0" style="">
-                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
-                  <div style="background: #225b89" class="px-3 py-3">
+                <v-container fluid style="margin: 0; padding: 0" class="mb-3">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
                     <v-row no-gutters>
                       <v-col>
-                        <h2 style="color: #fff">ICJIA on Facebook</h2>
+                        <h2>ICJIA on Facebook</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn small @click="facebookKey++"
@@ -196,11 +211,11 @@
             </v-col>
             <v-col cols="12" md="6">
               <v-sheet class="px-2 py-2" elevation="0" style="">
-                <v-container fluid class="mb-8" style="margin: 0; padding: 0">
-                  <div style="background: #225b89" class="px-3 py-3">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
                     <v-row no-gutters>
                       <v-col>
-                        <h2 style="color: #fff">ICJIA on Twitter</h2>
+                        <h2>ICJIA on Twitter</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
                         <v-btn small @click="twitterKey++"

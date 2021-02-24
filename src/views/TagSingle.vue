@@ -10,7 +10,10 @@
       <v-row>
         <v-col cols="12" order-md="1" order="2" order-sm="2">
           <div class="markdown-body">
-            <h1 class="text-center">{{ tag.title }}</h1>
+            <h1 class="text-center">
+              Items tagged with '<span style="color: #222">{{ tag.title }}</span
+              >'
+            </h1>
             <div v-html="tag.summary" class="mb-12"></div>
             <h2
               class="mt-3 text-center"
