@@ -68,6 +68,41 @@
             </v-col>
           </v-row>
           <v-row>
+            <v-col>
+              <v-sheet
+                class="px-2 py-2"
+                elevation="1"
+                style=""
+                color="grey lighten-4"
+              >
+                <v-container fluid>
+                  <v-row>
+                    <v-col>
+                      <h2 style="margin-bottom: 0px; padding-bottom: 0px">
+                        Recent Documents & Resources
+                      </h2>
+                    </v-col>
+                  </v-row>
+
+                  <v-row style="margin-top: -20px">
+                    <v-col v-if="documents.length">
+                      <DocumentTable
+                        :documents="filteredDocuments"
+                        :hideFooter="true"
+                        :hideSearch="true"
+                      ></DocumentTable>
+                    </v-col>
+                    <v-col v-else>
+                      <div class="text-center">
+                        <h2>No documents found</h2>
+                      </div>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-sheet>
+            </v-col>
+          </v-row>
+          <v-row>
             <v-col sm="12" cols="12" md="6" class="child">
               <v-sheet class="px-2 py-2" elevation="0" style="">
                 <v-container fluid class="mb-8" style="margin: 0; padding: 0">
@@ -223,6 +258,8 @@ export default {
     return {
       GET_HOME,
       now: null,
+      documents: null,
+      filteredDocuments: null,
       twitterKey: 0,
       facebookKey: 0,
       nanoid,
@@ -243,6 +280,15 @@ export default {
         let mergedEvents = [...result.data.events, ...result.data.eventRange];
         mergedEvents = _.sortBy(mergedEvents, (o) => o.start);
         this.mergedEvents = mergedEvents.slice(0, this.eventLimit);
+      }
+
+      if (result.data && result.data.documents) {
+        this.documents = result.data.documents;
+        this.documents = this.documents.map((d) => ({
+          ...d,
+          show: false,
+        }));
+        this.filteredDocuments = this.documents;
       }
     },
   },

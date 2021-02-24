@@ -84,6 +84,45 @@ const GET_HOME = gql`
         formats
       }
     }
+
+    documents(limit: 10, sort: "updated_at:desc") {
+      id
+      published_at
+      updated_at
+      title
+      summary
+      externalURL
+      body
+      file {
+        url
+        name
+        ext
+      }
+      slug
+      unit {
+        title
+        slug
+        shortname
+      }
+      clusters(sort: "title:asc") {
+        id
+        title
+        slug
+        summary
+        documents(sort: "title:asc") {
+          id
+          title
+          slug
+          file {
+            url
+            name
+            ext
+          }
+          summary
+          externalURL
+        }
+      }
+    }
   }
 `;
 

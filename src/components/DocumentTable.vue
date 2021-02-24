@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-data-table
+      :hide-default-footer="hideFooter"
       :headers="headers"
       :items="documents"
       :items-per-page="15"
@@ -24,7 +25,7 @@
         $vuetify.breakpoint.xl
       "
     >
-      <template v-slot:top>
+      <template v-slot:top v-if="!hideSearch">
         <div class="pt-5">
           <v-text-field
             v-model="search"
@@ -299,6 +300,14 @@ export default {
     searchLabel: {
       type: String,
       default: "Search Documents",
+    },
+    hideFooter: {
+      type: Boolean,
+      default: false,
+    },
+    hideSearch: {
+      type: Boolean,
+      default: false,
     },
   },
 };
