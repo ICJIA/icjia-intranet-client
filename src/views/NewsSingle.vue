@@ -8,7 +8,7 @@
       subPathURL="/news/"
     ></Breadcrumb>
     <v-container>
-      <v-card color="#fafafa" style="min-height: 100vh" elevation="0">
+      <v-card style="min-height: 100vh" elevation="0" class="px-3 pt-3">
         <base-content :loading="$apollo.loading" :error="error">
           <!-- <template v-slot:readingProgress>
             <ReadProgress></ReadProgress>
@@ -39,7 +39,7 @@
                 color: #888;
               "
             >
-              <v-row>
+              <v-row class="mt-4">
                 <v-col>
                   <PostedMeta
                     :meta="meta"
@@ -53,6 +53,15 @@
                   >
                     {{ getUnitTitle(posts[0]) }}</span
                   >
+                  <div>
+                    <Tags
+                      :tags="posts[0]['tags']"
+                      class="mt-1"
+                      v-if="
+                        posts && posts[0]['tags'] && posts[0]['tags'].length
+                      "
+                    ></Tags>
+                  </div>
                 </v-col>
               </v-row>
             </v-container>
@@ -94,11 +103,6 @@
                     "
                     class="mt-8"
                   ></DocumentList>
-                  <Tags
-                    :tags="posts[0]['tags']"
-                    class="mt-8"
-                    v-if="posts && posts[0]['tags'] && posts[0]['tags'].length"
-                  ></Tags>
                 </v-col>
               </v-row>
             </v-container>

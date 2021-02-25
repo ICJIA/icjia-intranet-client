@@ -112,7 +112,7 @@
             <v-card-text v-if="item.summary" style="margin-top: -15px">{{
               truncate(item.summary, 20)
             }}</v-card-text>
-            <v-card-text style="margin-top: -45px">
+            <v-card-text style="margin-top: -35px">
               <Tags
                 :tags="item.tags"
                 :rule="false"
