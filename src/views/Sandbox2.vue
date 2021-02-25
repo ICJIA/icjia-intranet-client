@@ -10,7 +10,10 @@
         <Loader></Loader>
       </div>
 
-      <div v-if="!isLoading(result.loading) && !result.error">
+      <div
+        v-if="!isLoading(result.loading) && !result.error"
+        style="background: #fff"
+      >
         <!-- START: home components -->
 
         <HomeSlider
@@ -18,26 +21,14 @@
           v-if="result.data.home.slider"
         ></HomeSlider>
 
-        <v-container fluid style="margin-top: 20px">
+        <v-container
+          fluid
+          style="margin-top: 20px; border-top: 1px solid #ddd"
+          class="markdown-body"
+        >
           <v-row>
-            <v-col sm="12" md="7" cols="12" class="child">
-              <v-sheet class="px-2 py-2" elevation="1" style="">
-                <v-container fluid style="margin: 0; padding: 0">
-                  <div style="background: #f3f5f7" class="px-3 py-3">
-                    <v-row no-gutters>
-                      <v-col>
-                        <h2>News & Updates</h2>
-                      </v-col>
-                      <v-col class="text-right mt-1 hidden-sm-and-down">
-                        <v-btn small to="/news/"
-                          >News archive&nbsp;<v-icon right small
-                            >link</v-icon
-                          ></v-btn
-                        >
-                      </v-col>
-                    </v-row>
-                  </div>
-                </v-container>
+            <v-col sm="12" md="6" cols="12" class="child">
+              <v-sheet class="" elevation="0" style="">
                 <v-container>
                   <v-row>
                     <v-col>
@@ -50,48 +41,36 @@
                 </v-container>
               </v-sheet>
             </v-col>
-            <v-col sm="12" md="5" cols="12" class="child">
-              <v-sheet class="px-2 py-2" elevation="1" style="">
-                <v-container fluid style="margin: 0; padding: 0">
-                  <div style="background: #f3f5f7" class="px-3 py-3">
-                    <v-row no-gutters>
-                      <v-col>
-                        <h2>Upcoming Events</h2>
-                      </v-col>
-                      <v-col class="text-right mt-1 hidden-sm-and-down">
-                        <v-btn small to="/events/"
-                          >Calendar&nbsp;<v-icon right small
-                            >link</v-icon
-                          ></v-btn
-                        >
-                      </v-col>
-                    </v-row>
-                  </div>
-                </v-container>
+            <v-col
+              sm="12"
+              md="6"
+              cols="12"
+              class="child"
+              style="border-left: 1px solid #ddd; margin-top: -12px"
+            >
+              <v-sheet class="pl-3" elevation="0" style="">
                 <HomeEvents
-                  class="mt-2"
+                  class="mt-4"
                   :events="mergedEvents"
                   v-if="result.data.events && result.data.eventRange"
                 ></HomeEvents>
               </v-sheet>
             </v-col>
           </v-row>
+        </v-container>
+        <v-container
+          fluid
+          style="border-top: 1px solid #ddd; margin-top: -12px"
+        >
           <v-row>
             <v-col>
-              <v-sheet class="px-2 py-2" elevation="1" style="">
+              <v-sheet class="px-2 py-2" elevation="0" style="">
                 <v-container fluid>
                   <v-container fluid style="margin: 0; padding: 0">
-                    <div style="background: #f3f5f7" class="px-3 py-3">
+                    <div style="background: #f3f5f7" class="px-2 py-2">
                       <v-row no-gutters>
                         <v-col>
-                          <h2>Recent Documents</h2>
-                        </v-col>
-                        <v-col class="text-right mt-1 hidden-sm-and-down">
-                          <v-btn small to="/documents/" class=""
-                            >All documents&nbsp;<v-icon right small
-                              >link</v-icon
-                            ></v-btn
-                          >
+                          <h2>Recently Updated Documents</h2>
                         </v-col>
                       </v-row>
                     </div>
@@ -103,6 +82,7 @@
                         :documents="filteredDocuments"
                         :hideFooter="true"
                         :hideSearch="true"
+                        style="border: 1px solid #eee"
                       ></DocumentTable>
                     </v-col>
                     <v-col v-else>
@@ -115,6 +95,12 @@
               </v-sheet>
             </v-col>
           </v-row>
+        </v-container>
+        <v-container
+          fluid
+          style="margin-top: 20px; border-top: 1px solid #ddd"
+          class=""
+        >
           <v-row>
             <v-col sm="12" cols="12" md="6" class="child">
               <v-sheet class="px-2 py-2" elevation="0">
@@ -123,16 +109,6 @@
                     <v-row no-gutters>
                       <v-col>
                         <h2>Recent Articles</h2>
-                      </v-col>
-                      <v-col class="text-right mt-1 hidden-sm-and-down">
-                        <v-btn
-                          small
-                          target="_blank"
-                          href="https://icjia.illinois.gov/researchhub/"
-                          >ResearchHub&nbsp;<v-icon right small
-                            >open_in_new</v-icon
-                          ></v-btn
-                        >
                       </v-col>
                     </v-row>
                   </div>
@@ -156,16 +132,6 @@
                     <v-row no-gutters>
                       <v-col>
                         <h2>Recent Applications</h2>
-                      </v-col>
-                      <v-col class="text-right mt-1 hidden-sm-and-down">
-                        <v-btn
-                          small
-                          target="_blank"
-                          href="https://icjia.illinois.gov/researchhub/"
-                          >ResearchHub&nbsp;<v-icon right small
-                            >open_in_new</v-icon
-                          ></v-btn
-                        >
                       </v-col>
                     </v-row>
                   </div>
@@ -196,7 +162,7 @@
                         <h2>ICJIA on Facebook</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn small @click="facebookKey++"
+                        <v-btn x-small @click="facebookKey++"
                           >Refresh <v-icon right small>refresh</v-icon></v-btn
                         >
                       </v-col>
@@ -217,7 +183,7 @@
                         <h2>ICJIA on Twitter</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn small @click="twitterKey++"
+                        <v-btn x-small @click="twitterKey++"
                           >Refresh <v-icon right small>refresh</v-icon></v-btn
                         >
                       </v-col>

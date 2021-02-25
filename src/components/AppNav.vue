@@ -242,7 +242,7 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >All</v-list-item-title
+                >All Documents</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -256,7 +256,7 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >Grouped</v-list-item-title
+                >Document Groups</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -268,7 +268,7 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >Public Document Archive<v-icon right small
+                >ICJIA Document Archive<v-icon right small
                   >open_in_new</v-icon
                 ></v-list-item-title
               >

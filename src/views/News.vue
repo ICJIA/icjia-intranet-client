@@ -14,25 +14,8 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container fluid v-if="posts">
-      <v-row>
-        <v-col cols="12">
-          <div class="text-center">
-            <NewsToggle
-              @toggle="toggle"
-              class="mb-0"
-              v-if="
-                $vuetify.breakpoint.md ||
-                $vuetify.breakpoint.lg ||
-                $vuetify.breakpoint.xl
-              "
-            ></NewsToggle>
-          </div>
-        </v-col>
-      </v-row>
-    </v-container>
 
-    <v-container class="mt-8 mb-5" v-if="posts">
+    <v-container class="mt-0 mb-8" v-if="posts">
       <v-row>
         <v-col>
           <v-text-field
@@ -79,6 +62,7 @@
               @init="resize"
               @imageLoaded="resize"
               class="mb-4"
+              :bottomRule="false"
             ></news-card>
           </div>
         </v-col>

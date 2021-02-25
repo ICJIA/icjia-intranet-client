@@ -3,7 +3,7 @@
     <v-card
       class="grid-item markdown-body hover card"
       @click="$router.push(`/news/${item.slug}`)"
-      height="200px"
+      height="210px"
       elevation="0"
       color="#fff"
       v-if="
@@ -11,6 +11,7 @@
         $vuetify.breakpoint.lg ||
         $vuetify.breakpoint.xl
       "
+      :class="{ bottomRule: bottomRule }"
     >
       <v-container fluid>
         <v-row>
@@ -20,7 +21,7 @@
               :src="getImagePath(item.splash.url, 0, 500, 100)"
               :lazy-src="getImagePath(item.splash.formats.thumbnail.url)"
               width="100%"
-              height="175px"
+              height="170px"
               class=""
               style="border: 0px solid #fafafa"
               alt="ICJIA Intranet image"
@@ -71,7 +72,7 @@
             </v-img>
           </v-col>
           <v-col cols="12" :md="textOnly ? 12 : 8"
-            ><v-card-text style="font-size: 12px; margin-top: -15px">
+            ><v-card-text style="font-size: 12px; margin-top: -25px">
               <PostedMeta :meta="item" :showUpdatedInText="false"></PostedMeta>
               |
               <span
@@ -218,6 +219,10 @@ export default {
       type: Number,
       default: 250,
     },
+    bottomRule: {
+      type: Boolean,
+      default: true,
+    },
   },
   mounted() {
     this.$emit("init");
@@ -301,4 +306,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.bottomRule {
+  border-bottom: 1px solid #eee !important;
+}
+</style>
