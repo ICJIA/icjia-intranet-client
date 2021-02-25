@@ -39,11 +39,10 @@
               style="background: none"
               v-bind="attrs"
               v-on="on"
-              ><v-icon size="12px" class="ml-0">fab fa-github</v-icon>
-              {{ info.version }}
+              >Github
             </a>
           </template>
-          <span>Find us on GitHub!</span>
+          <span>App Version: {{ info.version }}</span>
         </v-tooltip>
       </v-card-text>
     </v-card>

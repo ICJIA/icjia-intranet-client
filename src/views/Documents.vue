@@ -24,7 +24,10 @@
       </v-row>
       <v-row>
         <v-col v-if="documents.length">
-          <DocumentTable :documents="filteredDocuments"></DocumentTable>
+          <DocumentTable
+            :documents="filteredDocuments"
+            style="border: 1px solid #eee"
+          ></DocumentTable>
         </v-col>
         <v-col v-else>
           <div class="text-center">

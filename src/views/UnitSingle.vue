@@ -13,7 +13,7 @@
           <div class="markdown-body">
             <h1 class="text-center">{{ unit.title }}</h1>
             <div v-html="unit.summary" class="mb-12"></div>
-            <h2 class="mt-3 text-center" id="documents">
+            <h2 class="mt-3 text-left" id="documents">
               {{ unit.shortname }} Documents & Resources
             </h2>
           </div>
@@ -23,6 +23,7 @@
               :searchLabel="`Search ${unit.shortname} Documents`"
               v-if="units"
               :key="$route.path"
+              style="border: 1px solid #eee"
             ></DocumentTable>
           </div>
           <div v-else class="mt-4 markdown-body">
@@ -31,7 +32,7 @@
             </h3>
           </div>
 
-          <div class="text-center markdown-body mt-12">
+          <div class="text-left markdown-body mt-12">
             <h2 class="" id="news-and-updates">
               {{ unit.shortname }} News & Updates
             </h2>
@@ -59,7 +60,7 @@
             </h3>
           </div>
           <div v-if="$route.params.slug === 'research-and-analysis-unit'">
-            <h2 class="text-center mt-12" id="latest-articles">
+            <h2 class="text-left mt-12" id="latest-articles">
               R&A Recent Articles
             </h2>
             <v-card class="mt-5 px-5 py-5">
@@ -75,7 +76,7 @@
                 for all articles, datasets, and applications.
               </div>
             </v-card>
-            <h2 class="text-center mt-12" id="latest-applications">
+            <h2 class="text-left mt-12" id="latest-applications">
               R&A Recent Applications
             </h2>
             <v-card class="mt-5 px-5 py-5">

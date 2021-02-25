@@ -16,7 +16,7 @@
             </h1>
             <div v-html="tag.summary" class="mb-12"></div>
             <h2
-              class="mt-3 text-center"
+              class="mt-3 text-left"
               id="documents"
               v-if="tag.documents.length"
             >
@@ -29,6 +29,7 @@
               :searchLabel="`Search Documents`"
               v-if="tags"
               :key="$route.path"
+              style="border: 1px solid #eee"
             ></DocumentTable>
           </div>
           <!-- <div v-else class="mt-4 markdown-body">
@@ -38,7 +39,7 @@
           </div> -->
 
           <div
-            class="text-center markdown-body mt-12"
+            class="text-left markdown-body mt-12"
             v-if="tag && tag.posts && tag.posts.length"
           >
             <h2 class="" id="news-and-updates">News & Updates</h2>
@@ -67,7 +68,7 @@
           </div> -->
 
           <h2
-            class="mt-8 text-center"
+            class="mt-8 text-left"
             id="documents"
             v-if="tag && tag.events && tag.events.length"
           >

@@ -9,7 +9,7 @@
       </v-row>
     </v-container>
 
-    <v-container fluid v-if="!$apollo.loading">
+    <v-container v-if="!$apollo.loading">
       <v-row class="fill-height" v-if="display">
         <v-col>
           <div v-if="$apollo.error" class="text-center error apollo">
