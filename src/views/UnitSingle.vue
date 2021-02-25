@@ -13,11 +13,15 @@
           <div class="markdown-body">
             <h1 class="text-center">{{ unit.title }}</h1>
             <div v-html="unit.summary" class="mb-12"></div>
-            <h2 class="mt-3 text-left" id="documents">
+            <h2
+              class="mt-3 text-left"
+              id="documents"
+              v-if="unit.documents.length"
+            >
               {{ unit.shortname }} Documents & Resources
             </h2>
           </div>
-          <div v-if="unit.documents.length">
+          <div v-if="unit.documents && unit.documents.length">
             <DocumentTable
               :documents="unit.documents"
               :searchLabel="`Search ${unit.shortname} Documents`"
@@ -26,14 +30,18 @@
               style="border: 1px solid #eee"
             ></DocumentTable>
           </div>
-          <div v-else class="mt-4 markdown-body">
+          <!-- <div v-else class="mt-4 markdown-body">
             <h3 style="color: #666" class="text-center">
               No documents for {{ unit.shortname }} found.
             </h3>
-          </div>
+          </div> -->
 
           <div class="text-left markdown-body mt-12">
-            <h2 class="" id="news-and-updates">
+            <h2
+              class=""
+              id="news-and-updates"
+              v-if="unit.posts && unit.posts.length"
+            >
               {{ unit.shortname }} News & Updates
             </h2>
           </div>
@@ -54,11 +62,11 @@
               </v-row>
             </v-container>
           </div>
-          <div v-else class="mt-4 markdown-body">
+          <!-- <div v-else class="mt-4 markdown-body">
             <h3 style="color: #666" class="text-center">
               No news for {{ unit.shortname }} found.
             </h3>
-          </div>
+          </div> -->
           <div v-if="$route.params.slug === 'research-and-analysis-unit'">
             <h2 class="text-left mt-12" id="latest-articles">
               R&A Recent Articles

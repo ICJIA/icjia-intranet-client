@@ -8,89 +8,91 @@
       :title="`${tag.title}`"
     ></Breadcrumb>
     <v-container v-if="tags && tags.length">
-      <v-row>
-        <v-col cols="12" order-md="1" order="2" order-sm="2">
-          <div class="markdown-body">
-            <h1 class="text-center">
-              {{ tag.title }}
-            </h1>
-            <div v-html="tag.summary" class="mb-12"></div>
-            <h2
-              class="mt-3 text-left"
-              id="documents"
-              v-if="tag.documents.length"
-            >
-              Documents & Resources
-            </h2>
-          </div>
-          <div v-if="tag.documents.length">
-            <DocumentTable
-              :documents="tag.documents"
-              :searchLabel="`Search Documents`"
-              v-if="tags"
-              :key="$route.path"
-              style="border: 1px solid #eee"
-            ></DocumentTable>
-          </div>
-          <!-- <div v-else class="mt-4 markdown-body">
+      <v-sheet>
+        <v-row>
+          <v-col cols="12" order-md="1" order="2" order-sm="2">
+            <div class="markdown-body">
+              <h1 class="text-center">
+                {{ tag.title }}
+              </h1>
+              <div v-html="tag.summary" class="mb-12"></div>
+              <h2
+                class="mt-3 text-left"
+                id="documents"
+                v-if="tag.documents.length"
+              >
+                Documents & Resources
+              </h2>
+            </div>
+            <div v-if="tag.documents.length">
+              <DocumentTable
+                :documents="tag.documents"
+                :searchLabel="`Search Documents`"
+                v-if="tags"
+                :key="$route.path"
+                style="border: 1px solid #eee; margin-top: 25px"
+              ></DocumentTable>
+            </div>
+            <!-- <div v-else class="mt-4 markdown-body">
             <h3 style="color: #666" class="text-center">
               No documents tagged '{{ tag.title }}' found.
             </h3>
           </div> -->
 
-          <div
-            class="text-left markdown-body mt-12"
-            v-if="tag && tag.posts && tag.posts.length"
-          >
-            <h2 class="" id="news-and-updates">News & Updates</h2>
-          </div>
-          <div v-if="tag && tag.posts && tag.posts.length">
-            <v-container class="view-container mt-6">
-              <v-row>
-                <v-col
-                  v-for="(item, index) in tag.posts"
-                  :key="index"
-                  cols="12"
-                >
-                  <news-card
-                    :item="item"
-                    :textOnly="false"
-                    style="margin-top: -5px"
-                  ></news-card>
-                </v-col>
-              </v-row>
-            </v-container>
-          </div>
-          <!-- <div v-else class="mt-4 markdown-body">
+            <div
+              class="text-left markdown-body mt-12"
+              v-if="tag && tag.posts && tag.posts.length"
+            >
+              <h2 class="" id="news-and-updates">News & Updates</h2>
+            </div>
+            <div v-if="tag && tag.posts && tag.posts.length">
+              <v-container class="view-container mt-6">
+                <v-row>
+                  <v-col
+                    v-for="(item, index) in tag.posts"
+                    :key="index"
+                    cols="12"
+                  >
+                    <news-card
+                      :item="item"
+                      :textOnly="false"
+                      style="margin-top: -5px"
+                    ></news-card>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </div>
+            <!-- <div v-else class="mt-4 markdown-body">
             <h3 style="color: #666" class="text-center">
               No news tagged '{{ tag.title }}' found.
             </h3>
           </div> -->
 
-          <h2
-            class="mt-8 text-left"
-            id="documents"
-            v-if="tag && tag.events && tag.events.length"
-          >
-            Upcoming Events
-          </h2>
+            <h2
+              class="mt-8 text-left"
+              id="documents"
+              v-if="tag && tag.events && tag.events.length"
+            >
+              Upcoming Events
+            </h2>
 
-          <div v-if="tag && tag.events && tag.events.length">
-            <v-container class="view-container mt-6">
-              <v-row>
-                <v-col>
-                  <HomeEvents :events="tag.events"></HomeEvents>
-                </v-col>
-              </v-row>
-            </v-container>
-          </div>
-          <!-- <div v-else class="mt-4 markdown-body">
+            <div v-if="tag && tag.events && tag.events.length">
+              <v-container class="view-container mt-6">
+                <v-row>
+                  <v-col>
+                    <HomeEvents :events="tag.events"></HomeEvents>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </div>
+            <!-- <div v-else class="mt-4 markdown-body">
             <h3 style="color: #666" class="text-center">
               No events tagged '{{ tag.title }}' found.
             </h3>
           </div> -->
-        </v-col>
-      </v-row>
+          </v-col>
+        </v-row>
+      </v-sheet>
     </v-container>
     <v-container v-else>
       <v-row>
