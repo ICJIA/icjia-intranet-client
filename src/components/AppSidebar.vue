@@ -65,7 +65,7 @@ export default {
     menuItems: null,
     items: [
       {
-        url: "/documents/clusters/staff-training-resources/",
+        url: "/tags/training/",
         items: [],
         title: "Training",
       },
@@ -80,6 +80,7 @@ export default {
           { title: "Laptop Request", url: "/forms/laptop/" },
           { title: "Office Supply Request", url: "/forms/supplies/" },
           { title: "Technical Support Request", url: "/forms/support/" },
+          { title: "Your User Profile", url: "/forms/profile/" },
         ],
         title: "Online Forms",
       },

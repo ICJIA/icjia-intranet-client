@@ -4,6 +4,7 @@
       :key="$route.path"
       subPath="Tags"
       subPathURL="/tags/"
+      v-if="tags && tags.length"
       :title="`${tag.title}`"
     ></Breadcrumb>
     <v-container v-if="tags && tags.length">

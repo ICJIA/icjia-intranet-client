@@ -148,7 +148,7 @@
                 </v-row>
               </v-container>
 
-              <div v-if="showSubmit" class="text-center mt-5">
+              <div class="text-center mt-5">
                 <v-btn @click="submit" dark color="blue darken-4">{{
                   mode
                 }}</v-btn>

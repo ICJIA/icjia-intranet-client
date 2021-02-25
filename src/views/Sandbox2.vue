@@ -1,356 +1,330 @@
 <template>
-  <div class="markdown-body page-form">
-    <Breadcrumb
-      :key="$route.path"
-      :title="title"
-      subPath="Forms"
-      subPathURL="/forms/"
-    ></Breadcrumb>
-    <v-container>
-      <v-row>
-        <v-col>
-          <v-card class="py-5 px-5 mt-5">
-            <div v-if="mode">Mode: {{ mode }}</div>
+  <ApolloQuery
+    :query="GET_HOME"
+    notifyOnNetworkStatusChange
+    :variables="{ now, eventLimit, postLimit }"
+    @result="afterFetch"
+  >
+    <template slot-scope="{ result }">
+      <div v-if="isLoading(result.loading)">
+        <Loader></Loader>
+      </div>
 
-            <v-container>
-              <v-row>
-                <v-col cols="12" class="text-center">
-                  <h1 class="mb-6">Your Profile</h1>
-                </v-col>
-              </v-row>
-            </v-container>
-            <form style="margin-top: 0px">
-              <v-container>
-                <v-row>
-                  <v-col cols="12">
-                    <h2>Information:</h2>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="12" md="4">
-                    <v-text-field
-                      v-model="firstName"
-                      class="heavy"
-                      label="First Name"
-                      @click="clearStatusMessages"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field
-                      v-model="lastName"
-                      class="heavy"
-                      label="Last Name"
-                      required
-                      @click="clearStatusMessages"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" md="4">
-                    <v-text-field
-                      v-model="email"
-                      class="heavy"
-                      label="E-mail"
-                      disabled
-                      required
-                    ></v-text-field>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="12">
-                    <v-select
-                      :items="units"
-                      label="Select Unit"
-                      dense
-                      v-if="units"
-                      v-model="unit"
-                      class="heavy"
-                      aria-label="Select Unit"
-                      @click="clearStatusMessages"
-                    ></v-select
-                  ></v-col>
-                </v-row>
+      <div v-if="!isLoading(result.loading) && !result.error">
+        <!-- START: home components -->
 
-                <v-row>
-                  <v-col cols="12">
-                    <!-- <div
-                      style="font-size: 12px; margin-top: -25px"
-                      class="text-left mb-2"
-                    >
-                      For more information about markdown, please see:
-                      https://markdown.icjia.cloud
-                    </div> -->
-                    <v-app-bar
-                      dense
-                      flat
-                      color="grey darken-1"
-                      style="margin-bottom: 0px !important"
-                    >
-                      <v-spacer></v-spacer>
-                      <v-btn
-                        x-small
-                        v-if="markdownMode"
-                        @click="markdownMode = !markdownMode"
-                        >Preview
-                      </v-btn>
-                      <v-btn
-                        x-small
-                        v-else
-                        @click="markdownMode = !markdownMode"
-                        >Markdown</v-btn
-                      >
-                    </v-app-bar>
-                    <v-textarea
-                      v-model="bio"
-                      v-if="markdownMode"
-                      height="300px"
-                      auto-grow
-                      filled
-                      label="Enter your biographical information. You can use markdown."
-                      rows="10"
-                      @click="clearStatusMessages"
-                      ref="bio"
-                      aria-label="Biography Information"
-                    ></v-textarea>
-                    <div
-                      v-else
-                      style="height: 300px; border: 1px solid #eee"
-                      class="markdown-body py-6 px-5"
-                      v-html="renderMarkdown(bio)"
-                    ></div>
-                  </v-col>
-                </v-row>
-              </v-container>
+        <HomeSlider
+          :slides="result.data.home.slider"
+          v-if="result.data.home.slider"
+        ></HomeSlider>
 
-              <div v-if="showSubmit" class="text-center">
-                <v-btn @click="submit" dark color="blue darken-4">{{
-                  mode
-                }}</v-btn>
-                <!-- <v-btn @click="clear" class="ml-2">clear</v-btn>&nbsp; -->
-                <span v-if="showLoader" class="ml-2">
-                  <v-progress-circular
-                    indeterminate
-                    color="primary"
-                  ></v-progress-circular>
-                </span>
-              </div>
+        <v-container fluid style="margin-top: 20px">
+          <v-row>
+            <v-col sm="12" md="7" cols="12" class="child">
+              <v-sheet class="px-2 py-2" elevation="1" style="">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2>News & Updates</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1 hidden-sm-and-down">
+                        <v-btn small to="/news/"
+                          >News archive&nbsp;<v-icon right small
+                            >link</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <HomePosts
+                        :posts="result.data.posts"
+                        v-if="result.data.posts"
+                      ></HomePosts>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-sheet>
+            </v-col>
+            <v-col sm="12" md="5" cols="12" class="child">
+              <v-sheet class="px-2 py-2" elevation="1" style="">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2>Upcoming Events</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1 hidden-sm-and-down">
+                        <v-btn small to="/events/"
+                          >Calendar&nbsp;<v-icon right small
+                            >link</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+                <HomeEvents
+                  class="mt-2"
+                  :events="mergedEvents"
+                  v-if="result.data.events && result.data.eventRange"
+                ></HomeEvents>
+              </v-sheet>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-sheet class="px-2 py-2" elevation="1" style="">
+                <v-container fluid>
+                  <v-container fluid style="margin: 0; padding: 0">
+                    <div style="background: #f3f5f7" class="px-3 py-3">
+                      <v-row no-gutters>
+                        <v-col>
+                          <h2>Recent Documents</h2>
+                        </v-col>
+                        <v-col class="text-right mt-1 hidden-sm-and-down">
+                          <v-btn small to="/documents/" class=""
+                            >All documents&nbsp;<v-icon right small
+                              >link</v-icon
+                            ></v-btn
+                          >
+                        </v-col>
+                      </v-row>
+                    </div>
+                  </v-container>
 
-              <!-- <div>
-                {{ form }}
-              </div> -->
+                  <v-row style="margin-top: -5px">
+                    <v-col v-if="documents.length">
+                      <DocumentTable
+                        :documents="filteredDocuments"
+                        :hideFooter="true"
+                        :hideSearch="true"
+                      ></DocumentTable>
+                    </v-col>
+                    <v-col v-else>
+                      <div class="text-center">
+                        <h2>No documents found</h2>
+                      </div>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-sheet>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col sm="12" cols="12" md="6" class="child">
+              <v-sheet class="px-2 py-2" elevation="0">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2>Recent Articles</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1 hidden-sm-and-down">
+                        <v-btn
+                          small
+                          target="_blank"
+                          href="https://icjia.illinois.gov/researchhub/"
+                          >ResearchHub&nbsp;<v-icon right small
+                            >open_in_new</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+                <ResearchArticles :limit="4" class="mt-2"></ResearchArticles>
+                <div class="py-2 text-center reduce-85">
+                  Visit
+                  <a
+                    href="https://icjia.illinois.gov/researchhub"
+                    target="_blank"
+                    >ICJIA's ResearchHub</a
+                  >
+                  for more articles, datasets, and applications.
+                </div>
+              </v-sheet>
+            </v-col>
+            <v-col sm="12" cols="12" md="6" class="child">
+              <v-sheet class="px-2 py-2" elevation="0">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2>Recent Applications</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1 hidden-sm-and-down">
+                        <v-btn
+                          small
+                          target="_blank"
+                          href="https://icjia.illinois.gov/researchhub/"
+                          >ResearchHub&nbsp;<v-icon right small
+                            >open_in_new</v-icon
+                          ></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+                <ResearchApplications
+                  :limit="5"
+                  class="mt-2"
+                ></ResearchApplications>
+                <div class="py-2 text-center reduce-85">
+                  Visit
+                  <a
+                    href="https://icjia.illinois.gov/researchhub"
+                    target="_blank"
+                    >ICJIA's ResearchHub</a
+                  >
+                  for more articles, datasets, and applications.
+                </div>
+              </v-sheet>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" md="6" class="text-center">
+              <v-sheet class="px-2 py-2" elevation="0" style="">
+                <v-container fluid style="margin: 0; padding: 0" class="mb-3">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2>ICJIA on Facebook</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1">
+                        <v-btn small @click="facebookKey++"
+                          >Refresh <v-icon right small>refresh</v-icon></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
 
-              <div class="text-center mt-3" style="color: green">
-                {{ successMessage }}
-              </div>
-              <div
-                v-if="showAxiosError"
-                style="color: red; font-size: 14px"
-                class="mt-10 text-center"
-              >
-                <b style="font-size: 20px">USER PROFILE NOT UPDATED</b>
-                <br />
-                <br />
-                {{ axiosError }}
-              </div>
-              <div
-                v-if="$v.$anyError"
-                style="color: red; font-weight: bold"
-                class="mt-5 text-center"
-              >
-                The form has errors.
-              </div>
-              .
-            </form>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+                <Facebook :key="facebookKey"></Facebook>
+              </v-sheet>
+              <!--  -->
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-sheet class="px-2 py-2" elevation="0" style="">
+                <v-container fluid style="margin: 0; padding: 0">
+                  <div style="background: #f3f5f7" class="px-3 py-3">
+                    <v-row no-gutters>
+                      <v-col>
+                        <h2>ICJIA on Twitter</h2>
+                      </v-col>
+                      <v-col class="text-right mt-1">
+                        <v-btn small @click="twitterKey++"
+                          >Refresh <v-icon right small>refresh</v-icon></v-btn
+                        >
+                      </v-col>
+                    </v-row>
+                  </div>
+                </v-container>
+                <Twitter :key="twitterKey" :tweetLimit="3"></Twitter>
+              </v-sheet>
+            </v-col>
+          </v-row>
+        </v-container>
+
+        <!-- END: home components -->
+      </div>
+      <div v-if="result.error" class="text-center error apollo">
+        {{ result.error }}
+        <div class="text-center my-10 py-5">
+          <router-link to="/login"
+            >PLEASE CLICK HERE TO LOGIN AGAIN</router-link
+          >
+        </div>
+      </div>
+    </template>
+  </ApolloQuery>
 </template>
-
 <script>
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-
-import { validationMixin } from "vuelidate";
-import { required, email } from "vuelidate/lib/validators";
-import DOMPurify from "dompurify";
-import {
-  dbInsert,
-  getUserProfile,
-  updateUserProfile,
-  createUserProfile,
-} from "@/services/Forms";
-import { renderToHtml } from "@/services/Markdown";
-// import NProgress from "nprogress";
-
-//const config = require("@/config.json");
+import { GET_HOME } from "@/graphql/queries/home.js";
 // eslint-disable-next-line no-unused-vars
-import axios from "axios";
+import _ from "lodash";
+import moment from "moment";
+// eslint-disable-next-line no-unused-vars
+import tz from "moment-timezone";
+// eslint-disable-next-line no-unused-vars
+//import { Tweet, Moment, Timeline } from "vue-tweet-embed";
+import { nanoid } from "nanoid";
 
 export default {
-  mixins: [validationMixin],
-
-  head() {
-    return {};
+  name: "Home",
+  components: {},
+  computed: {
+    name() {
+      return this.data;
+    },
   },
-  async mounted() {
-    this.units = this.$myApp.units.map((unit) => {
-      let obj = {};
-      obj.text = `${unit.title}`;
-      obj.value = unit.id;
-      return obj;
-    });
-    this.getProfile();
+  created() {
+    this.now = moment().tz(this.$myApp.config.timezone).format("YYYY-MM-DD");
   },
-
-  validations: {
-    email: { required, email },
+  mounted() {
+    //console.log(this.$myApp.config.timezone);
   },
   data() {
     return {
-      firstName: "",
-      lastName: "",
-      id: null,
-      unit: "",
-      bio: "",
-      mode: null,
-      email: this.$store.state.auth.userMeta.email,
-      form: null,
-      showSubmit: true,
-      showAxiosError: false,
-      axiosError: "",
-      showLoader: false,
-      markdownMode: true,
-      successMessage: "",
-      isIE: null,
-      units: null,
-      render: false,
+      GET_HOME,
+      now: null,
+      documents: null,
+      filteredDocuments: null,
+      twitterKey: 0,
+      facebookKey: 0,
+      nanoid,
+      mergedEvents: () => [],
+      eventLimit: this.$myApp.config.home.eventLimit,
+      postLimit: this.$myApp.config.home.postLimit,
     };
   },
-  computed: {
-    title() {
-      return "User Profile";
-    },
-
-    permalink() {
-      return null;
-    },
-
-    // eslint-disable-next-line no-unused-vars
-    isSuccess(v) {
-      return !this.$v.$invalid && this.$v.$dirty;
-    },
-  },
   methods: {
-    renderMarkdown(content) {
-      return renderToHtml(content);
+    isLoading(loading) {
+      // eslint-disable-next-line no-undef
+      loading ? window.NProgress.start() : window.NProgress.done();
+      return loading ? true : false;
     },
-    async getProfile() {
-      let { data } = await getUserProfile(
-        this.$store.state.auth.jwt,
-        this.email
-      );
-      if (data.length) {
-        this.mode = "update";
-        let {
-          id,
-          firstName = null,
-          lastName = null,
-          unit = null,
-          bio = null,
-        } = data[0];
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.bio = bio;
-        this.id = id;
-        if (unit) {
-          this.unit = JSON.stringify(unit.id);
-        }
-      } else {
-        this.mode = "create";
+
+    afterFetch(result) {
+      if (result.data && result.data.events && result.data.eventRange) {
+        let mergedEvents = [...result.data.events, ...result.data.eventRange];
+        mergedEvents = _.sortBy(mergedEvents, (o) => o.start);
+        this.mergedEvents = mergedEvents.slice(0, this.eventLimit);
       }
-      console.log("mode: ", this.mode);
-    },
 
-    clearStatusMessages() {
-      this.showAxiosError = false;
-      this.successMessage = "";
-      return;
-    },
-    async reload() {
-      this.render = false;
-      this.mode = null;
-      this.getProfile();
-      await this.$nextTick();
-      this.render = true;
-    },
-
-    async submit() {
-      this.$v.$touch();
-      this.showAxiosError = false;
-      this.successMessage = "";
-      if (this.isSuccess) {
-        window.NProgress.start();
-        this.showLoader = true;
-
-        this.form = {
-          firstName: this.firstName,
-          lastName: this.lastName,
-          email: this.email,
-          unit: this.unit,
-          bio: this.bio,
-        };
-
-        if (this.mode === "update") {
-          //console.log("call dbUpdate for user: ", this.id);
-          let dbResponse = await updateUserProfile(
-            this.$store.state.auth.jwt,
-            this.id,
-            this.form
-          );
-          if (dbResponse.status === 200) {
-            this.success("User profile updated successfully");
-          } else {
-            this.failed(dbResponse);
-          }
-        } else {
-          let dbResponse = await createUserProfile(
-            this.$store.state.auth.jwt,
-            this.form
-          );
-          if (dbResponse.status === 200) {
-            this.success("User profile created successfully");
-          } else {
-            this.failed(dbResponse);
-          }
-        }
+      if (result.data && result.data.documents) {
+        this.documents = result.data.documents;
+        this.documents = this.documents.map((d) => ({
+          ...d,
+          show: false,
+        }));
+        this.filteredDocuments = this.documents;
       }
-    },
-    failed(res) {
-      this.showAxiosError = true;
-      this.axiosError = res;
-      this.showLoader = false;
-      window.NProgress.done();
-      this.reload();
-    },
-    success(msg) {
-      this.showAxiosError = false;
-      this.showError = "";
-      this.successMessage = msg;
-      this.showLoader = false;
-      window.NProgress.done();
-      this.reload();
-    },
-    clear() {
-      this.$v.$reset();
-      this.showSubmit = true;
-      this.showAxiosError = false;
-      this.axiosError = "";
-      this.showLoader = false;
-      window.NProgress.done();
-      this.reload();
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.hover {
+  cursor: pointer;
+}
+.card:hover {
+  box-shadow: 0px 0px 15px #000000;
+  z-index: 2;
+  -webkit-transition: all 100ms ease-in;
+  -webkit-transform: scale(1.01);
+  -ms-transition: all 100ms ease-in;
+  -ms-transform: scale(1.01);
+  -moz-transition: all 100ms ease-in;
+  -moz-transform: scale(1.01);
+  transition: all 100ms ease-in;
+  transform: scale(1.01);
+  cursor: pointer;
+  background: #fafafa;
+}
+</style>

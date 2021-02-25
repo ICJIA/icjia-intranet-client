@@ -28,7 +28,7 @@
                       <v-col>
                         <h2>News & Updates</h2>
                       </v-col>
-                      <v-col class="text-right mt-1">
+                      <v-col class="text-right mt-1 hidden-sm-and-down">
                         <v-btn small to="/news/"
                           >News archive&nbsp;<v-icon right small
                             >link</v-icon
@@ -58,7 +58,7 @@
                       <v-col>
                         <h2>Upcoming Events</h2>
                       </v-col>
-                      <v-col class="text-right mt-1">
+                      <v-col class="text-right mt-1 hidden-sm-and-down">
                         <v-btn small to="/events/"
                           >Calendar&nbsp;<v-icon right small
                             >link</v-icon
@@ -84,10 +84,10 @@
                     <div style="background: #f3f5f7" class="px-3 py-3">
                       <v-row no-gutters>
                         <v-col>
-                          <h2>Recent Documents & Resources</h2>
+                          <h2>Recent Documents</h2>
                         </v-col>
-                        <v-col class="text-right mt-1">
-                          <v-btn small to="/documents/"
+                        <v-col class="text-right mt-1 hidden-sm-and-down">
+                          <v-btn small to="/documents/" class=""
                             >All documents&nbsp;<v-icon right small
                               >link</v-icon
                             ></v-btn
@@ -97,13 +97,12 @@
                     </div>
                   </v-container>
 
-                  <v-row style="margin-top: -30px">
+                  <v-row style="margin-top: -5px">
                     <v-col v-if="documents.length">
                       <DocumentTable
                         :documents="filteredDocuments"
                         :hideFooter="true"
                         :hideSearch="true"
-                        elevation="0"
                       ></DocumentTable>
                     </v-col>
                     <v-col v-else>
@@ -125,7 +124,7 @@
                       <v-col>
                         <h2>Recent Articles</h2>
                       </v-col>
-                      <v-col class="text-right mt-1">
+                      <v-col class="text-right mt-1 hidden-sm-and-down">
                         <v-btn
                           small
                           target="_blank"
@@ -158,7 +157,7 @@
                       <v-col>
                         <h2>Recent Applications</h2>
                       </v-col>
-                      <v-col class="text-right mt-1">
+                      <v-col class="text-right mt-1 hidden-sm-and-down">
                         <v-btn
                           small
                           target="_blank"
