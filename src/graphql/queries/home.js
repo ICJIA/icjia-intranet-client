@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-
+/* eslint-disable graphql/template-strings */
 const GET_HOME = gql`
   query Home($now: String!, $eventLimit: Int!, $postLimit: Int!) {
     home {
@@ -78,6 +78,13 @@ const GET_HOME = gql`
       units {
         title
         slug
+      }
+      tags(sort: "title:asc") {
+        id
+        title
+        slug
+        created_at
+        summary
       }
       splash {
         url

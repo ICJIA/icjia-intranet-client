@@ -16,7 +16,7 @@
       v-else
       class="mb-8"
     >
-      <news-card :item="post" :text-only="false"></news-card>
+      <news-card :item="post" :text-only="false" :showText="false"></news-card>
     </div>
   </div>
 </template>

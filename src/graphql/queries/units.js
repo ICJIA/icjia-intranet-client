@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-
+/* eslint-disable graphql/template-strings */
 const GET_ALL_UNITS = gql`
   query {
     units(sort: "slug:asc") {
@@ -76,6 +76,13 @@ const GET_SINGLE_UNIT = gql`
           title
           slug
           shortname
+        }
+        tags(sort: "title:asc") {
+          id
+          title
+          slug
+          created_at
+          summary
         }
       }
     }
