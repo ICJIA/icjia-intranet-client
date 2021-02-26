@@ -53,15 +53,6 @@
                   >
                     {{ getUnitTitle(posts[0]) }}</span
                   >
-                  <div>
-                    <Tags
-                      :tags="posts[0]['tags']"
-                      class="mt-1"
-                      v-if="
-                        posts && posts[0]['tags'] && posts[0]['tags'].length
-                      "
-                    ></Tags>
-                  </div>
                 </v-col>
               </v-row>
             </v-container>
@@ -103,6 +94,26 @@
                     "
                     class="mt-8"
                   ></DocumentList>
+
+                  <div
+                    class="mt-8"
+                    v-if="posts && posts[0]['tags'] && posts[0]['tags'].length"
+                    style="font-size: 14px"
+                  >
+                    <span v-for="(tag, index) in posts[0]['tags']" :key="index">
+                      <v-chip
+                        small
+                        class="mr-1"
+                        @click.stop.prevent="
+                          $router.push(`/tags/${tag.slug}/`).catch((err) => {
+                            $vuetify.goTo(0);
+                          })
+                        "
+                      >
+                        {{ tag.title }}
+                      </v-chip>
+                    </span>
+                  </div>
                 </v-col>
               </v-row>
             </v-container>
