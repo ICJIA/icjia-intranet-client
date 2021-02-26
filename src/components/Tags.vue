@@ -1,15 +1,18 @@
 <template>
   <div style="font-size: 10px" class="mt-3 mb-2">
     <!-- <span v-if="showText">Tags:&nbsp;&nbsp;</span> -->
-    <span v-for="(tag, index) in tags" :key="index">
-      <v-chip x-small class="mr-1">
-        <router-link
-          :to="`/tags/${tag.slug}/`"
-          style="background: none !important"
-          >{{ tag.title }}</router-link
-        >
+    <span v-for="(tag, index) in item.tags" :key="index">
+      <v-chip
+        x-small
+        class="mr-1"
+        @click.stop.prevent="
+          $router.push(`/tags/${tag.slug}/`).catch((err) => {
+            $vuetify.goTo(0);
+          })
+        "
+      >
+        {{ tag.title }}
       </v-chip>
-      <!-- <span v-if="index != tags.length - 1">,</span> -->
     </span>
   </div>
 </template>

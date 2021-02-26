@@ -94,6 +94,13 @@ const GET_SINGLE_TAG = gql`
         published_at
         updated_at
         created_at
+        tags(sort: "title:asc") {
+          id
+          title
+          slug
+          created_at
+          summary
+        }
         splash {
           url
           formats
