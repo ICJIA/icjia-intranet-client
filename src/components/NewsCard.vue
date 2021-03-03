@@ -88,7 +88,7 @@
                 style="
                   margin-top: -25px;
                   font-size: 18px;
-                  font-weight: bold;
+                  font-weight: 700;
                   line-height: 24px;
                 "
               >
