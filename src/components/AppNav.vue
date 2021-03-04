@@ -62,6 +62,10 @@
           </v-btn>
         </template>
         <v-list nav dense elevation="2">
+          <v-list-title style="font-weight: 900; font-size: 12px">
+            ICJIA News & Updates
+          </v-list-title>
+          <div class="mb-2">&nbsp;</div>
           <v-list-item
             class="appNav"
             @click="
@@ -72,14 +76,22 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title
-                style="font-size: 12px !important; font-weight: bold"
-                ><v-icon small left>view_headline</v-icon>ICJIA News
-                Archive</v-list-item-title
+                style="
+                  font-size: 12px !important;
+                  font-weight: 500;
+                  color: #333;
+                "
+                >Intranet News Archive</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
 
           <v-divider></v-divider>
+          <div class="mt-3">&nbsp;</div>
+          <v-list-title style="font-weight: 900; font-size: 12px">
+            Social Media
+          </v-list-title>
+          <div class="mb-2">&nbsp;</div>
           <v-list-item
             class="appNav"
             @click="
@@ -89,9 +101,14 @@
             "
           >
             <v-list-item-content class="hover">
-              <v-list-item-title style="font-size: 12px !important; color: #888"
-                ><v-icon small left>fab fa-facebook</v-icon>ICJIA on
-                Facebook</v-list-item-title
+              <v-list-item-title
+                style="
+                  font-size: 12px !important;
+                  font-weight: 500;
+                  color: #333;
+                "
+                ><v-icon small left>fab fa-facebook</v-icon
+                >Facebook</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -104,9 +121,14 @@
             "
           >
             <v-list-item-content class="hover">
-              <v-list-item-title style="font-size: 12px !important; color: #888"
-                ><v-icon small left>fab fa-twitter</v-icon>ICJIA on
-                Twitter</v-list-item-title
+              <v-list-item-title
+                style="
+                  font-size: 12px !important;
+                  font-weight: 500;
+                  color: #333;
+                "
+                ><v-icon small left>fab fa-twitter</v-icon
+                >Twitter</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -115,9 +137,14 @@
             href="https://www.youtube.com/IllinoisCriminalJusticeInformationAuthority"
           >
             <v-list-item-content class="hover">
-              <v-list-item-title style="font-size: 12px !important; color: #888"
-                ><v-icon small left>fab fa-youtube</v-icon>ICJIA on
-                YouTube</v-list-item-title
+              <v-list-item-title
+                style="
+                  font-size: 12px !important;
+                  font-weight: 500;
+                  color: #333;
+                "
+                ><v-icon small left>fab fa-youtube</v-icon
+                >YouTube</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>

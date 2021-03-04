@@ -291,7 +291,7 @@ export default {
   },
   computed: {
     title() {
-      return "Office Supply Request";
+      return "ICJIA Office Supply Request";
     },
 
     permalink() {

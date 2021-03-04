@@ -22,7 +22,7 @@
             <v-container>
               <v-row>
                 <v-col cols="12" class="text-center">
-                  <h1 class="mb-6">Your Profile</h1>
+                  <h1 class="mb-6">Your ICJIA Profile</h1>
                 </v-col>
               </v-row>
             </v-container>

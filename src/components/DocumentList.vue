@@ -23,7 +23,8 @@
             class="hover"
             @click.stop.prevent="download(document.file)"
           >
-            {{ document.title }}
+            {{ document.title
+            }}<v-icon class="ml-2" small>cloud_download</v-icon>
           </li>
           <li
             v-else
