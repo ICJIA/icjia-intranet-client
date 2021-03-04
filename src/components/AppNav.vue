@@ -340,7 +340,7 @@
       <v-menu bottom offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on" aria-label="Action menu">
-            <v-icon>person</v-icon>
+            <v-icon color="indigo darken-4">account_circle</v-icon>
           </v-btn>
         </template>
 
@@ -355,9 +355,18 @@
               >Contact Tech Support</v-list-item-title
             >
           </v-list-item>
+          <v-list-item
+            href="https://dev.icjia-api.cloud/admin/"
+            target="_blank"
+          >
+            <v-list-item-title style="font-size: 12px !important"
+              >Intranet Administration</v-list-item-title
+            >
+          </v-list-item>
           <v-divider></v-divider>
           <v-list-item to="/login/">
             <v-list-item-title style="font-size: 12px !important"
+              ><v-icon left color="indigo darken-2">no_accounts</v-icon
               >Logout</v-list-item-title
             >
           </v-list-item>

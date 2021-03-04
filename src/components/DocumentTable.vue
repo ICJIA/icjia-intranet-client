@@ -299,7 +299,7 @@ export default {
     },
     searchLabel: {
       type: String,
-      default: "Search Documents",
+      default: "Filter Documents",
     },
     elevation: {
       type: Number,

@@ -113,7 +113,7 @@
               truncate(item.summary, 20)
             }}</v-card-text>
             <v-card-text
-              style="margin-top: -25px; font-size: 10px; font-weight: 400"
+              style="margin-top: -25px; font-size: 10px; font-weight: 700"
               v-if="item && item.tags && item.tags.length"
             >
               <!-- <Tags
@@ -125,7 +125,7 @@
               <span v-for="(tag, index) in item.tags" :key="index">
                 <v-chip
                   x-small
-                  class="mr-1"
+                  class="mr-1 py-2"
                   @click.stop.prevent="
                     $router.push(`/tags/${tag.slug}/`).catch((err) => {
                       $vuetify.goTo(0);

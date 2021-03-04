@@ -26,6 +26,13 @@
             v-model="query"
             @input="instantSearch"
           ></v-text-field>
+          <div
+            style="font-size: 12px; margin-top: -15px; margin-bottom: 10px"
+            class="text-right"
+          >
+            Showing {{ this.filteredPosts.length }} of
+            {{ this.posts.length }} news items
+          </div>
         </v-col>
       </v-row>
     </v-container>
