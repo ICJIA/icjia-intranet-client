@@ -62,10 +62,10 @@
           </v-btn>
         </template>
         <v-list nav dense elevation="2">
-          <v-list-title style="font-weight: 900; font-size: 12px">
+          <!-- <v-list-title style="font-weight: 900; font-size: 12px">
             ICJIA News & Updates
           </v-list-title>
-          <div class="mb-2">&nbsp;</div>
+          <div class="mb-2">&nbsp;</div> -->
           <v-list-item
             class="appNav"
             @click="
@@ -372,13 +372,9 @@
         </template>
 
         <v-list>
-          <v-list-item to="/forms/profile/">
-            <v-list-item-title style="font-size: 12px !important"
-              >Update Your Profile</v-list-item-title
-            >
-          </v-list-item>
           <v-list-item to="/forms/support/">
-            <v-list-item-title style="font-size: 12px !important"
+            <v-list-item-title
+              style="font-size: 12px !important; font-weight: 500; color: #333"
               >Contact Tech Support</v-list-item-title
             >
           </v-list-item>
@@ -386,8 +382,15 @@
             href="https://dev.icjia-api.cloud/admin/"
             target="_blank"
           >
-            <v-list-item-title style="font-size: 12px !important"
-              >Intranet Administration</v-list-item-title
+            <v-list-item-title
+              style="font-size: 12px !important; font-weight: 500; color: #333"
+              >Intranet Admin Login</v-list-item-title
+            >
+          </v-list-item>
+          <v-list-item to="/forms/profile/">
+            <v-list-item-title
+              style="font-size: 12px !important; font-weight: 500; color: #333"
+              >Update Your Profile</v-list-item-title
             >
           </v-list-item>
           <v-divider></v-divider>

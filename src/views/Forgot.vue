@@ -3,7 +3,7 @@
     <v-row class="fill-height" align="center" justify="center">
       <v-card class="pt-1 pb-5" style="width: 350px">
         <div class="text-center mt-5">
-          <h2>FORGOT PASSWORD</h2>
+          <h2>ICJIA FORGOT PASSWORD</h2>
         </div>
         <form class="pt-5 pl-3 pr-3" @submit="submit" onSubmit="return false;">
           <v-text-field

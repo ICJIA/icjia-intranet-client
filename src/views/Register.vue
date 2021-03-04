@@ -3,7 +3,7 @@
     <v-row class="fill-height" align="center" justify="center">
       <v-card class="pt-1 pb-5" style="width: 350px">
         <div class="text-center mt-5">
-          <h2>REGISTER</h2>
+          <h2>ICJIA REGISTER</h2>
         </div>
 
         <form class="pt-5 pl-3 pr-3">

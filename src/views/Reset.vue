@@ -4,7 +4,7 @@
       <v-flex xs12 sm6 class="animated bounceInDown mt-3 mb-3">
         <v-card class="px-3 py-5">
           <div class="text-center">
-            <h2>RESET PASSWORD</h2>
+            <h2>ICJIA RESET PASSWORD</h2>
           </div>
           <form class="pt-5 pl-3 pr-3" v-if="hasCode" onSubmit="return false;">
             <v-text-field

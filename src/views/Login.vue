@@ -3,7 +3,7 @@
     <v-row class="fill-height" align="center" justify="center">
       <v-card class="pt-1 pb-5 pl-3 pr-3" width="350px">
         <div class="text-center">
-          <h2>LOGIN</h2>
+          <h2>ICJIA LOGIN</h2>
         </div>
         <v-form>
           <v-text-field
