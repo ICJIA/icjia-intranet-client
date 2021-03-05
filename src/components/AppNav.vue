@@ -38,6 +38,10 @@
         >News & Updates</v-btn
       > -->
 
+      <v-btn small text to="/tags/new-hires/" class="hidden-sm-and-down"
+        >New Hires</v-btn
+      >
+
       <v-btn small text to="/tags/training/" class="hidden-sm-and-down"
         >Training</v-btn
       >
@@ -58,7 +62,7 @@
               currentRoute:
                 $route.path.includes('news') || $route.path.includes('social'),
             }"
-            >News & updates<v-icon right small>arrow_drop_down</v-icon>
+            >News<v-icon right small>arrow_drop_down</v-icon>
           </v-btn>
         </template>
         <v-list nav dense elevation="2">

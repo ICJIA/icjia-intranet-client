@@ -65,6 +65,11 @@ export default {
     menuItems: null,
     items: [
       {
+        url: "/tags/new-hires/",
+        items: [],
+        title: "New Hires",
+      },
+      {
         url: "/tags/training/",
         items: [],
         title: "Training",
