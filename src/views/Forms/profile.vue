@@ -131,7 +131,7 @@
                       v-if="markdownMode"
                       auto-grow
                       filled
-                      label="Enter your biographical information. Markdown allowed."
+                      label="Please enter your biographical information. Feel free to include academic background, publications, and previous work experience. Markdown allowed."
                       rows="10"
                       @click="clearStatusMessages"
                       ref="bio"
