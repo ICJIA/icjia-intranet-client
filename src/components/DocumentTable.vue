@@ -50,7 +50,7 @@
         <div>
           <div>
             <v-chip dark x-small color="#2296F3" v-if="isItNew(item)">
-              NEW!
+              {{ chipLabel }}
             </v-chip>
           </div>
         </div>
@@ -151,7 +151,7 @@
                   class="mr-2"
                   v-if="isItNew(item)"
                 >
-                  NEW! </v-chip
+                  {{ chipLabel }} </v-chip
                 >{{ item.updated_at | dateFormatShort }}
               </td>
               <td>
@@ -300,6 +300,10 @@ export default {
     searchLabel: {
       type: String,
       default: "Filter Documents",
+    },
+    chipLabel: {
+      type: String,
+      default: "Updated!",
     },
     elevation: {
       type: Number,

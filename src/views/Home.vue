@@ -82,6 +82,7 @@
                         :documents="filteredDocuments"
                         :hideFooter="true"
                         :hideSearch="true"
+                        chipLabel="Updated!"
                         style="border: 1px solid #eee"
                       ></DocumentTable>
                     </v-col>

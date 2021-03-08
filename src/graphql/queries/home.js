@@ -92,7 +92,7 @@ const GET_HOME = gql`
       }
     }
 
-    documents(limit: 10, sort: "published_at:desc") {
+    documents(limit: 10, sort: "updated_at:desc") {
       id
       published_at
       updated_at

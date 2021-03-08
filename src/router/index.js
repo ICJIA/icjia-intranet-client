@@ -83,7 +83,7 @@ const routes = [
   },
   {
     path: "/reset/",
-    name: "WebSupport",
+    name: "Reset",
     meta: {
       hideAlert: true,
       hideScrollButton: true,
