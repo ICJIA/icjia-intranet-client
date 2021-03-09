@@ -1,10 +1,16 @@
 <template>
   <div>
+    <div
+      style="font-size: 12px; font-weight: 700"
+      class="text-right pt-3 pr-5 mb-3"
+    >
+      Displaying {{ documents.length }} documents.
+    </div>
     <v-data-table
       :hide-default-footer="hideFooter"
       :headers="headers"
       :items="documents"
-      :items-per-page="15"
+      :items-per-page="-1"
       class="elevation-0 hover my-8"
       show-expand
       item-key="title"
@@ -16,7 +22,7 @@
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
       :footer-props="{
-        itemsPerPageText: 'Number of documents',
+        itemsPerPageText: 'Number of documents per page:',
         itemsPerPageOptions: [100, 200, 300, -1],
       }"
       v-if="
@@ -49,8 +55,18 @@
       <template v-slot:item.published_at="{ item }">
         <div>
           <div>
-            <v-chip dark x-small color="#2296F3" v-if="isItNew(item)">
-              {{ getNewOrUpdatedLabel(item) }}
+            <v-chip
+              :dark="getNewOrUpdatedLabel(item) === 'Updated!' ? false : true"
+              :outlined="
+                getNewOrUpdatedLabel(item) === 'Updated!' ? true : false
+              "
+              x-small
+              color="#1b6fb5"
+              v-if="isItNew(item)"
+              class="text-center"
+              :class="{ darkText: getNewOrUpdatedLabel(item) === 'Updated!' }"
+              v-html="getNewOrUpdatedLabel(item)"
+            >
             </v-chip>
           </div>
         </div>
@@ -130,7 +146,8 @@
         <template v-slot:default>
           <thead>
             <tr>
-              <th class="text-left">Updated</th>
+              <th>&nbsp;</th>
+              <th class="text-left">Date</th>
               <th class="text-left">Title</th>
 
               <th class="text-left">Download/Link</th>
@@ -145,14 +162,25 @@
             >
               <td>
                 <v-chip
-                  dark
+                  :dark="
+                    getNewOrUpdatedLabel(item) === 'Updated!' ? false : true
+                  "
+                  :outlined="
+                    getNewOrUpdatedLabel(item) === 'Updated!' ? true : false
+                  "
                   x-small
-                  color="#2296F3"
-                  class="mr-2"
+                  color="#1b6fb5"
                   v-if="isItNew(item)"
+                  class="text-center"
+                  :class="{
+                    darkText: getNewOrUpdatedLabel(item) === 'Updated!',
+                  }"
+                  v-html="getNewOrUpdatedLabel(item)"
                 >
-                  {{ getNewOrUpdatedLabel(item) }} </v-chip
-                >{{ item.updated_at | dateFormatShort }}
+                </v-chip>
+              </td>
+              <td>
+                {{ item.updated_at | dateFormatShort }}
               </td>
               <td>
                 <strong>{{ item.title }}</strong>
@@ -260,7 +288,7 @@ export default {
       if (days > 1) {
         return "Updated!";
       } else {
-        return "New!";
+        return "&nbsp;&nbsp;&nbsp;&nbsp;New!&nbsp;&nbsp;&nbsp;&nbsp;";
       }
     },
     goToLink(item) {
@@ -332,3 +360,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.darkText {
+  font-weight: 700 !important;
+}
+</style>
