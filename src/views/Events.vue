@@ -202,6 +202,14 @@
               </v-card>
             </div>
           </div>
+          <div
+            class="text-right mt-3"
+            style="font-size: 12px; font-weight: 400"
+          >
+            For access to the FSGU Project Calendar, please
+            <a href="https://calendar.icjia.cloud" target="_blank">click here</a
+            >.
+          </div>
         </v-col>
       </v-row>
     </v-container>

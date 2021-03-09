@@ -398,6 +398,11 @@
             >
           </v-list-item>
           <v-divider></v-divider>
+          <v-list-item to="/forgot/">
+            <v-list-item-title style="font-size: 12px !important"
+              ><v-icon left>reset_tv</v-icon>Reset Password</v-list-item-title
+            >
+          </v-list-item>
           <v-list-item to="/login/">
             <v-list-item-title style="font-size: 12px !important"
               ><v-icon left color="indigo darken-2">no_accounts</v-icon
