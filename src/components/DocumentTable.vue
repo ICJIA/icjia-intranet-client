@@ -50,7 +50,7 @@
         <div>
           <div>
             <v-chip dark x-small color="#2296F3" v-if="isItNew(item)">
-              {{ chipLabel }}
+              {{ getNewOrUpdatedLabel(item) }}
             </v-chip>
           </div>
         </div>
@@ -151,7 +151,7 @@
                   class="mr-2"
                   v-if="isItNew(item)"
                 >
-                  {{ chipLabel }} </v-chip
+                  {{ getNewOrUpdatedLabel(item) }} </v-chip
                 >{{ item.updated_at | dateFormatShort }}
               </td>
               <td>
@@ -201,7 +201,7 @@ export default {
       loading: true,
       headers: [
         {
-          text: "Last updated",
+          text: "Date",
           align: "start",
           sortable: true,
           value: "updated_at",
@@ -245,10 +245,22 @@ export default {
       let end = moment(item.updated_at); // another date
       let duration = moment.duration(now.diff(end));
       let days = duration.asDays();
+
       if (days <= this.$myApp.config.daysToShowNew) {
         return true;
       } else {
         return false;
+      }
+    },
+    getNewOrUpdatedLabel(item) {
+      let published = moment(item.published_at);
+      let updated = moment(item.updated_at); // another date
+      let duration = moment.duration(updated.diff(published));
+      let days = duration.asDays();
+      if (days > 1) {
+        return "Updated!";
+      } else {
+        return "New!";
       }
     },
     goToLink(item) {
