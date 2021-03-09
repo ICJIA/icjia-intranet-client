@@ -70,7 +70,7 @@
                     <div style="background: #f3f5f7" class="px-2 py-2">
                       <v-row no-gutters>
                         <v-col>
-                          <h2>Recently Updated Documents</h2>
+                          <h2>Recent Documents</h2>
                         </v-col>
                       </v-row>
                     </div>
