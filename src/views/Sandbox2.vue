@@ -19,20 +19,108 @@
       <span id="clap--count" class="clap--count"></span>
       <span id="clap--count-total" class="clap--count-total"></span>
     </button>
+    <div
+      v-if="clapCount > 0"
+      style="font-size: 10px; margin-left: -10px"
+      class="mt-5"
+    >
+      You've given this page {{ clapCount }} clap{{
+        clapCount > 1 ? "s" : null
+      }}.{{ clapCount >= clapMax ? " You're maxed out. Thank you!" : null }}
+    </div>
   </div>
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
+import { getClaps, createClapEntry, updateClapEntry } from "@/services/Claps";
+import { MD5 } from "@/utils";
 export default {
-  mounted() {
+  data() {
+    return {
+      clapCount: 0,
+      id: null,
+      pageID: null,
+      claps: null,
+      initialNumberOfClaps: null,
+      clapMax: 15,
+      clapTotalCount: null,
+    };
+  },
+  methods: {
+    async getUserClaps() {
+      let numberOfClaps;
+      console.log("Get user clap count from session storage");
+      if (localStorage.getItem(this.pageID) === null) {
+        console.log("user has not clapped");
+        localStorage.setItem(this.pageID, Number(0));
+        numberOfClaps = 0;
+      } else {
+        console.log(
+          "user has already clapped: ",
+          localStorage.getItem(this.pageID),
+          " times."
+        );
+        numberOfClaps = Number(localStorage.getItem(this.pageID));
+      }
+      return numberOfClaps;
+    },
+    getPageID() {
+      let url = this.$myApp.config.api.baseClient + this.$route.fullPath + "/";
+      //console.log(url);
+      return MD5(url);
+    },
+    async getInitialNumberOfClaps() {
+      window.NProgress.start();
+      this.pageID = this.getPageID();
+
+      let { data } = await getClaps(this.$store.state.auth.jwt, this.pageID);
+      console.log(data);
+      let initialNumberOfClaps;
+      if (!data.length) {
+        initialNumberOfClaps = 0;
+        let dbData = {
+          pageID: this.pageID,
+          pagePath: this.$route.fullPath,
+          claps: Number(0),
+        };
+        let dbResponse = await createClapEntry(
+          this.$store.state.auth.jwt,
+          dbData
+        );
+
+        if (dbResponse.status === 200) {
+          console.log("successful db create");
+        } else {
+          console.error(dbResponse);
+        }
+      } else {
+        initialNumberOfClaps = data[0].claps;
+        this.id = data[0].id;
+        console.log("id: ", this.id);
+        console.log("claps: ", data[0].claps);
+      }
+      window.NProgress.done();
+      this.clapTotalCount = initialNumberOfClaps;
+      return initialNumberOfClaps;
+    },
+  },
+  async created() {
+    this.initialNumberOfClaps = await this.getInitialNumberOfClaps();
+    this.initialNumberOfClaps++;
+    console.log(this.initialNumberOfClaps);
+  },
+  async mounted() {
+    const vm = this;
     const clap = document.getElementById("clap");
     const clapIcon = document.getElementById("clap--icon");
     const clapCount = document.getElementById("clap--count");
     const clapTotalCount = document.getElementById("clap--count-total");
-    const initialNumberOfClaps = generateRandomNumber(500, 10000);
-
+    //const initialNumberOfClaps = this.initialNumberOfClaps;
+    const clapMax = 15;
     const tlDuration = 300;
-    let numberOfClaps = 0;
+    let numberOfClaps = await this.getUserClaps();
+    this.clapCount = numberOfClaps;
     let clapHold;
 
     const triangleBurst = new window.mojs.Burst({
@@ -105,6 +193,14 @@ export default {
       scaleButton,
     ]);
 
+    const maxAnimationTimeline = new window.mojs.Timeline();
+    maxAnimationTimeline.add([
+      triangleBurst,
+      circleBurst,
+      countTotalAnimation,
+      scaleButton,
+    ]);
+
     clap.addEventListener("click", function () {
       repeatClapping();
     });
@@ -120,21 +216,32 @@ export default {
     });
 
     function repeatClapping() {
-      updateNumberOfClaps();
-      animationTimeline.replay();
-      clapIcon.classList.add("checked");
+      if (numberOfClaps < clapMax) {
+        updateNumberOfClaps();
+        animationTimeline.replay();
+        clapIcon.classList.add("checked");
+      } else {
+        clapTotalCount.innerHTML = vm.clapTotalCount;
+        maxAnimationTimeline.replay();
+        clapIcon.classList.add("checked");
+      }
     }
 
-    function updateNumberOfClaps() {
-      console.log("initial: ", initialNumberOfClaps);
-      numberOfClaps < 50 ? numberOfClaps++ : null;
+    async function updateNumberOfClaps() {
+      console.log("initial: ", vm.initialNumberOfClaps);
+      numberOfClaps++;
+      vm.clapCount = numberOfClaps;
       clapCount.innerHTML = "+" + numberOfClaps;
-      clapTotalCount.innerHTML = initialNumberOfClaps + numberOfClaps;
+      clapTotalCount.innerHTML = vm.initialNumberOfClaps++;
       console.log(clapTotalCount.innerHTML);
-    }
-
-    function generateRandomNumber(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
+      localStorage.setItem(vm.pageID, numberOfClaps);
+      let dbObj = {
+        pageID: vm.pageID,
+        claps: Number(clapTotalCount.innerHTML),
+      };
+      vm.clapTotalCount = Number(clapTotalCount.innerHTML);
+      let res = await updateClapEntry(vm.$store.state.auth.jwt, dbObj, vm.id);
+      console.log("dbInsert: ", res);
     }
   },
 };
