@@ -97,6 +97,7 @@ export default {
     getPageID() {
       let url = this.$myApp.config.api.baseClient + this.$route.fullPath + "/";
       //console.log(url);
+
       return MD5(url);
     },
 
@@ -124,11 +125,6 @@ export default {
     },
 
     async updateDB(clapTotalCount) {
-      // console.log(
-      //   "insert clap total into DB: ",
-      //   Number(clapTotalCount.innerHTML)
-      // );
-
       let dbObj = {
         pageID: this.pageID,
         claps: Number(clapTotalCount.innerHTML),
@@ -155,6 +151,7 @@ export default {
       }
     },
   },
+  props: {},
   mounted() {
     this.getTotalClaps();
     this.getUserClaps();
