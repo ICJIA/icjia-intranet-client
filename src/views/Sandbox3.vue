@@ -2,8 +2,11 @@
   <div>
     <v-container>
       <v-row>
-        <v-col class="text-center"
-          ><button id="clap" class="clap" style="margin-top: 100px">
+        <v-col class="text-center" style="margin-top: 100px">
+          <!-- <div v-if="numberOfClaps >= clapMax" >
+            {{ runningTotal }}
+          </div> -->
+          <button id="clap" class="clap">
             <span>
               <!--  SVG Created by Luis Durazo from the Noun Project  -->
               <svg
@@ -34,8 +37,8 @@
             }}.{{
               numberOfClaps >= clapMax ? " You're maxed out. Thank you!" : null
             }}
-          </div></v-col
-        >
+          </div>
+        </v-col>
       </v-row>
     </v-container>
   </div>
@@ -57,6 +60,7 @@ export default {
       clapTotalCount: null,
       clapHold: null,
       clapMax: 25,
+      runningTotal: null,
     };
   },
   methods: {
@@ -84,11 +88,13 @@ export default {
           console.error(dbResponse);
         }
         this.initialNumberOfClaps = 0;
+        this.runningTotal = 0;
         console.log("id: ", dbResponse.data[0].id);
       } else {
         console.log("claps: ", data[0].claps);
         this.initialNumberOfClaps = data[0].claps;
         this.id = data[0].id;
+        this.runningTotal = data[0].claps;
         console.log("id: ", this.id);
       }
       console.log(data);
@@ -139,6 +145,8 @@ export default {
         this.id
       );
       console.log(res.data);
+      this.runningTotal = res.data.claps;
+      console.log("running total: ", this.runningTotal);
     },
 
     updateNumberOfClaps() {
@@ -146,8 +154,7 @@ export default {
         this.numberOfClaps++;
         this.setUserClap();
         this.clapCount.innerHTML = "+" + this.numberOfClaps;
-        this.clapTotalCount.innerHTML =
-          this.initialNumberOfClaps + this.numberOfClaps;
+        this.clapTotalCount.innerHTML = this.initialNumberOfClaps++;
         this.updateDB(this.clapTotalCount);
       } else {
         this.clapTotalCount.innerHTML =
@@ -264,6 +271,7 @@ export default {
         animationTimeline.replay();
         vm.clapIcon.classList.add("checked");
       } else {
+        vm.clapTotalCount.innerHTML = vm.runningTotal;
         maxedOutTimeline.replay();
         vm.clapIcon.classList.add("checked");
       }
