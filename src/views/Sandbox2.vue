@@ -96,7 +96,8 @@ export default {
           this.$store.state.auth.jwt,
           dbData
         );
-
+        console.log(dbResponse);
+        this.id = dbResponse.data.id;
         if (dbResponse.status === 200) {
           console.log("successful db create");
         } else {
