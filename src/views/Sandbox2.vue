@@ -1,13 +1,6 @@
 <template>
   <div class="text-center" style="margin-top: 100px">
     <div style="position: relative">
-      <!-- <div
-        v-if="startup"
-        style="font-size: 12px; margin-bottom: 10px; color: #888; position: absolute"
-      >
-        {{ clapTotalCount }}
-      </div> -->
-
       <button id="clap" class="clap">
         <span>
           <!--  SVG Created by Luis Durazo from the Noun Project  -->
@@ -29,10 +22,13 @@
           clapTotalCount
         }}</span>
       </button>
-      <div v-if="clapCount > 0" style="font-size: 10px" class="mt-5">
+      <div v-if="clapCount > 0" style="font-size: 11px" class="mt-5">
         You've given this page {{ clapCount }} clap{{
           clapCount > 1 ? "s" : null
-        }}.{{ clapCount >= clapMax ? " You're maxed out. Thank you!" : null }}
+        }}.
+      </div>
+      <div style="font-size: 11px; font-weight: 500" class="mt-1">
+        {{ clapCount >= clapMax ? " You're maxed out. Thank you!" : null }}
       </div>
     </div>
   </div>
@@ -50,32 +46,37 @@ export default {
       pageID: null,
       claps: null,
       initialNumberOfClaps: null,
-      clapMax: 15,
+      clapMax: 25,
       clapTotalCount: null,
       startup: true,
+      localStoragePrefix: "pageClap-",
     };
   },
   methods: {
     async getUserClaps() {
       let numberOfClaps;
       console.log("Get user clap count from session storage");
-      if (localStorage.getItem(this.pageID) === null) {
+      if (
+        localStorage.getItem(this.localStoragePrefix + this.pageID) === null
+      ) {
         console.log("user has not clapped");
-        localStorage.setItem(this.pageID, Number(0));
+        localStorage.setItem(this.localStoragePrefix + this.pageID, Number(0));
         numberOfClaps = 0;
       } else {
         console.log(
           "user has already clapped: ",
-          localStorage.getItem(this.pageID),
+          localStorage.getItem(this.localStoragePrefix + this.pageID),
           " times."
         );
-        numberOfClaps = Number(localStorage.getItem(this.pageID));
+        numberOfClaps = Number(
+          localStorage.getItem(this.localStoragePrefix + this.pageID)
+        );
       }
       return numberOfClaps;
     },
     getPageID() {
       let url = this.$myApp.config.api.baseClient + this.$route.fullPath + "/";
-      //console.log(url);
+      console.log(url + ": " + MD5(url));
       return MD5(url);
     },
     async getInitialNumberOfClaps() {
@@ -96,7 +97,7 @@ export default {
           this.$store.state.auth.jwt,
           dbData
         );
-        console.log(dbResponse);
+        //console.log(dbResponse);
         this.id = dbResponse.data.id;
         if (dbResponse.status === 200) {
           console.log("successful db create");
@@ -127,7 +128,7 @@ export default {
     const clapTotalCount = document.getElementById("clap--count-total");
 
     //const initialNumberOfClaps = this.initialNumberOfClaps;
-    const clapMax = 15;
+    const clapMax = this.clapMax;
     const tlDuration = 300;
     let numberOfClaps = await this.getUserClaps();
     this.clapCount = numberOfClaps;
@@ -204,12 +205,7 @@ export default {
     ]);
 
     const maxAnimationTimeline = new window.mojs.Timeline();
-    maxAnimationTimeline.add([
-      triangleBurst,
-      circleBurst,
-      countTotalAnimation,
-      scaleButton,
-    ]);
+    maxAnimationTimeline.add([circleBurst, scaleButton, countTotalAnimation]);
 
     const startupTimeline = new window.mojs.Timeline();
     startupTimeline.add([
@@ -255,8 +251,8 @@ export default {
       //clapCount.innerHTML = "+" + numberOfClaps;
       clapCount.innerHTML = "+1";
       clapTotalCount.innerHTML = vm.initialNumberOfClaps++;
-      console.log(clapTotalCount.innerHTML);
-      localStorage.setItem(vm.pageID, numberOfClaps);
+      //console.log(clapTotalCount.innerHTML);
+      localStorage.setItem(vm.localStoragePrefix + vm.pageID, numberOfClaps);
       let dbObj = {
         pageID: vm.pageID,
         claps: Number(clapTotalCount.innerHTML),
