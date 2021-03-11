@@ -267,9 +267,9 @@ export default {
       console.log("initial: ", vm.initialNumberOfClaps);
       numberOfClaps++;
       vm.clapCount = numberOfClaps;
-      clapCount.innerHTML = "+" + numberOfClaps;
+      //clapCount.innerHTML = "+" + numberOfClaps;
       clapCount.innerHTML = "+1";
-      //clapTotalCount.innerHTML = vm.initialNumberOfClaps++;
+      clapTotalCount.innerHTML = vm.initialNumberOfClaps++;
       //console.log(clapTotalCount.innerHTML);
       localStorage.setItem(vm.localStorageKey, numberOfClaps);
       let dbObj = {
