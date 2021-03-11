@@ -99,7 +99,7 @@ export default {
     },
     async getInitialNumberOfClaps() {
       window.NProgress.start();
-      this.pageID = this.getPageID();
+      //this.pageID = this.getPageID();
 
       let { data } = await getClaps(this.$store.state.auth.jwt, this.pageID);
       console.log(data);
