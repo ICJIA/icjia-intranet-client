@@ -24,10 +24,6 @@
             </div>
             <v-row>
               <v-col class="mb-3">
-                <!-- <div class="kicker mb-3">
-                  {{ posts[0]["kicker"] }}
-                </div> -->
-
                 <h1
                   class="mb-4"
                   v-if="posts && posts.length"
@@ -123,11 +119,11 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-contaner v-else>
+    <v-container v-else>
       <v-col class="text-center">
         <Loader></Loader>
       </v-col>
-    </v-contaner>
+    </v-container>
   </div>
 </template>
 
