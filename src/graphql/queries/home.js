@@ -68,7 +68,6 @@ const GET_HOME = gql`
     posts(sort: "published_at:desc", limit: $postLimit) {
       id
       title
-      kicker
       slug
       summary
       body
