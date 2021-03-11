@@ -268,8 +268,8 @@ export default {
       numberOfClaps++;
       vm.clapCount = numberOfClaps;
       clapCount.innerHTML = "+" + numberOfClaps;
-      //clapCount.innerHTML = "+1";
-      clapTotalCount.innerHTML = vm.initialNumberOfClaps++;
+      clapCount.innerHTML = "+1";
+      //clapTotalCount.innerHTML = vm.initialNumberOfClaps++;
       //console.log(clapTotalCount.innerHTML);
       localStorage.setItem(vm.localStorageKey, numberOfClaps);
       let dbObj = {
