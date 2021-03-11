@@ -39,38 +39,48 @@
 import { getClaps, createClapEntry, updateClapEntry } from "@/services/Claps";
 import { MD5 } from "@/utils";
 export default {
+  props: {
+    pageID: {
+      type: String,
+      default: null,
+      required: true,
+    },
+    localStoragePrefix: {
+      type: String,
+      default: "pageClap-",
+    },
+  },
+  computed: {
+    localStorageKey() {
+      return this.localStoragePrefix + this.pageID;
+    },
+  },
   data() {
     return {
       clapCount: 0,
       id: null,
-      pageID: null,
       claps: null,
       initialNumberOfClaps: null,
       clapMax: 25,
       clapTotalCount: null,
       startup: true,
-      localStoragePrefix: "pageClap-",
     };
   },
   methods: {
     async getUserClaps() {
       let numberOfClaps;
       console.log("Get user clap count from session storage");
-      if (
-        localStorage.getItem(this.localStoragePrefix + this.pageID) === null
-      ) {
+      if (localStorage.getItem(this.localStorageKey) === null) {
         console.log("user has not clapped");
-        localStorage.setItem(this.localStoragePrefix + this.pageID, Number(0));
+        localStorage.setItem(this.localStorageKey, Number(0));
         numberOfClaps = 0;
       } else {
         console.log(
           "user has already clapped: ",
-          localStorage.getItem(this.localStoragePrefix + this.pageID),
+          localStorage.getItem(this.localStorageKey),
           " times."
         );
-        numberOfClaps = Number(
-          localStorage.getItem(this.localStoragePrefix + this.pageID)
-        );
+        numberOfClaps = Number(localStorage.getItem(this.localStorageKey));
       }
       return numberOfClaps;
     },
@@ -253,7 +263,7 @@ export default {
       clapCount.innerHTML = "+1";
       clapTotalCount.innerHTML = vm.initialNumberOfClaps++;
       //console.log(clapTotalCount.innerHTML);
-      localStorage.setItem(vm.localStoragePrefix + vm.pageID, numberOfClaps);
+      localStorage.setItem(vm.localStorageKey, numberOfClaps);
       let dbObj = {
         pageID: vm.pageID,
         claps: Number(clapTotalCount.innerHTML),
