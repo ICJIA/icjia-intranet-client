@@ -22,12 +22,16 @@
           clapTotalCount
         }}</span>
       </button>
-      <div v-if="clapCount > 0" style="font-size: 11px" class="mt-5">
+      <!-- <div
+        v-if="clapCount > 0"
+        style="font-size: 11px; font-weight: 300"
+        class="mt-5"
+      >
         You've given this page {{ clapCount }} clap{{
           clapCount > 1 ? "s" : null
         }}.
-      </div>
-      <div style="font-size: 11px; font-weight: 500" class="mt-1">
+      </div> -->
+      <div style="font-size: 11px; font-weight: 400" class="mt-5">
         {{ clapCount >= clapMax ? " You're maxed out. Thank you!" : null }}
       </div>
     </div>
@@ -259,8 +263,8 @@ export default {
       console.log("initial: ", vm.initialNumberOfClaps);
       numberOfClaps++;
       vm.clapCount = numberOfClaps;
-      //clapCount.innerHTML = "+" + numberOfClaps;
-      clapCount.innerHTML = "+1";
+      clapCount.innerHTML = "+" + numberOfClaps;
+      //clapCount.innerHTML = "+1";
       clapTotalCount.innerHTML = vm.initialNumberOfClaps++;
       //console.log(clapTotalCount.innerHTML);
       localStorage.setItem(vm.localStorageKey, numberOfClaps);
@@ -283,7 +287,7 @@ export default {
   =======================*/
 $btn-dimension: 80px;
 $primary-color: rgba(189, 195, 199, 1);
-$secondary-color: rgba(39, 174, 96, 1);
+$secondary-color: rgb(28, 49, 168);
 @mixin debug {
   outline: 1px solid red;
 }
@@ -343,12 +347,13 @@ $secondary-color: rgba(39, 174, 96, 1);
   }
   .clap--count-total {
     position: absolute;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     width: $btn-dimension;
     text-align: center;
     left: 0;
     top: -$btn-dimension/2.5;
-    color: $primary-color;
+    color: #777;
+    font-weight: 900;
   }
 }
 </style>
