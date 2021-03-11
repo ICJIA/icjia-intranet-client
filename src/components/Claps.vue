@@ -89,7 +89,11 @@ export default {
       return numberOfClaps;
     },
     getPageID() {
-      let url = this.$myApp.config.api.baseClient + this.$route.fullPath + "/";
+      let url =
+        process.env.NODE_ENV +
+        this.$myApp.config.api.baseClient +
+        this.$route.fullPath +
+        "/";
       console.log(url + ": " + MD5(url));
       return MD5(url);
     },
