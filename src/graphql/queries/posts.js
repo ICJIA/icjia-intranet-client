@@ -6,7 +6,7 @@ const GET_ALL_POSTS_QUERY = gql`
     posts(sort: "published_at:desc") {
       id
       slug
-      kicker
+
       title
       summary
       created_at
@@ -50,7 +50,7 @@ const GET_SINGLE_POST_QUERY = gql`
       slug
       title
       summary
-      kicker
+
       created_at
       updated_at
       published_at

@@ -128,17 +128,6 @@
                           class="text-center hover"
                           @click.prevent="event.show = !event.show"
                         >
-                          <!-- <div
-                            style="
-                              font-size: 12px;
-                              font-weight: 400;
-                              color: #555;
-                            "
-                            class="mb-2"
-                          >
-                            {{ getKicker(event.start, event.end, event.timed) }}
-                          </div> -->
-
                           <span
                             style="
                               font-size: 14px;
