@@ -1,24 +1,22 @@
 //import { EventBus } from "@/event-bus";
-//import NProgress from "nprogress";
+// import NProgress from "nprogress";
 let axios = require("axios");
-// eslint-disable-next-line no-unused-vars
-const dotenv = require("dotenv").config();
 
 const api = axios.create({
   timeout: 15000,
 });
 
 api.interceptors.request.use((config) => {
-  //NProgress.start();
+  window.NProgress.start();
   return config;
 });
 
 api.interceptors.response.use((response) => {
-  //NProgress.done();
+  window.NProgress.done();
   return response;
 });
 
-async function queryEndpoint(query, jwt) {
+async function queryEndpoint(jwt, query) {
   let content = await api({
     headers: {
       "Content-Type": "application/json",
@@ -44,19 +42,35 @@ const getClapCountQuery = (id) => {
     }`;
 };
 
-const getClapCount = async (id) => {
+const getClapCount = async (jwt, id) => {
   try {
-    let res = await queryEndpoint(getClapCountQuery(id), process.env.JWT);
+    //let res =
     //   console.log(res);
-    return res;
+    return await queryEndpoint(jwt, getClapCountQuery(id));
   } catch (e) {
     console.error(" error: ", e.toString());
   }
 };
 
-const init = async () => {
-  let result = await getClapCount(145);
-  console.log(result.data.data.posts[0].claps);
+const updateClapCount = async function (jwt, data, id) {
+  let axiosHeaders = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  };
+
+  try {
+    return await api.put(
+      `https://dev.icjia-api.cloud/posts/${id}`,
+      JSON.stringify(data),
+      axiosHeaders
+    );
+  } catch (e) {
+    console.log(e);
+
+    return `${e}`;
+  }
 };
 
-init();
+export { getClapCount, updateClapCount };

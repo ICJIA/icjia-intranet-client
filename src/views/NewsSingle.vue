@@ -12,14 +12,14 @@
         <v-col cols="12" md="9">
           <v-card
             style="min-height: 100vh"
-            elevation="0"
-            class="pl-2 pt-3"
-            color="white"
+            elevation="1"
+            class="pl-5 pr-5 pt-10 pb-10"
+            color="grey lighten-5"
           >
             <div v-if="posts && posts.length && posts[0]['splash']">
               <SplashNews
                 :splash="posts[0]['splash']"
-                style="margin-top: -25px; margin-left: -10px"
+                style="margin-top: -25px; margin-left: 0px"
               ></SplashNews>
             </div>
             <v-row>
@@ -102,14 +102,33 @@
             </v-row>
           </v-card>
         </v-col>
-        <v-col cols="12" md="3">
+        <v-col cols="12" md="3" style="margin: 0; padding: 0">
           <v-sheet
             color="grey lighten-5 clapBox"
             elevation="1"
-            class="pt-4 pb-12"
+            class="mt-3 pb-4"
           >
-            <div class="text-center" style="margin-top: -25px">
-              <Claps :key="getPageID()" :pageID="getPageID()"></Claps>
+            <popular-posts></popular-posts>
+          </v-sheet>
+          <v-sheet
+            color="grey lighten-5 clapBox"
+            elevation="1"
+            class="pt-3 pb-12"
+            style="margin-top: 20px"
+          >
+            <!-- <div style="background: #f3f5f7" class="px-2 py-2">
+              <v-row no-gutters>
+                <v-col>
+                  <h2>Rate it</h2>
+                </v-col>
+              </v-row>
+            </div> -->
+            <div class="text-center">
+              <ClapsV2
+                :key="getPageID()"
+                :pageID="getPageID()"
+                :id="posts[0]['id']"
+              ></ClapsV2>
               <div style="font-size: 12px; font-weight: 300" class="mt-5">
                 Like this page? Find it useful? Give it a clap!<br />(Or two or
                 three ...)
@@ -132,10 +151,11 @@ import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
 import { GET_SINGLE_POST_QUERY } from "@/graphql/queries/posts";
 import { MD5 } from "@/utils";
+import PopularPosts from "../components/PopularPosts.vue";
 export default {
   name: "Home",
   mixins: [handleClicks],
-  components: {},
+  components: { PopularPosts },
 
   data() {
     return {
@@ -235,8 +255,8 @@ export default {
   font-size: 12px;
 }
 
-.clapBox {
+/* .clapBox {
   position: sticky;
   top: 100px;
-}
+} */
 </style>
