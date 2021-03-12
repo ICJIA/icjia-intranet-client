@@ -10,7 +10,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container v-if="clusters" fluid>
+    <v-container v-if="clusters">
       <v-row>
         <v-col>
           <v-data-table

@@ -5,10 +5,16 @@
       :title="`${clusters[0]['title']}`"
       v-if="clusters"
     ></Breadcrumb>
-    <DocumentClusterCard
-      :item="clusters[0]"
-      v-if="clusters"
-    ></DocumentClusterCard>
+    <v-container>
+      <v-row>
+        <v-col v-if="clusters">
+          <DocumentClusterCard :item="clusters[0]"></DocumentClusterCard>
+        </v-col>
+        <v-col v-else>
+          <Loader></Loader>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 

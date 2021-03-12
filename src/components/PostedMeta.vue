@@ -37,7 +37,7 @@ export default {
     },
     showUpdatedInText: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
 };

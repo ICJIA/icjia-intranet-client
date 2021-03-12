@@ -1,7 +1,7 @@
 <template>
   <div>
     <Breadcrumb :key="$route.path" title="Documents"></Breadcrumb>
-    <v-container fluid>
+    <v-container>
       <v-row>
         <v-col>
           <div class="text-center">
@@ -10,7 +10,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container v-if="documents" fluid>
+    <v-container v-if="documents">
       <v-row>
         <v-col class="text-center">
           <div
