@@ -109,9 +109,18 @@
           <v-sheet
             color="white"
             elevation="0"
-            class="pt-3 pb-12 clapBox"
+            class="pb-12 clapBox"
             style="margin-top: 20px"
           >
+            <div style="background: #f3f3f3" class="px-4 py-2">
+              <v-row>
+                <v-col>
+                  <h2 style="font-size: 16px">
+                    {{ posts[0]["title"] }}
+                  </h2>
+                </v-col>
+              </v-row>
+            </div>
             <div class="text-center">
               <ClapsV2
                 :key="getPageID()"

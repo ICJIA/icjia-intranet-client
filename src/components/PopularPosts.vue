@@ -16,6 +16,7 @@
               elevation="0"
               style="font-size: 14px"
               @click="route(post)"
+              :id="post.slug"
             >
               <div style="font-size: 10px; color: #666" class="mb-1">
                 {{ post.published_at | format }}
@@ -33,7 +34,7 @@
               <div class="text-right mt-2">
                 <span class="icon">
                   <svg
-                    id="clap--icon"
+                    id="clapIcon"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="-549 329 100.1 125"
                   >
