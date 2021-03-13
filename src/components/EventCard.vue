@@ -163,9 +163,9 @@ export default {
       if (daysBetween === 0 && timed) {
         range = ` | ${localStart.format("h:mm a")} to ${localEnd.format(
           "h:mm a"
-        )}`;
+        )} | ${localStart.format("dddd, MMMM D, YYYY")}`;
       } else if (daysBetween === 0 && !timed) {
-        range = ` | All Day`;
+        range = ` | All Day | ${localStart.format("dddd, MMMM D, YYYY")} `;
       } else if (daysBetween > 0) {
         range = ` | ${localStart.format("MMMM D")} through ${localEnd.format(
           "MMMM D"
