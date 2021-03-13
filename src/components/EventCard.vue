@@ -8,8 +8,8 @@
           width: 100% !important;
         "
       >
-        <v-toolbar :color="getColor(item)" dark>
-          <v-toolbar-title v-html="item.name" style="font-weight: 900">
+        <v-toolbar :color="getColor(item)" dark elevation="0">
+          <v-toolbar-title v-html="item.name" style="font-weight: 700">
           </v-toolbar-title>
 
           <v-spacer></v-spacer>
@@ -126,7 +126,7 @@ export default {
   mixins: [handleClicks],
   methods: {
     getColor(item) {
-      let color = "grey darken-1";
+      let color = "#0d4474";
       if (this.$myApp.config.events[item.type] && this.showColor) {
         color = this.$myApp.config.events[item.type]["color"];
       }

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div style="background: #f3f5f7" class="px-2 py-2">
-      <v-row no-gutters>
+    <div style="background: #fff" class="px-4 py-2">
+      <v-row>
         <v-col>
           <h2>Most Popular</h2>
         </v-col>

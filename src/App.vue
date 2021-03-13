@@ -1,5 +1,5 @@
 <template>
-  <v-app id="page-top" style="background: #fff">
+  <v-app id="page-top" style="background: #fafafa">
     <AppNav v-if="$store.state.auth.isAuthenticated"></AppNav>
     <AppSidebar></AppSidebar>
 

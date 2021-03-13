@@ -14,7 +14,7 @@
             style="min-height: 100vh"
             elevation="1"
             class="pl-5 pr-5 pt-10 pb-10"
-            color="grey lighten-5"
+            color="white"
           >
             <div v-if="posts && posts.length && posts[0]['splash']">
               <SplashNews
@@ -103,16 +103,12 @@
           </v-card>
         </v-col>
         <v-col cols="12" md="3" style="margin: 0; padding: 0">
-          <v-sheet
-            color="grey lighten-5 clapBox"
-            elevation="1"
-            class="mt-3 pb-4"
-          >
+          <v-sheet color="white" elevation="0" class="mt-3 pb-4">
             <popular-posts></popular-posts>
           </v-sheet>
           <v-sheet
-            color="grey lighten-5 clapBox"
-            elevation="1"
+            color="white"
+            elevation="0"
             class="pt-3 pb-12"
             style="margin-top: 20px"
           >

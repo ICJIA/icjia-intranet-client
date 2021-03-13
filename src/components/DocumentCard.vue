@@ -1,6 +1,6 @@
 <template>
   <div class="markdown-body my-5 mx-2">
-    <v-card color="grey lighten-5" class="px-8 py-8 mx-2">
+    <v-card color="white" elevation="0" class="px-8 py-8 mx-2">
       <h2
         style="
           border-bottom: 1px solid #ccc;

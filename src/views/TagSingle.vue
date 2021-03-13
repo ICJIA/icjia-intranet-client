@@ -8,21 +8,16 @@
       :title="`${tag.title}`"
     ></Breadcrumb>
     <v-container v-if="tags && tags.length">
-      <v-sheet>
-        <v-row>
-          <v-col cols="12" order-md="1" order="2" order-sm="2">
-            <div class="markdown-body">
-              <h1 class="text-center">
-                {{ tag.title }}
-              </h1>
-              <div v-html="tag.summary" class="mb-12"></div>
-              <h2
-                class="mt-3 text-left"
-                id="documents"
-                v-if="tag.documents.length"
-              >
-                Documents & Resources
-              </h2>
+      <v-row>
+        <v-col cols="12" order-md="1" order="2" order-sm="2">
+          <div class="markdown-body mb-8">
+            <h1 class="text-center">
+              {{ tag.title }}
+            </h1>
+          </div>
+          <div class="mb-8 px-5 py-5" elevation="1" v-if="tag.documents.length">
+            <div class="text-left markdown-body mt-12">
+              <h2 class="" id="news-and-updates">Documents & Resources</h2>
             </div>
             <div v-if="tag.documents.length">
               <DocumentTable
@@ -30,19 +25,16 @@
                 :searchLabel="`Search Documents`"
                 v-if="tags"
                 :key="$route.path"
-                style="border: 1px solid #eee; margin-top: 25px"
               ></DocumentTable>
             </div>
-            <!-- <div v-else class="mt-4 markdown-body">
-            <h3 style="color: #666" class="text-center">
-              No documents tagged '{{ tag.title }}' found.
-            </h3>
-          </div> -->
+          </div>
 
-            <div
-              class="text-left markdown-body mt-12"
-              v-if="tag && tag.posts && tag.posts.length"
-            >
+          <div
+            class="mb-2 px-5 py-5"
+            elevation="1"
+            v-if="tag && tag.posts && tag.posts.length"
+          >
+            <div class="text-left markdown-body mt-12">
               <h2 class="" id="news-and-updates">News & Updates</h2>
             </div>
             <div v-if="tag && tag.posts && tag.posts.length">
@@ -62,19 +54,12 @@
                 </v-row>
               </v-container>
             </div>
-            <!-- <div v-else class="mt-4 markdown-body">
-            <h3 style="color: #666" class="text-center">
-              No news tagged '{{ tag.title }}' found.
-            </h3>
-          </div> -->
+          </div>
 
-            <h2
-              class="mt-8 text-left"
-              id="documents"
-              v-if="tag && tag.events && tag.events.length"
-            >
-              Upcoming Events
-            </h2>
+          <div v-if="tag && tag.events && tag.events.length">
+            <div class="text-left markdown-body mt-12">
+              <h2 class="" id="news-and-updates">Upcoming Events</h2>
+            </div>
 
             <div v-if="tag && tag.events && tag.events.length">
               <v-container class="view-container mt-6">
@@ -85,14 +70,9 @@
                 </v-row>
               </v-container>
             </div>
-            <!-- <div v-else class="mt-4 markdown-body">
-            <h3 style="color: #666" class="text-center">
-              No events tagged '{{ tag.title }}' found.
-            </h3>
-          </div> -->
-          </v-col>
-        </v-row>
-      </v-sheet>
+          </div>
+        </v-col>
+      </v-row>
     </v-container>
     <v-container v-else>
       <v-row>
