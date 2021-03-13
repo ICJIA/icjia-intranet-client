@@ -365,4 +365,24 @@ export default {
 .darkText {
   font-weight: 700 !important;
 }
+/* tbody tr:nth-of-type(even) {
+  background-color: rgba(250, 250, 250);
+} */
+
+/* tbody tr:nth-of-type(odd) {
+  background-color: rgb(253, 253, 253);
+} */
+
+/* .v-data-table-header {
+  background-color: rgba(182, 183, 187);
+  color: white !important;
+} */
+
+/* .v-data-footer {
+  background-color: rgb(250, 250, 250);
+}
+
+.theme--light.v-data-table thead tr th {
+  color: white;
+} */
 </style>
