@@ -1,6 +1,7 @@
 <template>
   <div>
     <!-- <Breadcrumb title="Search"></Breadcrumb> -->
+    <Breadcrumb :key="$route.path" title="Search"></Breadcrumb>
     <v-container
       ><v-col cols="12">
         <h1>Search the ICJIA Intranaet</h1>
