@@ -109,7 +109,7 @@
           <v-sheet
             color="white"
             elevation="0"
-            class="pt-3 pb-12"
+            class="pt-3 pb-12 clapBox"
             style="margin-top: 20px"
           >
             <div class="text-center">
@@ -244,8 +244,8 @@ export default {
   font-size: 12px;
 }
 
-/* .clapBox {
+.clapBox {
   position: sticky;
-  top: 100px;
-} */
+  top: 80px;
+}
 </style>
