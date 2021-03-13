@@ -30,6 +30,9 @@
                 >NEW!</v-chip
               >&nbsp; -->
               <strong>{{ post.title }}</strong>
+              <div class="text-right" style="font-size: 12px">
+                {{ post.claps }}
+              </div>
             </v-card>
           </div>
         </div>
@@ -42,10 +45,19 @@
 </template>
 
 <script>
+import { EventBus } from "@/event-bus";
 import moment from "moment";
 import { GET_POPULAR_POSTS_QUERY } from "@/graphql/queries/posts";
 export default {
+  mounted() {
+    EventBus.$on("updateClaps", () => {
+      this.refetch();
+    });
+  },
   methods: {
+    refetch() {
+      this.$apollo.queries.posts.refetch();
+    },
     route(post) {
       this.$router.push(`/news/${post.slug}`).catch(() => {
         this.$vuetify.goTo(0);
@@ -66,6 +78,7 @@ export default {
   apollo: {
     posts: {
       prefetch: true,
+      fetchPolicy: "no-cache",
       query: GET_POPULAR_POSTS_QUERY,
       variables() {
         return {};

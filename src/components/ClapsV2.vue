@@ -42,6 +42,7 @@
 // eslint-disable-next-line no-unused-vars
 //import { getClaps, createClapEntry, updateClapEntry } from "@/services/Claps";
 import { getClapCount, updateClapCount } from "@/services/ClapsV2";
+import { EventBus } from "@/event-bus";
 //import { MD5 } from "@/utils";
 export default {
   props: {
@@ -71,7 +72,7 @@ export default {
 
       claps: null,
       initialNumberOfClaps: null,
-      clapMax: 25,
+      clapMax: 125,
       clapTotalCount: null,
       startup: true,
     };
@@ -248,6 +249,7 @@ export default {
       vm.clapTotalCount = Number(clapTotalCount.innerHTML);
       let res = await updateClapCount(vm.$store.state.auth.jwt, dbObj, vm.id);
       console.log("dbInsert: ", res);
+      EventBus.$emit("updateClaps");
     }
     startupTimeline.replay();
   },
