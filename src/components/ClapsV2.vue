@@ -23,12 +23,12 @@
         }}</span>
       </button>
 
-      <div style="font-size: 14px; font-weight: 500" class="mt-5">
-        {{
-          clapCount >= clapMax
-            ? " You've maxed out your applause. Thank you!"
-            : null
-        }}
+      <div
+        style="font-size: 12px; font-weight: 500"
+        class="px-3 mt-5"
+        v-if="clapCount >= clapMax"
+      >
+        You've maxed out your applause for this post. <br />Thank you!
       </div>
     </div>
   </div>
