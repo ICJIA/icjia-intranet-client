@@ -4,7 +4,7 @@
       style="font-size: 12px; font-weight: 700"
       class="text-right pt-3 pr-5 mb-3"
     >
-      Displaying {{ documents.length }} documents.
+      Displaying {{ documents.length }} items.
     </div>
     <v-data-table
       :hide-default-footer="hideFooter"
