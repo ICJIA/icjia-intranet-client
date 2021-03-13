@@ -103,7 +103,7 @@
           </v-card>
         </v-col>
         <v-col cols="12" md="3" style="margin: 0; padding: 0">
-          <v-sheet color="white" elevation="0" class="mt-3 pb-4">
+          <v-sheet color="grey lighten-4" elevation="0" class="mt-3 pb-4">
             <popular-posts></popular-posts>
           </v-sheet>
           <v-sheet
@@ -112,13 +112,6 @@
             class="pt-3 pb-12"
             style="margin-top: 20px"
           >
-            <!-- <div style="background: #f3f5f7" class="px-2 py-2">
-              <v-row no-gutters>
-                <v-col>
-                  <h2>Rate it</h2>
-                </v-col>
-              </v-row>
-            </div> -->
             <div class="text-center">
               <ClapsV2
                 :key="getPageID()"

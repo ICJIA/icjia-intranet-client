@@ -43,6 +43,26 @@ const GET_ALL_POSTS_QUERY = gql`
   }
 `;
 
+const GET_POPULAR_POSTS_QUERY = gql`
+  query getPopularPosts {
+    posts(limit: 5, sort: "claps:desc") {
+      id
+      slug
+      claps
+      title
+      summary
+      created_at
+      updated_at
+      published_at
+      body
+      splash {
+        url
+        formats
+      }
+    }
+  }
+`;
+
 const GET_SINGLE_POST_QUERY = gql`
   query getSinglePost($slug: String!) {
     posts(where: { slug: $slug }) {
@@ -102,4 +122,4 @@ const GET_SINGLE_POST_QUERY = gql`
   }
 `;
 
-export { GET_ALL_POSTS_QUERY, GET_SINGLE_POST_QUERY };
+export { GET_ALL_POSTS_QUERY, GET_SINGLE_POST_QUERY, GET_POPULAR_POSTS_QUERY };

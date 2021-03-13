@@ -60,7 +60,7 @@ export default {
       }
     },
     routeTo(slug) {
-      this.$router.push(`/news/${slug}`);
+      this.$router.push(`/news/${slug}/`);
     },
 
     getAltText(post) {
