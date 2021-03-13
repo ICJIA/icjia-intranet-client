@@ -30,6 +30,10 @@
       >
         You've maxed out your applause for this post. <br />Thank you!
       </div>
+      <div style="font-size: 12px; font-weight: 300" class="mt-5" v-else>
+        Like this page? Find it useful? Give it a clap!<br />(Or two or three
+        ...)
+      </div>
     </div>
   </div>
 </template>
@@ -194,15 +198,10 @@ export default {
     ]);
 
     const maxAnimationTimeline = new window.mojs.Timeline();
-    maxAnimationTimeline.add([circleBurst, scaleButton, countTotalAnimation]);
+    maxAnimationTimeline.add([countTotalAnimation]);
 
     const startupTimeline = new window.mojs.Timeline();
-    startupTimeline.add([
-      triangleBurst,
-      circleBurst,
-      countTotalAnimation,
-      scaleButton,
-    ]);
+    startupTimeline.add([circleBurst, countTotalAnimation]);
 
     clap.addEventListener("click", function () {
       vm.startup = false;

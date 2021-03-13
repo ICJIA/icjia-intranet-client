@@ -118,10 +118,6 @@
                 :pageID="getPageID()"
                 :id="posts[0]['id']"
               ></ClapsV2>
-              <div style="font-size: 12px; font-weight: 300" class="mt-5">
-                Like this page? Find it useful? Give it a clap!<br />(Or two or
-                three ...)
-              </div>
             </div>
           </v-sheet>
         </v-col>
