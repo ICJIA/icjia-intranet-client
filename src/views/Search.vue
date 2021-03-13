@@ -4,7 +4,7 @@
     <Breadcrumb :key="$route.path" title="Search"></Breadcrumb>
     <v-container
       ><v-col cols="12">
-        <h1>Search the ICJIA Intranaet</h1>
+        <h1>Search the ICJIA Intranet</h1>
         <v-form class="pl-2">
           <v-text-field
             ref="textfield"
