@@ -72,7 +72,7 @@ export default {
 
       claps: null,
       initialNumberOfClaps: null,
-      clapMax: 125,
+      clapMax: 25,
       clapTotalCount: null,
       startup: true,
     };
