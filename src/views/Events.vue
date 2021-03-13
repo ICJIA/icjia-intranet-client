@@ -157,6 +157,14 @@
                           >
                             - {{ event.end | day }}
                           </span>
+                          <div
+                            style="font-size: 12px"
+                            v-if="
+                              !isItMultiday(event.start, event.end, event.timed)
+                            "
+                          >
+                            {{ event.start | dayName }}
+                          </div>
                         </v-col>
                       </v-row>
                     </v-container>
