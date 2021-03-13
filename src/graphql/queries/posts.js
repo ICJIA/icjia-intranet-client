@@ -6,7 +6,7 @@ const GET_ALL_POSTS_QUERY = gql`
     posts(sort: "published_at:desc") {
       id
       slug
-
+      claps
       title
       summary
       created_at
@@ -70,7 +70,7 @@ const GET_SINGLE_POST_QUERY = gql`
       slug
       title
       summary
-
+      claps
       created_at
       updated_at
       published_at
