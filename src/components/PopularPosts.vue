@@ -8,7 +8,7 @@
       </v-row>
     </div>
     <div>
-      <v-col> TODO: List of most popular posts here based on applause </v-col>
+      <v-col> TODO: List of most popular posts here based on claps </v-col>
     </div>
   </div>
 </template>
