@@ -274,7 +274,7 @@ $secondary-color: rgb(28, 49, 168);
   position: relative;
   outline: 1px solid transparent;
   border-radius: 50%;
-  border: 1px solid $primary-color;
+  border: 2px solid $primary-color;
   width: $btn-dimension;
   height: $btn-dimension;
   background: none;
