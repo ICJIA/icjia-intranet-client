@@ -120,3 +120,7 @@ Vue.filter("timeAgoFormat", function (timestamp) {
 Vue.filter("yearFormat", function (timestamp) {
   return moment(timestamp).format("YYYY");
 });
+
+Vue.filter("dayName", function (timestamp) {
+  return moment(timestamp).format("dddd");
+});
