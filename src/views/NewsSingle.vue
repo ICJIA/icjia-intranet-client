@@ -161,7 +161,6 @@
           <v-sheet color="grey lighten-4" elevation="0" class="mt-3 pb-4">
             <popular-posts></popular-posts>
           </v-sheet>
-          {{ userClapArray }}
         </v-col>
       </v-row>
     </v-container>
@@ -233,7 +232,6 @@ export default {
       return clapArray;
     },
     async updateTotalClaps() {
-      // get user claps
       let alreadyClapped = _.find(this.userClapArray, { id: this.id });
       if (alreadyClapped) {
         this.userClaps = alreadyClapped.claps;
