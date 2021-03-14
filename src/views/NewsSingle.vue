@@ -313,7 +313,7 @@ export default {
         console.log("added");
         localStorage.setItem("claps", JSON.stringify(this.userClapArray));
       }
-
+      //EventBus.$emit("refetchPosts");
       this.refetch();
     },
     async refetch() {
@@ -327,6 +327,7 @@ export default {
       } else {
         this.userClaps = 0;
       }
+      EventBus.$emit("refetchPosts");
       console.log("refetch user claps", this.userClaps);
     },
     getPageID() {

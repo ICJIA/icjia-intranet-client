@@ -59,14 +59,15 @@ import moment from "moment";
 import { GET_POPULAR_POSTS_QUERY } from "@/graphql/queries/posts";
 export default {
   mounted() {
-    EventBus.$on("updateClaps", () => {
+    EventBus.$on("refetchPosts", () => {
       this.refetch();
+      // console.log("refetch popular");
     });
   },
   methods: {
     refetch() {
       this.$apollo.queries.posts.refetch();
-      console.log("refetched popular posts:");
+      console.log("refetched popular posts");
     },
     route(post) {
       this.$router.push(`/news/${post.slug}`).catch(() => {
