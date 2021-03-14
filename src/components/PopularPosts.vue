@@ -23,10 +23,9 @@
               </div>
 
               <strong>{{ post.title }}</strong>
-              <div class="text-right mt-2">
+              <div class="text-right mt-2" :id="`post-${post.id}`">
                 <span class="icon">
                   <svg
-                    id="clapIcon"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="-549 329 100.1 125"
                   >
@@ -58,10 +57,52 @@ import { EventBus } from "@/event-bus";
 import moment from "moment";
 import { GET_POPULAR_POSTS_QUERY } from "@/graphql/queries/posts";
 export default {
+  data() {
+    return {
+      updatedId: null,
+    };
+  },
   mounted() {
-    EventBus.$on("refetchPosts", () => {
+    EventBus.$on("refetchPosts", (id) => {
       this.refetch();
-      // console.log("refetch popular");
+      console.log("updated popular id: ", id);
+      // this.updatedId = "post-" + id;
+      const clapPopular = document.getElementById("post-" + id);
+      const circleBurst = new window.mojs.Burst({
+        parent: clapPopular,
+        radius: { 10: 35 },
+        angle: 25,
+        duration: 300,
+        children: {
+          shape: "circle",
+          fill: "rgba(149,165,166 ,0.5)",
+          delay: 30,
+          speed: 0.2,
+          radius: { 3: 0 },
+          easing: window.mojs.easing.bezier(0.1, 1, 0.3, 1),
+        },
+      });
+      const triangleBurst = new window.mojs.Burst({
+        parent: clapPopular,
+        radius: { 10: 35 },
+        count: 5,
+        angle: 30,
+        children: {
+          shape: "polygon",
+          radius: { 6: 0 },
+          scale: 1,
+          stroke: "rgba(211,84,0 ,0.5)",
+          strokeWidth: 2,
+          angle: 210,
+          delay: 30,
+          speed: 0.2,
+          easing: window.mojs.easing.bezier(0.1, 1, 0.3, 1),
+          duration: 300,
+        },
+      });
+      const miniTimeline = new window.mojs.Timeline();
+      miniTimeline.add([triangleBurst, circleBurst]);
+      miniTimeline.replay();
     });
   },
   methods: {

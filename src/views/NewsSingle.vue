@@ -327,7 +327,7 @@ export default {
       } else {
         this.userClaps = 0;
       }
-      EventBus.$emit("refetchPosts");
+      EventBus.$emit("refetchPosts", this.id);
       console.log("refetch user claps", this.userClaps);
     },
     getPageID() {
