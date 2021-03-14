@@ -35,6 +35,7 @@
     "graphql-request": "^3.4.0",
     "jsonfile": "^6.1.0",
     "less-loader": "7.0.2",
+    "localstoragedb": "^2.3.2",
     "lodash": "^4.17.20",
     "markdown-it": "^12.0.4",
     "markdown-it-attrs": "^4.0.0",

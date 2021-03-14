@@ -52,6 +52,7 @@
                   {{ getUnitTitle(posts[0]) }}</span
                 >
                 |
+
                 <v-tooltip right style="font-size: 12px !important">
                   <template v-slot:activator="{ on, attrs }">
                     <button>
@@ -88,17 +89,17 @@
                     </button>
                   </template>
                   <span
-                    v-if="userClaps === 0"
+                    v-if="getClapCount() === 0"
                     style="font-size: 12px !important"
                     >Like this page? Give it a clap! (Or two. Or three...)</span
                   >
                   <span
-                    v-if="userClaps < maxClaps && userClaps > 0"
+                    v-if="getClapCount() < maxClaps && getClapCount() > 0"
                     style="font-size: 12px !important"
-                    >You've given {{ userClaps }} claps. Keep going!</span
+                    >You've given {{ getClapCount() }} claps. Keep going!</span
                   >
                   <span
-                    v-if="userClaps >= maxClaps"
+                    v-if="getClapCount() >= maxClaps"
                     style="font-size: 12px !important"
                     >You've maxed out your applause. Thank you!</span
                   >
@@ -160,6 +161,7 @@
           <v-sheet color="grey lighten-4" elevation="0" class="mt-3 pb-4">
             <popular-posts></popular-posts>
           </v-sheet>
+          {{ userClapArray }}
         </v-col>
       </v-row>
     </v-container>
@@ -172,11 +174,13 @@ import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
 import { GET_SINGLE_POST_QUERY } from "@/graphql/queries/posts";
 import { MD5 } from "@/utils";
+import _ from "lodash";
 import PopularPosts from "../components/PopularPosts.vue";
 // eslint-disable-next-line no-unused-vars
 import { EventBus } from "@/event-bus";
 // eslint-disable-next-line no-unused-vars
 import { getClapCount, updateClapCount } from "@/services/ClapsV2";
+
 export default {
   name: "Home",
   mixins: [handleClicks],
@@ -185,38 +189,60 @@ export default {
     // eslint-disable-next-line no-unused-vars
     $route(to, from) {
       console.log("route change");
-      this.refetch();
+      this.$apollo.queries.posts.refetch();
+      this.userClaps = null;
     },
   },
 
   data() {
     return {
-      posts: null,
       error: null,
+      id: null,
       isMounted: false,
       tocAble: null,
       meta: null,
       clapKey: 0,
       claps: null,
-      id: null,
       totalClaps: null,
       isLoaded: false,
       numberOfUserClaps: null,
       maxClaps: 25,
-      userClaps: 0,
+      userClaps: null,
+      userClapArray: null,
     };
   },
-  mounted() {
+  async mounted() {
     console.log("mounted");
+    this.userClapArray = await this.getUserClaps();
   },
 
   methods: {
+    getClapCount() {
+      let alreadyClapped = _.find(this.userClapArray, { id: this.id });
+      let count;
+      if (alreadyClapped) {
+        count = alreadyClapped.claps;
+      } else {
+        count = 0;
+      }
+      return count;
+    },
+    getUserClaps() {
+      console.log("get user claps from session storage");
+      let clapArray = JSON.parse(localStorage.getItem("claps") || "[]");
+      return clapArray;
+    },
     async updateTotalClaps() {
+      // get user claps
+      let alreadyClapped = _.find(this.userClapArray, { id: this.id });
+      if (alreadyClapped) {
+        this.userClaps = alreadyClapped.claps;
+      } else {
+        this.userClaps = 0;
+      }
       if (this.userClaps >= this.maxClaps) return;
       this.userClaps = this.userClaps + 1;
-
       this.totalClaps = this.totalClaps + 1;
-
       const clapMini = document.getElementById("clap--mini");
       const circleBurst = new window.mojs.Burst({
         parent: clapMini,
@@ -258,20 +284,51 @@ export default {
         id: this.id,
         claps: Number(this.totalClaps),
       };
-      console.table(dbObj);
+
+      //console.table(dbObj);
       let res = await updateClapCount(
         this.$store.state.auth.jwt,
         dbObj,
         this.id
       );
-      console.table("dbInsert: ", res);
-      EventBus.$emit("updateClaps");
+
+      let isPostStored = _.find(this.userClapArray, { id: this.id });
+      if (isPostStored) {
+        console.log("already there", isPostStored);
+        let index = _.findIndex(this.userClapArray, ["id", this.id]);
+        console.log("index: ", index);
+        let claps = this.userClapArray[index]["claps"] + 1;
+        let clapsForPage = {
+          id: this.id,
+          claps,
+        };
+        this.userClapArray[index] = clapsForPage;
+        localStorage.setItem("claps", JSON.stringify(this.userClapArray));
+        this.userClapArray = await this.getUserClaps();
+      } else {
+        let clapsForPage = {
+          id: this.id,
+          claps: Number(this.userClaps),
+        };
+        this.userClapArray.push(clapsForPage);
+        console.log("added");
+        localStorage.setItem("claps", JSON.stringify(this.userClapArray));
+      }
+
+      this.refetch();
     },
-    refetch() {
-      this.$apollo.queries.posts.refetch();
+    async refetch() {
       // const clapTotalCount = document.getElementById("clap--count-total");
       // clapTotalCount.innerHTML = "";
-      this.userClaps = 0;
+      this.$apollo.queries.posts.refetch();
+      this.userClapArray = await this.getUserClaps();
+      let alreadyClapped = _.find(this.userClapArray, { id: this.id });
+      if (alreadyClapped) {
+        this.userClaps = alreadyClapped.claps;
+      } else {
+        this.userClaps = 0;
+      }
+      console.log("refetch user claps", this.userClaps);
     },
     getPageID() {
       let url = this.$myApp.config.api.baseClient + this.$route.fullPath + "/";
@@ -334,6 +391,7 @@ export default {
           };
           this.totalClaps = ApolloQueryResult.data.posts[0]["claps"];
           this.id = ApolloQueryResult.data.posts[0]["id"];
+          console.log(this.id);
           this.isLoaded = true;
           //console.log(this.meta);
         }
