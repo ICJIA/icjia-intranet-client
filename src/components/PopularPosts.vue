@@ -16,14 +16,14 @@
               elevation="0"
               style="font-size: 14px"
               @click="route(post)"
-              :id="post.slug"
+              :id="`post-${post.id}`"
             >
               <div style="font-size: 10px; color: #666" class="mb-1">
                 {{ post.published_at | format }}
               </div>
 
               <strong>{{ post.title }}</strong>
-              <div class="text-right mt-2" :id="`post-${post.id}`">
+              <div class="text-right mt-2" :id="`postCard-${post.id}`">
                 <span class="icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -68,13 +68,16 @@ export default {
       console.log("updated popular id: ", id);
       // this.updatedId = "post-" + id;
       const clapPopular = document.getElementById("post-" + id);
+
       const circleBurst = new window.mojs.Burst({
         parent: clapPopular,
-        radius: { 10: 35 },
+        radius: { 10: 50 },
         angle: 25,
         duration: 300,
+
         children: {
           shape: "circle",
+          scale: 1.5,
           fill: "rgba(149,165,166 ,0.5)",
           delay: 30,
           speed: 0.2,
@@ -84,13 +87,13 @@ export default {
       });
       const triangleBurst = new window.mojs.Burst({
         parent: clapPopular,
-        radius: { 10: 35 },
+        radius: { 20: 40 },
         count: 5,
         angle: 30,
         children: {
           shape: "polygon",
           radius: { 6: 0 },
-          scale: 1,
+          scale: 2,
           stroke: "rgba(211,84,0 ,0.5)",
           strokeWidth: 2,
           angle: 210,
