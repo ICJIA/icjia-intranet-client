@@ -78,12 +78,12 @@
                             />
                           </svg>
                         </span>
-                      </span>
-                      <span
-                        class="claps ml-1"
-                        style="font-size: 12px !important"
-                      >
-                        {{ totalClaps }}
+                        <span
+                          class="claps ml-1"
+                          style="font-size: 12px !important"
+                        >
+                          {{ totalClaps }}
+                        </span>
                       </span>
                     </button>
                   </template>
