@@ -295,7 +295,7 @@ export default {
       if (isPostStored) {
         console.log("already there", isPostStored);
         let index = _.findIndex(this.userClapArray, ["id", this.id]);
-        console.log("index: ", index);
+        //console.log("index: ", index);
         let claps = this.userClapArray[index]["claps"] + 1;
         let clapsForPage = {
           id: this.id,
@@ -369,10 +369,6 @@ export default {
         this.error = JSON.stringify(error.message);
       },
       result(ApolloQueryResult) {
-        // console.log(
-        //   ApolloQueryResult.data && ApolloQueryResult.data.posts.length > 0
-        // );
-
         if (
           ApolloQueryResult.data &&
           ApolloQueryResult.data.posts.length > 0 === false
@@ -382,18 +378,10 @@ export default {
             console.log(err);
           });
         } else {
-          this.meta = {
-            published_at: ApolloQueryResult.data.posts[0]["published_at"],
-            created_at: ApolloQueryResult.data.posts[0]["created_at"],
-            updated_at: ApolloQueryResult.data.posts[0]["updated_at"],
-            updated_by: ApolloQueryResult.data.posts[0]["updated_by"],
-            created_by: ApolloQueryResult.data.posts[0]["created_by"],
-          };
           this.totalClaps = ApolloQueryResult.data.posts[0]["claps"];
           this.id = ApolloQueryResult.data.posts[0]["id"];
           console.log(this.id);
           this.isLoaded = true;
-          //console.log(this.meta);
         }
       },
     },

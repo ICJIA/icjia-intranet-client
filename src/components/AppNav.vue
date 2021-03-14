@@ -66,10 +66,6 @@
           </v-btn>
         </template>
         <v-list nav dense elevation="2">
-          <!-- <v-list-title style="font-weight: 900; font-size: 12px">
-            ICJIA News & Updates
-          </v-list-title>
-          <div class="mb-2">&nbsp;</div> -->
           <v-list-item
             class="appNav"
             @click="
@@ -92,9 +88,7 @@
 
           <v-divider></v-divider>
           <div class="mt-3">&nbsp;</div>
-          <v-list-title style="font-weight: 900; font-size: 12px">
-            Social Media
-          </v-list-title>
+          <div style="font-weight: 900; font-size: 12px">Social Media</div>
           <div class="mb-2">&nbsp;</div>
           <v-list-item
             class="appNav"

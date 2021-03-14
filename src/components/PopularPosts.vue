@@ -65,8 +65,7 @@ export default {
   mounted() {
     EventBus.$on("refetchPosts", (id) => {
       this.refetch();
-      console.log("updated popular id: ", id);
-      // this.updatedId = "post-" + id;
+
       const clapPopular = document.getElementById("post-" + id);
 
       const circleBurst = new window.mojs.Burst({
