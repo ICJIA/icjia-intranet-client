@@ -69,7 +69,7 @@
                         </svg>
                       </span>
                       <span style="font-size: 12px; font-weight: 700">
-                        {{ posts[0].claps }}
+                        {{ totalClaps }}
                       </span>
                     </span>
                   </template>
@@ -148,11 +148,17 @@
               </v-row>
             </div>
             <div class="text-center">
-              <ClapsV2
-                :key="getPageID()"
+              Debug clap:<br />
+              {{ posts[0]["id"] }}
+              <!-- <ClapsV3
+                :key="clapKey"
                 :pageID="getPageID()"
                 :id="posts[0]['id']"
-              ></ClapsV2>
+                :initialClaps="posts[0]['claps']"
+              ></ClapsV3> -->
+              <v-btn @click="clapOnce()"
+                >Claps: {{ totalClaps }} id: {{ id }}</v-btn
+              >
             </div>
           </v-sheet>
         </v-col>
@@ -172,11 +178,21 @@ import { renderToHtml } from "@/services/Markdown";
 import { GET_SINGLE_POST_QUERY } from "@/graphql/queries/posts";
 import { MD5 } from "@/utils";
 import PopularPosts from "../components/PopularPosts.vue";
+// eslint-disable-next-line no-unused-vars
 import { EventBus } from "@/event-bus";
+// eslint-disable-next-line no-unused-vars
+import { getClapCount, updateClapCount } from "@/services/ClapsV2";
 export default {
   name: "Home",
   mixins: [handleClicks],
   components: { PopularPosts },
+  watch: {
+    // eslint-disable-next-line no-unused-vars
+    $route(to, from) {
+      console.log("route change");
+      this.refetch();
+    },
+  },
 
   data() {
     return {
@@ -185,20 +201,41 @@ export default {
       isMounted: false,
       tocAble: null,
       meta: null,
+      clapKey: 0,
+      claps: null,
+      id: null,
+      totalClaps: null,
     };
   },
   mounted() {
     this.isMounted = true;
     const sections = Array.from(document.querySelectorAll("h2, h3"));
     this.tocAble = sections.length ? true : false;
-    EventBus.$on("updateClaps", () => {
-      this.refetch();
-    });
+    // EventBus.$on("updateClaps", () => {
+    //   this.refetch();
+    // });
   },
 
   methods: {
+    async clapOnce() {
+      this.totalClaps = this.totalClaps + 1;
+      console.log("clap: ", this.totalClaps);
+      let dbObj = {
+        id: this.id,
+        claps: Number(this.totalClaps),
+      };
+      console.table(dbObj);
+      let res = await updateClapCount(
+        this.$store.state.auth.jwt,
+        dbObj,
+        this.id
+      );
+      console.table("dbInsert: ", res);
+      EventBus.$emit("updateClaps");
+    },
     refetch() {
       this.$apollo.queries.posts.refetch();
+      this.clapKey++;
     },
     getPageID() {
       let url = this.$myApp.config.api.baseClient + this.$route.fullPath + "/";
@@ -259,6 +296,8 @@ export default {
             updated_by: ApolloQueryResult.data.posts[0]["updated_by"],
             created_by: ApolloQueryResult.data.posts[0]["created_by"],
           };
+          this.totalClaps = ApolloQueryResult.data.posts[0]["claps"];
+          this.id = ApolloQueryResult.data.posts[0]["id"];
 
           //console.log(this.meta);
         }

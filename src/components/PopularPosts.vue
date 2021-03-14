@@ -21,15 +21,7 @@
               <div style="font-size: 10px; color: #666" class="mb-1">
                 {{ post.published_at | format }}
               </div>
-              <!-- <v-chip
-                dark
-                label
-                x-small
-                color="#2296F3"
-                v-if="isItNew(post)"
-                style="margin-top: -2px; font-size: 8px !important"
-                >NEW!</v-chip
-              >&nbsp; -->
+
               <strong>{{ post.title }}</strong>
               <div class="text-right mt-2">
                 <span class="icon">
@@ -74,6 +66,7 @@ export default {
   methods: {
     refetch() {
       this.$apollo.queries.posts.refetch();
+      console.log("refetched popular posts:");
     },
     route(post) {
       this.$router.push(`/news/${post.slug}`).catch(() => {
@@ -94,7 +87,7 @@ export default {
   },
   apollo: {
     posts: {
-      prefetch: true,
+      prefetch: false,
       fetchPolicy: "no-cache",
       query: GET_POPULAR_POSTS_QUERY,
       variables() {

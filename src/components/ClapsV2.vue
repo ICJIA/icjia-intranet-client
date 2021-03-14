@@ -45,6 +45,14 @@ import { getClapCount, updateClapCount } from "@/services/ClapsV2";
 import { EventBus } from "@/event-bus";
 //import { MD5 } from "@/utils";
 export default {
+  watch: {
+    // eslint-disable-next-line no-unused-vars
+    $route(to, from) {
+      this.getInitialNumberOfClaps();
+      const clapTotalCount = document.getElementById("clap--count-total");
+      clapTotalCount.innerHTML = this.initialNumberOfClaps;
+    },
+  },
   props: {
     pageID: {
       type: String,
@@ -72,7 +80,7 @@ export default {
 
       claps: null,
       initialNumberOfClaps: null,
-      clapMax: 25,
+      clapMax: 125,
       clapTotalCount: null,
       startup: true,
     };
@@ -97,6 +105,7 @@ export default {
     },
 
     async getInitialNumberOfClaps() {
+      console.log(this.id);
       window.NProgress.start();
       let initialNumberOfClaps;
 
@@ -106,20 +115,23 @@ export default {
 
       window.NProgress.done();
       this.clapTotalCount = initialNumberOfClaps;
+      console.log("initial claps: ", initialNumberOfClaps);
       return initialNumberOfClaps;
     },
   },
-  async created() {
-    this.initialNumberOfClaps = await this.getInitialNumberOfClaps();
-    this.initialNumberOfClaps++;
-    console.log(this.initialNumberOfClaps);
-  },
+  async created() {},
   async mounted() {
     const vm = this;
+    this.initialNumberOfClaps = await this.getInitialNumberOfClaps();
+    this.initialNumberOfClaps++;
+    console.log("Fetch in component claps", this.initialNumberOfClaps);
+
     const clap = document.getElementById("clap");
     const clapIcon = document.getElementById("clap--icon");
     const clapCount = document.getElementById("clap--count");
     const clapTotalCount = document.getElementById("clap--count-total");
+    clapTotalCount.innerHTML = this.initialNumberOfClaps;
+    console.log("dom element set: ", clapTotalCount);
 
     //const initialNumberOfClaps = this.initialNumberOfClaps;
     const clapMax = this.clapMax;
@@ -240,7 +252,7 @@ export default {
       clapCount.innerHTML = "+" + numberOfClaps;
       //clapCount.innerHTML = "+1";
       clapTotalCount.innerHTML = vm.initialNumberOfClaps++;
-      //console.log(clapTotalCount.innerHTML);
+      console.log("clap count set", clapTotalCount.innerHTML);
       localStorage.setItem(vm.localStorageKey, numberOfClaps);
       let dbObj = {
         id: vm.id,
