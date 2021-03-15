@@ -96,8 +96,7 @@
                   <span
                     v-if="getClapCount() < maxClaps && getClapCount() > 0"
                     style="font-size: 12px !important"
-                    >You've given this article {{ getClapCount() }} claps. Keep
-                    going!</span
+                    >You've given this article {{ getClapCount() }} claps.</span
                   >
                   <span
                     v-if="getClapCount() >= maxClaps"
