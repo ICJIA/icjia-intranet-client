@@ -32,8 +32,8 @@ Vue.use(myApp);
 import browserDetect from "vue-browser-detect-plugin";
 Vue.use(browserDetect);
 
-import VueMeta from "vue-meta";
 import { createProvider } from "./vue-apollo";
+import VueMeta from "vue-meta";
 Vue.use(VueMeta, {
   // optional pluginOptions
   refreshOnceOnNavigation: true,
