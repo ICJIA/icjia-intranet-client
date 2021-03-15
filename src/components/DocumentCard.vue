@@ -30,7 +30,11 @@
           margin-bottom: 25px;
         "
       >
-        <PostedMeta :meta="item" class=""></PostedMeta>
+        <PostedMeta
+          :meta="item"
+          class=""
+          :showUpdatedInText="true"
+        ></PostedMeta>
       </div>
 
       <div
