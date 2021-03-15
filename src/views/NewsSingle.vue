@@ -15,9 +15,6 @@
             elevation="1"
             class="pl-5 pr-5 pt-10 pb-10"
             color="white"
-            data-aos="fade-up"
-            data-aos-offset="100"
-            data-aos-delay="0"
           >
             <div v-if="posts && posts.length && posts[0]['splash']">
               <SplashNews

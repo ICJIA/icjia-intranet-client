@@ -17,9 +17,6 @@
               style="font-size: 14px"
               @click="route(post)"
               :id="`post-${post.id}`"
-              data-aos="fade-in"
-              data-aos-offset="100"
-              data-aos-delay="0"
             >
               <div style="font-size: 10px; color: #666" class="mb-1">
                 {{ post.published_at | format }}
