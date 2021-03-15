@@ -9,6 +9,9 @@
         :key="index"
         :ripple="false"
         @click="routeTo(apps[app - 1]['url'])"
+        data-aos="fade-up"
+        data-aos-offset="100"
+        data-aos-delay="0"
       >
         <div class="">
           <v-img

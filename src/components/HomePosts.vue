@@ -15,6 +15,9 @@
       :key="index + post.id"
       v-else
       class="mb-8"
+      data-aos="fade-up"
+      data-aos-offset="100"
+      data-aos-delay="0"
     >
       <news-card :item="post" :text-only="false" :showText="false"></news-card>
     </div>

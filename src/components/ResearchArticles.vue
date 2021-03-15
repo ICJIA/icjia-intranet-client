@@ -7,6 +7,9 @@
           style="border: 1px #eee solid"
           @click="routeTo(article)"
           elevation="1"
+          data-aos="fade-up"
+          data-aos-offset="100"
+          data-aos-delay="0"
         >
           <v-img
             class=""

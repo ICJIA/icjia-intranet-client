@@ -30,6 +30,9 @@
         $vuetify.breakpoint.lg ||
         $vuetify.breakpoint.xl
       "
+      data-aos="fade-up"
+      data-aos-offset="100"
+      data-aos-delay="0"
     >
       <template v-slot:top v-if="!hideSearch">
         <div class="pt-5">
