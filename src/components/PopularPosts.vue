@@ -63,48 +63,49 @@ export default {
     };
   },
   mounted() {
+    // eslint-disable-next-line no-unused-vars
     EventBus.$on("refetchPosts", (id) => {
       this.refetch();
 
-      const clapPopular = document.getElementById("post-" + id);
+      // const clapPopular = document.getElementById("post-" + id);
 
-      const circleBurst = new window.mojs.Burst({
-        parent: clapPopular,
-        radius: { 10: 50 },
-        angle: 25,
-        duration: 300,
+      // const circleBurst = new window.mojs.Burst({
+      //   parent: clapPopular,
+      //   radius: { 10: 50 },
+      //   angle: 25,
+      //   duration: 300,
 
-        children: {
-          shape: "circle",
-          scale: 1.5,
-          fill: "rgba(149,165,166 ,0.5)",
-          delay: 30,
-          speed: 0.2,
-          radius: { 3: 0 },
-          easing: window.mojs.easing.bezier(0.1, 1, 0.3, 1),
-        },
-      });
-      const triangleBurst = new window.mojs.Burst({
-        parent: clapPopular,
-        radius: { 20: 40 },
-        count: 5,
-        angle: 30,
-        children: {
-          shape: "polygon",
-          radius: { 6: 0 },
-          scale: 2,
-          stroke: "rgba(211,84,0 ,0.5)",
-          strokeWidth: 2,
-          angle: 210,
-          delay: 30,
-          speed: 0.2,
-          easing: window.mojs.easing.bezier(0.1, 1, 0.3, 1),
-          duration: 300,
-        },
-      });
-      const miniTimeline = new window.mojs.Timeline();
-      miniTimeline.add([triangleBurst, circleBurst]);
-      miniTimeline.replay();
+      //   children: {
+      //     shape: "circle",
+      //     scale: 1.5,
+      //     fill: "rgba(149,165,166 ,0.5)",
+      //     delay: 30,
+      //     speed: 0.2,
+      //     radius: { 3: 0 },
+      //     easing: window.mojs.easing.bezier(0.1, 1, 0.3, 1),
+      //   },
+      // });
+      // const triangleBurst = new window.mojs.Burst({
+      //   parent: clapPopular,
+      //   radius: { 20: 40 },
+      //   count: 5,
+      //   angle: 30,
+      //   children: {
+      //     shape: "polygon",
+      //     radius: { 6: 0 },
+      //     scale: 2,
+      //     stroke: "rgba(211,84,0 ,0.5)",
+      //     strokeWidth: 2,
+      //     angle: 210,
+      //     delay: 30,
+      //     speed: 0.2,
+      //     easing: window.mojs.easing.bezier(0.1, 1, 0.3, 1),
+      //     duration: 300,
+      //   },
+      // });
+      // const miniTimeline = new window.mojs.Timeline();
+      // miniTimeline.add([triangleBurst, circleBurst]);
+      // miniTimeline.replay();
     });
   },
   methods: {
