@@ -113,6 +113,9 @@
                 elevation="0"
                 style="border: 1px solid #bbb"
                 @click="$router.push(`/events/${event.slug}/`)"
+                data-aos="fade-up"
+                data-aos-offset="100"
+                data-aos-delay="0"
               >
                 <div class="d-flex flex-no-wrap" style="border: 1px solid #bbb">
                   <div class="px-5" style="max-height: 150px">
