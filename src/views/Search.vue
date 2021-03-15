@@ -28,6 +28,9 @@
                 color="#f1f3f5"
                 @click="route(result)"
                 class="hover py-2 px-2 mb-5 card"
+                data-aos="fade-up"
+                data-aos-offset="100"
+                data-aos-delay="0"
               >
                 <div v-if="result.title">
                   <span
