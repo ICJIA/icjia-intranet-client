@@ -378,9 +378,16 @@ export default {
             console.log(err);
           });
         } else {
+          this.meta = {
+            published_at: ApolloQueryResult.data.posts[0]["published_at"],
+            created_at: ApolloQueryResult.data.posts[0]["created_at"],
+            updated_at: ApolloQueryResult.data.posts[0]["updated_at"],
+            updated_by: ApolloQueryResult.data.posts[0]["updated_by"],
+            created_by: ApolloQueryResult.data.posts[0]["created_by"],
+          };
           this.totalClaps = ApolloQueryResult.data.posts[0]["claps"];
           this.id = ApolloQueryResult.data.posts[0]["id"];
-          console.log(this.id);
+          //console.log(this.id);
           this.isLoaded = true;
         }
       },
