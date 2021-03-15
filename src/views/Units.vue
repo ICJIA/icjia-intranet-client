@@ -20,6 +20,9 @@
               class="px-6 py-6 info-card markdown-body"
               color="#f3f5f7"
               @click="$router.push(unit.path)"
+              data-aos="fade-up"
+              data-aos-offset="100"
+              data-aos-delay="0"
             >
               <h2 style="font-size: 18px">
                 {{ unit.title }}
