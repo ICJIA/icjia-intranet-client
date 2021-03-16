@@ -61,6 +61,7 @@
             <v-btn @click="submit" v-if="!disabled">Register</v-btn>&nbsp;
             <v-progress-circular
               v-if="isLoading"
+              aria-label="Progress bar: Loading"
               indeterminate
               color="primary"
             ></v-progress-circular>

@@ -2,6 +2,7 @@
   <div class="text-center my-12" :style="{ 'min-height': `${height}px` }">
     <v-progress-circular
       indeterminate
+      aria-label="Progress bar: Loading"
       color="primary"
       :size="size"
     ></v-progress-circular>

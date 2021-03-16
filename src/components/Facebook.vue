@@ -16,6 +16,7 @@
         <div class="text-center">
           <v-progress-circular
             indeterminate
+            aria-label="Progress bar: Loading"
             color="primary"
             size="50"
             class="mb-4"

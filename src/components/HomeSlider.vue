@@ -58,6 +58,7 @@
               <v-col md="8" cols="12" class="hidden-sm-and-down">
                 <v-img
                   v-if="slide.image && slide.image.formats"
+                  aria-label="ICJIA Main Splash Image"
                   :src="getImageURL($myApp.config.api.base + slide.image.url)"
                   :lazy-src="
                     getImageURL(
@@ -79,6 +80,7 @@
                     >
                       <v-progress-circular
                         indeterminate
+                        aria-label="Progress bar: Loading"
                         color="grey lighten-5"
                       ></v-progress-circular>
                     </v-row>

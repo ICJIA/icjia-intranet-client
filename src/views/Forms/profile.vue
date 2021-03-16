@@ -156,6 +156,7 @@
                 <span v-if="showLoader" class="ml-2">
                   <v-progress-circular
                     indeterminate
+                    aria-label="Progress bar: Loading"
                     color="primary"
                   ></v-progress-circular>
                 </span>

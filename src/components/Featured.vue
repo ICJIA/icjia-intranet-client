@@ -47,6 +47,7 @@
                 :lazy-src="`https://picsum.photos/50/30?image=${imageSeed}`"
                 aspect-ratio="1.7"
                 max-height="400"
+                aria-label="Filler Image"
                 v-if="imageSeed"
               >
                 <template v-slot:placeholder>
@@ -57,6 +58,7 @@
                   >
                     <v-progress-circular
                       indeterminate
+                      aria-label="Progress bar: Loading"
                       color="grey lighten-5"
                     ></v-progress-circular>
                   </v-row>

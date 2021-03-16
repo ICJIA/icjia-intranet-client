@@ -21,6 +21,7 @@
           <v-col cols="12" md="4" v-if="item && !textOnly">
             <v-img
               v-if="item.splash && item.splash.url && !textOnly"
+              aria-label="News post image"
               :src="getImagePath(item.splash.url, 0, 500, 100)"
               :lazy-src="getImagePath(item.splash.formats.thumbnail.url)"
               width="100%"
@@ -32,7 +33,7 @@
                 dark
                 label
                 style="margin-top: -1px"
-                color="#2296F3"
+                color="#0D4474"
                 class="icjia-card"
                 v-if="isItNew(item)"
               >
@@ -41,6 +42,7 @@
                 <v-row class="fill-height ma-0" align="center" justify="center">
                   <v-progress-circular
                     indeterminate
+                    aria-label="Progress bar: Loading"
                     color="blue darken-3"
                   ></v-progress-circular>
                 </v-row>
@@ -48,6 +50,7 @@
             </v-img>
             <v-img
               v-if="!item.splash && !textOnly"
+              aria-label="Default post image"
               src="/icjia-half-splash.jpg"
               lazy-src="/icjia-half-splash-thumb.jpg"
               width="100%"
@@ -59,7 +62,7 @@
                 dark
                 label
                 style="margin-top: -1px"
-                color="#2296F3"
+                color="#0D4474"
                 class="icjia-card"
                 v-if="isItNew(item)"
               >
@@ -68,6 +71,7 @@
                 <v-row class="fill-height ma-0" align="center" justify="center">
                   <v-progress-circular
                     indeterminate
+                    aria-label="Progress bar: Loading"
                     color="blue darken-3"
                   ></v-progress-circular>
                 </v-row>
@@ -101,7 +105,7 @@
                     label
                     x-small
                     style="margin-top: -1px"
-                    color="#2296F3"
+                    color="#0D4474"
                     class="icjia-card mr-2"
                     v-if="isItNew(item)"
                   >
@@ -157,6 +161,7 @@
         :src="getImagePath(item.splash.url, 0, 500, 100)"
         :lazy-src="getImagePath(item.splash.formats.thumbnail.url)"
         width="100%"
+        aria-label="News post image"
         height="150px;"
         class=""
         style="border: 0px solid #fafafa"
@@ -165,7 +170,7 @@
           dark
           label
           style="margin-top: -1px"
-          color="#2296F3"
+          color="#0D4474"
           class="icjia-card"
           v-if="isItNew(item)"
         >
@@ -174,6 +179,7 @@
           <v-row class="fill-height ma-0" align="center" justify="center">
             <v-progress-circular
               indeterminate
+              aria-label="Progress bar: Loading"
               color="blue darken-3"
             ></v-progress-circular>
           </v-row>

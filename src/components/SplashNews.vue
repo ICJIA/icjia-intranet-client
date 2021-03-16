@@ -8,12 +8,14 @@
         height="400"
         class="mb-5"
         style="border: 1px solid #fafafa"
+        aria-label="ICJIA Intranet splash image"
         :alt="getAltText()"
         ><template v-slot:placeholder>
           <v-row class="fill-height ma-0" align="center" justify="center">
             <v-progress-circular
               indeterminate
               color="blue darken-3"
+              aria-label="Progress bar: Loading"
             ></v-progress-circular>
           </v-row> </template
       ></v-img>

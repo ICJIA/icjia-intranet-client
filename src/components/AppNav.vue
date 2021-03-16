@@ -3,6 +3,7 @@
     <v-app-bar app style="background: #fff" elevate-on-scroll>
       <v-app-bar-nav-icon
         @click="toggleDrawer"
+        aria-label="Click this button to display menu"
         v-if="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs"
       ></v-app-bar-nav-icon>
       <div class="d-flex align-center">
@@ -10,6 +11,7 @@
           alt="ICJIA Logo"
           class="shrink mr-2 hover"
           contain
+          aria-label="ICJIA Logo"
           src="/icjia-logo.png"
           transition="scale-transition"
           width="70"
@@ -359,7 +361,7 @@
 
       <v-btn small text to="/events/" class="hidden-sm-and-down">Events</v-btn>
 
-      <v-btn icon to="/search" aria-label="search">
+      <v-btn icon to="/search" aria-label="Search" class="hidden-sm-and-down">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
       <v-menu bottom offset-y>

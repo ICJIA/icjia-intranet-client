@@ -14,6 +14,7 @@
           <v-img
             class=""
             height="225px"
+            aria-label="ReseearchHub Article image"
             :src="article.splash"
             :lazy-src="article.thumbnail"
             v-if="!$browserDetect.isIE"
@@ -31,6 +32,7 @@
               <v-row class="fill-height ma-0" align="center" justify="center">
                 <v-progress-circular
                   indeterminate
+                  aria-label="Progress bar: Loading"
                   color="grey lighten-5"
                 ></v-progress-circular>
               </v-row>

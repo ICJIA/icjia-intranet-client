@@ -16,6 +16,7 @@
         <div class="">
           <v-img
             class="white--text align-end"
+            aria-label="ReseearchHub Application image"
             height="225px"
             :src="apps[app - 1]['image']"
           >

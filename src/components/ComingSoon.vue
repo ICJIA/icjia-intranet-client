@@ -8,6 +8,7 @@
               src="/icjia-logo.png"
               width="125"
               class="text-center"
+              aria-label="ICJIA Logo"
             ></v-img>
           </center>
           <h1 class="text-center mt-5">{{ message }}</h1>
