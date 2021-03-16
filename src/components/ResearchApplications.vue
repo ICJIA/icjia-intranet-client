@@ -50,7 +50,6 @@
               apps[app - 1]['datasets'].length
             "
             x-small
-            outlined
             style="color: #075e60"
             @click.stop.prevent="apps[app - 1]['show'] = !apps[app - 1]['show']"
             >Show Related

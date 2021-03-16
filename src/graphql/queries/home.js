@@ -99,6 +99,11 @@ const GET_HOME = gql`
       summary
       externalURL
       body
+      tags {
+        id
+        title
+        slug
+      }
       file {
         url
         name

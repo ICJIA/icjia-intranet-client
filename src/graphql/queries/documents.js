@@ -10,6 +10,11 @@ const GET_ALL_DOCUMENTS = gql`
       summary
       externalURL
       body
+      tags {
+        id
+        title
+        slug
+      }
       file {
         url
         name
@@ -53,6 +58,11 @@ const GET_SINGLE_DOCUMENT = gql`
       summary
       externalURL
       body
+      tags {
+        id
+        title
+        slug
+      }
       file {
         url
         name

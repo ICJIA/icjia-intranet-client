@@ -58,6 +58,11 @@ const GET_SINGLE_TAG = gql`
         slug
         summary
         externalURL
+        tags {
+          id
+          title
+          slug
+        }
         unit {
           title
           slug

@@ -12,6 +12,11 @@ const GET_ALL_CLUSTERS = gql`
       documents(sort: "title:asc") {
         id
         title
+        tags {
+          id
+          title
+          slug
+        }
         updated_at
         published_at
         slug
@@ -42,6 +47,11 @@ const GET_SINGLE_CLUSTER = gql`
         updated_at
         published_at
         slug
+        tags {
+          id
+          title
+          slug
+        }
         file {
           url
           name

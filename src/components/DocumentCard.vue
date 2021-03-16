@@ -21,6 +21,7 @@
           <v-icon small>link</v-icon>
         </router-link>
       </h2>
+
       <div
         class="text-left"
         style="
@@ -35,6 +36,26 @@
           class=""
           :showUpdatedInText="true"
         ></PostedMeta>
+      </div>
+
+      <div
+        class="mb-5"
+        v-if="item.tags && item.tags.length"
+        style="font-size: 14px; margin-top: -10px"
+      >
+        <span v-for="(tag, index) in item.tags" :key="index">
+          <v-chip
+            x-small
+            class="mr-1"
+            @click.stop.prevent="
+              $router.push(`/tags/${tag.slug}/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            {{ tag.title }}
+          </v-chip>
+        </span>
       </div>
 
       <div
@@ -89,14 +110,16 @@
 
       <div v-if="item.clusters && item.clusters.length" style="margin-top: 5px">
         <v-btn
-          x-small
+          small
+          dark
+          color="#0d4474"
+          depressed
           style="font-weight: bold"
           @click.native="item.show = !item.show"
           class="mt-3 mb-6"
-          outlined
-          >Show Related
-          <v-icon x-small v-if="!item.show">expand_more</v-icon>
-          <v-icon x-small v-else>expand_less</v-icon></v-btn
+          >Related Documents
+          <v-icon small v-if="!item.show" right>expand_more</v-icon>
+          <v-icon small v-else right>expand_less</v-icon></v-btn
         >
         <v-slide-y-transition>
           <v-sheet class="reduce-85" v-show="item.show" color="grey lighten-3">
