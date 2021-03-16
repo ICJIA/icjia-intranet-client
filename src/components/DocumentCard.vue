@@ -113,7 +113,6 @@
           small
           dark
           color="#0d4474"
-          depressed
           style="font-weight: bold"
           @click.native="item.show = !item.show"
           class="mt-3 mb-6"
@@ -122,18 +121,21 @@
           <v-icon small v-else right>expand_less</v-icon></v-btn
         >
         <v-slide-y-transition>
-          <v-sheet class="reduce-85" v-show="item.show" color="grey lighten-3">
-            <div
+          <v-sheet class="reduce-85" v-show="item.show">
+            <v-card
               v-for="(cluster, index) in item.clusters"
               :key="`cluster-${index}`"
-              class="px-3 py-3 mb-5"
+              class="px-3 py-3 mb-8"
+              color="grey lighten-4"
             >
               <router-link
                 :to="`/documents/clusters/${cluster.slug}`"
                 style="background: none !important"
                 class="download-link"
               >
-                <span style="font-weight: bold">{{ cluster.title }}</span>
+                <span style="font-weight: bold; font-size: 18px">{{
+                  cluster.title
+                }}</span>
                 &nbsp;
 
                 <v-icon small>link</v-icon>
@@ -173,27 +175,7 @@
                       </span>
                     </v-tooltip>
                   </li>
-                  <!-- <span
-                    v-if="clusterItem.externalURL"
-                    class="hover"
-                    @click.stop.prevent="goToExternal(clusterItem.externalURL)"
-                  >
-                    {{ clusterItem.title }}
-                    <v-tooltip right>
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-icon
-                          small
-                          style="font-weight: 900"
-                          v-bind="attrs"
-                          v-on="on"
-                          >open_in_new</v-icon
-                        >
-                      </template>
-                      <span style="font-size: 12px">{{
-                        clusterItem.externalURL
-                      }}</span>
-                    </v-tooltip>
-                  </span> -->
+
                   <li
                     class="download-link hover"
                     v-if="clusterItem.externalURL"
@@ -222,7 +204,7 @@
                   </li>
                 </ul>
               </div>
-            </div>
+            </v-card>
           </v-sheet>
         </v-slide-y-transition>
       </div>
