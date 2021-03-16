@@ -3,7 +3,7 @@
     <v-card
       class="grid-item markdown-body hover card"
       @click="$router.push(`/news/${item.slug}`)"
-      height="210px"
+      height="230px"
       elevation="0"
       color="#fff"
       v-if="
@@ -25,7 +25,7 @@
               :src="getImagePath(item.splash.url, 0, 500, 100)"
               :lazy-src="getImagePath(item.splash.formats.thumbnail.url)"
               width="100%"
-              height="170px"
+              height="190px"
               class=""
               style="border: 0px solid #fafafa"
               alt="ICJIA Intranet image"

@@ -36,9 +36,7 @@
           <template slot-scope="{ result }">
             <div v-if="result.error" class="text-center error apollo">
               <div>{{ result.error }}</div>
-              <div>
-                Please <router-link to="/login/">login again</router-link>
-              </div>
+              <div>Please <a href="/login/">login again</a></div>
             </div>
 
             <div v-if="!isLoading(result.loading) && !result.error">

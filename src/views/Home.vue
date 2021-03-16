@@ -202,9 +202,7 @@
       <div v-if="result.error" class="text-center error apollo">
         {{ result.error }}
         <div class="text-center my-10 py-5">
-          <router-link to="/login"
-            >PLEASE CLICK HERE TO LOGIN AGAIN</router-link
-          >
+          <a href="/login">PLEASE CLICK HERE TO LOGIN AGAIN</a>
         </div>
       </div>
     </template>

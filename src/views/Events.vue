@@ -14,9 +14,7 @@
         <v-col>
           <div v-if="$apollo.error" class="text-center error apollo">
             {{ error }}
-            <div>
-              Please <router-link to="/login">login again</router-link>.
-            </div>
+            <div>Please <a href="/login">login again</a>.</div>
           </div>
 
           <div class="text-center mb-10">
