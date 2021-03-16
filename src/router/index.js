@@ -230,6 +230,15 @@ const routes = [
     },
   },
   {
+    path: "/forms/hr/",
+    name: "FormHR",
+    component: () =>
+      import(/* webpackChunkName: "forms" */ "../views/Forms/hr.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     path: "/forms/laptop/",
     name: "FormLaptop",
     component: () =>

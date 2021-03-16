@@ -210,20 +210,7 @@
               >
             </v-list-item-content>
           </v-list-item>
-          <v-list-item
-            class="appNav"
-            @click="
-              $router.push(`/forms/support/`).catch((err) => {
-                $vuetify.goTo(0);
-              })
-            "
-          >
-            <v-list-item-content class="hover">
-              <v-list-item-title style="font-size: 12px !important"
-                >Technical Support Request</v-list-item-title
-              >
-            </v-list-item-content>
-          </v-list-item>
+
           <v-list-item
             class="appNav"
             @click="
@@ -235,6 +222,36 @@
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
                 >User Profile</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider></v-divider>
+
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/forms/hr/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Contact Human Resources</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item
+            class="appNav"
+            @click="
+              $router.push(`/forms/support/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            <v-list-item-content class="hover">
+              <v-list-item-title style="font-size: 12px !important"
+                >Contact Technical Support</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>

@@ -9,6 +9,16 @@
                 >Conference Room Reservation</router-link
               >
             </li>
+            <li>
+              <router-link to="/forms/support/" style="background: none"
+                >Contact Tech Support</router-link
+              >
+            </li>
+            <li>
+              <router-link to="/forms/hr/" style="background: none"
+                >Contact Human Resources</router-link
+              >
+            </li>
 
             <li>
               <router-link to="/forms/laptop/" style="background: none"
@@ -20,11 +30,7 @@
                 >Office Supply Request</router-link
               >
             </li>
-            <li>
-              <router-link to="/forms/support/" style="background: none"
-                >Technical Support Request</router-link
-              >
-            </li>
+
             <li>
               <router-link to="/forms/profile/" style="background: none"
                 >User Profile</router-link

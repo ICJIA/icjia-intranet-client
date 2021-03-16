@@ -84,8 +84,10 @@ export default {
           { title: "Conference Room Reservation", url: "/forms/conference/" },
           { title: "Laptop Request", url: "/forms/laptop/" },
           { title: "Office Supply Request", url: "/forms/supplies/" },
-          { title: "Technical Support Request", url: "/forms/support/" },
+
           { title: "Your User Profile", url: "/forms/profile/" },
+          { title: "Contact Technical Support", url: "/forms/support/" },
+          { title: "Contact Human Resources", url: "/forms/hr/" },
         ],
         title: "Online Forms",
       },
