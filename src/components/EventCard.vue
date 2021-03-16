@@ -164,17 +164,17 @@ export default {
         range = ` | ${localStart.format("h:mm a")} to ${localEnd.format(
           "h:mm a"
         )} | <span style='font-weight: 400'>${localStart.format(
-          "MMMM DD, YYYY"
+          "dddd, MMMM DD, YYYY"
         )}</span>`;
       } else if (daysBetween === 0 && !timed) {
         range = ` | All Day  | <span style='font-weight: 400'>${localStart.format(
-          "MMMM DD, YYYY"
+          "dddd, MMMM DD, YYYY"
         )}</span>`;
       } else if (daysBetween > 0) {
         range = ` | <span style='font-weight: 400'>${localStart.format(
-          "MMMM D"
+          "dddd, MMMM D"
         )}</span> <span style='font-weight: 400'>through</span> <span style='font-weight: 400'>${localEnd.format(
-          "MMMM D, YYYY"
+          "dddd, MMMM D, YYYY"
         )}</span>`;
       }
       return range;
