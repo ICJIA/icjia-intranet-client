@@ -188,7 +188,9 @@
                         <span style="color: #333">{{
                           event.type | upperCase
                         }}</span>
-                        {{ getRange(event.start, event.end, event.timed) }}
+                        <span
+                          v-html="getRange(event.start, event.end, event.timed)"
+                        ></span>
                       </div>
                       <h2 class="mt-2 hover">
                         {{ event.name }}
@@ -368,15 +370,20 @@ export default {
       if (daysBetween === 0 && timed) {
         range = ` | ${localStart.format("h:mm a")} to ${localEnd.format(
           "h:mm a"
-        )} `;
+        )} | <span style='font-weight: 400'>${localStart.format(
+          "MMMM DD, YYYY"
+        )}</span>`;
       } else if (daysBetween === 0 && !timed) {
-        range = ` | All Day `;
+        range = ` | All Day  | <span style='font-weight: 400'>${localStart.format(
+          "MMMM DD, YYYY"
+        )}</span>`;
       } else if (daysBetween > 0) {
-        range = ` | ${localStart.format("MMMM D")} through ${localEnd.format(
+        range = ` | <span style='font-weight: 400'>${localStart.format(
           "MMMM D"
-        )} `;
+        )}</span> <span style='font-weight: 400'>through</span> <span style='font-weight: 400'>${localEnd.format(
+          "MMMM D, YYYY"
+        )}</span>`;
       }
-
       return range;
     },
 

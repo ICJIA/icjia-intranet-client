@@ -163,13 +163,19 @@ export default {
       if (daysBetween === 0 && timed) {
         range = ` | ${localStart.format("h:mm a")} to ${localEnd.format(
           "h:mm a"
-        )} | ${localStart.format("dddd, MMMM D, YYYY")}`;
+        )} | <span style='font-weight: 400'>${localStart.format(
+          "MMMM DD, YYYY"
+        )}</span>`;
       } else if (daysBetween === 0 && !timed) {
-        range = ` | All Day | ${localStart.format("dddd, MMMM D, YYYY")} `;
+        range = ` | All Day  | <span style='font-weight: 400'>${localStart.format(
+          "MMMM DD, YYYY"
+        )}</span>`;
       } else if (daysBetween > 0) {
-        range = ` | ${localStart.format("MMMM D")} through ${localEnd.format(
+        range = ` | <span style='font-weight: 400'>${localStart.format(
           "MMMM D"
-        )}`;
+        )}</span> <span style='font-weight: 400'>through</span> <span style='font-weight: 400'>${localEnd.format(
+          "MMMM D, YYYY"
+        )}</span>`;
       }
       return range;
     },
