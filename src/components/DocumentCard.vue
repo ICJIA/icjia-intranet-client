@@ -43,6 +43,7 @@
               item.unit.title
             }}</router-link>
           </span>
+          <span v-else> General </span>
         </span>
       </div>
 
