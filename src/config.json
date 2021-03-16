@@ -14,10 +14,10 @@
     "timeout": 10000,
     "register": "/auth/local/register"
   },
-  "daysToShowNew": 5,
-  "daysToShowNewResearch": 10,
+  "daysToShowNew": 10,
+  "daysToShowNewResearch": 14,
   "home": {
-    "eventLimit": 6,
+    "eventLimit": 5,
     "postLimit": 4
   },
   "image": {

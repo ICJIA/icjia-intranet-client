@@ -39,10 +39,10 @@
                   </span>
                   <br />
                   <span
-                    style="font-size: 26px; font-weight: 900; color: #0d4474"
+                    style="font-size: 22px; font-weight: 900; color: #0d4474"
                     >{{ event.start | day }}</span
                   ><span
-                    style="font-size: 26px; font-weight: 900; color: #0d4474"
+                    style="font-size: 22px; font-weight: 900; color: #0d4474"
                     v-if="isItMultiday(event.start, event.end, event.timed)"
                   >
                     - {{ event.end | day }}
@@ -52,6 +52,10 @@
                     v-if="!isItMultiday(event.start, event.end, event.timed)"
                   >
                     {{ event.start | dayName }}
+                  </div>
+                  <div v-else style="font-size: 12px">
+                    {{ event.start | dayName }} --
+                    {{ event.end | dayName }}
                   </div>
                 </v-col>
               </v-row>

@@ -143,14 +143,14 @@
                           <br />
                           <span
                             style="
-                              font-size: 26px;
+                              font-size: 22px;
                               font-weight: 900;
                               color: #0d4474;
                             "
                             >{{ event.start | day }}</span
                           ><span
                             style="
-                              font-size: 26px;
+                              font-size: 22px;
                               font-weight: 900;
                               color: #0d4474;
                             "
@@ -167,6 +167,10 @@
                             "
                           >
                             {{ event.start | dayName }}
+                          </div>
+                          <div v-else style="font-size: 12px">
+                            {{ event.start | dayName }} --
+                            {{ event.end | dayName }}
                           </div>
                         </v-col>
                       </v-row>
