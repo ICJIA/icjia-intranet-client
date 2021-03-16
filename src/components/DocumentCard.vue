@@ -26,7 +26,7 @@
         class="text-left"
         style="
           color: #555;
-
+          font-size: 12px;
           margin-top: -10px;
           margin-bottom: 25px;
         "
@@ -36,26 +36,13 @@
           class=""
           :showUpdatedInText="true"
         ></PostedMeta>
-      </div>
-
-      <div
-        class="mb-5"
-        v-if="item.tags && item.tags.length"
-        style="font-size: 14px; margin-top: -10px"
-      >
-        <span v-for="(tag, index) in item.tags" :key="index">
-          <v-chip
-            small
-            style="font-weight: 700"
-            class="mr-1"
-            @click.stop.prevent="
-              $router.push(`/tags/${tag.slug}/`).catch((err) => {
-                $vuetify.goTo(0);
-              })
-            "
-          >
-            {{ tag.title }}
-          </v-chip>
+        <span>
+          |
+          <span v-if="item.unit">
+            <router-link :to="`/units/${item.unit.slug}`">{{
+              item.unit.title
+            }}</router-link>
+          </span>
         </span>
       </div>
 
@@ -107,6 +94,26 @@
             </v-tooltip>
           </li>
         </ul>
+      </div>
+      <div
+        class="mb-5"
+        v-if="item.tags && item.tags.length"
+        style="font-size: 14px; margin-top: 30px"
+      >
+        <span v-for="(tag, index) in item.tags" :key="index">
+          <v-chip
+            small
+            style="font-weight: 700"
+            class="mr-1"
+            @click.stop.prevent="
+              $router.push(`/tags/${tag.slug}/`).catch((err) => {
+                $vuetify.goTo(0);
+              })
+            "
+          >
+            {{ tag.title }}
+          </v-chip>
+        </span>
       </div>
     </v-card>
   </div>

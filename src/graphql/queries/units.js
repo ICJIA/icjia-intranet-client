@@ -32,6 +32,12 @@ const GET_SINGLE_UNIT = gql`
         slug
         summary
         externalURL
+        tags(sort: "title:asc") {
+          id
+          title
+          slug
+          created_at
+        }
         unit {
           title
           slug
