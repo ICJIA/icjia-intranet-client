@@ -34,7 +34,7 @@
             elevation="1"
             v-if="tag && tag.posts && tag.posts.length"
           >
-            <div class="text-left markdown-body mt-12">
+            <div class="text-left markdown-body mt-0">
               <h2 class="" id="news-and-updates">News & Updates</h2>
             </div>
             <div v-if="tag && tag.posts && tag.posts.length">

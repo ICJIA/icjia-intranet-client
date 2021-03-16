@@ -30,11 +30,6 @@
               style="border: 1px solid #eee"
             ></DocumentTable>
           </div>
-          <!-- <div v-else class="mt-4 markdown-body">
-            <h3 style="color: #666" class="text-center">
-              No documents for {{ unit.shortname }} found.
-            </h3>
-          </div> -->
 
           <div class="text-left markdown-body mt-12">
             <h2
@@ -46,7 +41,7 @@
             </h2>
           </div>
           <div v-if="unit && unit.posts && unit.posts.length">
-            <v-container class="view-container mt-6">
+            <v-container class="view-container mt-0">
               <v-row>
                 <v-col
                   v-for="(item, index) in unit.posts"
@@ -62,11 +57,7 @@
               </v-row>
             </v-container>
           </div>
-          <!-- <div v-else class="mt-4 markdown-body">
-            <h3 style="color: #666" class="text-center">
-              No news for {{ unit.shortname }} found.
-            </h3>
-          </div> -->
+
           <div v-if="$route.params.slug === 'research-and-analysis-unit'">
             <h2 class="text-left mt-12" id="latest-articles">
               R&A Recent Articles
@@ -102,12 +93,6 @@
             </v-card>
           </div>
         </v-col>
-        <!-- <v-col cols="12" sm="12" md="3" order-md="2" order="1" order-sm="1">
-          <div class="mainToc" v-if="units">
-            <Toc :key="units.id"></Toc>
-          </div>
-          <div v-else><Loader></Loader></div>
-        </v-col> -->
       </v-row>
     </v-container>
     <v-container v-else>
