@@ -42,24 +42,6 @@ const GET_SINGLE_UNIT = gql`
           url
           name
         }
-        clusters {
-          id
-          title
-          slug
-          summary
-          documents {
-            id
-            title
-            slug
-            file {
-              url
-              name
-              ext
-            }
-            summary
-            externalURL
-          }
-        }
       }
       posts(sort: "updated_at:desc") {
         title

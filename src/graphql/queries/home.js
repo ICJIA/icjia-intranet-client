@@ -115,24 +115,6 @@ const GET_HOME = gql`
         slug
         shortname
       }
-      clusters(sort: "title:asc") {
-        id
-        title
-        slug
-        summary
-        documents(sort: "title:asc") {
-          id
-          title
-          slug
-          file {
-            url
-            name
-            ext
-          }
-          summary
-          externalURL
-        }
-      }
     }
   }
 `;

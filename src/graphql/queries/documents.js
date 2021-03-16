@@ -26,24 +26,6 @@ const GET_ALL_DOCUMENTS = gql`
         slug
         shortname
       }
-      clusters(sort: "title:asc") {
-        id
-        title
-        slug
-        summary
-        documents(sort: "title:asc") {
-          id
-          title
-          slug
-          file {
-            url
-            name
-            ext
-          }
-          summary
-          externalURL
-        }
-      }
     }
   }
 `;
@@ -73,24 +55,6 @@ const GET_SINGLE_DOCUMENT = gql`
         title
         slug
         shortname
-      }
-      clusters {
-        id
-        title
-        slug
-        summary
-        documents {
-          id
-          title
-          slug
-          file {
-            url
-            name
-            ext
-          }
-          summary
-          externalURL
-        }
       }
     }
   }

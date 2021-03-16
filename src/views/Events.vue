@@ -95,7 +95,6 @@
                 <v-card color="grey lighten-4" min-width="250px" flat>
                   <EventCard
                     :item="selectedEvent"
-                    :hideClusters="true"
                     @clicked="selectedOpen = false"
                   ></EventCard>
                 </v-card>

@@ -45,7 +45,8 @@
       >
         <span v-for="(tag, index) in item.tags" :key="index">
           <v-chip
-            x-small
+            small
+            style="font-weight: 700"
             class="mr-1"
             @click.stop.prevent="
               $router.push(`/tags/${tag.slug}/`).catch((err) => {
@@ -106,107 +107,6 @@
             </v-tooltip>
           </li>
         </ul>
-      </div>
-
-      <div v-if="item.clusters && item.clusters.length" style="margin-top: 5px">
-        <v-btn
-          small
-          dark
-          color="#0d4474"
-          style="font-weight: bold"
-          @click.native="item.show = !item.show"
-          class="mt-3 mb-6"
-          >Related Documents
-          <v-icon small v-if="!item.show" right>expand_more</v-icon>
-          <v-icon small v-else right>expand_less</v-icon></v-btn
-        >
-        <v-slide-y-transition>
-          <v-sheet class="reduce-85" v-show="item.show">
-            <v-card
-              v-for="(cluster, index) in item.clusters"
-              :key="`cluster-${index}`"
-              class="px-3 py-3 mb-8"
-              color="grey lighten-4"
-            >
-              <router-link
-                :to="`/documents/clusters/${cluster.slug}`"
-                style="background: none !important"
-                class="download-link"
-              >
-                <span style="font-weight: bold; font-size: 18px">{{
-                  cluster.title
-                }}</span>
-                &nbsp;
-
-                <v-icon small>link</v-icon>
-              </router-link>
-              <div style="" class="mt-2">{{ cluster.summary }}</div>
-              <div
-                v-for="(clusterItem, index) in cluster.documents"
-                :key="`clusterItem-${index}`"
-              >
-                <ul class="mt-3">
-                  <li
-                    class="download-link hover"
-                    v-if="!clusterItem.externalURL"
-                  >
-                    <v-tooltip right>
-                      <template v-slot:activator="{ on, attrs }">
-                        <span v-bind="attrs" v-on="on">
-                          <span
-                            v-if="!clusterItem.externalURL"
-                            @click.stop.prevent="download(clusterItem.file)"
-                          >
-                            {{ clusterItem.title
-                            }}<v-icon right small>cloud_download</v-icon>
-                            <!-- <v-icon small>cloud_download</v-icon> -->
-                          </span>
-                        </span>
-                      </template>
-                      <span
-                        style="font-size: 12px"
-                        v-if="
-                          clusterItem &&
-                          clusterItem.file &&
-                          clusterItem.file.name
-                        "
-                      >
-                        {{ clusterItem.file.name }}
-                      </span>
-                    </v-tooltip>
-                  </li>
-
-                  <li
-                    class="download-link hover"
-                    v-if="clusterItem.externalURL"
-                  >
-                    <v-tooltip right>
-                      <template v-slot:activator="{ on, attrs }">
-                        <span
-                          v-bind="attrs"
-                          v-on="on"
-                          class="hover"
-                          @click.stop.prevent="
-                            goToExternal(clusterItem.externalURL)
-                          "
-                        >
-                          {{ clusterItem.title }}
-
-                          <v-icon small style="font-weight: 900"
-                            >open_in_new</v-icon
-                          >
-                        </span>
-                      </template>
-                      <span style="font-size: 12px"
-                        >{{ clusterItem.externalURL }}
-                      </span>
-                    </v-tooltip>
-                  </li>
-                </ul>
-              </div>
-            </v-card>
-          </v-sheet>
-        </v-slide-y-transition>
       </div>
     </v-card>
   </div>
@@ -275,10 +175,6 @@ export default {
       default: () => {},
     },
     showLink: {
-      type: Boolean,
-      default: false,
-    },
-    hideClusters: {
       type: Boolean,
       default: false,
     },

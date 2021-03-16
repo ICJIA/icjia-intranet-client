@@ -83,10 +83,7 @@ export default {
         title: "Online Forms",
       },
       {
-        items: [
-          { title: "All", url: "/documents/" },
-          { title: "Grouped", url: "/documents/clusters/" },
-        ],
+        items: [{ title: "All", url: "/documents/" }],
         title: "Documents & Resources",
       },
     ],

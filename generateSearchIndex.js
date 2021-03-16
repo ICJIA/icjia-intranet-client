@@ -89,12 +89,6 @@ const query = gql`
       }
     }
 
-    clusters {
-      title
-      summary
-      slug
-    }
-
     units {
       title
       summary
@@ -141,12 +135,12 @@ async function main() {
       });
       searchObj.headings = headings;
       // searchObj.toc = toc(markdown).json;
-      if (section === "clusters") {
-        searchObj.route = `/documents/${section}/${searchObj.slug}/`;
-      } else {
-        searchObj.route = `/${section}/${searchObj.slug}/`;
-      }
-
+      // if (section === "clusters") {
+      //   searchObj.route = `/documents/${section}/${searchObj.slug}/`;
+      // } else {
+      //   searchObj.route = `/${section}/${searchObj.slug}/`;
+      // }
+      searchObj.route = `/${section}/${searchObj.slug}/`;
       searchObj.summary = item.summary || "";
       searchObj.url = `${myConfig.api.baseClient}${searchObj.route}`;
       delete searchObj.markdown;

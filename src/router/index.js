@@ -145,24 +145,7 @@ const routes = [
       requiresAuth: true,
     },
   },
-  {
-    path: "/documents/clusters/",
-    name: "Clusters",
-    component: () =>
-      import(/* webpackChunkName: "forms" */ "../views/Clusters.vue"),
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    path: "/documents/clusters/:slug/",
-    name: "ClusterSingle",
-    component: () =>
-      import(/* webpackChunkName: "forms" */ "../views/ClusterSingle.vue"),
-    meta: {
-      requiresAuth: true,
-    },
-  },
+
   {
     path: "/documents/:slug/",
     name: "DocumentsSingle",

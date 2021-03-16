@@ -179,10 +179,7 @@ export default {
       type: Object,
       default: () => {},
     },
-    hideClusters: {
-      type: Boolean,
-      default: false,
-    },
+
     showTitle: {
       type: Boolean,
       default: false,

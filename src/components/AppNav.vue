@@ -286,24 +286,11 @@
           >
             <v-list-item-content class="hover">
               <v-list-item-title style="font-size: 12px !important"
-                >All Documents</v-list-item-title
+                >All Documents & Resources</v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
-          <v-list-item
-            class="appNav"
-            @click="
-              $router.push(`/documents/clusters/`).catch((err) => {
-                $vuetify.goTo(0);
-              })
-            "
-          >
-            <v-list-item-content class="hover">
-              <v-list-item-title style="font-size: 12px !important"
-                >Document Groups</v-list-item-title
-              >
-            </v-list-item-content>
-          </v-list-item>
+
           <v-divider></v-divider>
           <v-list-item
             class="appNav"
