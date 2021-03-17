@@ -13,7 +13,10 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container v-else>
+    <v-container
+      v-else
+      :fluid="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
+    >
       <v-row>
         <v-col>
           <v-card class="py-5 px-5 mt-5">

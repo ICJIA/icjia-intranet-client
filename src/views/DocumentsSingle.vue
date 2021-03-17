@@ -7,7 +7,7 @@
       subPath="Documents"
       subPathURL="/documents/"
     ></Breadcrumb>
-    <v-container>
+    <v-container :fluid="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm">
       <v-row>
         <v-col v-if="documents">
           <DocumentCard :item="documents[0]"></DocumentCard>

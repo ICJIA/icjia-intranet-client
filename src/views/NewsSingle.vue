@@ -7,7 +7,7 @@
       subPath="News"
       subPathURL="/news/"
     ></Breadcrumb>
-    <v-container>
+    <v-container :fluid="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm">
       <v-row>
         <v-col cols="12" md="9">
           <v-card

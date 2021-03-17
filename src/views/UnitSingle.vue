@@ -7,7 +7,10 @@
       :title="`${unit.title}`"
       v-if="units && units.length"
     ></Breadcrumb>
-    <v-container v-if="units && units.length">
+    <v-container
+      v-if="units && units.length"
+      :fluid="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
+    >
       <v-row>
         <v-col cols="12" order-md="1" order="2" order-sm="2">
           <div class="markdown-body">

@@ -9,7 +9,10 @@
       </v-row>
     </v-container>
 
-    <v-container v-if="!$apollo.loading">
+    <v-container
+      v-if="!$apollo.loading"
+      :fluid="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
+    >
       <v-row class="fill-height" v-if="display">
         <v-col>
           <div v-if="$apollo.error" class="text-center error apollo">

@@ -7,7 +7,7 @@
       :title="`${events[0].name}`"
       v-if="events && events.length"
     ></Breadcrumb>
-    <v-container>
+    <v-container :fluid="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm">
       <v-row>
         <v-col>
           <div v-if="events && events.length" class="mt-4">

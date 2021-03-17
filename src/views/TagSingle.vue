@@ -7,7 +7,10 @@
       v-if="tags && tags.length"
       :title="`${tag.title}`"
     ></Breadcrumb>
-    <v-container v-if="tags && tags.length">
+    <v-container
+      v-if="tags && tags.length"
+      :fluid="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
+    >
       <v-row>
         <v-col cols="12" order-md="1" order="2" order-sm="2">
           <div class="markdown-body mb-8">

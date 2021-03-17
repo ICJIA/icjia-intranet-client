@@ -1,7 +1,7 @@
 <template>
   <div>
     <Breadcrumb :key="$route.path" title="All Units"></Breadcrumb>
-    <v-container>
+    <v-container :fluid="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm">
       <v-row>
         <v-col>
           <div class="text-center mb-8">

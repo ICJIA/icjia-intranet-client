@@ -48,7 +48,7 @@
               class="child"
               style="border-left: 1px solid #ddd; margin-top: -12px"
             >
-              <v-sheet class="pl-3" elevation="0" style="">
+              <v-sheet class="px-2" elevation="0" style="">
                 <HomeEvents
                   class="mt-4"
                   :events="mergedEvents"

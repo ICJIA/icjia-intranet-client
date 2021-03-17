@@ -2,7 +2,7 @@
   <div>
     <!-- <Breadcrumb title="Search"></Breadcrumb> -->
     <Breadcrumb :key="$route.path" title="Search"></Breadcrumb>
-    <v-container
+    <v-container :fluid="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
       ><v-col cols="12">
         <h1>Search the ICJIA Intranet</h1>
         <v-form class="pl-2">
