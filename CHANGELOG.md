@@ -1,13 +1,13 @@
-# v1.4.0
+# v1.4.1
 [2021-03-17]
 
 ### Features
 
-* feat: scaffold out medium-like clap meter ([`782d7e9`](https://github.com/ICJIA/icjia-intranet-client/commit/782d7e90e34f68b3563a4c9ccfccb0323098ebc3))
-* feat: add popular post listing ([`00c913c`](https://github.com/ICJIA/icjia-intranet-client/commit/00c913caf432a4f4f5e72381817003c389ca713a))
-* feat: check for updated or new documents ([`04a5246`](https://github.com/ICJIA/icjia-intranet-client/commit/04a5246a40ef70a46f1df9177539ee73f1806090))
-* feat: scroll animation ([`48aaaa0`](https://github.com/ICJIA/icjia-intranet-client/commit/48aaaa018cf50ed94e683466237858b15bcf261a))
-* feat: scaffold most popular posts based on live claps ([`39d2fb2`](https://github.com/ICJIA/icjia-intranet-client/commit/39d2fb203188e1ebcfa612c2f6672c058f97ec3f))
+*  scaffold out medium-like clap meter ([`782d7e9`](https://github.com/ICJIA/icjia-intranet-client/commit/782d7e90e34f68b3563a4c9ccfccb0323098ebc3))
+*  add popular post listing ([`00c913c`](https://github.com/ICJIA/icjia-intranet-client/commit/00c913caf432a4f4f5e72381817003c389ca713a))
+*  check for updated or new documents ([`04a5246`](https://github.com/ICJIA/icjia-intranet-client/commit/04a5246a40ef70a46f1df9177539ee73f1806090))
+*  scroll animation ([`48aaaa0`](https://github.com/ICJIA/icjia-intranet-client/commit/48aaaa018cf50ed94e683466237858b15bcf261a))
+*  scaffold most popular posts based on live claps ([`39d2fb2`](https://github.com/ICJIA/icjia-intranet-client/commit/39d2fb203188e1ebcfa612c2f6672c058f97ec3f))
 
 ### Fixes
 
@@ -108,12 +108,12 @@
 
 ### Features
 
-* feat: scaffold layout for tag display ([`6391b80`](https://github.com/ICJIA/icjia-intranet-client/commit/6391b80abfefcb5f5003464bb6810daf722e6928))
-* feat: scaffold user profile ([`471b4cc`](https://github.com/ICJIA/icjia-intranet-client/commit/471b4ccb6dd26af6bcad941365bf16b198ad5e9d))
-* feat: adjust news card ([`b104396`](https://github.com/ICJIA/icjia-intranet-client/commit/b10439626b254f5a68ebd71701ca4266e3b65be3))
-* feat: add tags to news ([`43c56cd`](https://github.com/ICJIA/icjia-intranet-client/commit/43c56cd037abf39697f1eb55ccda38620a3c8b1f))
-* feat: add simple search for news ([`c16cfd9`](https://github.com/ICJIA/icjia-intranet-client/commit/c16cfd98676664f65ef4bdc70ac904f92fd9ed09))
-* feat: add default splash to news card ([`c7a4e13`](https://github.com/ICJIA/icjia-intranet-client/commit/c7a4e1326fcef9695803e16bbcb0e603b5f50252))
+*  scaffold layout for tag display ([`6391b80`](https://github.com/ICJIA/icjia-intranet-client/commit/6391b80abfefcb5f5003464bb6810daf722e6928))
+*  scaffold user profile ([`471b4cc`](https://github.com/ICJIA/icjia-intranet-client/commit/471b4ccb6dd26af6bcad941365bf16b198ad5e9d))
+*  adjust news card ([`b104396`](https://github.com/ICJIA/icjia-intranet-client/commit/b10439626b254f5a68ebd71701ca4266e3b65be3))
+*  add tags to news ([`43c56cd`](https://github.com/ICJIA/icjia-intranet-client/commit/43c56cd037abf39697f1eb55ccda38620a3c8b1f))
+*  add simple search for news ([`c16cfd9`](https://github.com/ICJIA/icjia-intranet-client/commit/c16cfd98676664f65ef4bdc70ac904f92fd9ed09))
+*  add default splash to news card ([`c7a4e13`](https://github.com/ICJIA/icjia-intranet-client/commit/c7a4e1326fcef9695803e16bbcb0e603b5f50252))
 
 ### Fixes
 
@@ -161,9 +161,9 @@
 
 ### Features
 
-* feat: event toggle list/calendar view ([`8352431`](https://github.com/ICJIA/icjia-intranet-client/commit/835243155d43f2790d50f54208abebb6185091c2))
-* feat: add social media pages ([`83f57f1`](https://github.com/ICJIA/icjia-intranet-client/commit/83f57f104585030b71737edec68babc15218da50))
-* feat: add social media in appNav ([`5a11ef3`](https://github.com/ICJIA/icjia-intranet-client/commit/5a11ef30e644db63fb11064b1dfd8ee3cd909b67))
+*  event toggle list/calendar view ([`8352431`](https://github.com/ICJIA/icjia-intranet-client/commit/835243155d43f2790d50f54208abebb6185091c2))
+*  add social media pages ([`83f57f1`](https://github.com/ICJIA/icjia-intranet-client/commit/83f57f104585030b71737edec68babc15218da50))
+*  add social media in appNav ([`5a11ef3`](https://github.com/ICJIA/icjia-intranet-client/commit/5a11ef30e644db63fb11064b1dfd8ee3cd909b67))
 
 ### Fixes
 
@@ -195,10 +195,10 @@
 
 ### Features
 
-* feat: add ResearchHub applications scaffold ([`714bba4`](https://github.com/ICJIA/icjia-intranet-client/commit/714bba43f4f46ddd5b7495189e80cb1f16c3bb38))
-* feat: facebook timeline integration ([`c0b4317`](https://github.com/ICJIA/icjia-intranet-client/commit/c0b431735c351532f1124a3054c16e8ca7747659))
-* feat: hide related resources scaffold ([`b269383`](https://github.com/ICJIA/icjia-intranet-client/commit/b269383cf3b226bbcd25006b8653e116cc6c17d9))
-* feat: filter documents by type ([`b1bb1c4`](https://github.com/ICJIA/icjia-intranet-client/commit/b1bb1c46225412501e3b7eaa7e14251c19cd8535))
+*  add ResearchHub applications scaffold ([`714bba4`](https://github.com/ICJIA/icjia-intranet-client/commit/714bba43f4f46ddd5b7495189e80cb1f16c3bb38))
+*  facebook timeline integration ([`c0b4317`](https://github.com/ICJIA/icjia-intranet-client/commit/c0b431735c351532f1124a3054c16e8ca7747659))
+*  hide related resources scaffold ([`b269383`](https://github.com/ICJIA/icjia-intranet-client/commit/b269383cf3b226bbcd25006b8653e116cc6c17d9))
+*  filter documents by type ([`b1bb1c4`](https://github.com/ICJIA/icjia-intranet-client/commit/b1bb1c46225412501e3b7eaa7e14251c19cd8535))
 
 ### Fixes
 
@@ -222,40 +222,40 @@
 
 ### Features
 
-* feat: scaffold unit pages ([`bcef89a`](https://github.com/ICJIA/icjia-intranet-client/commit/bcef89a5bd3f4539a3fd79d37ee2c93d9f83e415))
-* feat: add apollo for eslint ([`2805006`](https://github.com/ICJIA/icjia-intranet-client/commit/28050060471c6a5736c4ccfff3764752cc9ac3fc))
-* feat: scaffold home ([`7615ad3`](https://github.com/ICJIA/icjia-intranet-client/commit/7615ad3355d76085dc18acdef8d05fefd43d7873))
-* feat: scaffold events ([`7d5c9af`](https://github.com/ICJIA/icjia-intranet-client/commit/7d5c9af4d25ace0d1a5d68e10e6979e40e8d3674))
-* feat: scaffold document groups ([`865c376`](https://github.com/ICJIA/icjia-intranet-client/commit/865c376eae91a607deaaa9f1592ea4ec2a479391))
-* feat: add site-meta.json and fuse-index.json ([`1c81c81`](https://github.com/ICJIA/icjia-intranet-client/commit/1c81c811a57ed9784566947908c7eb940f28ee45))
-* feat: add vue apollo ([`ce05838`](https://github.com/ICJIA/icjia-intranet-client/commit/ce05838e2160b1b0ce259b71db62962e47f2a0ef))
-* feat: scaffold office supply request ([`90bb36a`](https://github.com/ICJIA/icjia-intranet-client/commit/90bb36a140568800e5c89dda7448c710129da60e))
-* feat: update homeBoxes ([`f1ab8a9`](https://github.com/ICJIA/icjia-intranet-client/commit/f1ab8a9aaf462be1e9a4b6d57c1fccc226c18610))
-* feat: scaffold out unit page ([`89b9469`](https://github.com/ICJIA/icjia-intranet-client/commit/89b9469abb3d8c74b0bc0d1f6d8cb597e2d9cd01))
-* feat: sample routes ([`1a545f0`](https://github.com/ICJIA/icjia-intranet-client/commit/1a545f0189d55afe74f140f2db79f0ed079ea82f))
-* feat: scaffold search ([`bd5288c`](https://github.com/ICJIA/icjia-intranet-client/commit/bd5288ca228017996fbac6e65c29dfd7a73adf95))
-* feat: test captcha ([`794fea8`](https://github.com/ICJIA/icjia-intranet-client/commit/794fea877259f7f1f90174473b54bbf1bfd98c44))
-* feat: add researchHub articles ([`ed85454`](https://github.com/ICJIA/icjia-intranet-client/commit/ed854542b84c6154f72b7ae8ee3c08ef7f6dffa0))
-* feat: sidebar ([`e9ba38f`](https://github.com/ICJIA/icjia-intranet-client/commit/e9ba38f1a0f2887d160095b4ab8599d4f19c2aa7))
-* feat: set up mockaroo api for test events ([`af3e5ac`](https://github.com/ICJIA/icjia-intranet-client/commit/af3e5acfce4843359bda739cf9da0d39baf8065a))
-* feat: basic login ([`41d6f3e`](https://github.com/ICJIA/icjia-intranet-client/commit/41d6f3ea7c1937bd4c731870df8926c25244d3c7))
-* feat: add postedBy meta ([`6776314`](https://github.com/ICJIA/icjia-intranet-client/commit/67763147f482fea631c970e1ad04470b99c1db49))
-* feat: add demo calendar ([`6882f57`](https://github.com/ICJIA/icjia-intranet-client/commit/6882f571ce7efe704d7ff988c616882a0efbd6ab))
-* feat: scaffold basic search functionality ([`3779315`](https://github.com/ICJIA/icjia-intranet-client/commit/37793158265029d2872b6148678404cfc18ec8c1))
-* feat: add imageServer for thumbnail/lazyload / adjust IE11 detection ([`b5d973c`](https://github.com/ICJIA/icjia-intranet-client/commit/b5d973cf3ac048d41f83aef892c88b0c4d913975))
-* feat: add related documents to layout ([`b6cde55`](https://github.com/ICJIA/icjia-intranet-client/commit/b6cde558a730816d95d86163c9fc6d8084430d7c))
-* feat: add basic read progress bar for news ([`e94c09a`](https://github.com/ICJIA/icjia-intranet-client/commit/e94c09a0b1ab721bcb6a0a1e7e6b8dad58994b6b))
-* feat: scaffold menus ([`80f7557`](https://github.com/ICJIA/icjia-intranet-client/commit/80f75574cd90a0968e0c3a8cfe5ef3a695b82c3c))
-* feat: scaffold basic TOC for news ([`15c2906`](https://github.com/ICJIA/icjia-intranet-client/commit/15c2906b0931e94113701d3fbb7c4fe91b497874))
-* feat: slider test ([`c111828`](https://github.com/ICJIA/icjia-intranet-client/commit/c1118281ecc476d18445b7a03d873e45ccf06c75))
-* feat: scaffold out search index builder ([`0dda0ee`](https://github.com/ICJIA/icjia-intranet-client/commit/0dda0ee320cb8125a7526f4481fd797e04befe30))
-* feat: add researchHub slider ([`f2d88ca`](https://github.com/ICJIA/icjia-intranet-client/commit/f2d88ca486eb195d319588b9d0eb1d4054cd1e8e))
-* feat: add splash to post listing if available ([`9991c66`](https://github.com/ICJIA/icjia-intranet-client/commit/9991c66e1900030d16aef7a685378bed688cdfcd))
-* feat: scaffold unit pages ([`b938367`](https://github.com/ICJIA/icjia-intranet-client/commit/b9383675a92ac8cd8edcbe005c38af31d7af0d7d))
-* feat: add TOC for unit pages ([`0e24fe8`](https://github.com/ICJIA/icjia-intranet-client/commit/0e24fe80a1659947a3e8056aa65dc23ff0c386c4))
-* feat: add imageServer for thumbnail/lazyload on slider ([`6f82d90`](https://github.com/ICJIA/icjia-intranet-client/commit/6f82d9068ee7ebd120421f33decaedaf9ab1f709))
-* feat: add imageServer for thumbnail/lazyload on home ([`bb2267e`](https://github.com/ICJIA/icjia-intranet-client/commit/bb2267e57da8709dbdb4cb20394a937f91a279dc))
-* feat: add twitter timeline ([`0b22746`](https://github.com/ICJIA/icjia-intranet-client/commit/0b2274680c4996e04ed77270000dbd0bc6a57da8))
+*  scaffold unit pages ([`bcef89a`](https://github.com/ICJIA/icjia-intranet-client/commit/bcef89a5bd3f4539a3fd79d37ee2c93d9f83e415))
+*  add apollo for eslint ([`2805006`](https://github.com/ICJIA/icjia-intranet-client/commit/28050060471c6a5736c4ccfff3764752cc9ac3fc))
+*  scaffold home ([`7615ad3`](https://github.com/ICJIA/icjia-intranet-client/commit/7615ad3355d76085dc18acdef8d05fefd43d7873))
+*  scaffold events ([`7d5c9af`](https://github.com/ICJIA/icjia-intranet-client/commit/7d5c9af4d25ace0d1a5d68e10e6979e40e8d3674))
+*  scaffold document groups ([`865c376`](https://github.com/ICJIA/icjia-intranet-client/commit/865c376eae91a607deaaa9f1592ea4ec2a479391))
+*  add site-meta.json and fuse-index.json ([`1c81c81`](https://github.com/ICJIA/icjia-intranet-client/commit/1c81c811a57ed9784566947908c7eb940f28ee45))
+*  add vue apollo ([`ce05838`](https://github.com/ICJIA/icjia-intranet-client/commit/ce05838e2160b1b0ce259b71db62962e47f2a0ef))
+*  scaffold office supply request ([`90bb36a`](https://github.com/ICJIA/icjia-intranet-client/commit/90bb36a140568800e5c89dda7448c710129da60e))
+*  update homeBoxes ([`f1ab8a9`](https://github.com/ICJIA/icjia-intranet-client/commit/f1ab8a9aaf462be1e9a4b6d57c1fccc226c18610))
+*  scaffold out unit page ([`89b9469`](https://github.com/ICJIA/icjia-intranet-client/commit/89b9469abb3d8c74b0bc0d1f6d8cb597e2d9cd01))
+*  sample routes ([`1a545f0`](https://github.com/ICJIA/icjia-intranet-client/commit/1a545f0189d55afe74f140f2db79f0ed079ea82f))
+*  scaffold search ([`bd5288c`](https://github.com/ICJIA/icjia-intranet-client/commit/bd5288ca228017996fbac6e65c29dfd7a73adf95))
+*  test captcha ([`794fea8`](https://github.com/ICJIA/icjia-intranet-client/commit/794fea877259f7f1f90174473b54bbf1bfd98c44))
+*  add researchHub articles ([`ed85454`](https://github.com/ICJIA/icjia-intranet-client/commit/ed854542b84c6154f72b7ae8ee3c08ef7f6dffa0))
+*  sidebar ([`e9ba38f`](https://github.com/ICJIA/icjia-intranet-client/commit/e9ba38f1a0f2887d160095b4ab8599d4f19c2aa7))
+*  set up mockaroo api for test events ([`af3e5ac`](https://github.com/ICJIA/icjia-intranet-client/commit/af3e5acfce4843359bda739cf9da0d39baf8065a))
+*  basic login ([`41d6f3e`](https://github.com/ICJIA/icjia-intranet-client/commit/41d6f3ea7c1937bd4c731870df8926c25244d3c7))
+*  add postedBy meta ([`6776314`](https://github.com/ICJIA/icjia-intranet-client/commit/67763147f482fea631c970e1ad04470b99c1db49))
+*  add demo calendar ([`6882f57`](https://github.com/ICJIA/icjia-intranet-client/commit/6882f571ce7efe704d7ff988c616882a0efbd6ab))
+*  scaffold basic search functionality ([`3779315`](https://github.com/ICJIA/icjia-intranet-client/commit/37793158265029d2872b6148678404cfc18ec8c1))
+*  add imageServer for thumbnail/lazyload / adjust IE11 detection ([`b5d973c`](https://github.com/ICJIA/icjia-intranet-client/commit/b5d973cf3ac048d41f83aef892c88b0c4d913975))
+*  add related documents to layout ([`b6cde55`](https://github.com/ICJIA/icjia-intranet-client/commit/b6cde558a730816d95d86163c9fc6d8084430d7c))
+*  add basic read progress bar for news ([`e94c09a`](https://github.com/ICJIA/icjia-intranet-client/commit/e94c09a0b1ab721bcb6a0a1e7e6b8dad58994b6b))
+*  scaffold menus ([`80f7557`](https://github.com/ICJIA/icjia-intranet-client/commit/80f75574cd90a0968e0c3a8cfe5ef3a695b82c3c))
+*  scaffold basic TOC for news ([`15c2906`](https://github.com/ICJIA/icjia-intranet-client/commit/15c2906b0931e94113701d3fbb7c4fe91b497874))
+*  slider test ([`c111828`](https://github.com/ICJIA/icjia-intranet-client/commit/c1118281ecc476d18445b7a03d873e45ccf06c75))
+*  scaffold out search index builder ([`0dda0ee`](https://github.com/ICJIA/icjia-intranet-client/commit/0dda0ee320cb8125a7526f4481fd797e04befe30))
+*  add researchHub slider ([`f2d88ca`](https://github.com/ICJIA/icjia-intranet-client/commit/f2d88ca486eb195d319588b9d0eb1d4054cd1e8e))
+*  add splash to post listing if available ([`9991c66`](https://github.com/ICJIA/icjia-intranet-client/commit/9991c66e1900030d16aef7a685378bed688cdfcd))
+*  scaffold unit pages ([`b938367`](https://github.com/ICJIA/icjia-intranet-client/commit/b9383675a92ac8cd8edcbe005c38af31d7af0d7d))
+*  add TOC for unit pages ([`0e24fe8`](https://github.com/ICJIA/icjia-intranet-client/commit/0e24fe80a1659947a3e8056aa65dc23ff0c386c4))
+*  add imageServer for thumbnail/lazyload on slider ([`6f82d90`](https://github.com/ICJIA/icjia-intranet-client/commit/6f82d9068ee7ebd120421f33decaedaf9ab1f709))
+*  add imageServer for thumbnail/lazyload on home ([`bb2267e`](https://github.com/ICJIA/icjia-intranet-client/commit/bb2267e57da8709dbdb4cb20394a937f91a279dc))
+*  add twitter timeline ([`0b22746`](https://github.com/ICJIA/icjia-intranet-client/commit/0b2274680c4996e04ed77270000dbd0bc6a57da8))
 
 ### Fixes
 

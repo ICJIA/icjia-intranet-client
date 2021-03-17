@@ -1,6 +1,6 @@
 {
   "name": "icjia-intranet-client",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "private": true,
   "scripts": {
     "serve": "npm run schema && node generateSearchIndex && node generateUnits && vue-cli-service serve",
@@ -95,7 +95,7 @@
     "unreleased": true,
     "issueUrl": "https://app.clickup.com/t/{id}",
     "replaceText": {
-      "[Ff]eature:": "",
+      "[Ff]eat:": "",
       "[Ff]ix:": "",
       "[Bb]reak:": "",
       "^ #(.{6})\\s": "[$1](https://app.clickup.com/t/$1) - "
