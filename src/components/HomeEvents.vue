@@ -21,7 +21,7 @@
         data-aos-delay="0"
       >
         <div class="d-flex flex-no-wrap" style="border: 1px solid #ddd">
-          <div class="px-5" style="max-height: 150px">
+          <div class="px-5 hidden-sm-and-down" style="max-height: 150px">
             <v-container fill-height>
               <v-row
                 align="center"
@@ -63,11 +63,13 @@
           </div>
 
           <div
-            style="
-              border-left: 1px solid #ccc;
-              background: #fafafa;
-              width: 100% !important;
-            "
+            style="background: #fafafa; width: 100% !important"
+            :class="{
+              'event-border':
+                $vuetify.breakpoint.md ||
+                $vuetify.breakpoint.lg ||
+                $vuetify.breakpoint.xl,
+            }"
           >
             <div class="px-5 py-6">
               <div style="font-size: 12px; font-weight: 900; color: #222">
@@ -169,5 +171,9 @@ export default {
 
 .readMore:hover {
   color: #777;
+}
+
+.event-border {
+  border-left: 1px solid #ccc;
 }
 </style>

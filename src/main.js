@@ -47,9 +47,9 @@ Vue.use(VueMeta, {
 //   }
 // });
 
-import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
-AOS.init();
+// import AOS from "aos";
+// import "aos/dist/aos.css"; // You can also use <link> for styles
+// AOS.init();
 
 // import { VueReCaptcha } from "vue-recaptcha-v3";
 
