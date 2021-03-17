@@ -12,9 +12,8 @@
     "build:lambda": "netlify-lambda build ./src/lambda",
     "start:lambda": "netlify-lambda serve ./src/lambda",
     "scripts": "npm run schema && node generateSearchIndex && node generateUnits",
-    "changelog": "auto-changelog --commit-limit false",
-    "release:minor": "release:minor",
-    "release:major": "release:major"
+    "changelog": "auto-changelog --template changelog-template.hbs -p -u --commit-limit false",
+    "changelog-debug": "auto-changelog --template changelog-template.hbs -p --template json --output changelog-data.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
@@ -90,5 +89,20 @@
     "vue-plugin-load-script": "^1.3.2",
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.7.1"
+  },
+  "auto-changelog": {
+    "commitLimit": false,
+    "unreleased": true,
+    "issueUrl": "https://app.clickup.com/t/{id}",
+    "replaceText": {
+      "[Ff]eature:": "",
+      "[Ff]ix:": "",
+      "[Bb]reak:": "",
+      "^ #(.{6})\\s": "[$1](https://app.clickup.com/t/$1) - "
+    },
+    "includeBranch": [
+      "develop",
+      "master"
+    ]
   }
 }
