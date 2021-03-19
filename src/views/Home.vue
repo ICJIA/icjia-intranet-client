@@ -20,7 +20,7 @@
           :slides="result.data.home.slider"
           v-if="result.data.home.slider"
         ></HomeSlider>
-
+        <h1 class="aria-hidden">Welcome to the ICJIA Intranet</h1>
         <v-container
           fluid
           style="margin-top: 20px; border-top: 1px solid #ddd"
@@ -163,7 +163,7 @@
                         <h2>ICJIA on Facebook</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn x-small @click="facebookKey++"
+                        <v-btn small @click="facebookKey++"
                           >Refresh <v-icon right small>refresh</v-icon></v-btn
                         >
                       </v-col>
@@ -184,7 +184,7 @@
                         <h2>ICJIA on Twitter</h2>
                       </v-col>
                       <v-col class="text-right mt-1">
-                        <v-btn x-small @click="twitterKey++"
+                        <v-btn small @click="twitterKey++"
                           >Refresh <v-icon right small>refresh</v-icon></v-btn
                         >
                       </v-col>

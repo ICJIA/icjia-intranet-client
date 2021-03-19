@@ -3,7 +3,7 @@
     <v-card
       class="grid-item markdown-body hover card"
       @click="$router.push(`/news/${item.slug}`)"
-      height="230px"
+      height="240px"
       elevation="0"
       color="#fff"
       v-if="
@@ -131,7 +131,7 @@
 
               <span v-for="(tag, index) in item.tags" :key="index">
                 <v-chip
-                  x-small
+                  small
                   class="mr-1 py-2"
                   @click.stop.prevent="
                     $router.push(`/tags/${tag.slug}/`).catch((err) => {
