@@ -60,7 +60,7 @@
               :outlined="
                 getNewOrUpdatedLabel(item) === 'Updated!' ? true : false
               "
-              x-small
+              small
               color="#1b6fb5"
               v-if="isItNew(item)"
               class="text-center"
@@ -73,12 +73,12 @@
       </template>
       <template v-slot:item.unit.shortname="{ item }">
         <div
-          style="color: #aaa; font-weight: bold"
+          style="color: #000; font-weight: bold"
           v-if="item.unit && item.unit.shortname"
         >
           {{ item.unit.shortname }}
         </div>
-        <div v-else style="color: #aaa; font-weight: bold">General</div>
+        <div v-else style="color: #000; font-weight: bold">General</div>
       </template>
       <template v-slot:item.file.ext="{ item }">
         <span v-if="item.file && item.file.ext">
@@ -168,7 +168,7 @@
                   :outlined="
                     getNewOrUpdatedLabel(item) === 'Updated!' ? true : false
                   "
-                  x-small
+                  small
                   color="#1b6fb5"
                   v-if="isItNew(item)"
                   class="text-center"
@@ -215,6 +215,8 @@ import { handleClicks } from "@/mixins/handleClicks";
 import { renderToHtml } from "@/services/Markdown";
 
 import moment from "moment";
+// eslint-disable-next-line no-unused-vars
+import { fixBlankTableHeadings } from "@/a11y";
 export default {
   mixins: [handleClicks],
   data() {
@@ -264,7 +266,24 @@ export default {
   },
 
   created() {},
+  async mounted() {
+    await this.$nextTick();
+    this.a11yfixes();
+  },
   methods: {
+    a11yfixes() {
+      const myButtons = document.getElementsByClassName(
+        "v-data-table__expand-icon"
+      );
+      for (let i = 0, len = myButtons.length; i < len; ++i) {
+        const el = document.createElement("span");
+        el.innerHTML = "Show/Hide information about the document";
+        el.classList.add("aria-hidden");
+        myButtons[i].appendChild(el);
+      }
+
+      fixBlankTableHeadings();
+    },
     render(content) {
       return renderToHtml(content);
     },

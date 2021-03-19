@@ -218,6 +218,8 @@ import tz from "moment-timezone";
 // eslint-disable-next-line no-unused-vars
 //import { Tweet, Moment, Timeline } from "vue-tweet-embed";
 import { nanoid } from "nanoid";
+// eslint-disable-next-line no-unused-vars
+import { addButtonText, fixBlankTableHeadings } from "@/a11y";
 
 export default {
   name: "Home",
@@ -248,6 +250,13 @@ export default {
     };
   },
   methods: {
+    // fixA11Y() {
+    //   addButtonText("v-data-table__expand-icon", "Show/Hide information");
+    //   fixBlankTableHeadings();
+    // },\
+    // fixTable() {
+    //   console.log("fix table here");
+    // },
     isLoading(loading) {
       // eslint-disable-next-line no-undef
       loading ? window.NProgress.start() : window.NProgress.done();

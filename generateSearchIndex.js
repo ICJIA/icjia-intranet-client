@@ -65,6 +65,10 @@ const query = gql`
       summary
       slug
       body
+      tags {
+        title
+        slug
+      }
     }
     events {
       id
@@ -72,6 +76,10 @@ const query = gql`
       type
       summary
       slug
+      tags {
+        title
+        slug
+      }
     }
     documents {
       title
@@ -79,6 +87,10 @@ const query = gql`
       externalURL
       body
       slug
+      tags {
+        title
+        slug
+      }
       file {
         url
         ext
@@ -104,6 +116,7 @@ async function main() {
   let index = sections.map((section) => {
     let items = data[section].map((item) => {
       let searchObj = {};
+      searchObj.tags = item.tags;
       searchObj.id = item.id;
       searchObj.title = item.title || item.name;
       searchObj.contentType = section;
@@ -111,7 +124,7 @@ async function main() {
         searchObj.type = "download";
         searchObj.path = `${myConfig.api.base}${item.file.url}`;
         searchObj.ext = item.file.ext;
-        //console.log(item.file.url);
+        //console.log(item.document.tags);
       } else if (section === "documents" && item.externalURL) {
         searchObj.type = "url";
         searchObj.path = item.externalURL;
@@ -134,12 +147,7 @@ async function main() {
         headings.push(text);
       });
       searchObj.headings = headings;
-      // searchObj.toc = toc(markdown).json;
-      // if (section === "clusters") {
-      //   searchObj.route = `/documents/${section}/${searchObj.slug}/`;
-      // } else {
-      //   searchObj.route = `/${section}/${searchObj.slug}/`;
-      // }
+
       searchObj.route = `/${section}/${searchObj.slug}/`;
       searchObj.summary = item.summary || "";
       searchObj.url = `${myConfig.api.baseClient}${searchObj.route}`;
