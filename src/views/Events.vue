@@ -82,6 +82,7 @@
                 :events="filteredEvents"
                 :event-color="getEventColor"
                 :type="type"
+                @change="change"
                 @click:event="showEvent"
                 @click:more="viewDay"
                 @click:date="viewDay"
@@ -230,12 +231,21 @@
 <script>
 /* eslint-disable no-unused-vars */
 import { GET_EVENTS } from "@/graphql/queries/events";
+import { fixButtonText } from "@/a11y";
 
 // import NProgress from "nprogress";
 const moment = require("moment");
 const tz = require("moment-timezone");
 import { EventBus } from "@/event-bus";
 export default {
+  watch: {
+    isLoading(newValue, oldValue) {
+      console.log(newValue, oldValue);
+      // if (!newValue) {
+      //   this.a11yfixes();
+      // }
+    },
+  },
   data: () => ({
     focus: "",
     error: "",
@@ -263,11 +273,12 @@ export default {
       "grey darken-1",
     ],
     eventKicker: "",
+    isLoading: true,
   }),
   created() {
     window.NProgress.start();
   },
-  mounted() {
+  async mounted() {
     if (this.$refs.calendar) {
       this.$refs.calendar.checkChange();
     }
@@ -306,11 +317,22 @@ export default {
         //this.filteredEvents = this.events;
 
         this.filterUpcoming();
+        this.isLoading = false;
         window.NProgress.done();
       },
     },
   },
   methods: {
+    async change() {
+      console.log("change here");
+      await this.$nextTick();
+      this.a11yfixes();
+    },
+    a11yfixes() {
+      console.log("a11y fixes here");
+      fixButtonText("mdi-chevron-right", "Click to move forward");
+      fixButtonText("mdi-chevron-left", "Click to move previous");
+    },
     viewDay({ date }) {
       this.focus = date;
       this.type = "day";

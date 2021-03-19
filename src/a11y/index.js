@@ -1,11 +1,13 @@
 // Fix Vuetify empty buttons
 const fixButtonText = function (myClass, myText) {
   const myButtons = document.getElementsByClassName(myClass);
+
   for (let i = 0, len = myButtons.length; i < len; ++i) {
     const el = document.createElement("span");
     el.innerHTML = myText;
     el.classList.add("aria-hidden");
     myButtons[i].appendChild(el);
+    console.log("fixed buttons: ", myButtons[i]);
   }
 };
 

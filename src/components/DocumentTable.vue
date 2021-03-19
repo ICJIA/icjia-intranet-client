@@ -216,7 +216,7 @@ import { renderToHtml } from "@/services/Markdown";
 
 import moment from "moment";
 // eslint-disable-next-line no-unused-vars
-import { fixBlankTableHeadings } from "@/a11y";
+import { fixBlankTableHeadings, fixButtonText } from "@/a11y";
 export default {
   mixins: [handleClicks],
   data() {
@@ -272,16 +272,10 @@ export default {
   },
   methods: {
     a11yfixes() {
-      const myButtons = document.getElementsByClassName(
-        "v-data-table__expand-icon"
+      fixButtonText(
+        "v-data-table__expand-icon",
+        "Click to show or hide document information"
       );
-      for (let i = 0, len = myButtons.length; i < len; ++i) {
-        const el = document.createElement("span");
-        el.innerHTML = "Show/Hide information about the document";
-        el.classList.add("aria-hidden");
-        myButtons[i].appendChild(el);
-      }
-
       fixBlankTableHeadings();
     },
     render(content) {
