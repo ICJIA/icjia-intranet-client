@@ -2,7 +2,7 @@
   <div class="markdown-body page-form">
     <Breadcrumb
       :key="$route.path"
-      :title="title"
+      :title="pageTitle"
       subPath="Forms"
       subPathURL="/forms/"
     ></Breadcrumb>
@@ -70,6 +70,18 @@
                 <v-row class="mt-10">
                   <v-col cols="12">
                     <h2>Meeting Information:</h2>
+                  </v-col>
+                  <v-col cols="12">
+                    <v-text-field
+                      v-model="title"
+                      class="heavy"
+                      :error-messages="titleErrors"
+                      label="Meeting Title"
+                      required
+                      @input="$v.title.$touch()"
+                      @blur="$v.title.$touch()"
+                      @click="clearAxiosError"
+                    ></v-text-field>
                   </v-col>
                   <v-col cols="12">
                     <v-select
@@ -259,6 +271,7 @@ export default {
     name: { required },
     email: { required, email },
     unit: { required },
+    title: { required },
     room: { required },
     start_time: { required },
     end_time: { required },
@@ -272,6 +285,7 @@ export default {
       unit: "",
       number_attending: null,
       cleanup: null,
+      title: null,
       room: null,
       comment: "",
       end_time: null,
@@ -295,7 +309,7 @@ export default {
     };
   },
   computed: {
-    title() {
+    pageTitle() {
       return "Conference Room Request";
     },
 
@@ -319,6 +333,12 @@ export default {
       const errors = [];
       if (!this.$v.unit.$dirty) return errors;
       !this.$v.unit.required && errors.push("Unit is required");
+      return errors;
+    },
+    titleErrors() {
+      const errors = [];
+      if (!this.$v.title.$dirty) return errors;
+      !this.$v.title.required && errors.push("Meeting title is required.");
       return errors;
     },
     roomErrors() {
@@ -390,10 +410,11 @@ export default {
         this.comment = cleanComment;
 
         let text = {
-          type: this.title,
+          type: this.pageTitle,
           name: this.name,
           email: this.email,
           unit: this.unit,
+          title: this.title,
           room: this.room,
           number_attending: this.number_attending,
           cleanup: this.cleanup,
