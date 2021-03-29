@@ -61,11 +61,13 @@
                 <v-card-text v-if="result.rawText">
                   <span v-html="truncate(result.rawText, 100)"></span>
                 </v-card-text>
+                {{ result.tags }}
               </v-card>
             </div>
           </div>
-        </v-form> </v-col
-    ></v-container>
+        </v-form>
+      </v-col></v-container
+    >
   </div>
 </template>
 

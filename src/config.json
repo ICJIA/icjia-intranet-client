@@ -81,6 +81,10 @@
     "ignoreFieldNorm": false,
     "keys": [
       {
+        "name": "tags",
+        "weight": 1
+      },
+      {
         "name": "summary",
         "weight": 1
       },
@@ -90,15 +94,15 @@
       },
       {
         "name": "headings",
-        "weight": 1
+        "weight": 2
       },
       {
         "name": "contentType",
-        "weight": 1
+        "weight": 2
       },
       {
         "name": "type",
-        "weight": 1
+        "weight": 2
       },
       {
         "name": "ext",
