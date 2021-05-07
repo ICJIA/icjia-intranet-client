@@ -3,8 +3,8 @@
   "namespace": "icjia-",
   "defaultAvatar": "https://cdn.vuetifyjs.com/images/john.jpg",
   "api": {
-    "base": "https://dev.icjia-api.cloud",
-    "baseGraphQL": "https://dev.icjia-api.cloud/graphql",
+    "base": "https://intranet.icjia-api.cloud",
+    "baseGraphQL": "https://intranet.icjia-api.cloud/graphql",
     "baseClient": "https://intranet.icjia.cloud",
     "forgetPassword": "/auth/forgot-password",
     "resetPassword": "/auth/reset-password",

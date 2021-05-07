@@ -24,7 +24,7 @@ async function queryEndpoint(query, jwt) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwt}`,
     },
-    baseURL: "https://dev.icjia-api.cloud/graphql",
+    baseURL: "https://intranet.icjia-api.cloud/graphql",
     method: "post",
     data: {
       query,

@@ -31,7 +31,7 @@ const dbInsert = async function (jwt, { type, email, ...form }) {
   };
   try {
     return await api.post(
-      `https://dev.icjia-api.cloud/forms`,
+      `https://intranet.icjia-api.cloud/forms`,
       JSON.stringify(axiosDBSubmitData),
       axiosHeaders
     );
@@ -52,7 +52,7 @@ const getUserProfile = async function (jwt, email) {
 
   try {
     return await api.get(
-      `https://dev.icjia-api.cloud/biographies?email=${email}`,
+      `https://intranet.icjia-api.cloud/biographies?email=${email}`,
       axiosHeaders
     );
   } catch (e) {
@@ -72,7 +72,7 @@ const updateUserProfile = async function (jwt, id, data) {
 
   try {
     return await api.put(
-      `https://dev.icjia-api.cloud/biographies/${id}`,
+      `https://intranet.icjia-api.cloud/biographies/${id}`,
       JSON.stringify(data),
       axiosHeaders
     );
@@ -93,7 +93,7 @@ const createUserProfile = async function (jwt, data) {
 
   try {
     return await api.post(
-      `https://dev.icjia-api.cloud/biographies`,
+      `https://intranet.icjia-api.cloud/biographies`,
       JSON.stringify(data),
       axiosHeaders
     );

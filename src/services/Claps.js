@@ -26,7 +26,7 @@ const getClaps = async function (jwt, pageID) {
 
   try {
     return await api.get(
-      `https://dev.icjia-api.cloud/claps?pageID=${pageID}`,
+      `https://intranet.icjia-api.cloud/claps?pageID=${pageID}`,
       axiosHeaders
     );
   } catch (e) {
@@ -46,7 +46,7 @@ const createClapEntry = async function (jwt, data) {
 
   try {
     return await api.post(
-      `https://dev.icjia-api.cloud/claps`,
+      `https://intranet.icjia-api.cloud/claps`,
       JSON.stringify(data),
       axiosHeaders
     );
@@ -67,7 +67,7 @@ const updateClapEntry = async function (jwt, data, id) {
 
   try {
     return await api.put(
-      `https://dev.icjia-api.cloud/claps/${id}`,
+      `https://intranet.icjia-api.cloud/claps/${id}`,
       JSON.stringify(data),
       axiosHeaders
     );

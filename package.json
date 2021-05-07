@@ -7,7 +7,7 @@
     "build": "npm run schema && node generateSearchIndex && node generateUnits && npm run build:lambda && vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "schema": "get-graphql-schema https://dev.icjia-api.cloud/graphql -j > schema.json",
+    "schema": "get-graphql-schema https://intranet.icjia-api.cloud/graphql -j > schema.json",
     "build:serve": "npm run build && serve ./dist --single",
     "build:lambda": "netlify-lambda build ./src/lambda",
     "start:lambda": "netlify-lambda serve ./src/lambda",

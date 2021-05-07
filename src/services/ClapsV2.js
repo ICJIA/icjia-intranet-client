@@ -22,7 +22,7 @@ async function queryEndpoint(jwt, query) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwt}`,
     },
-    baseURL: "https://dev.icjia-api.cloud/graphql",
+    baseURL: "https://intranet.icjia-api.cloud/graphql",
     method: "post",
     data: {
       query,
@@ -62,7 +62,7 @@ const updateClapCount = async function (jwt, data, id) {
 
   try {
     return await api.put(
-      `https://dev.icjia-api.cloud/posts/${id}`,
+      `https://intranet.icjia-api.cloud/posts/${id}`,
       JSON.stringify(data),
       axiosHeaders
     );

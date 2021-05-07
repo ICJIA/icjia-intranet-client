@@ -383,7 +383,7 @@
             >
           </v-list-item>
           <v-list-item
-            href="https://dev.icjia-api.cloud/admin/"
+            href="https://intranet.icjia-api.cloud/admin/"
             target="_blank"
           >
             <v-list-item-title
